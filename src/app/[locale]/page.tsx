@@ -49,8 +49,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
       {/* Right: KNM Topics Grid (Compact) */}
       <section className="flex-1 w-full max-w-md lg:max-w-lg">
         <div className="grid gap-4">
-           {/* Card 1 */}
-           <Link href={`/${locale}/knm`} className="group flex items-center p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
+           {/* Card 1: History & Geography */}
+           <Link
+             href={`/${locale}/knm?topic=history-geography`}
+             className="group flex items-center p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
+           >
               <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-2xl mr-5 group-hover:scale-110 transition-transform">🇳🇱</div>
               <div className="flex-1 min-w-0">
                 <h3 className="text-lg font-bold text-slate-900 truncate">
@@ -65,8 +68,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
               </div>
            </Link>
 
-           {/* Card 2 */}
-           <Link href={`/${locale}/knm`} className="group flex items-center p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
+           {/* Card 2: Law & Government */}
+           <Link
+             href={`/${locale}/knm?topic=law-government`}
+             className="group flex items-center p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
+           >
               <div className="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center text-2xl mr-5 group-hover:scale-110 transition-transform">⚖️</div>
               <div className="flex-1 min-w-0">
                 <h3 className="text-lg font-bold text-slate-900 truncate">
@@ -81,8 +87,11 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
               </div>
            </Link>
 
-           {/* Card 3 */}
-           <Link href={`/${locale}/knm`} className="group flex items-center p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
+           {/* Card 3: Health & Education */}
+           <Link
+             href={`/${locale}/knm?topic=health-education`}
+             className="group flex items-center p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
+           >
               <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center text-2xl mr-5 group-hover:scale-110 transition-transform">🏥</div>
               <div className="flex-1 min-w-0">
                 <h3 className="text-lg font-bold text-slate-900 truncate">

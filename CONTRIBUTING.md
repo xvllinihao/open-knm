@@ -18,8 +18,9 @@
 
 2. **贡献内容 (Contributing Content)**：
    - 我们非常欢迎你撰写新的 KNM 知识点或生活指南。
-   - 文章目前位于 `src/lib/articles.ts` (元数据) 和未来的 MDX 文件中。
-   - 提交内容时，请尽量提供 **中英双语** 版本，以保持网站的一致性。
+   - 文章元数据位于 `src/lib/articles.ts`，正文内容位于 `src/data/articles/*.mdx`（一篇知识点通常有中/英或荷/中各一份）。
+   - 建议从 `src/data/articles/_template.en.mdx` 与 `src/data/articles/_template.zh.mdx` 复制模板开始写，以保持左右两栏布局一致。
+   - 提交内容时，请尽量提供 **中英双语** 版本，并在文末根据需要加一个简短的 **Wikipedia 延伸阅读区块**（2–5 个相关英文 Wikipedia 链接，参考现有文章写法）。
 
 3. **改进代码 (Code Improvements)**：
    - 如果你懂前端开发 (React/Next.js)，欢迎优化我们的 UI/UX 或修复技术问题。
@@ -68,8 +69,9 @@ You can contribute in several ways:
 
 2. **Contributing Content**:
    - We welcome new articles on KNM topics or daily life guides.
-   - Articles are currently managed in `src/lib/articles.ts` (metadata) and future MDX files.
-   - When submitting content, please try to provide **both Chinese and English** versions to maintain consistency.
+   - Articles are managed in `src/lib/articles.ts` (metadata) and MDX files under `src/data/articles/`.
+   - Please start from the templates `src/data/articles/_template.en.mdx` and `src/data/articles/_template.zh.mdx` so that the two‑column layout (Dutch on the left, explanation on the right) stays consistent.
+   - When submitting content, please try to provide **both Chinese and English** versions and, at the bottom of each article, optionally add a short **“Further reading on Wikipedia”** block (2–5 links to relevant English Wikipedia pages, similar to the existing articles).
 
 3. **Code Improvements**:
    - If you are a developer (React/Next.js), feel free to improve our UI/UX or fix technical issues.

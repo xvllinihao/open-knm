@@ -1,0 +1,66 @@
+{/* 
+  用法说明（只保留在模板中，复制后可以删掉本注释）：
+  - 左列：荷兰语原文，适合练阅读，重要词统一用 **加粗（荷兰语原词）**。
+  - 右列：中文解释，对应左侧结构，并在关键词后补上荷兰语：**宗教自由（godsdienstvrijheid）**。
+  - 只用加粗，不要再用下划线或其他花样。
+  - 最后可以加一个“小小的 Wikipedia 延伸阅读”区块（2–5 个链接），
+    链接到和本篇知识点最相关的英文 Wikipedia 条目（可以参考本目录现有文章的写法）。
+*/}
+
+<div className="space-y-8">
+  {/* 顶部提示块，可选 */}
+  <div className="text-sm text-slate-500 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 space-y-1">
+    <p className="font-medium">
+      这里写一句简短的介绍：本篇是关于 …… 的 KNM 知识点，包含荷兰语与中文对照。
+    </p>
+  </div>
+
+  {/* 双栏：左荷兰语，右中文 */}
+  <div className="grid gap-8 md:grid-cols-2">
+    {/* 左列：荷兰语内容 */}
+    <div className="space-y-4">
+      <h2>荷兰语小标题（例如：Wie was Willem van Oranje?）</h2>
+      <p>
+        这里写荷兰语内容，重要概念统一用 **加粗（godsdienstvrijheid）**，方便视觉上快速扫一遍就能抓住关键词。
+      </p>
+      <ul>
+        <li>可以用列表：**kernpunt 1**</li>
+        <li>**kernpunt 2**</li>
+      </ul>
+    </div>
+
+    {/* 右列：中文解释，对应左侧结构 */}
+    <div className="space-y-4">
+      <h2>对应的中文小标题</h2>
+      <p>
+        这里用中文解释左侧内容，并在关键术语后写上荷兰语原词：
+        例如：**宗教自由（godsdienstvrijheid）**、
+        **起义的领导者（leider van de Opstand）**。
+      </p>
+      <p>
+        可以适当解释为什么这个知识点对 KNM 考试重要，例如听力/阅读会出现怎样的场景。
+      </p>
+    </div>
+  </div>
+
+  {/* 可选：在这里加一个 Wikipedia 延伸阅读区块，示意： */}
+  {/*
+  <div className="pt-4 border-t border-slate-100 text-sm text-slate-500 space-y-2">
+    <h3 className="font-semibold text-slate-700">延伸阅读 · Wikipedia</h3>
+    <ul className="list-disc list-inside space-y-1">
+      <li>
+        <a
+          href="https://en.wikipedia.org/wiki/William_the_Silent"
+          target="_blank"
+          rel="noreferrer"
+          className="text-blue-600 hover:underline"
+        >
+          William the Silent – Wikipedia
+        </a>
+      </li>
+    </ul>
+  </div>
+  */}
+</div>
+
+

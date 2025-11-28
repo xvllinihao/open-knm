@@ -1,0 +1,68 @@
+{/* 
+  HOW TO USE (keep only in the template, remove after copying):
+  - Left column: Dutch original text, good for reading practice. Highlight key terms with **bold (Dutch term)** only.
+  - Right column: English explanation mirroring the left, and always include the Dutch keyword:
+    **freedom of religion (godsdienstvrijheid)**.
+  - At the bottom, optionally add a small "Further reading on Wikipedia" block with 2–5 links
+    that match the key concepts in the article (see existing articles in this folder for examples).
+*/}
+
+<div className="space-y-8">
+  {/* Optional info box */}
+  <div className="text-sm text-slate-500 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 space-y-1">
+    <p className="font-medium">
+      One short sentence explaining what this article is about and how it helps with the KNM exam.
+    </p>
+  </div>
+
+  {/* Two-column layout: Dutch on the left, English on the right */}
+  <div className="grid gap-8 md:grid-cols-2">
+    {/* Left: Dutch content */}
+    <div className="space-y-4">
+      <h2>Dutch subheading (e.g. Wie was Willem van Oranje?)</h2>
+      <p>
+        Write Dutch content here. Use **bold (godsdienstvrijheid)** for every important concept to
+        make scanning easy.
+      </p>
+      <ul>
+        <li>List item with a **kernbegrip**</li>
+        <li>Another **kernpunt**</li>
+      </ul>
+    </div>
+
+    {/* Right: English explanation */}
+    <div className="space-y-4">
+      <h2>Matching English subheading</h2>
+      <p>
+        Explain the Dutch text in simple English and always repeat the Dutch keyword:
+        **freedom of religion (godsdienstvrijheid)**,
+        **leader of the Revolt (leider van de Opstand)**, etc.
+      </p>
+      <p>
+        You can also add why this is relevant for the KNM exam (typical audio or reading questions).
+      </p>
+    </div>
+  </div>
+
+  {/* Optional: Wikipedia links for further reading */}
+  {/* 
+    Example:
+    <div className="pt-4 border-t border-slate-100 text-sm text-slate-500 space-y-2">
+      <h3 className="font-semibold text-slate-700">Further reading on Wikipedia</h3>
+      <ul className="list-disc list-inside space-y-1">
+        <li>
+          <a
+            href="https://en.wikipedia.org/wiki/William_the_Silent"
+            target="_blank"
+            rel="noreferrer"
+            className="text-blue-600 hover:underline"
+          >
+            William the Silent – Wikipedia
+          </a>
+        </li>
+      </ul>
+    </div>
+  */}
+</div>
+
+

@@ -1,5 +1,9 @@
 # Open KNM
 
+<p align="center">
+  <img src="./public/logo-open-knm.svg" alt="Open KNM logo" width="96" />
+</p>
+
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 
