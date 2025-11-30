@@ -4,6 +4,7 @@ import { getArticleBySlug } from "@/lib/articles";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { ComponentType } from "react";
+import { SITE_NAME, SITE_URL, absoluteUrl } from "@/lib/siteConfig";
 
 import KnmHistoryZh from "@/data/articles/knm-history-william-of-orange.zh.mdx";
 import KnmHistoryEn from "@/data/articles/knm-history-william-of-orange.en.mdx";
@@ -33,6 +34,8 @@ import KnmSocialEn from "@/data/articles/knm-social-etiquette.en.mdx";
 type Props = {
   params: Promise<{ locale: Locale; slug: string }>;
 };
+
+const DEFAULT_PUBLISHED_AT = "2024-11-01T00:00:00.000Z";
 
 const articleBodies: Record<string, Partial<Record<Locale, ComponentType>>> = {
   "knm-history-william-of-orange": {
@@ -102,15 +105,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const title = article.titles[locale];
   const description = article.descriptions[locale];
+  const canonicalUrl = absoluteUrl(`/${locale}/articles/${slug}`);
+  const publishedAt = article.publishedAt ?? DEFAULT_PUBLISHED_AT;
+  const updatedAt = article.updatedAt ?? publishedAt;
+  const localeKeywords =
+    locale === "zh"
+      ? ["荷兰融入考试", "KNM", "荷兰社会知识"]
+      : ["KNM exam", "Dutch society", "Inburgering"];
+  const keywords = Array.from(new Set([...(article.tags ?? []), ...localeKeywords]));
 
   return {
     title: `${title} | Open KNM`,
     description,
+    keywords,
     openGraph: {
       title,
       description,
       type: "article",
-      publishedTime: new Date().toISOString(),
+      url: canonicalUrl,
+      siteName: SITE_NAME,
+      publishedTime: publishedAt,
+      modifiedTime: updatedAt,
       authors: ["Open KNM Team"],
       tags: article.tags,
     },
@@ -120,10 +135,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
     },
     alternates: {
-      canonical: `/${locale}/articles/${slug}`,
+      canonical: canonicalUrl,
       languages: {
-        en: `/en/articles/${slug}`,
-        zh: `/zh/articles/${slug}`,
+        en: absoluteUrl(`/en/articles/${slug}`),
+        zh: absoluteUrl(`/zh/articles/${slug}`),
       },
     },
   };
@@ -144,9 +159,47 @@ export default async function ArticlePage({ params }: Props) {
 
   const isZh = locale === "zh";
   const BodyComponent = articleBodies[article.slug]?.[locale];
+  const canonicalUrl = absoluteUrl(`/${locale}/articles/${slug}`);
+  const localeCode = isZh ? "zh-CN" : "en-US";
+  const publishedAt = article.publishedAt ?? DEFAULT_PUBLISHED_AT;
+  const updatedAt = article.updatedAt ?? publishedAt;
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: article.titles[locale],
+    description: article.descriptions[locale],
+    inLanguage: localeCode,
+    keywords: (article.tags ?? []).join(", "),
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": canonicalUrl,
+    },
+    url: canonicalUrl,
+    datePublished: publishedAt,
+    dateModified: updatedAt,
+    author: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: absoluteUrl("/logo-open-knm.svg"),
+      },
+    },
+  };
 
   return (
     <article className="max-w-3xl mx-auto py-8 sm:py-12 space-y-8">
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       <div className="space-y-4 border-b border-slate-100 pb-8">
         <div className="flex gap-2">
           <Link

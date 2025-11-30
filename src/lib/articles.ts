@@ -9,6 +9,8 @@ export type Article = {
   descriptions: Record<Locale, string>;
   featured?: boolean;
   tags?: string[];
+  publishedAt?: string;
+  updatedAt?: string;
 };
 
 const titleFor = (zh: string, en: string) => ({ zh, en });

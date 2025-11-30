@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 
 export const ArticleSummary = ({ children, title = "本文摘要", icon = "📝" }: { children: React.ReactNode, title?: string, icon?: string }) => (
   <div className="not-prose my-8 rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-sm">

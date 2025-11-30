@@ -15,7 +15,6 @@ type SiteLayoutProps = {
 
 export function SiteLayout({ children, locale }: SiteLayoutProps) {
   const texts = uiTexts[locale];
-  const year = new Date().getFullYear();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
 

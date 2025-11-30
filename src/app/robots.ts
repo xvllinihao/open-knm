@@ -1,4 +1,5 @@
-import { Metadata, MetadataRoute } from 'next';
+import { MetadataRoute } from 'next';
+import { absoluteUrl } from '@/lib/siteConfig';
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -6,8 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://open-knm.vercel.app/sitemap.xml', // Replace with your actual domain later
+    sitemap: absoluteUrl('/sitemap.xml'),
   };
 }
-
-

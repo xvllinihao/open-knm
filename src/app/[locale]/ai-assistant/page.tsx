@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Locale, uiTexts, isLocale } from "@/lib/uiTexts";
 import { notFound } from "next/navigation";
 
@@ -69,9 +70,12 @@ export default async function AIAssistantPage({
           {/* Visual/Preview Area */}
           <div className="relative hidden lg:block">
              <div className="relative rounded-xl bg-white/5 border border-white/10 p-2 backdrop-blur-sm shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-500">
-                <img 
-                  src="/images/assistant/preview-placeholder.svg" 
-                  alt="NotebookLM Preview" 
+                <Image
+                  src="/images/assistant/preview-placeholder.svg"
+                  alt="NotebookLM Preview"
+                  width={640}
+                  height={480}
+                  priority
                   className="w-full rounded-lg shadow-inner bg-white/90"
                 />
                 <div className="absolute -bottom-6 -left-6 bg-white text-slate-900 p-4 rounded-xl shadow-xl max-w-xs border border-slate-100">
@@ -82,7 +86,7 @@ export default async function AIAssistantPage({
                       <span className="font-bold text-sm">AI Power</span>
                    </div>
                    <p className="text-xs text-slate-600 leading-relaxed">
-                     "Explain the difference between Eerste Kamer and Tweede Kamer."
+                     &ldquo;Explain the difference between Eerste Kamer and Tweede Kamer.&rdquo;
                    </p>
                 </div>
              </div>

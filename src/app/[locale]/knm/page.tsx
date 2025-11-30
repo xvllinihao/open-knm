@@ -1,7 +1,78 @@
+import type { Metadata } from "next";
 import { Locale } from "@/lib/i18n";
 import { getArticlesByCategory } from "@/lib/articles";
 import { ArticleList } from "@/components/ArticleList";
 import Link from "next/link";
+import { absoluteUrl } from "@/lib/siteConfig";
+
+const knmPageMeta: Record<
+  Locale,
+  {
+    title: string;
+    description: string;
+    keywords: string[];
+  }
+> = {
+  en: {
+    title: "KNM Exam Topics & Study Guide",
+    description:
+      "Curated KNM exam notes covering Dutch history, government, work, healthcare, education, and daily life. Bilingual explanations with topic filters.",
+    keywords: [
+      "KNM exam topics",
+      "Dutch civic integration",
+      "KNM study guide",
+      "Inburgering resources",
+      "Dutch society",
+    ],
+  },
+  zh: {
+    title: "KNM 考试重点与学习资料",
+    description:
+      "系统梳理 KNM 荷兰融入考试考点，涵盖历史地理、政府法律、医疗教育与工作生活，中英双语讲解可按主题筛选。",
+    keywords: [
+      "KNM 考点",
+      "荷兰融入考试资料",
+      "荷兰社会知识",
+      "Inburgering 复习",
+      "荷兰 KNM 学习",
+    ],
+  },
+};
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: Locale }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const fallbackLocale: Locale = "zh";
+  const meta = knmPageMeta[locale] ?? knmPageMeta[fallbackLocale];
+  const canonical = absoluteUrl(`/${locale}/knm`);
+
+  return {
+    title: meta.title,
+    description: meta.description,
+    keywords: meta.keywords,
+    alternates: {
+      canonical,
+      languages: {
+        en: absoluteUrl("/en/knm"),
+        zh: absoluteUrl("/zh/knm"),
+      },
+    },
+    openGraph: {
+      title: meta.title,
+      description: meta.description,
+      url: canonical,
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: meta.title,
+      description: meta.description,
+    },
+  };
+}
 
 type SearchParams = {
   topic?: string | string[];

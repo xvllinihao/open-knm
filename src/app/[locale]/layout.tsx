@@ -3,8 +3,7 @@ import "../globals.css";
 import { locales, Locale } from "@/lib/i18n";
 import { SiteLayout } from "@/components/SiteLayout";
 import { Analytics } from "@vercel/analytics/react";
-
-const BASE_URL = "https://open-knm.vercel.app"; // Replace with your actual domain
+import { SITE_URL } from "@/lib/siteConfig";
 
 const metadataPerLocale: Record<
   Locale,
@@ -71,7 +70,7 @@ export async function generateMetadata({
   const localeMeta = metadataPerLocale[locale];
 
   return {
-    metadataBase: new URL(BASE_URL),
+    metadataBase: new URL(SITE_URL),
     title: {
       default: localeMeta.title,
       template: "%s | Open KNM",

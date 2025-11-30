@@ -1,5 +1,4 @@
 import { Locale, isLocale } from "@/lib/uiTexts";
-import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export default async function AboutPage({ params }: { params: Promise<{ locale: Locale }> }) {
