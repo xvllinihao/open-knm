@@ -12,7 +12,26 @@ export type NavTexts = {
   knm: string;
   resources: string;
   assistant: string;
+  vocabulary: string;
   about: string;
+};
+
+export type VocabularyTexts = {
+  title: string;
+  description: string;
+  promoTitle: string;
+  promoDesc: string;
+  loadMore: string;
+  showing: string;
+  of: string;
+  categories: {
+    all: string;
+    daily: string;
+    work: string;
+    housing: string;
+    health: string;
+    admin: string;
+  };
 };
 
 export type UiTexts = {
@@ -37,6 +56,7 @@ export type UiTexts = {
     promoDesc: string;
     promoAction: string;
   };
+  vocabulary: VocabularyTexts;
   disclaimer: {
     title: string;
     text: string;
@@ -56,6 +76,7 @@ export const uiTexts: Record<Locale, UiTexts> = {
       knm: "KNM 专区",
       resources: "资源",
       assistant: "AI 助教",
+      vocabulary: "高频词汇",
       about: "关于与贡献",
     },
     footer: {
@@ -79,6 +100,23 @@ export const uiTexts: Record<Locale, UiTexts> = {
       promoDesc: "基于 NotebookLM，让 AI 帮你划重点、出模拟题。",
       promoAction: "去试试 →",
     },
+    vocabulary: {
+      title: "荷兰语高频词汇 (A2)",
+      description: "精选200+个荷兰生活、工作、行政高频词汇，配有发音和实用例句。",
+      promoTitle: "A2 高频词汇表",
+      promoDesc: "精选200+核心词汇，覆盖行政、医疗、生活全场景。",
+      loadMore: "加载更多",
+      showing: "正在展示",
+      of: "共",
+      categories: {
+        all: "全部",
+        daily: "日常生活",
+        work: "工作",
+        housing: "住房",
+        health: "医疗",
+        admin: "行政",
+      },
+    },
     disclaimer: {
       title: "免责声明",
       text: "本站内容由 AI 基于收集资料辅助生成，仅供参考。尽管我们努力确保质量，但无法保证信息 100% 准确或最新。请务必以荷兰政府官方信息为准。",
@@ -96,6 +134,7 @@ export const uiTexts: Record<Locale, UiTexts> = {
       knm: "KNM Zone",
       resources: "Resources",
       assistant: "AI Assistant",
+      vocabulary: "Vocabulary",
       about: "About & Contribute",
     },
     footer: {
@@ -118,6 +157,23 @@ export const uiTexts: Record<Locale, UiTexts> = {
       promoTitle: "New: AI Assistant",
       promoDesc: "Powered by NotebookLM. Get summaries and mock questions instantly.",
       promoAction: "Try it now →",
+    },
+    vocabulary: {
+      title: "Essential Dutch Vocabulary (A2)",
+      description: "A curated list of 200+ essential words for daily life, work, and administration in the Netherlands, with audio and examples.",
+      promoTitle: "A2 Essential Vocabulary",
+      promoDesc: "200+ core words covering admin, health, and daily life.",
+      loadMore: "Load More",
+      showing: "Showing",
+      of: "of",
+      categories: {
+        all: "All",
+        daily: "Daily Life",
+        work: "Work",
+        housing: "Housing",
+        health: "Health",
+        admin: "Admin",
+      },
     },
     disclaimer: {
       title: "Disclaimer",

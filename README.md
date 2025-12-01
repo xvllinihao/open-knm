@@ -56,6 +56,10 @@
 
 [![Contributors](https://contrib.rocks/image?repo=xvllinihao/open-knm)](https://github.com/xvllinihao/open-knm/graphs/contributors)
 
+### 社区寄语
+
+我们正在共同打造一个互助、透明、包容的学习社区。无论你是在荷兰生活多年的前辈，还是刚踏上旅程的新成员，你的经历与视角都很重要。请勇敢分享、积极提问、认真倾听，让更多人少走弯路、感受到支持。谢谢你成为这段旅程的一部分。🌱
+
 ---
 
 <a id="english"></a>
@@ -103,6 +107,10 @@ Please read our [Contribution Guide (CONTRIBUTING.md)](./CONTRIBUTING.md) for mo
 Big thanks to everyone who has supported Open KNM through issues, PRs, and shared knowledge!
 
 [![Contributors](https://contrib.rocks/image?repo=xvllinihao/open-knm)](https://github.com/xvllinihao/open-knm/graphs/contributors)
+
+### Community Note
+
+We are building a welcoming, transparent, and supportive learning space together. Whether you have lived in the Netherlands for years or just arrived, your stories and questions matter. Please keep sharing generously, asking openly, and listening with care so others can find clarity faster and feel less alone. Thank you for being part of this journey. 🌱
 
 ## License
 

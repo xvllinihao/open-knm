@@ -46,10 +46,10 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                {isZh ? '开始学习' : 'Start Learning'}
              </Link>
              <Link 
-               href={`/${locale}/society`}
+               href={`/${locale}/vocabulary`}
                className="h-12 px-8 rounded-full bg-white text-slate-700 font-bold text-base border border-slate-200 flex items-center hover:bg-slate-50 transition-all"
              >
-               {isZh ? '了解荷兰' : 'Discover NL'}
+               {isZh ? '高频词汇' : 'Vocabulary'}
              </Link>
           </div>
         </section>
@@ -81,6 +81,28 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                   <span className="text-[var(--primary)] font-bold text-sm group-hover:text-white transition-colors">
                     {assistant.promoAction}
                   </span>
+                </div>
+             </Link>
+
+             {/* Vocabulary Promo Card (New) */}
+             <Link
+               href={`/${locale}/vocabulary`}
+               className="group flex items-center p-5 bg-gradient-to-r from-orange-50 to-amber-50 rounded-2xl border border-orange-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
+             >
+                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl mr-5 group-hover:scale-110 transition-transform border border-orange-100 shadow-sm">
+                  📚
+                </div>
+                <div className="flex-1 min-w-0 relative z-10">
+                  <h3 className="text-lg font-bold text-slate-900 truncate flex items-center gap-2">
+                    {isZh ? 'A2 高频词汇表' : 'Essential Vocabulary'}
+                    <span className="inline-flex px-2 py-0.5 rounded-full bg-orange-100 text-orange-700 text-[10px] font-bold uppercase tracking-wide">New</span>
+                  </h3>
+                  <p className="text-slate-600 text-sm truncate">
+                    {isZh ? '200+ 核心词汇，覆盖生活全场景。' : '200+ core words for daily life & exam.'}
+                  </p>
+                </div>
+                <div className="ml-3 relative z-10">
+                  <span className="text-orange-600 group-hover:text-orange-700 transition-colors text-lg">→</span>
                 </div>
              </Link>
 

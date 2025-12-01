@@ -1,0 +1,816 @@
+[
+  {
+    "id": "korting",
+    "dutch": "korting",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "discount", "zh": "折扣" },
+    "notes": {
+      "en": "Look for this word in supermarkets! \"35% korting\".",
+      "zh": "超市里常见的词！\"35% korting\"。"
+    }
+  },
+  {
+    "id": "sleutel",
+    "dutch": "sleutel",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "key", "zh": "钥匙" },
+    "notes": {
+      "en": "Don't lose your house keys (\"huissleutels\")!",
+      "zh": "别把家里的钥匙(\"huissleutels\")弄丢了！"
+    }
+  },
+  {
+    "id": "koelkast",
+    "dutch": "koelkast",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "fridge", "zh": "冰箱" },
+    "notes": {
+      "en": "Where you keep your food fresh.",
+      "zh": "保鲜食物的地方。"
+    }
+  },
+  {
+    "id": "vers",
+    "dutch": "vers",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "fresh", "zh": "新鲜的" },
+    "notes": {
+      "en": "\"Vers brood\" (fresh bread) or \"verse groenten\" (fresh vegetables).",
+      "zh": "\"Vers brood\"(新鲜面包) 或 \"verse groenten\"(新鲜蔬菜)。"
+    }
+  },
+  {
+    "id": "kleding",
+    "dutch": "kleding",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "clothing", "zh": "衣服" },
+    "notes": {
+      "en": "General term for clothes.",
+      "zh": "衣服的总称。"
+    }
+  },
+  {
+    "id": "kast",
+    "dutch": "kast",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "cupboard / closet", "zh": "橱柜 / 衣柜" },
+    "notes": {
+      "en": "\"Kledingkast\" (wardrobe) or \"keukenkast\" (kitchen cupboard).",
+      "zh": "\"Kledingkast\"(衣柜) 或 \"keukenkast\"(橱柜)。"
+    }
+  },
+  {
+    "id": "betalen",
+    "dutch": "betalen",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "to pay", "zh": "支付 / 付款" },
+    "notes": {
+      "en": "You can pay by card (\"pinnen\") or cash (\"contant\").",
+      "zh": "可以刷卡(\"pinnen\")或付现(\"contant\")。"
+    }
+  },
+  {
+    "id": "misschien",
+    "dutch": "misschien",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "maybe", "zh": "也许 / 可能" },
+    "notes": {
+      "en": "Used when you are not sure.",
+      "zh": "表示不确定。"
+    }
+  },
+  {
+    "id": "meteen",
+    "dutch": "meteen",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "immediately / right away", "zh": "立刻 / 马上" },
+    "notes": {
+      "en": "\"Ik kom er meteen aan\" (I'm coming right away).",
+      "zh": "\"Ik kom er meteen aan\" (我马上就来)。"
+    }
+  },
+  {
+    "id": "vrij",
+    "dutch": "vrij",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "free / off", "zh": "空闲 / 自由" },
+    "notes": {
+      "en": "\"Ben je vrij?\" (Are you off work? / Are you free?).",
+      "zh": "\"Ben je vrij?\" (你休息吗？/你有空吗？)。"
+    }
+  },
+  {
+    "id": "gratis",
+    "dutch": "gratis",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "free of charge", "zh": "免费" },
+    "notes": {
+      "en": "Dutch people love this word! It means it costs nothing.",
+      "zh": "荷兰人最爱的词！意思是不要钱。"
+    }
+  },
+  {
+    "id": "druk",
+    "dutch": "druk",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "busy / crowded", "zh": "忙碌 / 拥挤" },
+    "notes": {
+      "en": "\"Ik ben druk\" (I am busy). \"Het is druk\" (It is crowded).",
+      "zh": "\"Ik ben druk\" (我好忙)。\"Het is druk\" (人好多)。"
+    }
+  },
+  {
+    "id": "goedkoop",
+    "dutch": "goedkoop",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "cheap", "zh": "便宜" },
+    "notes": {
+      "en": "Low price.",
+      "zh": "价格低。"
+    }
+  },
+  {
+    "id": "duur",
+    "dutch": "duur",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "expensive", "zh": "贵" },
+    "notes": {
+      "en": "Costs a lot of money.",
+      "zh": "很花钱。"
+    }
+  },
+  {
+    "id": "gevaar",
+    "dutch": "gevaar",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "danger", "zh": "危险" },
+    "notes": {
+      "en": "\"Gevaarlijk\" is dangerous.",
+      "zh": "\"Gevaarlijk\" 是形容词\"危险的\"。"
+    }
+  },
+  {
+    "id": "richting",
+    "dutch": "richting",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "direction", "zh": "方向" },
+    "notes": {
+      "en": "\"In de richting van...\" (In the direction of...).",
+      "zh": "\"In de richting van...\" (朝...方向)。"
+    }
+  },
+  {
+    "id": "verkeer",
+    "dutch": "verkeer",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "traffic", "zh": "交通" },
+    "notes": {
+      "en": "Cars, bikes, trams together.",
+      "zh": "车流、人流的总称。"
+    }
+  },
+  {
+    "id": "brug",
+    "dutch": "brug",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "bridge", "zh": "桥" },
+    "notes": {
+      "en": "Amsterdam has many bridges.",
+      "zh": "阿姆斯特丹有很多桥。"
+    }
+  },
+  {
+    "id": "snelheid",
+    "dutch": "snelheid",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "speed", "zh": "速度" },
+    "notes": {
+      "en": "Watch your speed (\"maximumsnelheid\").",
+      "zh": "注意限速(\"maximumsnelheid\")。"
+    }
+  },
+  {
+    "id": "aanvragen",
+    "dutch": "aanvragen",
+    "category": "admin",
+    "level": "A2",
+    "translations": { "en": "to apply for / request", "zh": "申请" },
+    "notes": {
+      "en": "You apply for a subsidy or permit (\"toeslag/vergunning aanvragen\").",
+      "zh": "申请津贴或许可证(\"toeslag/vergunning aanvragen\")。"
+    }
+  },
+  {
+    "id": "loket",
+    "dutch": "loket",
+    "category": "admin",
+    "level": "A2",
+    "translations": { "en": "counter / desk", "zh": "办事窗口" },
+    "notes": {
+      "en": "The desk at the municipality where you ask questions.",
+      "zh": "市政厅的办事柜台。"
+    }
+  },
+  {
+    "id": "bewijs",
+    "dutch": "bewijs",
+    "category": "admin",
+    "level": "A2",
+    "translations": { "en": "proof / evidence", "zh": "证明" },
+    "notes": {
+      "en": "\"Bewijs van inschrijving\" (proof of registration).",
+      "zh": "\"Bewijs van inschrijving\" (注册证明)。"
+    }
+  },
+  {
+    "id": "vergunning",
+    "dutch": "vergunning",
+    "category": "admin",
+    "level": "A2",
+    "translations": { "en": "permit", "zh": "许可证" },
+    "notes": {
+      "en": "For building, parking, or staying (\"parkeervergunning\").",
+      "zh": "如建筑许可、停车许可(\"parkeervergunning\")。"
+    }
+  },
+  {
+    "id": "wijzigen",
+    "dutch": "wijzigen",
+    "category": "admin",
+    "level": "A2",
+    "translations": { "en": "to change / modify", "zh": "修改 / 变更" },
+    "notes": {
+      "en": "Changing your data or address.",
+      "zh": "修改数据或地址。"
+    }
+  },
+  {
+    "id": "melding",
+    "dutch": "melding",
+    "category": "admin",
+    "level": "A2",
+    "translations": { "en": "report / notification", "zh": "报告 / 通知" },
+    "notes": {
+      "en": "\"Melding maken\" (to report an issue).",
+      "zh": "\"Melding maken\" (报告问题)。"
+    }
+  },
+  {
+    "id": "bewoner",
+    "dutch": "bewoner",
+    "category": "housing",
+    "level": "A2",
+    "translations": { "en": "resident", "zh": "居民 / 住户" },
+    "notes": {
+      "en": "The person living in a house.",
+      "zh": "住在房子里的人。"
+    }
+  },
+  {
+    "id": "schade",
+    "dutch": "schade",
+    "category": "housing",
+    "level": "A2",
+    "translations": { "en": "damage", "zh": "损坏" },
+    "notes": {
+      "en": "If you break something in a rented house.",
+      "zh": "如果弄坏了租来的房子里的东西。"
+    }
+  },
+  {
+    "id": "onderhoud",
+    "dutch": "onderhoud",
+    "category": "housing",
+    "level": "A2",
+    "translations": { "en": "maintenance", "zh": "维护 / 维修" },
+    "notes": {
+      "en": "Repairs and upkeep of the house.",
+      "zh": "房子的修理和保养。"
+    }
+  },
+  {
+    "id": "klacht",
+    "dutch": "klacht",
+    "category": "health",
+    "level": "A2",
+    "translations": { "en": "complaint / symptom", "zh": "症状 / 投诉" },
+    "notes": {
+      "en": "In medical context: what is bothering you.",
+      "zh": "在医疗语境下指身体不适的症状。"
+    }
+  },
+  {
+    "id": "koorts",
+    "dutch": "koorts",
+    "category": "health",
+    "level": "A2",
+    "translations": { "en": "fever", "zh": "发烧" },
+    "notes": {
+      "en": "High body temperature.",
+      "zh": "体温过高。"
+    }
+  },
+  {
+    "id": "misselijk",
+    "dutch": "misselijk",
+    "category": "health",
+    "level": "A2",
+    "translations": { "en": "nauseous", "zh": "恶心" },
+    "notes": {
+      "en": "Feeling like you need to vomit.",
+      "zh": "想吐的感觉。"
+    }
+  },
+  {
+    "id": "duizelig",
+    "dutch": "duizelig",
+    "category": "health",
+    "level": "A2",
+    "translations": { "en": "dizzy", "zh": "头晕" },
+    "notes": {
+      "en": "Feeling lightheaded.",
+      "zh": "头昏眼花。"
+    }
+  },
+  {
+    "id": "verkouden",
+    "dutch": "verkouden",
+    "category": "health",
+    "level": "A2",
+    "translations": { "en": "cold (illness)", "zh": "感冒" },
+    "notes": {
+      "en": "\"Ik ben verkouden\" (I have a cold).",
+      "zh": "\"Ik ben verkouden\" (我感冒了)。"
+    }
+  },
+  {
+    "id": "behandeling",
+    "dutch": "behandeling",
+    "category": "health",
+    "level": "A2",
+    "translations": { "en": "treatment", "zh": "治疗" },
+    "notes": {
+      "en": "Medical care provided by a doctor.",
+      "zh": "医生提供的治疗方案。"
+    }
+  },
+  {
+    "id": "bijwerking",
+    "dutch": "bijwerking",
+    "category": "health",
+    "level": "A2",
+    "translations": { "en": "side effect", "zh": "副作用" },
+    "notes": {
+      "en": "Unwanted effect of a medicine.",
+      "zh": "药物的不良反应。"
+    }
+  },
+  {
+    "id": "rooster",
+    "dutch": "rooster",
+    "category": "work",
+    "level": "A2",
+    "translations": { "en": "schedule / timetable", "zh": "排班表 / 时刻表" },
+    "notes": {
+      "en": "Work schedule or school timetable.",
+      "zh": "工作排班或学校课表。"
+    }
+  },
+  {
+    "id": "opleiding",
+    "dutch": "opleiding",
+    "category": "work",
+    "level": "A2",
+    "translations": { "en": "education / training", "zh": "教育 / 培训" },
+    "notes": {
+      "en": "Your study or professional training.",
+      "zh": "你的学历或职业培训。"
+    }
+  },
+  {
+    "id": "ervaring",
+    "dutch": "ervaring",
+    "category": "work",
+    "level": "A2",
+    "translations": { "en": "experience", "zh": "经验" },
+    "notes": {
+      "en": "\"Werkervaring\" (work experience).",
+      "zh": "\"Werkervaring\" (工作经验)。"
+    }
+  },
+  {
+    "id": "vaardigheid",
+    "dutch": "vaardigheid",
+    "category": "work",
+    "level": "A2",
+    "translations": { "en": "skill", "zh": "技能" },
+    "notes": {
+      "en": "Things you can do well.",
+      "zh": "你会的技能。"
+    }
+  },
+  {
+    "id": "aanwezig",
+    "dutch": "aanwezig",
+    "category": "work",
+    "level": "A2",
+    "translations": { "en": "present", "zh": "出席 / 在场" },
+    "notes": {
+      "en": "Opposite of \"afwezig\".",
+      "zh": "\"Afwezig\"(缺席)的反义词。"
+    }
+  },
+  {
+    "id": "afwezig",
+    "dutch": "afwezig",
+    "category": "work",
+    "level": "A2",
+    "translations": { "en": "absent", "zh": "缺席 / 不在" },
+    "notes": {
+      "en": "Not being at work or school.",
+      "zh": "没来上班或上学。"
+    }
+  },
+  {
+    "id": "opdracht",
+    "dutch": "opdracht",
+    "category": "work",
+    "level": "A2",
+    "translations": { "en": "assignment / task", "zh": "任务 / 作业" },
+    "notes": {
+      "en": "Task you have to do.",
+      "zh": "必须完成的任务。"
+    }
+  },
+  {
+    "id": "uitleg",
+    "dutch": "uitleg",
+    "category": "work",
+    "level": "A2",
+    "translations": { "en": "explanation", "zh": "解释" },
+    "notes": {
+      "en": "Making something clear.",
+      "zh": "说明或解释。"
+    }
+  },
+  {
+    "id": "huiswerk",
+    "dutch": "huiswerk",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "homework", "zh": "作业" },
+    "notes": {
+      "en": "Work for school done at home.",
+      "zh": "家庭作业。"
+    }
+  },
+  {
+    "id": "tijd",
+    "dutch": "tijd",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "time", "zh": "时间" },
+    "notes": {
+      "en": "\"Heb je tijd?\" (Do you have time?).",
+      "zh": "\"Heb je tijd?\" (你有空吗？)。"
+    }
+  },
+  {
+    "id": "klok",
+    "dutch": "klok",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "clock", "zh": "钟" },
+    "notes": {
+      "en": "Tells you the time.",
+      "zh": "看时间的工具。"
+    }
+  },
+  {
+    "id": "kwartier",
+    "dutch": "kwartier",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "quarter of an hour", "zh": "一刻钟 (15分钟)" },
+    "notes": {
+      "en": "15 minutes. \"Kwart over...\" (quarter past...).",
+      "zh": "15分钟。\"Kwart over...\" (几点一刻)。"
+    }
+  },
+  {
+    "id": "halfuur",
+    "dutch": "halfuur",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "half an hour", "zh": "半小时" },
+    "notes": {
+      "en": "30 minutes.",
+      "zh": "30分钟。"
+    }
+  },
+  {
+    "id": "vandaag",
+    "dutch": "vandaag",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "today", "zh": "今天" },
+    "notes": {
+      "en": "This day.",
+      "zh": "今天。"
+    }
+  },
+  {
+    "id": "morgen",
+    "dutch": "morgen",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "tomorrow / morning", "zh": "明天 / 早晨" },
+    "notes": {
+      "en": "Can mean \"tomorrow\" or \"morning\". \"Goedemorgen\" (Good morning).",
+      "zh": "可以是\"明天\"也可以是\"早晨\"。\"Goedemorgen\" (早上好)。"
+    }
+  },
+  {
+    "id": "gisteren",
+    "dutch": "gisteren",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "yesterday", "zh": "昨天" },
+    "notes": {
+      "en": "The day before today.",
+      "zh": "昨天。"
+    }
+  },
+  {
+    "id": "maand",
+    "dutch": "maand",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "month", "zh": "月" },
+    "notes": {
+      "en": "January, February, etc.",
+      "zh": "一月、二月等。"
+    }
+  },
+  {
+    "id": "jaar",
+    "dutch": "jaar",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "year", "zh": "年" },
+    "notes": {
+      "en": "\"Gelukkig nieuwjaar!\" (Happy new year!).",
+      "zh": "\"Gelukkig nieuwjaar!\" (新年快乐！)。"
+    }
+  },
+  {
+    "id": "week",
+    "dutch": "week",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "week", "zh": "周" },
+    "notes": {
+      "en": "7 days.",
+      "zh": "7天。"
+    }
+  },
+  {
+    "id": "datum",
+    "dutch": "datum",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "date", "zh": "日期" },
+    "notes": {
+      "en": "What is the date today?",
+      "zh": "今天几号？"
+    }
+  },
+  {
+    "id": "familie",
+    "dutch": "familie",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "family", "zh": "家庭 / 家人" },
+    "notes": {
+      "en": "Your relatives.",
+      "zh": "你的亲戚家人。"
+    }
+  },
+  {
+    "id": "ouders",
+    "dutch": "ouders",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "parents", "zh": "父母" },
+    "notes": {
+      "en": "Father and mother.",
+      "zh": "爸爸妈妈。"
+    }
+  },
+  {
+    "id": "kind",
+    "dutch": "kind",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "child", "zh": "孩子" },
+    "notes": {
+      "en": "Young person.",
+      "zh": "小孩。"
+    }
+  },
+  {
+    "id": "doen",
+    "dutch": "doen",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "to do", "zh": "做" },
+    "notes": {
+      "en": "General action verb.",
+      "zh": "通用的\"做\"。"
+    }
+  },
+  {
+    "id": "maken",
+    "dutch": "maken",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "to make / repair", "zh": "制造 / 修理" },
+    "notes": {
+      "en": "To create something or fix something (\"auto maken\").",
+      "zh": "创造某物或修理某物(\"auto maken\")。"
+    }
+  },
+  {
+    "id": "willen",
+    "dutch": "willen",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "to want", "zh": "想要" },
+    "notes": {
+      "en": "\"Ik wil graag...\" (I would like...).",
+      "zh": "\"Ik wil graag...\" (我想要...)。"
+    }
+  },
+  {
+    "id": "kunnen",
+    "dutch": "kunnen",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "can / be able to", "zh": "能 / 会" },
+    "notes": {
+      "en": "Ability. \"Ik kan fietsen\".",
+      "zh": "能力。\"Ik kan fietsen\"(我会骑车)。"
+    }
+  },
+  {
+    "id": "moeten",
+    "dutch": "moeten",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "must / have to", "zh": "必须" },
+    "notes": {
+      "en": "Obligation. \"Ik moet werken\".",
+      "zh": "义务。\"Ik moet werken\"(我得工作)。"
+    }
+  },
+  {
+    "id": "kijken",
+    "dutch": "kijken",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "to look / watch", "zh": "看" },
+    "notes": {
+      "en": "\"TV kijken\" (watch TV).",
+      "zh": "\"TV kijken\" (看电视)。"
+    }
+  },
+  {
+    "id": "luisteren",
+    "dutch": "luisteren",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "to listen", "zh": "听" },
+    "notes": {
+      "en": "\"Luister goed\" (Listen carefully).",
+      "zh": "\"Luister goed\" (仔细听)。"
+    }
+  },
+  {
+    "id": "praten",
+    "dutch": "praten",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "to talk", "zh": "说话 / 交谈" },
+    "notes": {
+      "en": "Communicating with words.",
+      "zh": "交谈。"
+    }
+  },
+  {
+    "id": "zeggen",
+    "dutch": "zeggen",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "to say", "zh": "说" },
+    "notes": {
+      "en": "\"Wat zeg je?\" (What do you say?).",
+      "zh": "\"Wat zeg je?\" (你说什么？)。"
+    }
+  },
+  {
+    "id": "vragen",
+    "dutch": "vragen",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "to ask", "zh": "问" },
+    "notes": {
+      "en": "\"Mag ik iets vragen?\" (Can I ask something?).",
+      "zh": "\"Mag ik iets vragen?\" (我能问个问题吗？)。"
+    }
+  },
+  {
+    "id": "zoeken",
+    "dutch": "zoeken",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "to search / look for", "zh": "寻找" },
+    "notes": {
+      "en": "Looking for something lost.",
+      "zh": "找东西。"
+    }
+  },
+  {
+    "id": "vinden",
+    "dutch": "vinden",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "to find / to think (opinion)", "zh": "找到 / 觉得" },
+    "notes": {
+      "en": "\"Ik vind het leuk\" (I think it's nice) OR finding an object.",
+      "zh": "\"Ik vind het leuk\" (我觉得它不错) 或者找到东西。"
+    }
+  },
+  {
+    "id": "kopen",
+    "dutch": "kopen",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "to buy", "zh": "买" },
+    "notes": {
+      "en": "Buying something in a shop.",
+      "zh": "在商店买东西。"
+    }
+  },
+  {
+    "id": "eten",
+    "dutch": "eten",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "to eat", "zh": "吃" },
+    "notes": {
+      "en": "Consuming food.",
+      "zh": "吃东西。"
+    }
+  },
+  {
+    "id": "drinken",
+    "dutch": "drinken",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "to drink", "zh": "喝" },
+    "notes": {
+      "en": "Consuming liquids.",
+      "zh": "喝水/饮料。"
+    }
+  },
+  {
+    "id": "slapen",
+    "dutch": "slapen",
+    "category": "daily",
+    "level": "A2",
+    "translations": { "en": "to sleep", "zh": "睡觉" },
+    "notes": {
+      "en": "Resting at night.",
+      "zh": "晚上休息。"
+    }
+  }
+]

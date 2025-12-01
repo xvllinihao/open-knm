@@ -20,6 +20,7 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
 
   const navLinks = [
     { href: getLocalizedPath(locale, "/knm"), label: texts.nav.knm },
+    { href: getLocalizedPath(locale, "/vocabulary"), label: texts.nav.vocabulary },
     { href: getLocalizedPath(locale, "/society"), label: texts.nav.society },
     { href: getLocalizedPath(locale, "/life"), label: texts.nav.life },
     { href: getLocalizedPath(locale, "/resources"), label: texts.nav.resources },
