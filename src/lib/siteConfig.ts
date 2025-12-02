@@ -19,6 +19,7 @@ const resolveSiteUrl = () => {
 
 export const SITE_URL = resolveSiteUrl();
 export const SITE_NAME = "Open KNM";
+export const GA_ID = "G-KJMRJWVS7B";
 
 export const absoluteUrl = (path = "/") => {
   if (!path) {

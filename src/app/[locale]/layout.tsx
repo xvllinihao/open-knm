@@ -3,8 +3,9 @@ import "../globals.css";
 import { locales, Locale } from "@/lib/i18n";
 import { SiteLayout } from "@/components/SiteLayout";
 import { Analytics } from "@vercel/analytics/react";
-import { SITE_URL } from "@/lib/siteConfig";
+import { SITE_URL, GA_ID } from "@/lib/siteConfig";
 import { PostHogProvider } from "@/components/PostHogProvider";
+import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 
 const metadataPerLocale: Record<
   Locale,
@@ -126,6 +127,7 @@ export default async function RootLayout({
             {children}
           </SiteLayout>
           <Analytics />
+          <GoogleAnalytics gaId={GA_ID} />
         </PostHogProvider>
       </body>
     </html>
