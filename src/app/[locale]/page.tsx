@@ -1,6 +1,7 @@
 import { Locale, uiTexts, isLocale } from "@/lib/uiTexts";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import FlashCard from "@/components/FlashCard";
 
 export default async function HomePage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -52,11 +53,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                {isZh ? '高频词汇' : 'Vocabulary'}
              </Link>
           </div>
+          {/* FlashCard goes here, after hero summary/buttons, before right-column grid */}
+          <div className="mt-8 lg:mt-10"><FlashCard locale={locale} /></div>
         </section>
 
         {/* Right: KNM Topics Grid (Compact) */}
         <section className="flex-1 w-full max-w-md lg:max-w-lg">
-          <div className="grid gap-4">
+          <div className="grid gap-8 py-8">
              {/* AI Assistant Promo Card */}
              <Link
                href={`/${locale}/ai-assistant`}
