@@ -56,7 +56,12 @@ export type UiTexts = {
     promoDesc: string;
     promoAction: string;
   };
-  vocabulary: VocabularyTexts;
+  vocabulary: VocabularyTexts & {
+    viewMode: {
+      card: string;
+      list: string;
+    };
+  };
   disclaimer: {
     title: string;
     text: string;
@@ -102,9 +107,11 @@ export const uiTexts: Record<Locale, UiTexts> = {
     },
     vocabulary: {
       title: "荷兰语高频词汇 (A2)",
-      description: "精选200+个荷兰生活、工作、行政高频词汇，配有发音和实用例句。",
+      description:
+        "精选约500个与荷兰生活、工作、住房、医疗和行政相关的高频词汇。完整的 A2 词汇量远不止这些，但先把这 500 个吃透，可以大大降低读教材、做题和看官方材料的门槛。",
       promoTitle: "A2 高频词汇表",
-      promoDesc: "精选200+核心词汇，覆盖行政、医疗、生活全场景。",
+      promoDesc:
+        "并非覆盖所有 A2 词汇，但这约 500 个核心单词，足够帮你打好基础，读懂更多 KNM 与荷兰语教材。",
       loadMore: "加载更多",
       showing: "正在展示",
       of: "共",
@@ -115,6 +122,10 @@ export const uiTexts: Record<Locale, UiTexts> = {
         housing: "住房",
         health: "医疗",
         admin: "行政",
+      },
+      viewMode: {
+        card: "学习模式",
+        list: "极速刷词",
       },
     },
     disclaimer: {
@@ -160,9 +171,11 @@ export const uiTexts: Record<Locale, UiTexts> = {
     },
     vocabulary: {
       title: "Essential Dutch Vocabulary (A2)",
-      description: "A curated list of 200+ essential words for daily life, work, and administration in the Netherlands, with audio and examples.",
+      description:
+        "A curated list of around 500 high‑frequency words for daily life, work, housing, health, and administration in the Netherlands. Full A2 vocabulary is much larger, but truly mastering these 500 or so words will make other textbooks and official materials much easier to read.",
       promoTitle: "A2 Essential Vocabulary",
-      promoDesc: "200+ core words covering admin, health, and daily life.",
+      promoDesc:
+        "This list doesn’t cover every A2 word, but these ~500 core items give you a solid base for KNM study and general Dutch learning.",
       loadMore: "Load More",
       showing: "Showing",
       of: "of",
@@ -173,6 +186,10 @@ export const uiTexts: Record<Locale, UiTexts> = {
         housing: "Housing",
         health: "Health",
         admin: "Admin",
+      },
+      viewMode: {
+        card: "Learning Mode",
+        list: "Speed Review",
       },
     },
     disclaimer: {

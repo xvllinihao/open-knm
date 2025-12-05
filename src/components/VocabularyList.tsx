@@ -4,7 +4,51 @@ import React, { useState, useMemo, useEffect } from "react";
 import { Locale, uiTexts } from "@/lib/uiTexts";
 import { vocabularyList, VocabularyItem } from "@/data/vocabulary";
 
-const ITEMS_PER_PAGE = 6;
+type ViewMode = 'card' | 'list';
+
+// Custom hook for audio playback
+function useAudio(text: string, isMobile: boolean) {
+  const [isPlaying, setIsPlaying] = useState(false);
+
+  const play = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (isMobile) return;
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
+
+    window.speechSynthesis.cancel();
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    const voices = window.speechSynthesis.getVoices();
+    const dutchVoice = voices.find(v => v.lang.includes('nl'));
+    if (dutchVoice) {
+      utterance.voice = dutchVoice;
+    }
+    
+    utterance.lang = 'nl-NL';
+    utterance.rate = 0.9;
+
+    // @ts-expect-error - attaching to window to prevent GC
+    window.currentUtterance = utterance;
+
+    utterance.onstart = () => setIsPlaying(true);
+    utterance.onend = () => {
+      setIsPlaying(false);
+      // @ts-expect-error - cleanup
+      delete window.currentUtterance;
+    };
+    utterance.onerror = () => {
+      setIsPlaying(false);
+      // @ts-expect-error - cleanup
+      delete window.currentUtterance;
+    };
+
+    window.speechSynthesis.speak(utterance);
+  };
+
+  return { isPlaying, play };
+}
 
 export default function VocabularyList({ locale }: { locale: Locale }) {
   const texts = uiTexts[locale].vocabulary;
@@ -12,20 +56,18 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [isMobile, setIsMobile] = useState(false);
+  const [viewMode, setViewMode] = useState<ViewMode>('card');
+
+  const itemsPerPage = viewMode === 'card' ? 6 : 50;
 
   useEffect(() => {
     const checkIsMobile = () => {
-      // Check screen width (standard tablet/mobile breakpoint)
       const isMobileView = window.innerWidth < 768;
-      // Check user agent for mobile devices
       const isMobileDevice = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
       setIsMobile(isMobileView || isMobileDevice);
     };
     
-    // Check on mount
     checkIsMobile();
-    
-    // Check on resize
     window.addEventListener('resize', checkIsMobile);
     return () => window.removeEventListener('resize', checkIsMobile);
   }, []);
@@ -46,18 +88,23 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
     return vocabularyList.filter((item) => item.category === activeCategory);
   }, [activeCategory]);
 
-  const totalPages = Math.ceil(filteredItems.length / ITEMS_PER_PAGE);
-  const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
-  const visibleItems = filteredItems.slice(startIndex, startIndex + ITEMS_PER_PAGE);
+  const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const visibleItems = filteredItems.slice(startIndex, startIndex + itemsPerPage);
 
   const handleCategoryChange = (categoryId: string) => {
     setActiveCategory(categoryId);
-    setCurrentPage(1); // Reset pagination on category change
+    setCurrentPage(1);
   };
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleViewModeChange = (mode: ViewMode) => {
+    setViewMode(mode);
+    setCurrentPage(1);
   };
 
   return (
@@ -70,40 +117,83 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
         <p className="text-lg text-slate-600 leading-relaxed">
           {texts.description}
         </p>
-        <div className="text-sm text-slate-400 bg-amber-50 border border-amber-100 rounded-lg px-4 py-2 inline-block">
-          💡 {locale === 'zh' ? '手机端暂时不支持发音，想听发音请桌面端访问。' : 'Mobile audio is currently not supported. Please use desktop to listen.'}
+        {isMobile && (
+          <div className="text-sm text-slate-400 bg-amber-50 border border-amber-100 rounded-lg px-4 py-2 inline-block">
+            💡 {locale === 'zh' ? '手机端暂时不支持发音，想听发音请桌面端访问。' : 'Mobile audio is currently not supported. Please use desktop to listen.'}
+          </div>
+        )}
+      </div>
+
+      {/* Controls Section */}
+      <div className="flex flex-col items-center gap-6">
+        {/* Category Filter */}
+        <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+          {categories.map((cat) => (
+            <button
+              key={cat.id}
+              onClick={() => handleCategoryChange(cat.id)}
+              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                activeCategory === cat.id
+                  ? "bg-[var(--primary)] text-white shadow-md shadow-orange-200 transform scale-105"
+                  : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 hover:border-slate-300"
+              }`}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        {/* View Mode Switcher */}
+        <div className="bg-slate-100 p-1 rounded-lg inline-flex items-center shadow-inner">
+          <button
+            onClick={() => handleViewModeChange('card')}
+            className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
+              viewMode === 'card'
+                ? "bg-white text-[var(--primary)] shadow-sm"
+                : "text-slate-500 hover:text-slate-700"
+            }`}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+            </svg>
+            {texts.viewMode.card}
+          </button>
+          <button
+            onClick={() => handleViewModeChange('list')}
+            className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
+              viewMode === 'list'
+                ? "bg-white text-[var(--primary)] shadow-sm"
+                : "text-slate-500 hover:text-slate-700"
+            }`}
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            {texts.viewMode.list}
+          </button>
         </div>
       </div>
 
-      {/* Category Filter */}
-      <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-        {categories.map((cat) => (
-          <button
-            key={cat.id}
-            onClick={() => handleCategoryChange(cat.id)}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-              activeCategory === cat.id
-                ? "bg-[var(--primary)] text-white shadow-md shadow-orange-200 transform scale-105"
-                : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 hover:border-slate-300"
-            }`}
-          >
-            {cat.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Grid */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {visibleItems.map((item) => (
-          <VocabularyCard key={item.id} item={item} locale={locale} isMobile={isMobile} />
-        ))}
-      </div>
+      {/* Content Area */}
+      {viewMode === 'card' ? (
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {visibleItems.map((item) => (
+            <VocabularyCard key={item.id} item={item} locale={locale} isMobile={isMobile} />
+          ))}
+        </div>
+      ) : (
+        <div className="grid gap-4 sm:grid-cols-2">
+          {visibleItems.map((item, index) => (
+            <VocabularyListItem key={item.id} item={item} locale={locale} isMobile={isMobile} index={index} />
+          ))}
+        </div>
+      )}
 
       {/* Pagination */}
       {totalPages > 1 && (
         <div className="flex flex-col items-center gap-6 pt-8 border-t border-slate-100">
           <p className="text-slate-400 text-sm font-medium">
-            {texts.showing} <span className="text-slate-900">{startIndex + 1}-{Math.min(startIndex + ITEMS_PER_PAGE, filteredItems.length)}</span> {texts.of} <span className="text-slate-900">{filteredItems.length}</span>
+            {texts.showing} <span className="text-slate-900">{startIndex + 1}-{Math.min(startIndex + itemsPerPage, filteredItems.length)}</span> {texts.of} <span className="text-slate-900">{filteredItems.length}</span>
           </p>
           
           <div className="flex items-center gap-2">
@@ -120,7 +210,7 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
 
             <div className="flex items-center gap-1">
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
-                // Show first, last, current, and adjacent pages
+                // Smart pagination logic: show first, last, current, and adjacent pages
                 if (
                   page === 1 ||
                   page === totalPages ||
@@ -168,50 +258,7 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
 
 function VocabularyCard({ item, locale, isMobile }: { item: VocabularyItem; locale: Locale; isMobile: boolean }) {
   const isZh = locale === 'zh';
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  const handlePlay = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    if (isMobile) return;
-    if (typeof window === 'undefined' || !('speechSynthesis' in window)) return;
-
-    // Cancel any ongoing speech
-    window.speechSynthesis.cancel();
-
-    const utterance = new SpeechSynthesisUtterance(item.dutch);
-    
-    // Try to find a Dutch voice specifically
-    const voices = window.speechSynthesis.getVoices();
-    const dutchVoice = voices.find(v => v.lang.includes('nl'));
-    if (dutchVoice) {
-      utterance.voice = dutchVoice;
-    }
-    
-    utterance.lang = 'nl-NL';
-    utterance.rate = 0.9;
-
-    // Important: Fix for iOS/Safari garbage collection issue
-    // We attach the utterance to the window object to prevent it from being garbage collected
-    // before the onend event fires.
-    // @ts-expect-error - attaching to window to prevent GC
-    window.currentUtterance = utterance;
-
-    utterance.onstart = () => setIsPlaying(true);
-    utterance.onend = () => {
-      setIsPlaying(false);
-      // @ts-expect-error - cleanup
-      delete window.currentUtterance;
-    };
-    utterance.onerror = () => {
-      setIsPlaying(false);
-      // @ts-expect-error - cleanup
-      delete window.currentUtterance;
-    };
-
-    window.speechSynthesis.speak(utterance);
-  };
+  const { isPlaying, play } = useAudio(item.dutch, isMobile);
   
   return (
     <div className="group relative bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
@@ -233,7 +280,7 @@ function VocabularyCard({ item, locale, isMobile }: { item: VocabularyItem; loca
             {item.dutch}
           </h3>
           <button
-            onClick={handlePlay}
+            onClick={play}
             disabled={isPlaying || isMobile}
             aria-label={isMobile ? "Audio not available on mobile" : "Play pronunciation"}
             title={isMobile ? (isZh ? "手机端暂不支持发音" : "Audio not available on mobile") : ""}
@@ -267,6 +314,84 @@ function VocabularyCard({ item, locale, isMobile }: { item: VocabularyItem; loca
           <span className="block font-semibold text-slate-400 text-xs uppercase mb-1 tracking-wider">
             {isZh ? '笔记' : 'Note'}
           </span>
+          {item.notes[locale]}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function VocabularyListItem({ item, locale, isMobile, index }: { item: VocabularyItem; locale: Locale; isMobile: boolean; index: number }) {
+  const isZh = locale === 'zh';
+  const { isPlaying, play } = useAudio(item.dutch, isMobile);
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  return (
+    <div 
+      className={`group bg-white rounded-lg border transition-all duration-200 hover:shadow-md cursor-pointer
+        ${isExpanded ? 'border-[var(--primary)] shadow-md ring-1 ring-[var(--primary)]' : 'border-slate-100 hover:border-slate-200'}
+      `}
+      onClick={() => setIsExpanded(!isExpanded)}
+    >
+      <div className="p-3 sm:p-4 flex items-center justify-between gap-4">
+        <div className="flex items-center gap-3 flex-1 min-w-0">
+          <div className="flex-shrink-0 w-6 text-xs font-mono text-slate-300 text-center">
+             {/* You could put numbering here if you had global index, but index is local to page */}
+          </div>
+          
+          <div className="flex-1 min-w-0">
+            <div className="flex items-baseline gap-2 flex-wrap">
+              <h3 className={`text-lg font-bold truncate transition-colors ${isExpanded ? 'text-[var(--primary)]' : 'text-slate-900'}`}>
+                {item.dutch}
+              </h3>
+              <span className="text-slate-500 text-sm truncate">
+                {item.translations[locale]}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-2 flex-shrink-0">
+          <span className="hidden sm:inline-block px-2 py-0.5 rounded text-[10px] font-medium bg-slate-100 text-slate-500">
+            {item.level}
+          </span>
+          <button
+            onClick={play}
+            disabled={isPlaying || isMobile}
+            className={`p-1.5 rounded-full transition-all active:scale-95 hover:bg-orange-50
+              ${isMobile 
+                ? "text-slate-200 cursor-not-allowed" 
+                : "text-slate-400 hover:text-[var(--primary)]"
+              }`}
+          >
+             {isPlaying ? (
+              <span className="flex space-x-0.5 h-3 items-center px-0.5">
+                <span className="w-0.5 h-1.5 bg-current rounded-full animate-[bounce_1s_infinite]"></span>
+                <span className="w-0.5 h-2.5 bg-current rounded-full animate-[bounce_1s_infinite_0.2s]"></span>
+                <span className="w-0.5 h-1.5 bg-current rounded-full animate-[bounce_1s_infinite_0.4s]"></span>
+              </span>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+                <path d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.508c-1.141 0-2.318.664-2.66 1.905A9.76 9.76 0 001.5 12c0 .898.121 1.768.35 2.595.341 1.24 1.518 1.905 2.659 1.905h1.93l4.5 4.5c.945.945 2.561.276 2.561-1.06V4.06zM18.584 5.106a.75.75 0 011.06 0c3.808 3.807 3.808 9.98 0 13.788a.75.75 0 11-1.06-1.06 8.25 8.25 0 000-11.668.75.75 0 010-1.06z" />
+                <path d="M15.932 7.757a.75.75 0 011.061 0 6 6 0 010 8.486.75.75 0 01-1.06-1.061 4.5 4.5 0 000-6.364.75.75 0 010-1.06z" />
+              </svg>
+            )}
+          </button>
+          <div className={`transform transition-transform duration-200 text-slate-300 ${isExpanded ? 'rotate-180' : ''}`}>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-4 h-4">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      {/* Expanded Details */}
+      <div className={`overflow-hidden transition-all duration-200 ease-in-out ${isExpanded ? 'max-h-48 opacity-100 border-t border-slate-100' : 'max-h-0 opacity-0'}`}>
+        <div className="p-3 sm:p-4 bg-slate-50/50 text-sm text-slate-600">
+          <div className="mb-2 flex items-center gap-2">
+             <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{isZh ? '笔记' : 'Note'}</span>
+             <span className="text-xs text-slate-400 px-1.5 py-0.5 bg-white rounded border border-slate-200">{item.category}</span>
+          </div>
           {item.notes[locale]}
         </div>
       </div>

@@ -5,11 +5,11 @@ import VocabularyList from "@/components/VocabularyList";
 export const metadata = {
   title: "Essential Dutch Vocabulary (A2) | Open KNM",
   description:
-    "Master 200+ essential Dutch words for daily life, civic integration (inburgering) exams, work, and housing. Free audio pronunciations included.",
+    "Master 300+ essential Dutch words for daily life, civic integration (inburgering) exams, work, and housing. Free audio pronunciations included.",
   openGraph: {
     title: "Essential Dutch Vocabulary (A2)",
     description:
-      "Curated list of 200+ core Dutch words you actually need. Includes audio, translations, and usage notes.",
+      "Curated list of 300+ core Dutch words you actually need. Includes audio, translations, and usage notes.",
   },
 };
 
