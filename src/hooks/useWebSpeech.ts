@@ -25,47 +25,11 @@ export function useWebSpeech() {
         synthesisRef.current = window.speechSynthesis;
       }
 
-      // STT Setup
+      // STT Capability Check
       const SpeechRecognition =
         (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
 
       if (SpeechRecognition) {
-        const recognition = new SpeechRecognition();
-        recognition.continuous = false; // Stop after one sentence/phrase
-        recognition.interimResults = true; // Show results as they speak
-        recognition.lang = 'nl-NL'; // Default to Dutch for this use case
-
-        recognition.onstart = () => {
-          setState((prev) => ({ ...prev, isListening: true, error: null }));
-        };
-
-        recognition.onresult = (event: any) => {
-          let finalTranscript = '';
-          for (let i = event.resultIndex; i < event.results.length; ++i) {
-            if (event.results[i].isFinal) {
-              finalTranscript += event.results[i][0].transcript;
-            } else {
-              // We could handle interim results here if needed
-              finalTranscript += event.results[i][0].transcript;
-            }
-          }
-          setState((prev) => ({ ...prev, transcript: finalTranscript }));
-        };
-
-        recognition.onerror = (event: any) => {
-          console.error('Speech recognition error', event.error);
-          setState((prev) => ({ 
-            ...prev, 
-            isListening: false, 
-            error: event.error === 'not-allowed' ? 'Microphone access denied' : event.error 
-          }));
-        };
-
-        recognition.onend = () => {
-          setState((prev) => ({ ...prev, isListening: false }));
-        };
-
-        recognitionRef.current = recognition;
         setState((prev) => ({ ...prev, isSupported: true }));
       } else {
         setState((prev) => ({ ...prev, isSupported: false, error: 'Speech recognition not supported in this browser.' }));
@@ -85,21 +49,70 @@ export function useWebSpeech() {
     }
   }, []);
 
-  const startListening = useCallback(() => {
-    if (recognitionRef.current) {
-      try {
-        // Reset transcript on new start
-        setState((prev) => ({ ...prev, transcript: '', error: null }));
-        recognitionRef.current.start();
-      } catch (e) {
-        console.error("Failed to start recognition:", e);
-      }
-    }
-  }, []);
-
   const stopListening = useCallback(() => {
     if (recognitionRef.current) {
       recognitionRef.current.stop();
+      recognitionRef.current = null; // Cleanup
+    }
+    setState((prev) => ({ ...prev, isListening: false }));
+  }, []);
+
+  const startListening = useCallback(() => {
+    const SpeechRecognition =
+      (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+
+    if (!SpeechRecognition) return;
+
+    // Stop any existing instance
+    if (recognitionRef.current) {
+      recognitionRef.current.stop();
+    }
+
+    try {
+      const recognition = new SpeechRecognition();
+      recognition.continuous = true; 
+      recognition.interimResults = true; 
+      recognition.lang = 'nl-NL'; 
+
+      recognition.onstart = () => {
+        setState((prev) => ({ ...prev, isListening: true, error: null }));
+      };
+
+      recognition.onresult = (event: any) => {
+        let finalTranscript = '';
+        for (let i = event.resultIndex; i < event.results.length; ++i) {
+          if (event.results[i].isFinal) {
+            finalTranscript += event.results[i][0].transcript;
+          } else {
+            finalTranscript += event.results[i][0].transcript;
+          }
+        }
+        setState((prev) => ({ ...prev, transcript: finalTranscript }));
+      };
+
+      recognition.onerror = (event: any) => {
+        console.error('Speech recognition error', event.error);
+        // Ignore 'no-speech' errors as they just mean silence
+        if (event.error === 'no-speech') {
+            return;
+        }
+        setState((prev) => ({ 
+          ...prev, 
+          isListening: false, 
+          error: event.error === 'not-allowed' ? 'Microphone access denied' : event.error 
+        }));
+      };
+
+      recognition.onend = () => {
+        setState((prev) => ({ ...prev, isListening: false }));
+        recognitionRef.current = null;
+      };
+
+      recognitionRef.current = recognition;
+      recognition.start();
+    } catch (e) {
+      console.error("Failed to start recognition:", e);
+      setState((prev) => ({ ...prev, error: "Failed to start recording" }));
     }
   }, []);
 

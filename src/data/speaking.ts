@@ -220,6 +220,154 @@ export const speakingThemes: SpeakingTheme[] = [
   },
 ];
 
+export type UniversalPhraseGroup = {
+  id: string;
+  title: TriText;
+  phrases: {
+    dutch: string;
+    translation: TriText; 
+  }[];
+};
+
+export const universalPhrases: UniversalPhraseGroup[] = [
+  {
+    id: "p1-personal",
+    title: {
+      nl: "Deel 1: Persoon & Familie",
+      zh: "个人与家庭 (Intro & Family)",
+      en: "Personal & Family",
+    },
+    phrases: [
+      {
+        dutch: "Ik heet ... en ik kom uit ...",
+        translation: { nl: "", zh: "我叫...，我来自...", en: "My name is ... and I come from ..." },
+      },
+      {
+        dutch: "Ik woon al ... jaar in Nederland.",
+        translation: { nl: "", zh: "我在荷兰住了...年了。", en: "I have lived in NL for ... years." },
+      },
+      {
+        dutch: "Ik ben getrouwd en heb ... kinderen.",
+        translation: { nl: "", zh: "我已婚，有...个孩子。", en: "I am married and have ... children." },
+      },
+      {
+        dutch: "Mijn familie woont in mijn land.",
+        translation: { nl: "", zh: "我的家人住在我的祖国。", en: "My family lives in my country." },
+      },
+      {
+        dutch: "Ik woon in ..., dat is een mooie stad.",
+        translation: { nl: "", zh: "我住在...，那是个漂亮的城市。", en: "I live in ..., that is a nice city." },
+      },
+      {
+        dutch: "Ik spreek Engels en een beetje Nederlands.",
+        translation: { nl: "", zh: "我会说英语和一点荷兰语。", en: "I speak English and a little Dutch." },
+      },
+    ],
+  },
+  {
+    id: "p1-work",
+    title: {
+      nl: "Deel 1: Werk & Opleiding",
+      zh: "工作与教育 (Work & Education)",
+      en: "Work & Education",
+    },
+    phrases: [
+      {
+        dutch: "Ik werk als ... / Ik ben huisvrouw.",
+        translation: { nl: "", zh: "我是做...的 / 我是家庭主妇。", en: "I work as ... / I am a housewife." },
+      },
+      {
+        dutch: "Ik wil graag in een winkel werken.",
+        translation: { nl: "", zh: "我想在商店工作。", en: "I would like to work in a shop." },
+      },
+      {
+        dutch: "Ik ga met de fiets / bus naar school.",
+        translation: { nl: "", zh: "我骑车/坐公交去上学。", en: "I go to school by bike / bus." },
+      },
+      {
+        dutch: "Mijn werk begint om ... uur.",
+        translation: { nl: "", zh: "我的工作...点开始。", en: "My work starts at ... o'clock." },
+      },
+      {
+        dutch: "Ik heb in mijn land gestudeerd.",
+        translation: { nl: "", zh: "我在我的国家上过学。", en: "I studied in my country." },
+      },
+      {
+        dutch: "Ik vind mijn werk erg leuk.",
+        translation: { nl: "", zh: "我很喜欢我的工作。", en: "I like my work very much." },
+      },
+    ],
+  },
+  {
+    id: "p1-daily",
+    title: {
+      nl: "Deel 1: Dagelijks Leven",
+      zh: "日常生活 (Daily Life)",
+      en: "Daily Life",
+    },
+    phrases: [
+      {
+        dutch: "In mijn vrije tijd wandel ik graag.",
+        translation: { nl: "", zh: "空闲时间我喜欢散步。", en: "I like to walk in my free time." },
+      },
+      {
+        dutch: "Ik doe boodschappen bij de Jumbo.",
+        translation: { nl: "", zh: "我在 Jumbo 买菜。", en: "I do groceries at Jumbo." },
+      },
+      {
+        dutch: "Ik vind het weer (niet) leuk.",
+        translation: { nl: "", zh: "我（不）喜欢这个天气。", en: "I (don't) like the weather." },
+      },
+      {
+        dutch: "Ik eet liever thuis, want dat is lekker.",
+        translation: { nl: "", zh: "我更爱在家吃，因为很好吃。", en: "I prefer eating at home, because it's tasty." },
+      },
+      {
+        dutch: "Ik kijk vaak televisie.",
+        translation: { nl: "", zh: "我经常看电视。", en: "I often watch TV." },
+      },
+      {
+        dutch: "Ik ga elk weekend naar het park.",
+        translation: { nl: "", zh: "我每个周末都去公园。", en: "I go to the park every weekend." },
+      },
+    ],
+  },
+  {
+    id: "p2-description",
+    title: {
+      nl: "Deel 2: Beschrijven",
+      zh: "看图说话 (Picture Description)",
+      en: "Picture Description",
+    },
+    phrases: [
+      {
+        dutch: "Op de foto zie ik ...",
+        translation: { nl: "", zh: "在照片上我看到...", en: "In the photo I see ..." },
+      },
+      {
+        dutch: "De man / vrouw is aan het ...",
+        translation: { nl: "", zh: "这一男/女正在...", en: "The man/woman is ...-ing" },
+      },
+      {
+        dutch: "Ze zijn in de winkel / het park.",
+        translation: { nl: "", zh: "他们在商店/公园里。", en: "They are in the shop/park." },
+      },
+      {
+        dutch: "Het is mooi / slecht weer.",
+        translation: { nl: "", zh: "天气很好/不好。", en: "The weather is nice/bad." },
+      },
+      {
+        dutch: "De kinderen spelen met een bal.",
+        translation: { nl: "", zh: "孩子们在玩球。", en: "The children are playing with a ball." },
+      },
+      {
+        dutch: "Hij / Zij koopt groenten en fruit.",
+        translation: { nl: "", zh: "他/她正在买蔬菜和水果。", en: "He/She is buying vegetables and fruit." },
+      },
+    ],
+  },
+];
+
 export type SpeakingQuestion = {
   id: string;
   topic: SpeakingTheme["id"];

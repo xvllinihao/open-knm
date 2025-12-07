@@ -12,8 +12,32 @@ import {
   speakingQuestions,
   speakingThemes,
   TriText,
+  universalPhrases,
 } from "@/data/speaking";
 import { SpeakingPracticeCard } from "@/components/SpeakingPracticeCard";
+
+// --- Icons ---
+const PlayIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+    <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
+  </svg>
+);
+const BookIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" /></svg>
+);
+const TimerIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><line x1="10" x2="14" y1="2" y2="2" /><line x1="12" x2="15" y1="14" y2="11" /><circle cx="12" cy="14" r="8" /></svg>
+);
+const ArrowRightIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
+);
+const DesktopIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+    <rect width="20" height="14" x="2" y="3" rx="2" />
+    <line x1="8" x2="16" y1="21" y2="21" />
+    <line x1="12" x2="12" y1="17" y2="21" />
+  </svg>
+);
 
 // --- Helper Components ---
 function TriLangStack({
@@ -39,28 +63,88 @@ function TriLangStack({
   );
 }
 
-// --- Icons ---
-const PlayIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
-    <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
-  </svg>
-);
-const BookIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" /></svg>
-);
-const TimerIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5"><line x1="10" x2="14" y1="2" y2="2" /><line x1="12" x2="15" y1="14" y2="11" /><circle cx="12" cy="14" r="8" /></svg>
-);
-const ArrowRightIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg>
-);
-const DesktopIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-    <rect width="20" height="14" x="2" y="3" rx="2" />
-    <line x1="8" x2="16" y1="21" y2="21" />
-    <line x1="12" x2="12" y1="17" y2="21" />
-  </svg>
-);
+function UniversalPhraseCard({
+  group,
+  locale,
+  onSpeak,
+}: {
+  group: (typeof universalPhrases)[0];
+  locale: Locale;
+  onSpeak: (text: string, speed: number) => void;
+}) {
+  const [playbackSpeed, setPlaybackSpeed] = useState<0.5 | 0.75 | 1.0>(0.75);
+  const [isSpeedMenuOpen, setIsSpeedMenuOpen] = useState(false);
+
+  return (
+    <div className="group h-full p-6 rounded-2xl border border-slate-100 bg-white shadow-sm hover:shadow-md transition-all hover:border-orange-100 relative">
+      <div className="mb-4 pb-3 border-b border-slate-50 flex justify-between items-start">
+        <div>
+            <h3 className="text-lg font-bold text-slate-900">
+            {locale === 'zh' ? group.title.zh : group.title.en}
+            </h3>
+            <p className="text-xs text-slate-400 font-medium uppercase tracking-wide mt-1">
+            {group.title.nl}
+            </p>
+        </div>
+        {/* Speed Toggle - Local to card */}
+        <div className="relative">
+            <button 
+                onClick={() => setIsSpeedMenuOpen(!isSpeedMenuOpen)}
+                className="text-[10px] font-bold text-slate-400 bg-slate-50 px-2 py-1 rounded-full hover:bg-slate-100 transition-colors flex items-center gap-1 min-w-[3rem] justify-center"
+                title={locale === "zh" ? "切换语速" : "Toggle speed"}
+            >
+                {playbackSpeed}x
+            </button>
+            {isSpeedMenuOpen && (
+                <div className="absolute top-full right-0 mt-2 flex flex-col bg-white rounded-xl shadow-lg border border-slate-100 py-1 z-10 w-20 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+                    {[0.5, 0.75, 1.0].map((speed) => (
+                        <button
+                            key={speed}
+                            onClick={() => {
+                                setPlaybackSpeed(speed as 0.5 | 0.75 | 1.0);
+                                setIsSpeedMenuOpen(false);
+                            }}
+                            className={`
+                                px-3 py-2 text-xs font-medium text-left transition-colors hover:bg-slate-50
+                                ${playbackSpeed === speed ? "text-[var(--primary)] bg-orange-50/50" : "text-slate-600"}
+                            `}
+                        >
+                            {speed}x
+                        </button>
+                    ))}
+                </div>
+            )}
+        </div>
+      </div>
+      <ul className="space-y-3">
+        {group.phrases.map((phrase, idx) => (
+          <li key={idx} className="group/item flex items-start justify-between gap-3">
+            <div className="flex-1">
+              <p className="font-semibold text-slate-800 text-sm group-hover/item:text-[var(--primary)] transition-colors">
+                {phrase.dutch}
+              </p>
+              <p className="text-xs text-slate-500 mt-0.5">
+                {locale === 'zh' ? phrase.translation.zh : phrase.translation.en}
+              </p>
+            </div>
+            <button
+              onClick={() => {
+                // Replace slashes with " of " (or) for better TTS pronunciation
+                const ttsText = phrase.dutch.replace(/\s*\/\s*/g, " of ");
+                onSpeak(ttsText, playbackSpeed);
+              }}
+              className="flex-shrink-0 p-2 rounded-full text-slate-400 bg-slate-50 hover:text-[var(--primary)] hover:bg-orange-50 transition-colors active:scale-95"
+              title={locale === 'zh' ? "播放语音" : "Play audio"}
+              aria-label={locale === 'zh' ? "播放语音" : "Play audio"}
+            >
+              <PlayIcon />
+            </button>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 type Props = {
   locale: Locale;
@@ -156,6 +240,38 @@ export function SpeakingContent({ locale }: Props) {
                     )}
                 </div>
             ))}
+        </div>
+      </section>
+
+      {/* 3. A2-SPECIFIC UNIVERSAL PHRASES / GO-TO ANSWERS */}
+      <section className="space-y-6">
+        <div className="flex items-center gap-3 mb-2">
+          <div className="p-2 bg-amber-50 text-amber-600 rounded-xl">
+            <TimerIcon />
+          </div>
+          <div>
+            <h2 className="text-xl font-bold text-slate-900">
+              {locale === "zh"
+                ? "荷兰语 A2 口试万能句式"
+                : "Dutch A2 Speaking: Go-to Phrases"}
+            </h2>
+            <p className="text-sm text-slate-600 mt-1 max-w-2xl">
+              {locale === "zh"
+                ? "熟记这些句式，在考试中灵活替换关键词，助你流利应答。"
+                : "Memorise these patterns and swap words to build fluent answers."}
+            </p>
+          </div>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          {universalPhrases.map((group) => (
+            <UniversalPhraseCard 
+              key={group.id} 
+              group={group} 
+              locale={locale}
+              onSpeak={(text, speed) => speak(text, speed)}
+            />
+          ))}
         </div>
       </section>
 
