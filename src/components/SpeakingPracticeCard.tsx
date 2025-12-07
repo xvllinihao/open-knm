@@ -6,6 +6,14 @@ import { useWebSpeech } from "@/hooks/useWebSpeech";
 import { SpeakingQuestion, TriText } from "@/data/speaking";
 import { Locale } from "@/lib/uiTexts";
 
+const DesktopIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+    <rect width="20" height="14" x="2" y="3" rx="2" />
+    <line x1="8" x2="16" y1="21" y2="21" />
+    <line x1="12" x2="12" y1="17" y2="21" />
+  </svg>
+);
+
 type Props = {
   question: SpeakingQuestion;
   locale: Locale;
@@ -230,40 +238,53 @@ export function SpeakingPracticeCard({ question, locale }: Props) {
       <div className="flex flex-col sm:flex-row items-center gap-4 border-t border-slate-50 pt-6 mt-2">
         {/* Main Action Button */}
         {isSupported ? (
-            <button
-                onClick={toggleRecording}
-                className={`
-                    relative flex items-center justify-center gap-3 px-8 py-3 rounded-2xl w-full sm:w-auto text-sm font-bold transition-all duration-300 transform active:scale-95
-                    ${isListening 
-                        ? "bg-red-50 text-red-600 ring-1 ring-red-100" 
-                        : "bg-[var(--primary)] text-white shadow-md shadow-orange-200 hover:shadow-lg hover:bg-orange-600"
-                    }
-                `}
-            >
-                {isListening ? (
-                    <>
-                        <span className="relative flex h-3 w-3">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-                        </span>
-                        <span className="w-16 text-center">{locale === "zh" ? "停止" : "Stop"}</span>
-                    </>
-                ) : (
-                    <>
-                        <MicIcon />
-                        <span>{locale === "zh" ? "开始练习" : "Start Practice"}</span>
-                    </>
-                )}
-            </button>
+            <>
+                {/* Desktop: Show Button */}
+                <button
+                    onClick={toggleRecording}
+                    className={`
+                        hidden md:flex relative items-center justify-center gap-3 px-8 py-3 rounded-2xl w-full sm:w-auto text-sm font-bold transition-all duration-300 transform active:scale-95
+                        ${isListening 
+                            ? "bg-red-50 text-red-600 ring-1 ring-red-100" 
+                            : "bg-[var(--primary)] text-white shadow-md shadow-orange-200 hover:shadow-lg hover:bg-orange-600"
+                        }
+                    `}
+                >
+                    {isListening ? (
+                        <>
+                            <span className="relative flex h-3 w-3">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                            </span>
+                            <span className="w-16 text-center">{locale === "zh" ? "停止" : "Stop"}</span>
+                        </>
+                    ) : (
+                        <>
+                            <MicIcon />
+                            <span>{locale === "zh" ? "开始练习" : "Start Practice"}</span>
+                        </>
+                    )}
+                </button>
+
+                {/* Mobile: Show Message */}
+                <div className="md:hidden w-full p-3 rounded-xl bg-slate-50 border border-slate-100 text-center">
+                    <p className="text-xs text-slate-500 font-medium flex items-center justify-center gap-2">
+                        <DesktopIcon />
+                        {locale === "zh" 
+                            ? "由于浏览器限制，录音功能请在桌面端体验" 
+                            : "Please use desktop for audio recording features"}
+                    </p>
+                </div>
+            </>
         ) : (
             <div className="text-xs text-slate-400 italic w-full text-center">
                 {locale === "zh" ? "浏览器不支持语音识别" : "Browser doesn't support speech"}
             </div>
         )}
 
-        {/* Real-time Feedback Area */}
+        {/* Real-time Feedback Area - Only show on desktop when supported */}
         {isSupported && (
-            <div className="flex-1 w-full min-h-[48px] flex items-center justify-between gap-2">
+            <div className="hidden md:flex flex-1 w-full min-h-[48px] items-center justify-between gap-2">
                 <div className="flex-1 relative">
                     {transcript ? (
                         <div className="text-sm text-slate-700 line-clamp-2 pl-2 border-l-2 border-slate-200 italic">
