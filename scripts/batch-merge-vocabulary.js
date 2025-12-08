@@ -14,8 +14,8 @@
  * 2. 运行: node scripts/merge-vocabulary.js
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 const EXISTING_VOCAB_PATH = path.join(__dirname, '../src/data/vocabulary.json');
 const NEW_VOCAB_DIR = path.join(__dirname, '..');

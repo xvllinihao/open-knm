@@ -6,8 +6,8 @@
  * 脚本：合并新生成的词汇到现有词汇表
  */
 
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
 const EXISTING_VOCAB_PATH = path.join(__dirname, '../src/data/vocabulary.json');
 const NEW_VOCAB_PATH = path.join(__dirname, '../new-vocabulary.json');

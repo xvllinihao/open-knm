@@ -13,6 +13,7 @@ export type VocabularyItem = {
   };
   category: "daily" | "work" | "housing" | "health" | "admin";
   level: "A2";
+  partOfSpeech: "noun" | "verb" | "adjective" | "adverb" | "preposition" | "conjunction" | "pronoun" | "interjection" | "article";
 };
 
 export const vocabularyList = data as VocabularyItem[];

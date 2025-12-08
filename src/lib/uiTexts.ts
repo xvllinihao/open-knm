@@ -34,6 +34,17 @@ export type VocabularyTexts = {
     health: string;
     admin: string;
   };
+  partOfSpeech: {
+    noun: string;
+    verb: string;
+    adjective: string;
+    adverb: string;
+    preposition: string;
+    conjunction: string;
+    pronoun: string;
+    interjection: string;
+    article: string;
+  };
 };
 
 export type UiTexts = {
@@ -141,6 +152,17 @@ export const uiTexts: Record<Locale, UiTexts> = {
       },
       hideTranslations: "隐藏释义",
       showTranslations: "显示释义",
+      partOfSpeech: {
+        noun: "名词",
+        verb: "动词",
+        adjective: "形容词",
+        adverb: "副词",
+        preposition: "介词",
+        conjunction: "连词",
+        pronoun: "代词",
+        interjection: "感叹词",
+        article: "冠词",
+      },
     },
     disclaimer: {
       title: "免责声明",
@@ -212,6 +234,17 @@ export const uiTexts: Record<Locale, UiTexts> = {
       },
       hideTranslations: "Hide translations",
       showTranslations: "Show translations",
+      partOfSpeech: {
+        noun: "noun",
+        verb: "verb",
+        adjective: "adjective",
+        adverb: "adverb",
+        preposition: "preposition",
+        conjunction: "conjunction",
+        pronoun: "pronoun",
+        interjection: "interjection",
+        article: "article",
+      },
     },
     disclaimer: {
       title: "Disclaimer",

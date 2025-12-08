@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useMemo } from "react";
-import { Locale, uiTexts } from "@/lib/uiTexts";
+import React, { useState, useMemo, useEffect } from "react";
+import { Locale, uiTexts, VocabularyTexts } from "@/lib/uiTexts";
 import { vocabularyList, VocabularyItem } from "@/data/vocabulary";
 
 type ViewMode = 'card' | 'list';
@@ -273,7 +273,7 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
   );
 }
 
-function VocabularyCard({ item, locale }: { item: VocabularyItem; locale: Locale }) {
+function VocabularyCard({ item, locale, texts }: { item: VocabularyItem; locale: Locale; texts: VocabularyTexts }) {
   const isZh = locale === 'zh';
   const { isPlaying, play } = useAudio(item.dutch);
   
@@ -283,9 +283,14 @@ function VocabularyCard({ item, locale }: { item: VocabularyItem; locale: Locale
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--primary)] to-orange-300 opacity-0 group-hover:opacity-100 transition-opacity" />
       
       <div className="flex justify-between items-start mb-4">
-        <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-orange-50 text-orange-700 border border-orange-100">
-          {item.level}
-        </span>
+        <div className="flex gap-2">
+          <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-orange-50 text-orange-700 border border-orange-100">
+            {item.level}
+          </span>
+          <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-blue-50 text-blue-700 border border-blue-100">
+            {texts.partOfSpeech[item.partOfSpeech as keyof typeof texts.partOfSpeech]}
+          </span>
+        </div>
         <span className="text-slate-400 text-xs font-mono uppercase tracking-wider">
           {item.category}
         </span>
@@ -365,6 +370,9 @@ function VocabularyListItem({
               <h3 className={`text-lg font-bold truncate transition-colors ${isExpanded ? 'text-[var(--primary)]' : 'text-slate-900'}`}>
                 {item.dutch}
               </h3>
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-50 text-blue-600 mr-1">
+                {texts.partOfSpeech[item.partOfSpeech as keyof typeof texts.partOfSpeech]}
+              </span>
               <span
                 className={`text-slate-500 text-sm truncate transition-opacity ${
                   hideTranslations && !isExpanded ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'
