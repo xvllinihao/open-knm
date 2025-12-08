@@ -24,14 +24,14 @@ export const speakingCopy = {
     en: "Civic Integration Speaking",
   },
   heroSubtitle: {
-    nl: "Oefen met de computer-indeling: antwoord geven op vragen en reageren op situaties.",
-    zh: "熟悉机考模式：回答问题与情景反应，完全模拟真实考试。",
-    en: "Practice the computer-based format: answering questions and reacting to situations.",
+    nl: "Oefen met de vier soorten opdrachten: Vragen, Foto's, Vergelijken en Verhalen.",
+    zh: "练习四种考试题型：问答、看图说话、对比选择、看图讲故事。",
+    en: "Practice the four task types: Questions, Pictures, Comparison, and Storytelling.",
   },
   heroLead: {
-    nl: "Bereid je voor op beide onderdelen van het examen met realistische oefeningen.",
-    zh: "针对考试的两个部分进行针对性练习。",
-    en: "Prepare for both parts of the exam with realistic exercises.",
+    nl: "Bereid je voor op het examen met realistische oefeningen.",
+    zh: "通过逼真的练习为考试做好准备。",
+    en: "Prepare for the exam with realistic exercises.",
   },
   heroPrimaryAction: {
     nl: "Start de oefening",
@@ -54,9 +54,9 @@ export const speakingCopy = {
     en: "Real Exam Simulation",
   },
   practiceArenaSubtitle: {
-    nl: "Kies een onderwerp om te beginnen.",
-    zh: "选择主题开始模拟，请保持表达清晰简洁。",
-    en: "Select a topic below to start your mock oral exam. Speak clearly, keep it simple.",
+    nl: "Kies een opdracht om te beginnen.",
+    zh: "选择一个题型开始模拟，请保持表达清晰简洁。",
+    en: "Select a task below to start. Speak clearly, keep it simple.",
   },
 };
 
@@ -65,13 +65,13 @@ export const heroStats: { id: string; label: TriText; value: TriText }[] = [
     id: "parts",
     label: {
       nl: "Onderdelen",
-      zh: "考试部分",
+      zh: "考试题型",
       en: "Parts",
     },
     value: {
-      nl: "Deel 1 (Vragen) & Deel 2 (Plaatjes)",
-      zh: "第一部分（问答）& 第二部分（看图说话）",
-      en: "Part 1 (Q&A) & Part 2 (Pictures)",
+      nl: "4 Soorten Opdrachten",
+      zh: "四种题型 (问答/描述/对比/故事)",
+      en: "4 Task Types",
     },
   },
   {
@@ -111,8 +111,8 @@ export const examOverviewCards: OverviewCard[] = [
       en: "Structure",
     },
     detail: {
-      nl: "Het examen gebeurt op de computer. Je ziet filmpjes of plaatjes en spreekt antwoorden in.",
-      zh: "全程机考。观看视频提问或看图说话，通过麦克风录制回答。",
+      nl: "Het examen gebeurt op de computer. Je ziet video's of plaatjes en spreekt antwoorden in.",
+      zh: "全程机考。根据视频或图片回答问题，通过麦克风录音。",
       en: "Computer-based. You watch videos or look at pictures and record your answers.",
     },
     note: {
@@ -122,100 +122,95 @@ export const examOverviewCards: OverviewCard[] = [
     },
   },
   {
-    id: "part1",
+    id: "tasks",
     title: {
-      nl: "Deel 1: Spreken",
-      zh: "第一部分：问答",
-      en: "Part 1: Speaking",
+      nl: "De Opdrachten",
+      zh: "考试内容",
+      en: "The Tasks",
     },
     detail: {
-      nl: "Je ziet een persoon die een vraag stelt. Jij geeft antwoord.",
-      zh: "视频中的人向你提问（关于你的生活/工作等），你回答。",
-      en: "A person in the video asks a question. You respond.",
-    },
-    note: {
-      nl: "Vragen over jezelf, je huis, je werk, etc.",
-      zh: "涉及个人生活、居住、工作等话题。",
-      en: "Topics: yourself, home, work, etc.",
-    },
-  },
-  {
-    id: "part2",
-    title: {
-      nl: "Deel 2: Plaatjes",
-      zh: "第二部分：看图说话",
-      en: "Part 2: Pictures",
-    },
-    detail: {
-      nl: "Je ziet een plaatje. Vertel wat je ziet of wat er gebeurt.",
-      zh: "看一张图片。描述你看到的或发生的事情。",
-      en: "Look at a picture. Describe what you see or what is happening.",
+      nl: "1. Vragen beantwoorden. 2. Foto beschrijven. 3. Keuze maken (vergelijken). 4. Verhaal vertellen.",
+      zh: "1. 回答问题。 2. 描述图片。 3. 对比选择。 4. 看图讲故事。",
+      en: "1. Answer questions. 2. Describe photo. 3. Make a choice. 4. Tell a story.",
     },
     note: {
       nl: "Gebruik eenvoudige zinnen.",
-      zh: "使用简单的句子。",
-      en: "Use simple sentences.",
+      zh: "使用简单、完整的句子。",
+      en: "Use simple, complete sentences.",
+    },
+  },
+  {
+    id: "tips",
+    title: {
+      nl: "Tips",
+      zh: "技巧",
+      en: "Tips",
+    },
+    detail: {
+      nl: "Luister goed. Praat rustig en duidelijk. Corrigeer jezelf als het moet.",
+      zh: "仔细听题。说话沉稳清晰。如果说错了可以纠正自己。",
+      en: "Listen carefully. Speak slowly and clearly. Correct yourself if needed.",
     },
   },
 ];
 
 export type SpeakingTheme = {
-  id: "p1_personal" | "p1_daily" | "p1_work" | "part2";
+  id: "type1_qa" | "type2_photo" | "type3_comparison" | "type4_story";
   title: TriText;
   description: TriText;
 };
 
 export const speakingThemes: SpeakingTheme[] = [
   {
-    id: "p1_personal",
+    id: "type1_qa",
     title: {
-      nl: "Intro & Familie",
-      zh: "个人与家庭",
-      en: "Intro & Family",
+      nl: "1. Vraag & Antwoord",
+      zh: "1. 问答题",
+      en: "1. Question & Answer",
     },
     description: {
-      nl: "Vragen over wie je bent en je familie.",
-      zh: "关于你的身份和家庭的问题。",
-      en: "Questions about who you are and your family.",
+      nl: "Luister naar de vraag en geef antwoord.",
+      zh: "听视频中的问题并回答（通常有两个问题）。",
+      en: "Listen to the question and answer.",
     },
   },
   {
-    id: "p1_daily",
+    id: "type2_photo",
     title: {
-      nl: "Dagelijks Leven",
-      zh: "日常生活",
-      en: "Daily Life",
+      nl: "2. Foto Beschrijven",
+      zh: "2. 描述图片",
+      en: "2. Photo Description",
     },
     description: {
-      nl: "Vragen over eten, vrije tijd en vervoer.",
-      zh: "关于饮食、空闲时间和交通的问题。",
-      en: "Questions about food, free time, and transport.",
+      nl: "Vertel wat je ziet op de foto.",
+      zh: "描述图片中的人以及他在做什么。",
+      en: "Describe what you see in the photo.",
     },
   },
   {
-    id: "p1_work",
+    id: "type3_comparison",
     title: {
-      nl: "Werk & Opleiding",
-      zh: "工作与教育",
-      en: "Work & Education",
+      nl: "3. Vergelijken",
+      zh: "3. 对比选择",
+      en: "3. Comparison",
     },
     description: {
-      nl: "Vragen over je werk of school.",
-      zh: "关于你的工作或学校的问题。",
-      en: "Questions about your work or school.",
+      nl: "Kies een foto en vertel waarom.",
+      zh: "在两张图片中选择一个，并解释原因。",
+      en: "Choose a photo and explain why.",
     },
   },
   {
-    id: "part2",
+    id: "type4_story",
     title: {
-      nl: "Deel 2: Plaatjes",
-      zh: "看图说话",
-      en: "Picture Description",
+      nl: "4. Verhaal Vertellen",
+      zh: "4. 看图讲故事",
+      en: "4. Storytelling",
     },
     description: {
-      nl: "Beschrijf wat je ziet op het plaatje.",
-      zh: "描述图片中的内容。",
-      en: "Describe what you see in the picture.",
+      nl: "Vertel een verhaal bij de plaatjes.",
+      zh: "根据三张图片描述一个完整的故事。",
+      en: "Tell a story based on the pictures.",
     },
   },
 ];
@@ -231,138 +226,106 @@ export type UniversalPhraseGroup = {
 
 export const universalPhrases: UniversalPhraseGroup[] = [
   {
-    id: "p1-personal",
+    id: "qa-phrases",
     title: {
-      nl: "Deel 1: Persoon & Familie",
-      zh: "个人与家庭 (Intro & Family)",
-      en: "Personal & Family",
+      nl: "Vraag & Antwoord",
+      zh: "问答常用句",
+      en: "Q&A Phrases",
     },
     phrases: [
       {
-        dutch: "Ik heet ... en ik kom uit ...",
-        translation: { nl: "", zh: "我叫...，我来自...", en: "My name is ... and I come from ..." },
+        dutch: "Ik vind ... leuk, want ...",
+        translation: { nl: "", zh: "我喜欢...，因为...", en: "I like ..., because ..." },
       },
       {
-        dutch: "Ik woon al ... jaar in Nederland.",
-        translation: { nl: "", zh: "我在荷兰住了...年了。", en: "I have lived in NL for ... years." },
+        dutch: "Ik doe dat vaak / nooit.",
+        translation: { nl: "", zh: "我经常/从不那样做。", en: "I do that often / never." },
       },
       {
-        dutch: "Ik ben getrouwd en heb ... kinderen.",
-        translation: { nl: "", zh: "我已婚，有...个孩子。", en: "I am married and have ... children." },
+        dutch: "Mijn favoriete ... is ...",
+        translation: { nl: "", zh: "我最喜欢的...是...", en: "My favorite ... is ..." },
       },
       {
-        dutch: "Mijn familie woont in mijn land.",
-        translation: { nl: "", zh: "我的家人住在我的祖国。", en: "My family lives in my country." },
-      },
-      {
-        dutch: "Ik woon in ..., dat is een mooie stad.",
-        translation: { nl: "", zh: "我住在...，那是个漂亮的城市。", en: "I live in ..., that is a nice city." },
-      },
-      {
-        dutch: "Ik spreek Engels en een beetje Nederlands.",
-        translation: { nl: "", zh: "我会说英语和一点荷兰语。", en: "I speak English and a little Dutch." },
+        dutch: "In het weekend ga ik ...",
+        translation: { nl: "", zh: "周末我去...", en: "In the weekend I go ..." },
       },
     ],
   },
   {
-    id: "p1-work",
+    id: "photo-phrases",
     title: {
-      nl: "Deel 1: Werk & Opleiding",
-      zh: "工作与教育 (Work & Education)",
-      en: "Work & Education",
+      nl: "Foto Beschrijven",
+      zh: "描述图片常用句",
+      en: "Photo Description Phrases",
     },
     phrases: [
       {
-        dutch: "Ik werk als ... / Ik ben huisvrouw.",
-        translation: { nl: "", zh: "我是做...的 / 我是家庭主妇。", en: "I work as ... / I am a housewife." },
+        dutch: "Ik zie een man / vrouw.",
+        translation: { nl: "", zh: "我看到一个男人/女人。", en: "I see a man / woman." },
       },
       {
-        dutch: "Ik wil graag in een winkel werken.",
-        translation: { nl: "", zh: "我想在商店工作。", en: "I would like to work in a shop." },
+        dutch: "Hij / Zij is in de ... (winkel/keuken).",
+        translation: { nl: "", zh: "他/她在...（商店/厨房）。", en: "He/She is in the ... (shop/kitchen)." },
       },
       {
-        dutch: "Ik ga met de fiets / bus naar school.",
-        translation: { nl: "", zh: "我骑车/坐公交去上学。", en: "I go to school by bike / bus." },
-      },
-      {
-        dutch: "Mijn werk begint om ... uur.",
-        translation: { nl: "", zh: "我的工作...点开始。", en: "My work starts at ... o'clock." },
-      },
-      {
-        dutch: "Ik heb in mijn land gestudeerd.",
-        translation: { nl: "", zh: "我在我的国家上过学。", en: "I studied in my country." },
-      },
-      {
-        dutch: "Ik vind mijn werk erg leuk.",
-        translation: { nl: "", zh: "我很喜欢我的工作。", en: "I like my work very much." },
-      },
-    ],
-  },
-  {
-    id: "p1-daily",
-    title: {
-      nl: "Deel 1: Dagelijks Leven",
-      zh: "日常生活 (Daily Life)",
-      en: "Daily Life",
-    },
-    phrases: [
-      {
-        dutch: "In mijn vrije tijd wandel ik graag.",
-        translation: { nl: "", zh: "空闲时间我喜欢散步。", en: "I like to walk in my free time." },
-      },
-      {
-        dutch: "Ik doe boodschappen bij de Jumbo.",
-        translation: { nl: "", zh: "我在 Jumbo 买菜。", en: "I do groceries at Jumbo." },
-      },
-      {
-        dutch: "Ik vind het weer (niet) leuk.",
-        translation: { nl: "", zh: "我（不）喜欢这个天气。", en: "I (don't) like the weather." },
-      },
-      {
-        dutch: "Ik eet liever thuis, want dat is lekker.",
-        translation: { nl: "", zh: "我更爱在家吃，因为很好吃。", en: "I prefer eating at home, because it's tasty." },
-      },
-      {
-        dutch: "Ik kijk vaak televisie.",
-        translation: { nl: "", zh: "我经常看电视。", en: "I often watch TV." },
-      },
-      {
-        dutch: "Ik ga elk weekend naar het park.",
-        translation: { nl: "", zh: "我每个周末都去公园。", en: "I go to the park every weekend." },
-      },
-    ],
-  },
-  {
-    id: "p2-description",
-    title: {
-      nl: "Deel 2: Beschrijven",
-      zh: "看图说话 (Picture Description)",
-      en: "Picture Description",
-    },
-    phrases: [
-      {
-        dutch: "Op de foto zie ik ...",
-        translation: { nl: "", zh: "在照片上我看到...", en: "In the photo I see ..." },
-      },
-      {
-        dutch: "De man / vrouw is aan het ...",
-        translation: { nl: "", zh: "这一男/女正在...", en: "The man/woman is ...-ing" },
-      },
-      {
-        dutch: "Ze zijn in de winkel / het park.",
-        translation: { nl: "", zh: "他们在商店/公园里。", en: "They are in the shop/park." },
+        dutch: "Hij / Zij is aan het ... (koken/werken).",
+        translation: { nl: "", zh: "他/她正在...（做饭/工作）。", en: "He/She is ... (cooking/working)." },
       },
       {
         dutch: "Het is mooi / slecht weer.",
         translation: { nl: "", zh: "天气很好/不好。", en: "The weather is nice/bad." },
       },
+    ],
+  },
+  {
+    id: "comparison-phrases",
+    title: {
+      nl: "Vergelijken",
+      zh: "对比选择常用句",
+      en: "Comparison Phrases",
+    },
+    phrases: [
       {
-        dutch: "De kinderen spelen met een bal.",
-        translation: { nl: "", zh: "孩子们在玩球。", en: "The children are playing with a ball." },
+        dutch: "Ik kies plaatje 1 / 2.",
+        translation: { nl: "", zh: "我选择图片 1 / 2。", en: "I choose picture 1 / 2." },
       },
       {
-        dutch: "Hij / Zij koopt groenten en fruit.",
-        translation: { nl: "", zh: "他/她正在买蔬菜和水果。", en: "He/She is buying vegetables and fruit." },
+        dutch: "Ik vind ... mooier / beter.",
+        translation: { nl: "", zh: "我觉得...更漂亮/更好。", en: "I think ... is prettier / better." },
+      },
+      {
+        dutch: "Ik houd meer van ...",
+        translation: { nl: "", zh: "我更喜欢...", en: "I prefer ..." },
+      },
+      {
+        dutch: "Dat vind ik belangrijk.",
+        translation: { nl: "", zh: "我觉得那很重要。", en: "I think that is important." },
+      },
+    ],
+  },
+  {
+    id: "story-phrases",
+    title: {
+      nl: "Verhaal Vertellen",
+      zh: "讲故事常用句",
+      en: "Storytelling Phrases",
+    },
+    phrases: [
+      {
+        dutch: "Eerst ... (gaat hij naar buiten).",
+        translation: { nl: "", zh: "首先...（他出去了）。", en: "First ... (he goes outside)." },
+      },
+      {
+        dutch: "Daarna ... (pakt hij zijn fiets).",
+        translation: { nl: "", zh: "然后...（他拿了他的自行车）。", en: "Then ... (he takes his bike)." },
+      },
+      {
+        dutch: "Ten slotte ... (fietst hij weg).",
+        translation: { nl: "", zh: "最后...（他骑走了）。", en: "Finally ... (he cycles away)." },
+      },
+      {
+        dutch: "Hij is blij / moe.",
+        translation: { nl: "", zh: "他很高兴/累了。", en: "He is happy / tired." },
       },
     ],
   },
@@ -375,279 +338,124 @@ export type SpeakingQuestion = {
   answer: TriText;
   variations?: TriText[];
   tip: TriText;
-  imagePrompt?: string;
-  image?: string; // Path to the image
+  imagePrompts?: string[];
+  images?: string[]; // Array of image paths
 };
 
 export const speakingQuestions: SpeakingQuestion[] = [
-  // --- THEME: INTRO & PERSONAL (p1_personal) ---
+  // --- TYPE 1: Q&A ---
   {
-    id: "p1-08",
-    topic: "p1_personal",
+    id: "q1-weekend",
+    topic: "type1_qa",
     question: {
-      nl: "Heb je familie in Nederland?",
-      zh: "你在荷兰有家人吗？",
-      en: "Do you have family in the Netherlands?",
+      nl: "Wat doe je graag in het weekend? En waarom?",
+      zh: "你周末喜欢做什么？为什么？",
+      en: "What do you like to do on the weekend? And why?",
     },
     answer: {
-      nl: "Ja, mijn man en mijn kinderen wonen hier. De rest van mijn familie woont in mijn land.",
-      zh: "是的，我的丈夫和孩子住在这里。我其他的家人们住在我的祖国。",
-      en: "Yes, my husband and children live here. The rest of my family lives in my country.",
+      nl: "In het weekend wandel ik graag in het park, want ik houd van de natuur.",
+      zh: "周末我喜欢在公园散步，因为我热爱大自然。",
+      en: "On the weekend I like to walk in the park, because I love nature.",
     },
     tip: {
-      nl: "Antwoord met 'Ja' of 'Nee' en leg uit.",
-      zh: "用“是”或“否”回答并解释。",
-      en: "Answer with 'Yes' or 'No' and explain.",
+      nl: "Geef een activiteit én een reden (want...).",
+      zh: "给出一个活动和一个理由 (want...)。",
+      en: "Give an activity AND a reason (want...).",
     },
   },
   {
-    id: "p1-09",
-    topic: "p1_personal",
+    id: "q1-food",
+    topic: "type1_qa",
     question: {
-      nl: "Hoelang woon je al in Nederland?",
-      zh: "你在荷兰住多久了？",
-      en: "How long have you lived in the Netherlands?",
+      nl: "Wat eet je liever: Hollandse pot of eten uit je eigen land? En waarom?",
+      zh: "你更喜欢吃什么：荷兰菜还是你家乡的菜？为什么？",
+      en: "What do you prefer to eat: Dutch food or food from your own country? And why?",
     },
     answer: {
-      nl: "Ik woon nu twee jaar in Nederland.",
-      zh: "我在荷兰住了两年了。",
-      en: "I have lived in the Netherlands for two years now.",
+      nl: "Ik eet liever eten uit mijn eigen land, want dat is kruidiger.",
+      zh: "我更喜欢吃我家乡的菜，因为那个味道更丰富（更辣/更有味）。",
+      en: "I prefer food from my own country, because it is spicier.",
     },
     tip: {
-      nl: "Gebruik 'al' (tijdsduur) of een aantal jaar.",
-      zh: "提到具体的年数。",
-      en: "Mention the number of years.",
+      nl: "Kies één optie en leg uit waarom.",
+      zh: "选择一个选项并解释原因。",
+      en: "Choose one option and explain why.",
     },
   },
   {
-    id: "p1-10",
-    topic: "p1_personal",
+    id: "q1-travel",
+    topic: "type1_qa",
     question: {
-      nl: "Wat vind je leuk aan Nederland?",
-      zh: "你喜欢荷兰的什么？",
-      en: "What do you like about the Netherlands?",
+      nl: "Hoe ga je meestal naar je werk of school? En waarom?",
+      zh: "你通常怎么去上班或上学？为什么？",
+      en: "How do you usually go to work or school? And why?",
     },
     answer: {
-      nl: "Ik vind de vrijheid fijn en de mensen zijn aardig.",
-      zh: "我喜欢这里的自由，而且人们很友善。",
-      en: "I like the freedom and the people are nice.",
+      nl: "Ik ga meestal met de fiets, want dat is gratis en gezond.",
+      zh: "我通常骑自行车去，因为那是免费且健康的。",
+      en: "I usually go by bike, because that is free and healthy.",
     },
     tip: {
-      nl: "Noem één of twee positieve dingen.",
-      zh: "列举一两个积极的方面。",
-      en: "Mention one or two positive things.",
+      nl: "Noem het vervoersmiddel en een voordeel.",
+      zh: "提到交通工具和一个优点。",
+      en: "Mention the transport mode and a benefit.",
     },
   },
 
-  // --- THEME: DAILY LIFE (p1_daily) ---
+  // --- TYPE 2: PHOTO DESCRIPTION ---
   {
-    id: "p1-01",
-    topic: "p1_daily",
-    question: {
-      nl: "Wat doe je liever: thuis eten of in een restaurant eten? En waarom?",
-      zh: "你更喜欢在家吃还是在餐馆吃？为什么？",
-      en: "Do you prefer eating at home or in a restaurant? And why?",
-    },
-    answer: {
-      nl: "Ik eet liever thuis, want ik vind koken leuk en het is goedkoper.",
-      zh: "我更喜欢在家吃，因为我喜欢做饭，而且更便宜。",
-      en: "I prefer eating at home, because I like cooking and it is cheaper.",
-    },
-    variations: [
-      {
-        nl: "Ik ga liever naar een restaurant, want ik houd niet van koken.",
-        zh: "我更喜欢去餐馆，因为我不喜欢做饭。",
-        en: "I prefer going to a restaurant, because I don't like cooking.",
-      },
+    id: "q2-supermarket",
+    topic: "type2_photo",
+    imagePrompts: [
+      "nano banana: A photo of a woman in a Dutch supermarket choosing fresh apples from a crate, holding a vegetable, realistic style"
     ],
-    tip: {
-      nl: "Geef antwoord én een reden (want...).",
-      zh: "回答选择并给出理由（使用 want...）。",
-      en: "Give an answer AND a reason (using 'want'...).",
-    },
-  },
-  {
-    id: "p1-02",
-    topic: "p1_daily",
+    images: ["/images/speaking/supermarket.png"],
     question: {
-      nl: "Wat vind je van het weer in Nederland?",
-      zh: "你觉得荷兰的天气怎么样？",
-      en: "What do you think of the weather in the Netherlands?",
+      nl: "Beschrijf de vrouw en wat ze doet.",
+      zh: "请描述这位女士以及她在做什么。",
+      en: "Describe the woman and what she is doing.",
     },
     answer: {
-      nl: "Ik vind het weer niet zo leuk, want het regent vaak.",
-      zh: "我不太喜欢这里的气候，因为经常下雨。",
-      en: "I don't like the weather much, because it rains often.",
+      nl: "De vrouw is in de supermarkt. Ze heeft lang haar en draagt een trui. Ze pakt appels.",
+      zh: "这位女士在超市。她留着长发，穿着毛衣。她正在拿苹果。",
+      en: "The woman is in the supermarket. She has long hair and wears a sweater. She is taking apples.",
     },
     tip: {
-      nl: "Gebruik 'Ik vind...' om je mening te geven.",
-      zh: "使用 'Ik vind...' 来表达观点。",
-      en: "Use 'Ik vind...' to express your opinion.",
+      nl: "Zeg hoe ze eruitziet (kleding/haar) en de actie.",
+      zh: "描述她的外貌（衣服/头发）和动作。",
+      en: "Say what she looks like (clothes/hair) and the action.",
     },
   },
   {
-    id: "p1-03",
-    topic: "p1_daily",
+    id: "q2-office",
+    topic: "type2_photo",
+    imagePrompts: [
+      "nano banana: A man sitting at a desk in a modern office typing on a computer keyboard, bright office background, realistic"
+    ],
+    images: ["/images/speaking/office.png"],
     question: {
-      nl: "Hoe ga je meestal naar de supermarkt?",
-      zh: "你通常怎么去超市？",
-      en: "How do you usually go to the supermarket?",
+      nl: "Beschrijf de man en wat hij doet.",
+      zh: "请描述这位男士以及他在做什么。",
+      en: "Describe the man and what he is doing.",
     },
     answer: {
-      nl: "Ik ga meestal met de fiets, want de supermarkt is dichtbij.",
-      zh: "我通常骑自行车去，因为超市很近。",
-      en: "I usually go by bike, because the supermarket is close.",
+      nl: "De man zit op een kantoor. Hij draagt een overhemd. Hij typt op de computer.",
+      zh: "这位男士在办公室。他穿着衬衫。他正在电脑上打字。",
+      en: "The man is sitting in an office. He is wearing a shirt. He is typing on the computer.",
     },
     tip: {
-      nl: "Vertel hoe (vervoersmiddel) en waarom.",
-      zh: "说明交通方式和原因。",
-      en: "State the transport mode and why.",
+      nl: "Beschrijf de persoon (kleding) en de actie (werken).",
+      zh: "描述人物（衣服）和动作（工作）。",
+      en: "Describe the person (clothes) and the action (working).",
     },
   },
   {
-    id: "p1-04",
-    topic: "p1_daily",
-    question: {
-      nl: "Wat doe je in je vrije tijd?",
-      zh: "你空闲时间做什么？",
-      en: "What do you do in your free time?",
-    },
-    answer: {
-      nl: "In mijn vrije tijd kijk ik graag televisie en wandel ik in het park.",
-      zh: "空闲时间我喜欢看电视和在公园散步。",
-      en: "In my free time I like to watch TV and walk in the park.",
-    },
-    tip: {
-      nl: "Noem twee activiteiten.",
-      zh: "列举两个活动。",
-      en: "Mention two activities.",
-    },
-  },
-  {
-    id: "p1-05",
-    topic: "p1_daily",
-    question: {
-      nl: "Wat vind je van het Nederlandse eten?",
-      zh: "你觉得荷兰食物怎么样？",
-      en: "What do you think of Dutch food?",
-    },
-    answer: {
-      nl: "Ik vind het Nederlandse eten lekker, vooral de stamppot en de kaas.",
-      zh: "我觉得荷兰食物很好吃，特别是捣碎的土豆泥蔬菜和奶酪。",
-      en: "I think Dutch food is tasty, especially the 'stamppot' and the cheese.",
-    },
-    tip: {
-      nl: "Wees positief of beleefd. Noem een specifiek gerecht.",
-      zh: "保持积极或礼貌。提到一个具体的菜。",
-      en: "Be positive or polite. Mention a specific dish.",
-    },
-  },
-  {
-    id: "p1-11",
-    topic: "p1_daily",
-    question: {
-      nl: "Wat is je favoriete feestdag?",
-      zh: "你最喜欢的节日是什么？",
-      en: "What is your favorite holiday?",
-    },
-    answer: {
-      nl: "Mijn favoriete feestdag is Kerstmis, want dan ben ik samen met familie.",
-      zh: "我最喜欢的节日是圣诞节，因为那时候我和家人在一起。",
-      en: "My favorite holiday is Christmas, because then I am together with family.",
-    },
-    tip: {
-      nl: "Noem een dag (Kerst, Koningsdag) en waarom.",
-      zh: "提一个节日（圣诞节、国王节）并说明原因。",
-      en: "Name a day (Christmas, King's Day) and why.",
-    },
-  },
-
-  // --- THEME: WORK & EDUCATION (p1_work) ---
-  {
-    id: "p1-06",
-    topic: "p1_work",
-    question: {
-      nl: "Hoe ga je naar je werk of naar school?",
-      zh: "你怎么去上班或上学？",
-      en: "How do you go to work or school?",
-    },
-    answer: {
-      nl: "Ik ga met de bus naar mijn werk, want dat is makkelijk.",
-      zh: "我坐公交车去上班，因为那样很方便。",
-      en: "I go to work by bus, because that is easy.",
-    },
-    tip: {
-      nl: "Gebruik 'met de...' (bus/trein/fiets).",
-      zh: "使用 'met de...' (公交/火车/自行车)。",
-      en: "Use 'met de...' (bus/train/bike).",
-    },
-  },
-  {
-    id: "p1-07",
-    topic: "p1_work",
-    question: {
-      nl: "Wat voor werk doe je nu, of wat voor werk wil je doen?",
-      zh: "你现在做什么工作，或者你想做什么工作？",
-      en: "What kind of work do you do now, or what do you want to do?",
-    },
-    answer: {
-      nl: "Ik werk nu niet, maar ik wil graag in een winkel werken.",
-      zh: "我现在没工作，但我很想在商店工作。",
-      en: "I am not working now, but I would like to work in a shop.",
-    },
-    tip: {
-      nl: "Vertel wat je wilt ('Ik wil graag...').",
-      zh: "说出你的意愿 ('Ik wil graag...')。",
-      en: "Say what you want ('Ik wil graag...').",
-    },
-  },
-  {
-    id: "p1-12",
-    topic: "p1_work",
-    question: {
-      nl: "Hoe laat begint je werk of school meestal?",
-      zh: "你通常几点开始工作或上学？",
-      en: "What time do your work or school usually start?",
-    },
-    answer: {
-      nl: "Ik begin meestal om half negen 's ochtends.",
-      zh: "我通常早上八点半开始。",
-      en: "I usually start at half past eight in the morning.",
-    },
-    tip: {
-      nl: "Noem een tijdstip (bijv. 9 uur, half 9).",
-      zh: "提到一个时间点（如9点，8点半）。",
-      en: "Mention a time (e.g., 9 o'clock, half past 8).",
-    },
-  },
-
-  // --- THEME: PART 2 PICTURES (part2) ---
-  {
-    id: "p2-01",
-    topic: "part2",
-    imagePrompt: "A photo of a friendly woman standing in a bright Dutch supermarket, choosing fresh apples from a crate, holding a vegetable in her hand, realistic style, 4k",
-    image: "/images/speaking/supermarket.png",
-    question: {
-      nl: "Wat doet de vrouw?",
-      zh: "这位女士在做什么？",
-      en: "What is the woman doing?",
-    },
-    answer: {
-      nl: "De vrouw is in de supermarkt. Ze koopt appels en groenten.",
-      zh: "这位女士在超市。她在买苹果和蔬菜。",
-      en: "The woman is in the supermarket. She is buying apples and vegetables.",
-    },
-    tip: {
-      nl: "Beschrijf wie je ziet en wat ze doen.",
-      zh: "描述你看到了谁以及他们在做什么。",
-      en: "Describe who you see and what they are doing.",
-    },
-  },
-  {
-    id: "p2-02",
-    topic: "part2",
-    imagePrompt: "A sunny day in a green park in the Netherlands, happy children playing soccer on the grass, trees in the background, realistic style, 4k",
-    image: "/images/speaking/park.png",
+    id: "q2-park",
+    topic: "type2_photo",
+    imagePrompts: [
+      "nano banana: A sunny day in a green park in the Netherlands, happy children playing soccer on the grass, trees in the background, realistic style"
+    ],
+    images: ["/images/speaking/park.png"],
     question: {
       nl: "Beschrijf wat je ziet.",
       zh: "描述你看到的。",
@@ -665,10 +473,12 @@ export const speakingQuestions: SpeakingQuestion[] = [
     },
   },
   {
-    id: "p2-03",
-    topic: "part2",
-    imagePrompt: "A group of people waiting at a bus stop in a Dutch city, a bus is approaching in the background, street scene, realistic style, 4k",
-    image: "/images/speaking/office.png",
+    id: "q2-busstop",
+    topic: "type2_photo",
+    imagePrompts: [
+      "nano banana: A group of people waiting at a bus stop in a Dutch city, a bus is approaching in the background, street scene, realistic style"
+    ],
+    images: ["/images/speaking/bus stop.png"],
     question: {
       nl: "Wat gebeurt er op het plaatje?",
       zh: "图片上发生了什么？",
@@ -685,86 +495,92 @@ export const speakingQuestions: SpeakingQuestion[] = [
       en: "Use simple sentences: 'Ik zie...'.",
     },
   },
+
+  // --- TYPE 3: COMPARISON ---
   {
-    id: "p2-04",
-    topic: "part2",
-    imagePrompt: "A professional man sitting at a desk in a modern office, typing on a computer keyboard, focused expression, bright office background, realistic style, 4k",
-    image: "/images/speaking/bus stop.png",
+    id: "q3-school",
+    topic: "type3_comparison",
+    imagePrompts: [
+      "nano banana: An old traditional brick school building in the Netherlands, cloudy sky",
+      "nano banana: A modern colorful school building with large windows and a playground, sunny"
+    ],
+    images: [
+      "/images/speaking/school_old.png",
+      "/images/speaking/school_new.png"
+    ],
     question: {
-      nl: "Wat doet de man?",
-      zh: "这位男士在做什么？",
-      en: "What is the man doing?",
+      nl: "In welke school wil je les hebben? En waarom?",
+      zh: "你想在哪所学校上课？为什么？",
+      en: "In which school do you want to have lessons? And why?",
     },
     answer: {
-      nl: "De man werkt op kantoor. Hij zit achter de computer en hij typt een e-mail.",
-      zh: "这位男士在办公室工作。他坐在电脑后面，正在写邮件。",
-      en: "The man is working at the office. He is sitting at the computer and typing an email.",
+      nl: "Ik wil les hebben in de nieuwe school, want die ziet er vrolijk en licht uit.",
+      zh: "我想在新学校上课，因为它看起来很欢快明亮。",
+      en: "I want to have lessons in the new school, because it looks cheerful and bright.",
     },
     tip: {
-      nl: "Beschrijf de actie (werken, typen).",
-      zh: "描述动作（工作，打字）。",
-      en: "Describe the action (working, typing).",
+      nl: "Kies plaatje 1 of 2 en geef een reden.",
+      zh: "选择图片1或2并给出理由。",
+      en: "Choose picture 1 or 2 and give a reason.",
+    },
+  },
+  {
+    id: "q3-living",
+    topic: "type3_comparison",
+    imagePrompts: [
+      "nano banana: A small cozy city apartment living room with a view of the street",
+      "nano banana: A large detached house with a green garden in a village"
+    ],
+    images: [
+      "/images/speaking/apartment.png",
+      "/images/speaking/house.png"
+    ],
+    question: {
+      nl: "Waar wil je liever wonen? En waarom?",
+      zh: "你更想住在哪里？为什么？",
+      en: "Where would you prefer to live? And why?",
+    },
+    answer: {
+      nl: "Ik woon liever in het grote huis, want ik houd van de tuin.",
+      zh: "我更喜欢住在大房子里，因为我喜欢花园。",
+      en: "I prefer to live in the large house, because I like the garden.",
+    },
+    tip: {
+      nl: "Kies wat jij leuk vindt en zeg waarom.",
+      zh: "选择你喜欢的并说明原因。",
+      en: "Choose what you like and say why.",
+    },
+  },
+
+  // --- TYPE 4: STORYTELLING ---
+  {
+    id: "q4-bike-commute",
+    topic: "type4_story",
+    imagePrompts: [
+      "nano banana: A woman riding a bicycle on a Dutch cycle path, happy expression",
+      "nano banana: The woman parking her bicycle in a rack and locking it",
+      "nano banana: The woman walking towards an office building, holding a bag"
+    ],
+    images: [
+      "/images/speaking/story_bike_1.png",
+      "/images/speaking/story_bike_2.png",
+      "/images/speaking/story_bike_3.png"
+    ],
+    question: {
+      nl: "Vertel het verhaal.",
+      zh: "请讲述这个故事。",
+      en: "Tell the story.",
+    },
+    answer: {
+      nl: "Eerst fietst de vrouw naar haar werk. Daarna parkeert ze haar fiets. Ten slotte loopt ze naar het kantoor.",
+      zh: "首先，这位女士骑车去上班。然后，她停好自行车。最后，她走向办公室。",
+      en: "First, the woman cycles to work. Then she parks her bike. Finally, she walks to the office.",
+    },
+    tip: {
+      nl: "Gebruik 'Eerst', 'Daarna' en 'Ten slotte'.",
+      zh: "使用 '首先'、'然后'、'最后' 来连接句子。",
+      en: "Use 'First', 'Then' and 'Finally'.",
     },
   },
 ];
 
-export type ExamFlowStep = {
-  id: string;
-  title: TriText;
-  detail: TriText;
-};
-
-export const examFlowSteps: ExamFlowStep[] = [
-  {
-    id: "login",
-    title: {
-      nl: "Inloggen",
-      zh: "登录系统",
-      en: "Log in",
-    },
-    detail: {
-      nl: "Log in met je DigiD of examencode op de computer.",
-      zh: "在电脑上登录。",
-      en: "Log in on the computer.",
-    },
-  },
-  {
-    id: "check",
-    title: {
-      nl: "Microfoon check",
-      zh: "麦克风测试",
-      en: "Mic Check",
-    },
-    detail: {
-      nl: "Spreek je naam in om te testen of het werkt.",
-      zh: "录制你的名字，测试设备。",
-      en: "Record your name to test if it works.",
-    },
-  },
-  {
-    id: "part1",
-    title: {
-      nl: "Deel 1: Vragen",
-      zh: "第一部分：问答",
-      en: "Part 1: Questions",
-    },
-    detail: {
-      nl: "Kijk naar de video. Luister naar de vraag. Geef antwoord.",
-      zh: "看视频听问题，然后作答。",
-      en: "Watch video. Listen to question. Answer.",
-    },
-  },
-  {
-    id: "part2",
-    title: {
-      nl: "Deel 2: Plaatjes",
-      zh: "第二部分：看图说话",
-      en: "Part 2: Pictures",
-    },
-    detail: {
-      nl: "Wat zie je op het plaatje? Beschrijf het.",
-      zh: "你在图片上看到了什么？请描述。",
-      en: "What do you see in the picture? Describe it.",
-    },
-  },
-];

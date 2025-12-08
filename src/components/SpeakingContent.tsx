@@ -5,7 +5,6 @@ import { useState } from "react";
 import { useWebSpeech } from "@/hooks/useWebSpeech";
 import { Locale, uiTexts } from "@/lib/uiTexts";
 import {
-  examFlowSteps,
   examOverviewCards,
   heroStats,
   speakingCopy,
@@ -153,7 +152,7 @@ type Props = {
 export function SpeakingContent({ locale }: Props) {
   const { speak } = useWebSpeech();
   // Ensure we have a valid initial state from the (possibly updated) speakingThemes
-  const initialTopic = speakingThemes.length > 0 ? speakingThemes[0].id : "p1_personal";
+  const initialTopic = speakingThemes.length > 0 ? speakingThemes[0].id : "type1_qa";
   const [activeTopic, setActiveTopic] = useState(initialTopic);
 
   const filteredQuestions = speakingQuestions.filter(
@@ -161,6 +160,7 @@ export function SpeakingContent({ locale }: Props) {
   );
   
   const activeTheme = speakingThemes.find((theme) => theme.id === activeTopic) ?? speakingThemes[0];
+  const isWideLayout = ["type3_comparison", "type4_story"].includes(activeTopic);
 
   return (
     <div className="space-y-16 pb-20">
@@ -314,7 +314,7 @@ export function SpeakingContent({ locale }: Props) {
         </div>
 
         {/* Questions Grid */}
-        <div className="grid gap-6 md:grid-cols-2">
+        <div className={`grid gap-6 ${isWideLayout ? "w-full grid-cols-1" : "md:grid-cols-2"}`}>
             {filteredQuestions.map((question) => (
                 <SpeakingPracticeCard 
                     key={question.id} 

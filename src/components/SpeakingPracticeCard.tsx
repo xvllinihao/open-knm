@@ -125,20 +125,32 @@ export function SpeakingPracticeCard({ question, locale }: Props) {
 
       {/* Question */}
       <div className="mb-8">
-        {question.image && (
-          <div className="relative mb-6 overflow-hidden rounded-2xl border border-slate-100 bg-slate-50">
-            <div className="aspect-video w-full relative">
-              <Image
-                src={question.image}
-                alt="Topic illustration"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              />
-            </div>
-            <div className="absolute bottom-2 right-2 bg-black/50 text-white text-[10px] px-2 py-1 rounded-full backdrop-blur-sm">
-              {locale === 'zh' ? "AI 生成图片" : "AI Generated Image"}
-            </div>
+        {question.images && question.images.length > 0 && (
+          <div className={`
+            grid gap-4 mb-6
+            ${question.images.length === 1 ? "grid-cols-1" : ""}
+            ${question.images.length === 2 ? "grid-cols-1 md:grid-cols-2" : ""}
+            ${question.images.length >= 3 ? "grid-cols-1 md:grid-cols-3" : ""}
+          `}>
+            {question.images.map((imgSrc, idx) => (
+              <div key={idx} className="relative overflow-hidden rounded-2xl border border-slate-100 bg-slate-50 aspect-square md:aspect-[4/3]">
+                 {/* Fallback for placeholder images if file doesn't exist yet */}
+                 <div className="absolute inset-0 flex items-center justify-center bg-slate-100 text-slate-400 text-xs text-center p-2">
+                    {/* This div sits behind the image and shows if image fails or is missing */}
+                    Image {idx + 1}
+                 </div>
+                 <Image
+                   src={imgSrc}
+                   alt={`Topic illustration ${idx + 1}`}
+                   fill
+                   className="object-cover"
+                   sizes="(max-width: 768px) 100vw, 33vw"
+                 />
+                 <div className="absolute bottom-2 right-2 bg-black/50 text-white text-[10px] px-2 py-1 rounded-full backdrop-blur-sm z-10">
+                   {locale === 'zh' ? "AI 生成图片" : "AI Generated Image"}
+                 </div>
+              </div>
+            ))}
           </div>
         )}
         <div className="flex justify-between items-start gap-4">
