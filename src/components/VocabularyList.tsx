@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useMemo, useEffect } from "react";
-import { Locale, uiTexts } from "@/lib/uiTexts";
+import { Locale, uiTexts, VocabularyTexts } from "@/lib/uiTexts";
 import { vocabularyList, VocabularyItem } from "@/data/vocabulary";
 
 type ViewMode = 'card' | 'list';
@@ -160,13 +160,13 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
       {viewMode === 'card' ? (
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {visibleItems.map((item) => (
-            <VocabularyCard key={item.id} item={item} locale={locale} />
+            <VocabularyCard key={item.id} item={item} locale={locale} texts={texts} />
           ))}
         </div>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2">
           {visibleItems.map((item, index) => (
-            <VocabularyListItem key={item.id} item={item} locale={locale} index={index} />
+            <VocabularyListItem key={item.id} item={item} locale={locale} index={index} texts={texts} />
           ))}
         </div>
       )}
@@ -238,7 +238,7 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
   );
 }
 
-function VocabularyCard({ item, locale }: { item: VocabularyItem; locale: Locale }) {
+function VocabularyCard({ item, locale, texts }: { item: VocabularyItem; locale: Locale; texts: VocabularyTexts }) {
   const isZh = locale === 'zh';
   const { isPlaying, play } = useAudio(item.dutch);
   
@@ -248,9 +248,14 @@ function VocabularyCard({ item, locale }: { item: VocabularyItem; locale: Locale
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--primary)] to-orange-300 opacity-0 group-hover:opacity-100 transition-opacity" />
       
       <div className="flex justify-between items-start mb-4">
-        <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-orange-50 text-orange-700 border border-orange-100">
-          {item.level}
-        </span>
+        <div className="flex gap-2">
+          <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-orange-50 text-orange-700 border border-orange-100">
+            {item.level}
+          </span>
+          <span className="inline-flex items-center px-2.5 py-0.5 rounded-md text-xs font-medium bg-blue-50 text-blue-700 border border-blue-100">
+            {texts.partOfSpeech[item.partOfSpeech as keyof typeof texts.partOfSpeech]}
+          </span>
+        </div>
         <span className="text-slate-400 text-xs font-mono uppercase tracking-wider">
           {item.category}
         </span>
@@ -298,7 +303,7 @@ function VocabularyCard({ item, locale }: { item: VocabularyItem; locale: Locale
   );
 }
 
-function VocabularyListItem({ item, locale, index }: { item: VocabularyItem; locale: Locale; index: number }) {
+function VocabularyListItem({ item, locale, index, texts }: { item: VocabularyItem; locale: Locale; index: number; texts: VocabularyTexts }) {
   const isZh = locale === 'zh';
   const { isPlaying, play } = useAudio(item.dutch);
   const [isExpanded, setIsExpanded] = useState(false);
@@ -321,6 +326,9 @@ function VocabularyListItem({ item, locale, index }: { item: VocabularyItem; loc
               <h3 className={`text-lg font-bold truncate transition-colors ${isExpanded ? 'text-[var(--primary)]' : 'text-slate-900'}`}>
                 {item.dutch}
               </h3>
+              <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-50 text-blue-600 mr-1">
+                {texts.partOfSpeech[item.partOfSpeech as keyof typeof texts.partOfSpeech]}
+              </span>
               <span className="text-slate-500 text-sm truncate">
                 {item.translations[locale]}
               </span>

@@ -33,6 +33,17 @@ export type VocabularyTexts = {
     health: string;
     admin: string;
   };
+  partOfSpeech: {
+    noun: string;
+    verb: string;
+    adjective: string;
+    adverb: string;
+    preposition: string;
+    conjunction: string;
+    pronoun: string;
+    interjection: string;
+    article: string;
+  };
 };
 
 export type UiTexts = {
@@ -135,6 +146,17 @@ export const uiTexts: Record<Locale, UiTexts> = {
         card: "学习模式",
         list: "极速刷词",
       },
+      partOfSpeech: {
+        noun: "名词",
+        verb: "动词",
+        adjective: "形容词",
+        adverb: "副词",
+        preposition: "介词",
+        conjunction: "连词",
+        pronoun: "代词",
+        interjection: "感叹词",
+        article: "冠词",
+      },
     },
     disclaimer: {
       title: "免责声明",
@@ -202,6 +224,17 @@ export const uiTexts: Record<Locale, UiTexts> = {
       viewMode: {
         card: "Learning Mode",
         list: "Speed Review",
+      },
+      partOfSpeech: {
+        noun: "noun",
+        verb: "verb",
+        adjective: "adjective",
+        adverb: "adverb",
+        preposition: "preposition",
+        conjunction: "conjunction",
+        pronoun: "pronoun",
+        interjection: "interjection",
+        article: "article",
       },
     },
     disclaimer: {
