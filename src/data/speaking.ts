@@ -384,6 +384,22 @@ export const universalPhrases: UniversalPhraseGroup[] = [
     },
     phrases: [
       {
+        dutch: "Op het eerste plaatje ...",
+        translation: { nl: "", zh: "在第一张图片上...", en: "In the first picture ..." },
+      },
+      {
+        dutch: "Op het tweede plaatje ...",
+        translation: { nl: "", zh: "在第二张图片上...", en: "In the second picture ..." },
+      },
+      {
+        dutch: "Op het derde plaatje ...",
+        translation: { nl: "", zh: "在第三张图片上...", en: "In the third picture ..." },
+      },
+      {
+        dutch: "Op het laatste plaatje ...",
+        translation: { nl: "", zh: "在最后一张图片上...", en: "In the last picture ..." },
+      },
+      {
         dutch: "Eerst ... (gaat hij naar buiten).",
         translation: { nl: "", zh: "首先...（他出去了）。", en: "First ... (he goes outside)." },
       },
