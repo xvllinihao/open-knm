@@ -8,6 +8,7 @@ import {
   speakingCopy,
   speakingQuestions,
   speakingThemes,
+  SpeakingTheme,
   TriText,
   universalPhrases,
 } from "@/data/speaking";

@@ -19,7 +19,6 @@ export function PostHogProvider({ children }: { children: React.ReactNode }) {
       ui_host: 'https://eu.posthog.com',
       capture_pageview: false, // Disable automatic pageview capture, as we capture manually
       capture_pageleave: true,
-      // @ts-expect-error - defaults was present in original config, keeping for compatibility
       defaults: '2025-05-24', 
       capture_exceptions: true,
       debug: process.env.NODE_ENV === "development",
