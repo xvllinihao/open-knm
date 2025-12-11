@@ -65,6 +65,8 @@ export type UiTexts = {
       card: string;
       list: string;
     };
+    hideTranslations: string;
+    showTranslations: string;
   };
   disclaimer: {
     title: string;
@@ -135,6 +137,8 @@ export const uiTexts: Record<Locale, UiTexts> = {
         card: "学习模式",
         list: "极速刷词",
       },
+      hideTranslations: "隐藏释义",
+      showTranslations: "显示释义",
     },
     disclaimer: {
       title: "免责声明",
@@ -203,6 +207,8 @@ export const uiTexts: Record<Locale, UiTexts> = {
         card: "Learning Mode",
         list: "Speed Review",
       },
+      hideTranslations: "Hide translations",
+      showTranslations: "Show translations",
     },
     disclaimer: {
       title: "Disclaimer",
