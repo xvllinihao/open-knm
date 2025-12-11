@@ -238,6 +238,10 @@ export const universalPhrases: UniversalPhraseGroup[] = [
         translation: { nl: "", zh: "我喜欢...，因为...", en: "I like ..., because ..." },
       },
       {
+        dutch: "Ik vind ... leuk, daarom ...",
+        translation: { nl: "", zh: "我喜欢...，所以...", en: "I like ..., therefore ..." },
+      },
+      {
         dutch: "Ik doe dat vaak / nooit.",
         translation: { nl: "", zh: "我经常/从不那样做。", en: "I do that often / never." },
       },
