@@ -7,7 +7,7 @@ export function Logo({ locale }: { locale?: Locale }) {
         <span className="font-black text-white text-lg tracking-tighter leading-none select-none font-sans">
           OK
         </span>
-        <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-white rounded-full border-2 border-white flex items-center justify-center overflow-hidden">
+        <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-white rounded-full border-2 border-white flex flex-col items-center justify-center overflow-hidden">
            {/* Small dot or icon, here just a decorative element like the NL flag colors conceptually */}
            <div className="w-full h-1/3 bg-[#AE1C28]"></div>
            <div className="w-full h-1/3 bg-white"></div>
