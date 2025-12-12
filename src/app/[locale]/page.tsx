@@ -84,6 +84,28 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                 </div>
              </Link>
 
+             {/* Writing Promo Card */}
+             <Link
+               href={`/${locale}/writing`}
+               className="group flex items-center p-5 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl border border-emerald-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
+             >
+                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl mr-5 group-hover:scale-110 transition-transform border border-emerald-100 shadow-sm">
+                  ✍️
+                </div>
+                <div className="flex-1 min-w-0 relative z-10">
+                  <h3 className="text-lg font-bold text-slate-900 truncate flex items-center gap-2">
+                    {isZh ? 'A2 写作速成' : 'Writing Crash Course'}
+                    <span className="inline-flex px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-bold uppercase tracking-wide">New</span>
+                  </h3>
+                  <p className="text-slate-600 text-sm truncate">
+                    {isZh ? '万能模板 + 全真模拟题库。' : 'Templates, rules & mock exams.'}
+                  </p>
+                </div>
+                <div className="ml-3 relative z-10">
+                  <span className="text-emerald-600 group-hover:text-emerald-700 transition-colors text-lg">→</span>
+                </div>
+             </Link>
+
              {/* Vocabulary Promo Card */}
              <Link
                href={`/${locale}/vocabulary`}

@@ -14,6 +14,7 @@ export type NavTexts = {
   assistant: string;
   vocabulary: string;
   speaking: string;
+  writing: string;
   about: string;
 };
 
@@ -83,12 +84,13 @@ export const uiTexts: Record<Locale, UiTexts> = {
   zh: {
     nav: {
       society: "荷兰社会",
-      life: "生活实用",
+      life: "实用资源",
       knm: "KNM 专区",
       resources: "资源",
       assistant: "AI 助教",
       vocabulary: "高频词汇",
       speaking: "口语练习",
+      writing: "写作速成",
       about: "关于与贡献",
     },
     footer: {
@@ -153,12 +155,13 @@ export const uiTexts: Record<Locale, UiTexts> = {
   en: {
     nav: {
       society: "Dutch Society",
-      life: "Daily Life",
+      life: "Useful Resources",
       knm: "KNM Zone",
       resources: "Resources",
       assistant: "AI Assistant",
       vocabulary: "Vocabulary",
       speaking: "Speaking",
+      writing: "Writing",
       about: "About & Contribute",
     },
     footer: {

@@ -1,0 +1,434 @@
+{
+  "meta": {
+    "title": {
+      "nl": "Schrijven op A2-niveau: Snelcursus",
+      "en": "Writing at A2 Level: Crash Course",
+      "zh": "荷兰语A2写作：速成指南"
+    },
+    "description": {
+      "nl": "Leer de basisregels om het inburgeringsexamen te halen.",
+      "en": "Learn the basic rules to pass the civic integration exam.",
+      "zh": "掌握通过融入考试的基本规则。"
+    },
+    "version": "1.2.0"
+  },
+  "sections": [
+    {
+      "id": "golden_rules",
+      "title": {
+        "nl": "De 3 Gouden Regels",
+        "en": "The 3 Golden Rules",
+        "zh": "写作三大黄金法则"
+      },
+      "items": [
+        {
+          "type": "rule",
+          "content": {
+            "nl": "Houd het kort. Korte zinnen = minder fouten.",
+            "en": "Keep it short. Short sentences = fewer mistakes.",
+            "zh": "保持简短。句子越短 = 错误越少。"
+          }
+        },
+        {
+          "type": "rule",
+          "content": {
+            "nl": "Gebruik de standaard volgorde: Wie + Doet + Wat + Wanneer.",
+            "en": "Use the standard order: Who + Does + What + When.",
+            "zh": "使用标准语序：主语 + 谓语 + 宾语 + 时间 (或者 时间放在最前)。"
+          },
+          "example": {
+            "nl": "Ik werk vandaag.",
+            "en": "I work today.",
+            "zh": "我今天工作。"
+          }
+        },
+        {
+          "type": "rule",
+          "content": {
+            "nl": "Schrijf wat ze vragen. Niet meer, niet minder.",
+            "en": "Write what they ask. No more, no less.",
+            "zh": "问什么答什么。不要多写，也不要少写。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "sentence_structure",
+      "title": {
+        "nl": "Zinsbouw",
+        "en": "Sentence Structure",
+        "zh": "句子结构"
+      },
+      "description": {
+        "nl": "Hoe maak je een correcte zin?",
+        "en": "How to build a correct sentence?",
+        "zh": "如何造出正确的句子？"
+      },
+      "items": [
+        {
+          "type": "grammar",
+          "topic": "Standard (SVO)",
+          "explanation": {
+            "nl": "Subject + Verb + Rest",
+            "en": "Subject + Verb + Rest",
+            "zh": "主语 + 动词 + 剩余部分"
+          },
+          "examples": [
+            {
+              "nl": "Ik ga naar school.",
+              "en": "I go to school.",
+              "zh": "我去学校。"
+            },
+            {
+              "nl": "Hij koopt een fiets.",
+              "en": "He buys a bicycle.",
+              "zh": "他买了一辆自行车。"
+            },
+             {
+              "nl": "Zij kookt in de keuken.",
+              "en": "She cooks in the kitchen.",
+              "zh": "她在厨房做饭。"
+            }
+          ]
+        },
+        {
+          "type": "grammar",
+          "topic": "Inversion (Time first)",
+          "explanation": {
+            "nl": "Tijd + Verb + Subject + Rest",
+            "en": "Time + Verb + Subject + Rest",
+            "zh": "时间 + 动词 + 主语 + 剩余部分 (倒装)"
+          },
+          "examples": [
+            {
+              "nl": "Vandaag ga ik naar school.",
+              "en": "Today I go to school.",
+              "zh": "今天我去学校。"
+            },
+            {
+              "nl": "Morgen werk ik niet.",
+              "en": "Tomorrow I do not work.",
+              "zh": "明天我不工作。"
+            },
+             {
+              "nl": "In het weekend sport ik.",
+              "en": "In the weekend I exercise.",
+              "zh": "周末我运动。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "connectors",
+      "title": {
+        "nl": "Verbindingswoorden",
+        "en": "Connecting Words",
+        "zh": "常用连词"
+      },
+      "description": {
+        "nl": "Maak je zinnen langer (maar niet te moeilijk).",
+        "en": "Make your sentences longer (but not too difficult).",
+        "zh": "让句子变长（但不要太复杂）。"
+      },
+      "items": [
+        {
+          "word": "en",
+          "meaning": {
+            "nl": "en",
+            "en": "and",
+            "zh": "和/并且"
+          },
+          "example": {
+            "nl": "Ik heb een pen en ik schrijf een brief.",
+            "en": "I have a pen and I write a letter.",
+            "zh": "我有一支笔，并且我在写一封信。"
+          }
+        },
+        {
+          "word": "maar",
+          "meaning": {
+            "nl": "maar",
+            "en": "but",
+            "zh": "但是"
+          },
+          "example": {
+            "nl": "Ik wil komen, maar ik ben ziek.",
+            "en": "I want to come, but I am sick.",
+            "zh": "我想来，但是我病了。"
+          }
+        },
+        {
+          "word": "want",
+          "meaning": {
+            "nl": "want",
+            "en": "because",
+            "zh": "因为 (语序不变)"
+          },
+          "note": {
+            "nl": "Gebruik 'want', want de woordvolgorde verandert niet!",
+            "en": "Use 'want', because the word order does not change!",
+            "zh": "建议使用 'want'，因为它是最简单的‘因为’，后面语序不需要变化！"
+          },
+          "example": {
+            "nl": "Ik kom niet, want ik ben moe.",
+            "en": "I am not coming, because I am tired.",
+            "zh": "我不来了，因为我累了。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "email_templates",
+      "title": {
+        "nl": "E-mail Sjablonen",
+        "en": "Email Templates",
+        "zh": "邮件万能模板"
+      },
+      "items": [
+        {
+          "part": "opening",
+          "formal": {
+            "nl": "Beste meneer/mevrouw,",
+            "en": "Dear Mr./Ms.,",
+            "zh": "尊敬的先生/女士，"
+          },
+          "informal": {
+            "nl": "Hoi [Naam], / Beste [Naam],",
+            "en": "Hi [Name], / Dear [Name],",
+            "zh": "嗨 [名字], / 亲爱的 [名字],"
+          }
+        },
+        {
+          "part": "closing",
+          "formal": {
+            "nl": "Met vriendelijke groet,",
+            "en": "Kind regards,",
+            "zh": "致以诚挚的问候，"
+          },
+          "informal": {
+            "nl": "Groetjes,",
+            "en": "Greetings / Bye,",
+            "zh": "祝好 / 问候，"
+          }
+        }
+      ]
+    },
+    {
+      "id": "useful_scenarios",
+      "title": {
+        "nl": "Veelvoorkomende Situaties",
+        "en": "Common Scenarios",
+        "zh": "考试高频场景"
+      },
+      "items": [
+        {
+          "scenario": "Sick / Cancel",
+          "title": {
+            "nl": "Afzeggen / Ziek melden",
+            "en": "Cancel / Call in sick",
+            "zh": "取消预约 / 请病假"
+          },
+          "phrases": [
+            {
+              "nl": "Het spijt me, ik kan niet komen.",
+              "en": "I'm sorry, I cannot come.",
+              "zh": "对不起，我不能来了。"
+            },
+            {
+              "nl": "Ik ben ziek.",
+              "en": "I am sick.",
+              "zh": "我生病了。"
+            },
+            {
+              "nl": "Zullen we een nieuwe afspraak maken?",
+              "en": "Shall we make a new appointment?",
+              "zh": "我们要不要约一个新的时间？"
+            }
+          ]
+        },
+        {
+          "scenario": "Invite",
+          "title": {
+            "nl": "Iemand uitnodigen",
+            "en": "Inviting someone",
+            "zh": "邀请某人"
+          },
+          "phrases": [
+            {
+              "nl": "Ik geef een feestje.",
+              "en": "I am throwing a party.",
+              "zh": "我要举办一个派对。"
+            },
+            {
+              "nl": "Wil je komen?",
+              "en": "Do you want to come?",
+              "zh": "你想来吗？"
+            },
+            {
+              "nl": "Het begint om 20:00 uur.",
+              "en": "It starts at 8:00 PM.",
+              "zh": "派对晚上8点开始。"
+            }
+          ]
+        },
+        {
+          "scenario": "Opinion",
+          "title": {
+            "nl": "Mening geven",
+            "en": "Giving opinion",
+            "zh": "表达观点"
+          },
+          "phrases": [
+            {
+              "nl": "Ik vind dat leuk.",
+              "en": "I like that.",
+              "zh": "我觉得那很有趣/我喜欢那个。"
+            },
+            {
+              "nl": "Dat is een goed idee.",
+              "en": "That is a good idea.",
+              "zh": "那是个好主意。"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "practice_exercises",
+      "title": {
+        "nl": "Oefenexamens",
+        "en": "Practice Exams",
+        "zh": "模拟练习"
+      },
+      "categories": [
+        {
+          "id": "email_informal",
+          "title": {
+            "nl": "Informele E-mail",
+            "en": "Informal Email",
+            "zh": "非正式邮件"
+          },
+          "exercises": [
+            {
+              "id": "ex_birthday",
+              "task": {
+                "nl": "Je geeft een feestje. Schrijf een e-mail naar je vriendin Anna. Schrijf:\n1. Waarom je een feestje geeft.\n2. Wanneer het feest is.\n3. Vraag of ze komt.",
+                "en": "You are throwing a party. Write an email to your friend Anna. Write:\n1. Why you are throwing a party.\n2. When the party is.\n3. Ask if she is coming.",
+                "zh": "你要举办一个派对。给你的朋友安娜写一封邮件。写明：\n1. 为什么举办派对。\n2. 派对的时间。\n3. 问她是否能来。"
+              },
+              "answer": {
+                "nl": "Hoi Anna,\n\nIk geef een feestje want ik ben jarig. Het feest is op zaterdag om 20:00 uur. Kom je ook?\n\nGroetjes,\n[Naam]",
+                "explanation": {
+                  "nl": "Let op: informeel begin (Hoi) en einde (Groetjes). Gebruik 'want' voor de reden.",
+                  "en": "Note: informal start (Hoi) and end (Groetjes). Use 'want' for the reason.",
+                  "zh": "注意：非正式的开头 (Hoi) 和结尾 (Groetjes)。使用 'want' 说明原因。"
+                }
+              }
+            },
+            {
+              "id": "ex_vacation",
+              "task": {
+                "nl": "Je bent op vakantie. Schrijf een e-mail naar je vriend Tom. Schrijf:\n1. Waar je bent.\n2. Met wie je bent.\n3. Wat je doet (noem één activiteit).",
+                "en": "You are on vacation. Write an email to your friend Tom. Write:\n1. Where you are.\n2. With whom you are.\n3. What you are doing (mention one activity).",
+                "zh": "你在度假。给你的朋友 Tom 写一封邮件。写明：\n1. 你在哪里。\n2. 你和谁在一起。\n3. 你在做什么（写一个活动）。"
+              },
+              "answer": {
+                "nl": "Hoi Tom,\n\nIk ben op vakantie in Spanje. Ik ben met mijn familie. Wij zwemmen elke dag in de zee.\n\nGroetjes,\n[Naam]",
+                "explanation": {
+                  "nl": "Korte zinnen. 'Wij zwemmen' (inversie niet nodig omdat het subject eerst komt).",
+                  "en": "Short sentences. 'Wij zwemmen' (no inversion needed as subject comes first).",
+                  "zh": "保持句子简短。'Wij zwemmen...' 是标准语序，简单清晰。"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "email_formal",
+          "title": {
+            "nl": "Formele E-mail",
+            "en": "Formal Email",
+            "zh": "正式邮件"
+          },
+          "exercises": [
+            {
+              "id": "ex_sick_work",
+              "task": {
+                "nl": "Je bent ziek. Schrijf een e-mail naar je baas, meneer Jansen. Schrijf:\n1. Dat je ziek bent.\n2. Dat je vandaag thuis blijft.\n3. Dat je morgen weer komt.",
+                "en": "You are sick. Write an email to your boss, Mr. Jansen. Write:\n1. That you are sick.\n2. That you are staying home today.\n3. That you will come back tomorrow.",
+                "zh": "你病了。给你的老板 Jansen 先生写一封邮件。写明：\n1. 你病了。\n2. 你今天待在家里。\n3. 你明天会回来上班。"
+              },
+              "answer": {
+                "nl": "Beste meneer Jansen,\n\nIk ben ziek. Ik blijf vandaag thuis. Morgen kom ik weer werken.\n\nMet vriendelijke groet,\n[Naam]",
+                "explanation": {
+                   "nl": "Formeel begin (Beste meneer) en einde (Met vriendelijke groet). Korte, duidelijke zinnen.",
+                   "en": "Formal start (Beste meneer) and end (Met vriendelijke groet). Short, clear sentences.",
+                   "zh": "正式的开头 (Beste meneer) 和结尾 (Met vriendelijke groet)。使用简短清晰的句子。"
+                }
+              }
+            },
+            {
+              "id": "ex_appointment",
+              "task": {
+                "nl": "Je wilt een afspraak maken bij de gemeente voor een paspoort. Schrijf een e-mail. Schrijf:\n1. Dat je een nieuw paspoort nodig hebt.\n2. Dat je een afspraak wilt maken.\n3. Vraag wanneer je kunt komen.",
+                "en": "You want to make an appointment at the municipality for a passport. Write an email. Write:\n1. That you need a new passport.\n2. That you want to make an appointment.\n3. Ask when you can come.",
+                "zh": "你想在市政厅预约办理护照。写一封邮件。写明：\n1. 你需要一个新护照。\n2. 你想预约。\n3. 问什么时候可以去。"
+              },
+              "answer": {
+                "nl": "Geachte heer/mevrouw,\n\nIk heb een nieuw paspoort nodig. Ik wil graag een afspraak maken. Wanneer kan ik komen?\n\nMet vriendelijke groet,\n[Naam]",
+                "explanation": {
+                   "nl": "Gebruik 'Ik wil graag...' (I would like...). Vraagzin begint met het vraagwoord (Wanneer).",
+                   "en": "Use 'Ik wil graag...' (I would like...). Question starts with the question word (Wanneer).",
+                   "zh": "使用 'Ik wil graag...' (我想...) 表达礼貌的意愿。疑问句用疑问词 (Wanneer) 开头。"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "short_text",
+          "title": {
+            "nl": "Korte Tekst",
+            "en": "Short Text",
+            "zh": "短文写作"
+          },
+          "exercises": [
+             {
+              "id": "ex_new_house",
+              "task": {
+                "nl": "Je hebt een nieuw huis. Schrijf iets over je huis. Schrijf:\n1. Waar het huis is.\n2. Hoeveel kamers het huis heeft.\n3. Of je het huis mooi vindt.",
+                "en": "You have a new house. Write something about your house. Write:\n1. Where the house is.\n2. How many rooms the house has.\n3. If you like the house.",
+                "zh": "你有一个新房子。写一段关于你房子的描述。写明：\n1. 房子在哪里。\n2. 房子有几个房间。\n3. 你是否喜欢这个房子。"
+              },
+              "answer": {
+                "nl": "Ik heb een nieuw huis in Amsterdam. Het huis heeft drie kamers. Ik vind het huis erg mooi.",
+                 "explanation": {
+                   "nl": "Gebruik simpele zinnen: Subject + Verb + Rest.",
+                   "en": "Use simple sentences: Subject + Verb + Rest.",
+                   "zh": "使用简单句：主语 + 动词 + 剩余部分。"
+                }
+              }
+             },
+             {
+              "id": "ex_hobby",
+              "task": {
+                "nl": "Schrijf iets over je hobby. Schrijf:\n1. Wat je hobby is.\n2. Hoe vaak je het doet.\n3. Waarom je het leuk vindt.",
+                "en": "Write something about your hobby. Write:\n1. What your hobby is.\n2. How often you do it.\n3. Why you like it.",
+                "zh": "写一段关于你的爱好的描述。写明：\n1. 你的爱好是什么。\n2. 你多久做一次。\n3. 为什么你喜欢它。"
+              },
+              "answer": {
+                "nl": "Mijn hobby is voetballen. Ik voetbal elke zaterdag. Ik vind het leuk, want ik houd van sporten.",
+                 "explanation": {
+                   "nl": "Gebruik 'want' voor de reden. Let op: na 'want' normale woordvolgorde.",
+                   "en": "Use 'want' for the reason. Note: after 'want' normal word order.",
+                   "zh": "使用 'want' 说明原因。注意：'want' 后面是正常语序，不要倒装。"
+                }
+              }
+             }
+          ]
+        }
+      ]
+    }
+  ]
+}
