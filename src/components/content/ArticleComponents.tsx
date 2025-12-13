@@ -85,3 +85,19 @@ export const SourceLink = ({ href, children }: { href: string, children: React.R
   </a>
 );
 
+export const LegalDisclaimer = ({ locale }: { locale: string }) => (
+  <div className="not-prose bg-amber-50 text-amber-900/80 text-sm p-4 rounded-lg mt-8 border border-amber-100 flex gap-3 items-start shadow-sm">
+    <span className="text-lg shrink-0 mt-0.5">⚠️</span>
+    <div>
+      <p className="font-bold mb-1 text-amber-900">
+        {locale === 'zh' ? '免责声明' : 'Disclaimer'}
+      </p>
+      <p className="leading-relaxed">
+        {locale === 'zh'
+          ? '本文仅供参考，不构成法律、医疗或财务建议。官方政策可能随时调整，请务必以 IND、Belastingdienst 或 Rijksoverheid 的最新官方信息为准。'
+          : 'This article is for informational purposes only and does not constitute legal, medical, or financial advice. Official policies may change; always refer to IND, Belastingdienst, or Rijksoverheid for the latest information.'}
+      </p>
+    </div>
+  </div>
+);
+
