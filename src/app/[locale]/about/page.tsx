@@ -84,16 +84,45 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                  : "Hi! I'm an engineer at Booking.com, living and working in the Netherlands for 5 years. Just like you, I am currently preparing for the civic integration exam (Inburgering)."}
              </p>
              <p>
-               {isZh
-                 ? "在备考过程中，我发现自己其实对这个生活了很久的国家依然知之甚少。而市面上的学习资料要么是晦涩的荷兰语原版书，要么是零散的英文信息。我想：为什么不能有一个结构清晰、中英双语对照的开源知识库呢？"
-                 : "During my preparation, I realized how little I actually knew about this country despite living here for so long. The available materials were either dense Dutch textbooks or scattered English info. I thought: why not build a clear, bilingual, open-source knowledge hub?"}
+               {isZh 
+                 ? "这个项目最初只是我备考 KNM 时的私人笔记。随着内容的丰富，我决定将它开源，希望能帮助每一位像我一样在荷兰奋斗的新朋友，少走弯路，从容应考。"
+                 : "This project started as my private study notes for the KNM exam. As the content grew, I decided to open-source it. My hope is to help every newcomer striving in the Netherlands to avoid common pitfalls and face the exam with confidence."}
              </p>
              <p className="text-white font-medium">
                {isZh
-                 ? "于是 Open KNM 诞生了。希望它不仅能帮我们通过考试，更能帮助大家真正了解并爱上在这个国家的生活。"
-                 : "So Open KNM was born. I hope it helps us pass the exam, but more importantly, helps everyone truly understand and enjoy life in this country."}
+                 ? "希望 Open KNM 不仅能帮我们通过考试，更能帮助大家真正了解并爱上在这个国家的生活。"
+                 : "I hope Open KNM helps us pass the exam, but more importantly, helps everyone truly understand and enjoy life in this country."}
              </p>
           </div>
+        </div>
+      </section>
+
+      {/* Contributors Section */}
+      <section className="space-y-8 pt-8">
+        <div className="relative overflow-hidden rounded-3xl bg-slate-900 p-8 sm:p-12 text-center shadow-xl">
+            {/* Decor */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 -mt-20 w-96 h-96 bg-[var(--primary)] opacity-10 blur-[80px] rounded-full pointer-events-none"></div>
+            
+            <div className="relative z-10 space-y-6">
+                <div className="space-y-2">
+                    <h3 className="text-2xl font-bold text-white">
+                        {isZh ? '社区英雄' : 'Community Heroes'}
+                    </h3>
+                    <p className="text-slate-400 max-w-lg mx-auto">
+                        {isZh ? '感谢每一位让这个项目变得更好的朋友！' : 'Every line of code, every correction, builds Open KNM.'}
+                    </p>
+                </div>
+                
+                <div className="bg-white/5 rounded-2xl p-6 backdrop-blur-sm border border-white/10">
+                    <a href="https://github.com/xvllinihao/open-knm/graphs/contributors" target="_blank" rel="noopener noreferrer" className="block hover:opacity-80 transition-opacity">
+                        <img 
+                            src="https://contrib.rocks/image?repo=xvllinihao/open-knm" 
+                            alt="Contributors" 
+                            className="mx-auto"
+                        />
+                    </a>
+                </div>
+            </div>
         </div>
       </section>
 
