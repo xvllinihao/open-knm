@@ -6,6 +6,7 @@ import Link from "next/link";
 import type { ComponentType } from "react";
 import { SITE_NAME, SITE_URL, absoluteUrl } from "@/lib/siteConfig";
 import { ArticleNavigation } from "@/components/ArticleNavigation";
+import { LegalDisclaimer } from "@/components/content/ArticleComponents";
 
 import KnmHistoryZh from "@/data/articles/knm-history-william-of-orange.zh.mdx";
 import KnmHistoryEn from "@/data/articles/knm-history-william-of-orange.en.mdx";
@@ -190,11 +191,18 @@ export default async function ArticlePage({ params }: Props) {
     url: canonicalUrl,
     datePublished: publishedAt,
     dateModified: updatedAt,
-    author: {
-      "@type": "Organization",
-      name: SITE_NAME,
-      url: SITE_URL,
-    },
+    author: [
+      {
+        "@type": "Person",
+        name: "Li Xu",
+        url: absoluteUrl(`/${locale}/about`),
+      },
+      {
+        "@type": "Organization",
+        name: SITE_NAME,
+        url: SITE_URL,
+      },
+    ],
     publisher: {
       "@type": "Organization",
       name: SITE_NAME,
@@ -238,6 +246,14 @@ export default async function ArticlePage({ params }: Props) {
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 leading-[1.15] tracking-tight">
           {article.titles[locale]}
         </h1>
+        
+        <div className="flex items-center gap-2 text-sm text-slate-500 font-medium">
+          <span>📅</span>
+          <time dateTime={updatedAt}>
+            {isZh ? '最后更新于' : 'Last updated:'} {new Date(updatedAt).toLocaleDateString(isZh ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+          </time>
+        </div>
+
         <p className="text-xl text-slate-600 leading-relaxed font-light">
           {article.descriptions[locale]}
         </p>
@@ -245,7 +261,10 @@ export default async function ArticlePage({ params }: Props) {
 
       <div className="prose prose-slate prose-lg max-w-none">
         {BodyComponent ? (
-          <BodyComponent />
+          <>
+            <BodyComponent />
+            <LegalDisclaimer locale={locale} />
+          </>
         ) : (
           <div className="bg-slate-50 p-8 sm:p-12 rounded-2xl border-2 border-dashed border-slate-200 text-center space-y-4">
             <div className="inline-block p-3 rounded-full bg-slate-100 mb-2">
