@@ -19,7 +19,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
         <section className="flex-1 text-center lg:text-left space-y-6 max-w-3xl lg:max-w-none">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 text-orange-600 text-xs font-bold uppercase tracking-wider">
             <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
-            {isZh ? '免费 · 开源 · 备考冲刺' : 'Free · Open Source · Exam Fast Track'}
+            {isZh ? '免费 · 开源 · 社区共建' : 'Free · Open Source · Community Driven'}
           </div>
           
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tighter text-slate-900 leading-[1.1]">
@@ -28,14 +28,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
           
           <p className="text-xl sm:text-2xl text-slate-600 leading-relaxed font-light">
             {isZh 
-              ? '只讲考点，不讲废话。你的 KNM 考试极速通关指南。' 
-              : 'The no-nonsense guide to passing your KNM exam. Fast.'}
+              ? '从个人笔记到开源指南，陪你一起通过融入考试。' 
+              : 'From personal notes to a community guide. Helping you pass the civic integration exam, together.'}
           </p>
           
           <p className="text-base sm:text-lg text-slate-500 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
             {isZh 
-              ? '我们不是一本面面俱到的百科全书，而是一份精准的考前冲刺笔记。汇集高频词汇、核心考点与模拟练习，助你节省时间，直击 Inburgering 考试核心。' 
-              : 'We are not an encyclopedia. We are your exam cheat sheet. Curated summaries, essential vocabulary, and focused practice to help you save time and ace the Knowledge of Dutch Society (KNM) exam.'}
+              ? '这个项目最初只是我备考 KNM 时的私人笔记。随着内容的丰富，我决定将它开源，希望能帮助每一位像我一样在荷兰奋斗的新朋友，少走弯路，从容应考。' 
+              : 'This project started as my personal study notes for the KNM exam. As it grew, I decided to open-source it to help fellow newcomers. It’s here to save you time, clear up confusion, and help you settle in with confidence.'}
           </p>
 
           <div className="flex items-center justify-center lg:justify-start gap-4 pt-4">

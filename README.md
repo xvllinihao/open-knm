@@ -14,16 +14,19 @@
 
 ## 🇨🇳 中文介绍
 
-**Open KNM** 是一个开源、免费的荷兰融入指南项目。
+**Open KNM** 是一个开源、免费的荷兰融入考试备考指南。
 
-我们的目标是为所有在荷兰生活的新移民、留学生和外籍人士提供清晰、准确且易于理解的信息。我们专注于 **KNM (Kennis van de Nederlandse Maatschappij)** 考试的核心考点，同时也涵盖荷兰社会与日常生活的方方面面。
+**项目初心**：这个项目最初只是我个人备考 **KNM (Kennis van de Nederlandse Maatschappij)** 时的私人笔记。在备考过程中，我发现市面上的资料要么过于零散，要么价格昂贵且内容陈旧。于是，我决定将这份涵盖了核心考点、高频词汇和模拟练习的“私房笔记”整理并开源，逐渐演变成如今这个帮助大家快速准备整个融入考试（Inburgering）的知识库。
+
+我们的目标很简单：为所有在荷兰生活的新移民、留学生和外籍人士提供一个清晰、准确且温暖的备考助手。不仅仅是为了通过考试，更是为了帮助大家真正读懂荷兰社会规则，让在这片土地上的生活更加从容。
 
 ### 核心特性
 
-- **双语对照**：所有内容均提供中文与英文/荷兰文对照，帮助你跨越语言障碍。
-- **考试导向**：针对 KNM 融入考试大纲进行知识点梳理（历史、地理、法律、医疗等）。
-- **社区驱动**：内容由社区共同维护，欢迎任何人纠错或补充。
-- **现代技术**：基于 Next.js 16 和 Tailwind CSS v4 构建，体验流畅。
+- **双语对照**：所有内容均提供中文与英文/荷兰文对照，降低语言门槛，适合初学者。
+- **备考导向**：脱胎于真实备考经验，重点梳理 KNM 考试高频考点（历史、地理、法律、医疗等），拒绝冗余信息。
+- **全面覆盖**：从 KNM 知识点到 A2 高频词汇，再到口语与写作模拟练习，覆盖融入考试主要科目。
+- **社区驱动**：源于个人，成长于社区。欢迎任何人纠错、补充或分享你的备考心得。
+- **现代技术**：基于 Next.js 16 和 Tailwind CSS v4 构建，极速、流畅、无广告。
 
 ### 快速开始
 
@@ -66,16 +69,19 @@
 
 ## 🇬🇧 English Introduction
 
-**Open KNM** is an open-source, free guide for integration in the Netherlands.
+**Open KNM** is an open-source, free study guide for the Dutch civic integration exam.
 
-Our goal is to provide clear, accurate, and accessible information for all newcomers, students, and expats living in the Netherlands. We focus on the core topics of the **KNM (Kennis van de Nederlandse Maatschappij)** exam, while also covering various aspects of Dutch society and daily life.
+**Origin Story**: This project started as my personal study notes when I was preparing for the **KNM (Kennis van de Nederlandse Maatschappij)** exam. I found existing materials either too scattered, expensive, or outdated. So, I decided to polish and open-source my "private notes"—covering core topics, essential vocabulary, and practice questions. Over time, it evolved into a comprehensive knowledge base to help everyone fast-track their preparation for the entire Inburgering exam.
+
+Our goal is simple: to provide a clear, accurate, and welcoming study companion for all newcomers, students, and expats in the Netherlands. It's not just about passing the exam; it's about truly understanding Dutch society so you can live here with confidence.
 
 ### Key Features
 
-- **Bilingual Support**: All content is available in Chinese and English/Dutch to bridge the language gap.
-- **Exam Focused**: Structured knowledge points tailored for the KNM civic integration exam (History, Geography, Law, Health, etc.).
-- **Community Driven**: Maintained by the community. Corrections and contributions are welcome.
-- **Modern Tech Stack**: Built with Next.js 16 and Tailwind CSS v4 for a smooth experience.
+- **Bilingual Support**: All content is available in Chinese and English/Dutch, lowering the language barrier for beginners.
+- **Exam Focused**: Born from real exam experience. We focus on high-yield KNM topics (History, Geography, Law, Health, etc.) and cut out the fluff.
+- **Comprehensive**: From KNM facts to A2 vocabulary, speaking, and writing practice—covering key parts of the integration exam.
+- **Community Driven**: Started by one, grown by many. We welcome corrections, additions, and sharing of your own exam tips.
+- **Modern Tech Stack**: Built with Next.js 16 and Tailwind CSS v4 for a fast, smooth, and ad-free experience.
 
 ### Getting Started
 
