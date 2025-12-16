@@ -1,0 +1,7502 @@
+[
+  {
+    "id": "aanbieding",
+    "dutch": "aanbieding",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "special offer / promotion",
+      "zh": "特价 / 促销"
+    },
+    "notes": {
+      "en": "Very common in supermarkets and shops. Look for \"in de aanbieding\" or \"bonusaanbieding\" on discount products.",
+      "zh": "超市和商店里非常常见，比如货架上的 \"in de aanbieding\" 或 Albert Heijn 的 \"bonus\" 特价。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "aandacht",
+    "dutch": "aandacht",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "attention",
+      "zh": "注意 / 关注"
+    },
+    "notes": {
+      "en": "Used in expressions like \"Let op!\" (pay attention) and \"aandacht besteden aan\" (to pay attention to something).",
+      "zh": "常见搭配有 \"Let op!\"（注意！）和 \"aandacht besteden aan...\"（对…给予关注）。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "aangenaam",
+    "dutch": "aangenaam",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "pleasant / nice",
+      "zh": "愉快的 / 令人舒服的"
+    },
+    "notes": {
+      "en": "Formal way to say \"Nice to meet you\" when you introduce yourself: \"Aangenaam\".",
+      "zh": "正式场合自我介绍时常说 \"Aangenaam\"，相当于“幸会 / 很高兴认识你”。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "aankleden",
+    "dutch": "aankleden",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to get dressed",
+      "zh": "穿衣服 / 给……穿衣服"
+    },
+    "notes": {
+      "en": "Used for yourself (\"Ik kleed me aan\") or for children (\"Ik kleed de kinderen aan\").",
+      "zh": "可以说 \"Ik kleed me aan\"（我穿衣服），也可以说 \"Ik kleed de kinderen aan\"（我给孩子穿衣）。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "aankomst",
+    "dutch": "aankomst",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "arrival",
+      "zh": "到达 / 抵达"
+    },
+    "notes": {
+      "en": "On timetables you see \"vertrek\" (departure) and \"aankomst\" (arrival).",
+      "zh": "在时刻表上常见与 \"vertrek\"（出发）相对的 \"aankomst\"（到达）。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "aardappel",
+    "dutch": "aardappel",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "potato",
+      "zh": "土豆 / 马铃薯"
+    },
+    "notes": {
+      "en": "Traditional Dutch staple food, often eaten cooked or as mashed potatoes (\"aardappelpuree\").",
+      "zh": "传统主食之一，经常煮着吃，或做成土豆泥 (aardappelpuree)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "aardbei",
+    "dutch": "aardbei",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "strawberry",
+      "zh": "草莓"
+    },
+    "notes": {
+      "en": "Popular summer fruit, used on bread, in desserts or with whipped cream.",
+      "zh": "夏天常见的水果，可切片放在面包上，或做甜点、配奶油。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "abonnement",
+    "dutch": "abonnement",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "subscription / season ticket",
+      "zh": "订阅 / 月票 / 年票"
+    },
+    "notes": {
+      "en": "Used for phone contracts, internet, public transport (OV-abonnement) or gym membership.",
+      "zh": "常用于手机、宽带、公共交通 (OV-abonnement) 或健身房等长期订阅。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "acteur",
+    "dutch": "acteur",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "actor",
+      "zh": "演员"
+    },
+    "notes": {
+      "en": "Person who plays a role in films, series or theatre.",
+      "zh": "在电影、电视剧或舞台剧中表演角色的人。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "actie",
+    "dutch": "actie",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "promotion / action / campaign",
+      "zh": "促销 / 行动 / 活动"
+    },
+    "notes": {
+      "en": "\"In de actie\" often means a product is cheaper; it can also mean a campaign or protest action.",
+      "zh": "在超市里 \"in de actie\" 多指商品在打折；也可以指某个活动或抗议行动。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "actief",
+    "dutch": "actief",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "active",
+      "zh": "积极的 / 活跃的"
+    },
+    "notes": {
+      "en": "Used for people and things: \"actief zijn\" (to be active), \"actieve vakantie\" (active holiday).",
+      "zh": "既可形容人也可形容事：例如 \"actief zijn\"（很积极）、\"actieve vakantie\"（动来动去的假期）。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "actueel",
+    "dutch": "actueel",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "current / up-to-date",
+      "zh": "当前的 / 时事的"
+    },
+    "notes": {
+      "en": "FALSE FRIEND! It does NOT mean \"actual\" (which is \"feitelijk\" or \"echt\"). It means \"current\".",
+      "zh": "假朋友！不等于 \"actual\"(实际的)。它的意思是\"当前的\"或\"最新的\"。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "adem",
+    "dutch": "adem",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "breath",
+      "zh": "呼吸"
+    },
+    "notes": {
+      "en": "In expressions like \"haal diep adem\" (take a deep breath) or \"buiten adem\" (out of breath).",
+      "zh": "常见搭配：\"haal diep adem\"（深呼吸）、\"buiten adem\"（喘不过气）。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "advertentie",
+    "dutch": "advertentie",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "advert / advertisement",
+      "zh": "广告"
+    },
+    "notes": {
+      "en": "You see adverts in newspapers, online (bijvoorbeeld op Marktplaats) or on the street.",
+      "zh": "可以是报纸广告、网上广告（例如 Marktplaats 上的商品信息）或街头海报。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "advies",
+    "dutch": "advies",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "advice / recommendation",
+      "zh": "建议 / 忠告"
+    },
+    "notes": {
+      "en": "\"Advies vragen\" means to ask someone for advice, for example a doctor, teacher or friend.",
+      "zh": "\"advies vragen\" 表示向别人征求意见，比如问医生、老师或朋友的建议。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "afhalen",
+    "dutch": "afhalen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to pick up / take away",
+      "zh": "去取 / 外带（食物）"
+    },
+    "notes": {
+      "en": "Used for picking up parcels (pakket afhalen) or takeaway food (\"afhaalchinees\" for Chinese takeaway).",
+      "zh": "常用于取包裹 (pakket afhalen) 或买外卖，比如 \"afhaalchinees\"（中餐外卖店）。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "afrekenen",
+    "dutch": "afrekenen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to pay the bill / to settle up",
+      "zh": "结账 / 付款"
+    },
+    "notes": {
+      "en": "In shops or restaurants: \"Zullen we even afrekenen?\" (Shall we pay the bill?).",
+      "zh": "在商店或餐厅常听到：\"Zullen we even afrekenen?\"（我们去结个账吧？）。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "afruimen",
+    "dutch": "afruimen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to clear away (the table)",
+      "zh": "收拾 / 清理（桌子）"
+    },
+    "notes": {
+      "en": "Often used as \"de tafel afruimen\" after dinner.",
+      "zh": "经常说 \"de tafel afruimen\"，指吃完饭后把餐桌收拾干净。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "afscheid-nemen",
+    "dutch": "afscheid nemen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to say goodbye / to take leave",
+      "zh": "告别 / 道别"
+    },
+    "notes": {
+      "en": "Used when leaving a job, moving house or at a funeral: \"afscheid nemen van iemand\".",
+      "zh": "在离职、搬家或葬礼等场景常用，表达和某人或某个阶段道别。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "afspraak-maken",
+    "dutch": "afspraak maken",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to make an appointment",
+      "zh": "预约 / 安排会面"
+    },
+    "notes": {
+      "en": "Essential Dutch custom. Always make an appointment before visiting friends or professionals (doctor, job interview).",
+      "zh": "荷兰社交和商务的基本要求。拜访（op bezoek）或看医生前必须预约."
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "afstand",
+    "dutch": "afstand",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "distance",
+      "zh": "距离"
+    },
+    "notes": {
+      "en": "During COVID you often heard \"1,5 meter afstand houden\" (keep 1.5 metres distance).",
+      "zh": "新冠期间常听到 \"1,5 meter afstand houden\"（保持 1.5 米距离）。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "afstandsbediening",
+    "dutch": "afstandsbediening",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "remote control",
+      "zh": "遥控器"
+    },
+    "notes": {
+      "en": "Used for TV, set-top box or other devices: \"Waar is de afstandsbediening?\"",
+      "zh": "常指电视或机顶盒的遥控器：\"Waar is de afstandsbediening?\"（遥控器在哪？）。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "appel",
+    "dutch": "appel",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "apple",
+      "zh": "苹果"
+    },
+    "notes": {
+      "en": "\"Appeltaart\" (apple pie) with whipped cream.",
+      "zh": "\"Appeltaart\" (苹果派) 配鲜奶油。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "bak",
+    "dutch": "bak",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "container / bin / bowl",
+      "zh": "盒子 / 碗 / 垃圾桶"
+    },
+    "notes": {
+      "en": "Not \"back\". A versatile word for any container. \"Vuilnisbak\" (trash bin), \"bakje koffie\" (cup of coffee).",
+      "zh": "不是 \"back\"。指各种容器。\"Vuilnisbak\"(垃圾桶)，口语也常说 \"bakje koffie\"(一杯咖啡)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "banaan",
+    "dutch": "banaan",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "banana",
+      "zh": "香蕉"
+    },
+    "notes": {
+      "en": "Easy fruit.",
+      "zh": "方便吃的水果。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "basisschool",
+    "dutch": "basisschool",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "primary school",
+      "zh": "小学"
+    },
+    "notes": {
+      "en": "For children aged 4 to 12 (Groep 1 to Groep 8). Free, but schools ask for a voluntary parental contribution (ouderbijdrage).",
+      "zh": "4 至 12 岁儿童就读。学校本身免费，但会要求家长自愿支付杂费 (**ouderbijdrage**)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "bekeuring",
+    "dutch": "bekeuring",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "fine / ticket",
+      "zh": "罚单 / 罚款"
+    },
+    "notes": {
+      "en": "Penalty for minor offenses like illegal parking, traffic violations, or not carrying ID (from 14 years old).",
+      "zh": "对轻微违法行为（如交通违规、未携带身份证件）的惩罚。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "bellen",
+    "dutch": "bellen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to call / to ring",
+      "zh": "打电话 / 按门铃"
+    },
+    "notes": {
+      "en": "Can be calling by phone or ringing a doorbell (\"aanbellen\").",
+      "zh": "既是\"打电话\"，也是\"按门铃\"。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "benzinestation",
+    "dutch": "benzinestation",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "petrol station",
+      "zh": "加油站"
+    },
+    "notes": {
+      "en": "Place where you buy fuel for your car; also sells snacks and drinks.",
+      "zh": "给汽车加油的地方，通常也卖零食和饮料。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "beschuit-met-muisjes",
+    "dutch": "beschuit met muisjes",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "rusk with anise sprinkles",
+      "zh": "饼干配茴香糖屑"
+    },
+    "notes": {
+      "en": "Traditional treat for newborn babies. Blue (boy) or pink (girl) sprinkles.",
+      "zh": "庆祝新生儿的传统食物。糖屑为粉色（女孩）或蓝色（男孩）。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "betalen",
+    "dutch": "betalen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to pay",
+      "zh": "支付 / 付款"
+    },
+    "notes": {
+      "en": "You can pay by card (\"pinnen\") or cash (\"contant\").",
+      "zh": "可以刷卡(\"pinnen\")或付现(\"contant\")。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "bevrijdingsdag",
+    "dutch": "Bevrijdingsdag",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "Liberation Day",
+      "zh": "解放日"
+    },
+    "notes": {
+      "en": "May 5th. Celebrating the end of WWII.",
+      "zh": "每年 5 月 5 日。庆祝二战结束。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "bier",
+    "dutch": "bier",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "beer",
+      "zh": "啤酒"
+    },
+    "notes": {
+      "en": "\"Fluitje\" or \"vaasje\" (types of beer glasses).",
+      "zh": "\"Fluitje\" 或 \"vaasje\" (不同种类的啤酒杯)。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "blauw",
+    "dutch": "blauw",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "blue",
+      "zh": "蓝色"
+    },
+    "notes": {
+      "en": "Colour of the Tax Office envelopes.",
+      "zh": "税务局信封的颜色。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "boodschappen",
+    "dutch": "boodschappen doen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "grocery shopping",
+      "zh": "买菜 / 购物"
+    },
+    "notes": {
+      "en": "Specific for groceries. \"Winkelen\" is shopping for clothes/fun.",
+      "zh": "专指买菜/日用品。\"Winkelen\" 通常指逛街买衣服。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "boodschappenkar",
+    "dutch": "boodschappenkar",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "shopping trolley",
+      "zh": "购物车"
+    },
+    "notes": {
+      "en": "Big cart you push in the supermarket for your groceries.",
+      "zh": "超市里推着装购物物品的大购物车。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "boodschappenlijst",
+    "dutch": "boodschappenlijst",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "shopping list",
+      "zh": "购物清单"
+    },
+    "notes": {
+      "en": "List you make before going to the supermarket so you don’t forget what to buy.",
+      "zh": "去超市前写的购物清单，避免忘记要买的东西。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "borrel",
+    "dutch": "borrel",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "drinks / social gathering",
+      "zh": "喝一杯 / 聚会"
+    },
+    "notes": {
+      "en": "Informal drinks with colleagues or friends, usually with snacks (\"borrelhapjes\"). \"Vrijdagmiddagborrel\" (Vrijmibo) is work tradition.",
+      "zh": "指非正式的喝一杯。\"Vrijmibo\" (周五下午酒会) 是公司传统。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "broek",
+    "dutch": "broek",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "trousers / pants",
+      "zh": "裤子"
+    },
+    "notes": {
+      "en": "\"Spijkerbroek\" (jeans).",
+      "zh": "\"Spijkerbroek\" (牛仔裤)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "broekzak",
+    "dutch": "broekzak",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "trouser pocket",
+      "zh": "裤兜"
+    },
+    "notes": {
+      "en": "Small pocket in your trousers where people often keep keys or coins.",
+      "zh": "裤子上的小口袋，很多人会把钥匙或硬币放在里面。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "brood",
+    "dutch": "brood",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "bread",
+      "zh": "面包"
+    },
+    "notes": {
+      "en": "Dutch staple food. Lunch is often bread.",
+      "zh": "荷兰主食。午餐通常吃面包。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "brug",
+    "dutch": "brug",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "bridge",
+      "zh": "桥"
+    },
+    "notes": {
+      "en": "Amsterdam has many bridges.",
+      "zh": "阿姆斯特丹有很多桥。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "bruin",
+    "dutch": "bruin",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "brown",
+      "zh": "棕色"
+    },
+    "notes": {
+      "en": "Bread is often brown (\"bruin brood\").",
+      "zh": "面包通常是棕色的(\"bruin brood\")。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "brutaal",
+    "dutch": "brutaal",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "cheeky / insolent",
+      "zh": "厚脸皮 / 没礼貌"
+    },
+    "notes": {
+      "en": "FALSE FRIEND! Not \"brutal\" (violent). It means rude or having a big mouth.",
+      "zh": "假朋友！不是 \"brutal\"(残忍)。意思是\"厚脸皮\"或\"无礼\"。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "bui",
+    "dutch": "bui",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "shower (rain)",
+      "zh": "阵雨"
+    },
+    "notes": {
+      "en": "\"Buienradar\" is the most used app to check if it will rain in the next 5 mins.",
+      "zh": "\"Buienradar\" (阵雨雷达) 是荷兰人最常用的App。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "buitenspelen",
+    "dutch": "buitenspelen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to play outside",
+      "zh": "在外面玩耍"
+    },
+    "notes": {
+      "en": "Children playing outside, for example on the street, schoolyard or playground.",
+      "zh": "孩子在户外玩耍，例如在街边、学校操场或游乐场。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "buren",
+    "dutch": "buren",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "neighbours",
+      "zh": "邻居"
+    },
+    "notes": {
+      "en": "People who live next to or near your house.",
+      "zh": "住在你家旁边或附近的人。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "burencontact",
+    "dutch": "burencontact",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "contact with neighbours",
+      "zh": "邻里联系"
+    },
+    "notes": {
+      "en": "Social contact with the people living around you, for example saying hello, small talk or helping each other.",
+      "zh": "与周围邻居的社交接触，例如打招呼、聊天、互相帮忙。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "bus",
+    "dutch": "bus",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "bus",
+      "zh": "公交车"
+    },
+    "notes": {
+      "en": "Local or regional bus; you often check the timetable in an app like 9292.",
+      "zh": "市内或区域公交车，时刻表常用 9292 等 APP 查询。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "bushalte",
+    "dutch": "bushalte",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "bus stop",
+      "zh": "巴士站"
+    },
+    "notes": {
+      "en": "Where you wait for the bus. Wave to stop the bus!",
+      "zh": "等车的地方。记得招手让司机停车！"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "buurtapp",
+    "dutch": "buurtapp",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "neighbourhood app group",
+      "zh": "社区群聊 / 邻里 App 群"
+    },
+    "notes": {
+      "en": "WhatsApp or other app group for neighbours to share information about the neighbourhood, lost items or safety.",
+      "zh": "邻居之间用来分享小区信息、丢失物品或安全提醒的聊天群（多为 WhatsApp）。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "buurtfeest",
+    "dutch": "buurtfeest",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "neighbourhood party",
+      "zh": "邻里聚会 / 小区派对"
+    },
+    "notes": {
+      "en": "Event where neighbours come together in the street or square to eat, drink and talk.",
+      "zh": "邻居们在街道或广场一起吃喝、聊天的活动。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "buurthuis",
+    "dutch": "buurthuis",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "community center",
+      "zh": "社区活动中心"
+    },
+    "notes": {
+      "en": "Place for neighborhood activities, often offering courses or multicultural markets.",
+      "zh": "供社区居民进行活动、学习课程或举行文化聚会的地方。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "buurtpreventie",
+    "dutch": "buurtpreventie",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "neighbourhood watch",
+      "zh": "社区治安巡逻"
+    },
+    "notes": {
+      "en": "Volunteers in the neighbourhood who keep an eye on safety and report suspicious situations.",
+      "zh": "社区志愿者关注治安、发现可疑情况会及时上报的制度或小组。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "conducteur",
+    "dutch": "conducteur",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "conductor",
+      "zh": "列车员 / 售票员"
+    },
+    "notes": {
+      "en": "The person checking tickets on the train.",
+      "zh": "火车上查票的人。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "daluren",
+    "dutch": "daluren",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "off-peak hours",
+      "zh": "非高峰时段"
+    },
+    "notes": {
+      "en": "Cheaper travel times (usually 9:00-16:00 and after 18:30).",
+      "zh": "票价更便宜的时段（通常9:00-16:00及18:30后）。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "datum",
+    "dutch": "datum",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "date",
+      "zh": "日期"
+    },
+    "notes": {
+      "en": "What is the date today?",
+      "zh": "今天几号？"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "dodensherdenking",
+    "dutch": "Dodenherdenking",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "Remembrance Day",
+      "zh": "阵亡将士纪念日"
+    },
+    "notes": {
+      "en": "May 4th. Commemoration of all war dead. Two minutes of silence at 8 PM.",
+      "zh": "每年 5 月 4 日。晚上 8 点默哀 2 分钟，纪念所有战争死难者。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "doen",
+    "dutch": "doen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to do",
+      "zh": "做"
+    },
+    "notes": {
+      "en": "General action verb.",
+      "zh": "通用的\"做\"。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "drinken",
+    "dutch": "drinken",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to drink",
+      "zh": "喝"
+    },
+    "notes": {
+      "en": "Consuming liquids.",
+      "zh": "喝水/饮料。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "druk",
+    "dutch": "druk",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "busy / crowded",
+      "zh": "忙碌 / 拥挤"
+    },
+    "notes": {
+      "en": "\"Ik ben druk\" (I am busy). \"Het is druk\" (It is crowded).",
+      "zh": "\"Ik ben druk\" (我好忙)。\"Het is druk\" (人好多)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "durven",
+    "dutch": "durven",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to dare",
+      "zh": "敢"
+    },
+    "notes": {
+      "en": "\"Durf jij dat?\" (Do you dare?).",
+      "zh": "\"Durf jij dat?\" (你敢吗？)。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "duur",
+    "dutch": "duur",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "expensive",
+      "zh": "贵"
+    },
+    "notes": {
+      "en": "Costs a lot of money.",
+      "zh": "很花钱。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "ei",
+    "dutch": "ei",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "egg",
+      "zh": "鸡蛋"
+    },
+    "notes": {
+      "en": "Plural: \"eieren\".",
+      "zh": "复数：\"eieren\"。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "eten",
+    "dutch": "eten",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to eat",
+      "zh": "吃"
+    },
+    "notes": {
+      "en": "Consuming food.",
+      "zh": "吃东西。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "eventueel",
+    "dutch": "eventueel",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "possibly / optional",
+      "zh": "可能 / 可选的"
+    },
+    "notes": {
+      "en": "FALSE FRIEND! It does NOT mean \"eventually\" (which is \"uiteindelijk\"). It means \"maybe\" or \"potentially\".",
+      "zh": "假朋友！不等于 \"eventually\"(最终)。它的意思是\"可能\"或\"如果有必要的话\"。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "familie",
+    "dutch": "familie",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "family",
+      "zh": "家庭 / 家人"
+    },
+    "notes": {
+      "en": "Your relatives.",
+      "zh": "你的亲戚家人。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "fietsen",
+    "dutch": "fietsen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to cycle",
+      "zh": "骑车"
+    },
+    "notes": {
+      "en": "It is a verb in Dutch! \"Ik fiets naar werk\".",
+      "zh": "在荷兰语里是动词！\"Ik fiets naar werk\" (我骑车去上班)。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "fietsenmaker",
+    "dutch": "fietsenmaker",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "bike repair shop",
+      "zh": "修车铺"
+    },
+    "notes": {
+      "en": "Where you go when you have a flat tire (\"lekke band\").",
+      "zh": "车胎爆了(\"lekke band\")要去的地方。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "fietshelm",
+    "dutch": "fietshelm",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "bike helmet",
+      "zh": "自行车头盔"
+    },
+    "notes": {
+      "en": "Not mandatory for adults, but recommended, especially for children.",
+      "zh": "成年人不强制戴，但建议佩戴，尤其是小孩。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "fietspad",
+    "dutch": "fietspad",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "bike path",
+      "zh": "自行车道"
+    },
+    "notes": {
+      "en": "Red asphalt lanes. DO NOT walk here.",
+      "zh": "红色沥青路面。千万别在上面走路。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "file-verkeer",
+    "dutch": "file",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "traffic jam",
+      "zh": "交通堵塞"
+    },
+    "notes": {
+      "en": "Line of slow or standing cars; you often hear it in the traffic news (verkeersinformatie).",
+      "zh": "高速或道路上缓慢或停着的一长排车辆，交通信息里常会提到。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "fooi",
+    "dutch": "fooi",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "tip",
+      "zh": "小费"
+    },
+    "notes": {
+      "en": "Not mandatory in NL, but appreciated (round up or ~10%).",
+      "zh": "在荷兰不是强制的，但通常会凑整或给10%左右。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "fruit",
+    "dutch": "fruit",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "fruit",
+      "zh": "水果"
+    },
+    "notes": {
+      "en": "Healthy snack.",
+      "zh": "健康零食。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "geel",
+    "dutch": "geel",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "yellow",
+      "zh": "黄色"
+    },
+    "notes": {
+      "en": "Train signs are yellow.",
+      "zh": "火车标志是黄色的。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "gefeliciteerd",
+    "dutch": "Gefeliciteerd",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "congratulations",
+      "zh": "恭喜 / 祝贺"
+    },
+    "notes": {
+      "en": "Used for birthdays, births, weddings, or passing an exam.",
+      "zh": "用于生日、新生儿出生、结婚或考试通过等场合。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "gevaar",
+    "dutch": "gevaar",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "danger",
+      "zh": "危险"
+    },
+    "notes": {
+      "en": "\"Gevaarlijk\" is dangerous.",
+      "zh": "\"Gevaarlijk\" 是形容词\"危险的\"。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "gezellig",
+    "dutch": "gezellig",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "cozy / sociable / fun",
+      "zh": "温馨 / 热闹 / 惬意"
+    },
+    "notes": {
+      "en": "Quintessentially Dutch. Describes a nice atmosphere with people. No direct translation.",
+      "zh": "荷兰文化代表词。形容温馨、社交、愉快的氛围。很难直译。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "gisteren",
+    "dutch": "gisteren",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "yesterday",
+      "zh": "昨天"
+    },
+    "notes": {
+      "en": "The day before today.",
+      "zh": "昨天。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "goedkoop",
+    "dutch": "goedkoop",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "cheap",
+      "zh": "便宜"
+    },
+    "notes": {
+      "en": "Low price.",
+      "zh": "价格低。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "gratis",
+    "dutch": "gratis",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "free of charge",
+      "zh": "免费"
+    },
+    "notes": {
+      "en": "Dutch people love this word! It means it costs nothing.",
+      "zh": "荷兰人最爱的词！意思是不要钱。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "grijs",
+    "dutch": "grijs",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "grey",
+      "zh": "灰色"
+    },
+    "notes": {
+      "en": "Common weather colour.",
+      "zh": "常见的天气颜色。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "groen",
+    "dutch": "groen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "green",
+      "zh": "绿色"
+    },
+    "notes": {
+      "en": "Go (traffic light).",
+      "zh": "行（红绿灯）。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "groente",
+    "dutch": "groente",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "vegetables",
+      "zh": "蔬菜"
+    },
+    "notes": {
+      "en": "\"Groenteboer\" (greengrocer).",
+      "zh": "\"Groenteboer\" (菜贩)。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "hagelslag",
+    "dutch": "hagelslag",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "chocolate sprinkles",
+      "zh": "巧克力碎"
+    },
+    "notes": {
+      "en": "Eaten on bread with butter for breakfast/lunch. Only in NL.",
+      "zh": "撒在涂了黄油的面包上吃。荷兰特色早餐/午餐。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "halfuur",
+    "dutch": "halfuur",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "half an hour",
+      "zh": "半小时"
+    },
+    "notes": {
+      "en": "30 minutes.",
+      "zh": "30分钟。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "handschoen",
+    "dutch": "handschoen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "glove",
+      "zh": "手套"
+    },
+    "notes": {
+      "en": "You wear gloves when it is cold outside.",
+      "zh": "天气很冷时戴在手上的保暖用品。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "herfst",
+    "dutch": "herfst",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "autumn",
+      "zh": "秋天"
+    },
+    "notes": {
+      "en": "One of the four seasons, often rainy and windy in the Netherlands.",
+      "zh": "四季之一，荷兰的秋天常常又湿又有风。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "hoeven",
+    "dutch": "hoeven",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to need to (mostly negative)",
+      "zh": "需要 (通常用于否定)"
+    },
+    "notes": {
+      "en": "Always used with \"niet\" or \"geen\". \"Je hoeft niet te betalen\" (You don't have to pay).",
+      "zh": "常搭配 \"niet\" 使用。\"Je hoeft niet...\" (你不需要...)。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "huiswerk",
+    "dutch": "huiswerk",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "homework",
+      "zh": "作业"
+    },
+    "notes": {
+      "en": "Work for school done at home.",
+      "zh": "家庭作业。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "inchecken",
+    "dutch": "inchecken",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to check in",
+      "zh": "刷卡进站/上车"
+    },
+    "notes": {
+      "en": "Beeping your card at the pole/gate. Don't forget!",
+      "zh": "在读卡器上刷卡。别忘了！"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "inchecken-uitchecken",
+    "dutch": "inchecken / uitchecken",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "check in / check out (OV-Chipkaart)",
+      "zh": "打卡进入 / 打卡退出 (公共交通)"
+    },
+    "notes": {
+      "en": "Mandatory use for the OV-Chipkaart (public transport card) when starting and ending a journey. Failure to check out results in overcharge.",
+      "zh": "使用公共交通芯片卡 (OV-Chipkaart) 必须执行的操作，忘记打卡退出会被罚款或多收钱。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "jaar",
+    "dutch": "jaar",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "year",
+      "zh": "年"
+    },
+    "notes": {
+      "en": "\"Gelukkig nieuwjaar!\" (Happy new year!).",
+      "zh": "\"Gelukkig nieuwjaar!\" (新年快乐！)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "jas",
+    "dutch": "jas",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "coat / jacket",
+      "zh": "外套"
+    },
+    "notes": {
+      "en": "\"Regenjas\" (raincoat). Essential.",
+      "zh": "\"Regenjas\" (雨衣)。必备。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "jurk",
+    "dutch": "jurk",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "dress",
+      "zh": "连衣裙"
+    },
+    "notes": {
+      "en": "Piece of clothing for women.",
+      "zh": "女士服装。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "kaas",
+    "dutch": "kaas",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "cheese",
+      "zh": "奶酪 / 芝士"
+    },
+    "notes": {
+      "en": "Gouda cheese is famous. \"Kaasschaaf\" (cheese slicer).",
+      "zh": "豪达奶酪很有名。\"Kaasschaaf\" (奶酪切片刀)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "kassa",
+    "dutch": "kassa",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "checkout / cash register",
+      "zh": "收银台 / 收银机"
+    },
+    "notes": {
+      "en": "Place in the shop where you pay; you often hear \"De volgende klant aan de kassa\".",
+      "zh": "商店里付款的地方，经常听到 \"De volgende klant aan de kassa\"（下一位顾客请到收银台）。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "kast",
+    "dutch": "kast",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "cupboard / closet",
+      "zh": "橱柜 / 衣柜"
+    },
+    "notes": {
+      "en": "\"Kledingkast\" (wardrobe) or \"keukenkast\" (kitchen cupboard).",
+      "zh": "\"Kledingkast\"(衣柜) 或 \"keukenkast\"(橱柜)。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "kijken",
+    "dutch": "kijken",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to look / watch",
+      "zh": "看"
+    },
+    "notes": {
+      "en": "\"TV kijken\" (watch TV).",
+      "zh": "\"TV kijken\" (看电视)。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "kind",
+    "dutch": "kind",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "child",
+      "zh": "孩子"
+    },
+    "notes": {
+      "en": "Young person.",
+      "zh": "小孩。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "klassenouder",
+    "dutch": "klassenouder",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "class parent",
+      "zh": "家委 / 班级家长代表"
+    },
+    "notes": {
+      "en": "Parent who helps the teacher organise activities for the class, for example trips or parties.",
+      "zh": "协助老师为班级组织活动（如郊游、班会）的家长代表。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "kleding",
+    "dutch": "kleding",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "clothing",
+      "zh": "衣服"
+    },
+    "notes": {
+      "en": "General term for clothes.",
+      "zh": "衣服的总称。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "kleur",
+    "dutch": "kleur",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "colour",
+      "zh": "颜色"
+    },
+    "notes": {
+      "en": "Useful when buying clothes or furniture: \"Welke kleur wilt u?\"",
+      "zh": "买衣服或家具时常会问：\"Welke kleur wilt u?\"（您要什么颜色？）。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "klok",
+    "dutch": "klok",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "clock",
+      "zh": "钟"
+    },
+    "notes": {
+      "en": "Tells you the time.",
+      "zh": "看时间的工具。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "koelkast",
+    "dutch": "koelkast",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "fridge",
+      "zh": "冰箱"
+    },
+    "notes": {
+      "en": "Where you keep your food fresh.",
+      "zh": "保鲜食物的地方。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "koffie",
+    "dutch": "koffie",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "coffee",
+      "zh": "咖啡"
+    },
+    "notes": {
+      "en": "\"Koffie verkeerd\" (coffee with lots of milk).",
+      "zh": "\"Koffie verkeerd\" (拿铁/牛奶咖啡)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "kopen",
+    "dutch": "kopen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to buy",
+      "zh": "买"
+    },
+    "notes": {
+      "en": "Buying something in a shop.",
+      "zh": "在商店买东西。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "korting",
+    "dutch": "korting",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "discount",
+      "zh": "折扣"
+    },
+    "notes": {
+      "en": "Look for this word in supermarkets! \"35% korting\".",
+      "zh": "超市里常见的词！\"35% korting\"。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "kortingsbon",
+    "dutch": "kortingsbon",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "discount coupon",
+      "zh": "折扣券 / 优惠券"
+    },
+    "notes": {
+      "en": "Paper or digital coupon that gives you a discount when you pay.",
+      "zh": "纸质或电子的优惠券，付款时可以抵扣一部分金额。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "kruispunt",
+    "dutch": "kruispunt",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "intersection / crossroads",
+      "zh": "十字路口 / 交叉路口"
+    },
+    "notes": {
+      "en": "Place where two or more roads cross each other.",
+      "zh": "两条或多条道路交汇的地方。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "kunnen",
+    "dutch": "kunnen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "can / be able to",
+      "zh": "能 / 会"
+    },
+    "notes": {
+      "en": "Ability. \"Ik kan fietsen\".",
+      "zh": "能力。\"Ik kan fietsen\"(我会骑车)。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "kwartier",
+    "dutch": "kwartier",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "quarter of an hour",
+      "zh": "一刻钟 (15分钟)"
+    },
+    "notes": {
+      "en": "15 minutes. \"Kwart over...\" (quarter past...).",
+      "zh": "15分钟。\"Kwart over...\" (几点一刻)。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "leerplicht",
+    "dutch": "leerplicht",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "compulsory education",
+      "zh": "义务教育"
+    },
+    "notes": {
+      "en": "Children must attend school from 5 to 16 years old.",
+      "zh": "荷兰的义务教育年龄是 5 岁到 16 岁。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "lekker",
+    "dutch": "lekker",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "tasty / nice / good",
+      "zh": "好吃的 / 舒服的 / 好的"
+    },
+    "notes": {
+      "en": "Very versatile. Used for food, weather (\"lekker weer\"), sleep (\"lekker slapen\"), or even a feeling (\"ik voel me niet lekker\").",
+      "zh": "非常万能。形容食物好吃、天气好(\"lekker weer\")、睡得香(\"lekker slapen\")，或身体舒服。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "lente",
+    "dutch": "lente",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "spring",
+      "zh": "春天"
+    },
+    "notes": {
+      "en": "Season with flowers and longer days; popular word because of tulips.",
+      "zh": "春天百花盛开，白天变长，也和郁金香季节联系在一起。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "leraar",
+    "dutch": "leraar",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "teacher",
+      "zh": "教师 / 老师"
+    },
+    "notes": {
+      "en": "The teacher, often addressed as 'juf' (female) or 'meester' (male) in primary schools. Parents communicate with them about the child's progress.",
+      "zh": "老师，在小学常被称为 'juf' (女) 或 'meester' (男)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "luisteren",
+    "dutch": "luisteren",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to listen",
+      "zh": "听"
+    },
+    "notes": {
+      "en": "\"Luister goed\" (Listen carefully).",
+      "zh": "\"Luister goed\" (仔细听)。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "maand",
+    "dutch": "maand",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "month",
+      "zh": "月"
+    },
+    "notes": {
+      "en": "January, February, etc.",
+      "zh": "一月、二月等。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "maat",
+    "dutch": "maat",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "size",
+      "zh": "尺码 / 大小"
+    },
+    "notes": {
+      "en": "Clothing size or shoe size; you can ask for a different size in a shop.",
+      "zh": "衣服或鞋子的尺码，在店里可以说想要换个尺寸。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "maken",
+    "dutch": "maken",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to make / repair",
+      "zh": "制造 / 修理"
+    },
+    "notes": {
+      "en": "To create something or fix something (\"auto maken\").",
+      "zh": "创造某物或修理某物(\"auto maken\")。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "mand",
+    "dutch": "mand",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "basket",
+      "zh": "篮子"
+    },
+    "notes": {
+      "en": "Basket on your bike or in the supermarket to carry things.",
+      "zh": "可以放在自行车上或超市里用来装东西的篮子。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "marktplaats",
+    "dutch": "Marktplaats",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "Marktplaats (eBay)",
+      "zh": "二手交易网 (Marktplaats)"
+    },
+    "notes": {
+      "en": "The most popular second-hand website in NL. Great for furnishing your house cheap.",
+      "zh": "荷兰最火的二手交易网站。买家具很便宜。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "melk",
+    "dutch": "melk",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "milk",
+      "zh": "牛奶"
+    },
+    "notes": {
+      "en": "Dutch people drink a lot of milk.",
+      "zh": "荷兰人喝很多牛奶。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "meteen",
+    "dutch": "meteen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "immediately / right away",
+      "zh": "立刻 / 马上"
+    },
+    "notes": {
+      "en": "\"Ik kom er meteen aan\" (I'm coming right away).",
+      "zh": "\"Ik kom er meteen aan\" (我马上就来)。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "metro",
+    "dutch": "metro",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "metro / underground",
+      "zh": "地铁"
+    },
+    "notes": {
+      "en": "Underground or fast light rail, for example in Amsterdam and Rotterdam.",
+      "zh": "地下或轻轨系统，例如阿姆斯特丹和鹿特丹的地铁。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "misschien",
+    "dutch": "misschien",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "maybe",
+      "zh": "也许 / 可能"
+    },
+    "notes": {
+      "en": "Used when you are not sure.",
+      "zh": "表示不确定。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "mist",
+    "dutch": "mist",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "fog / mist",
+      "zh": "雾"
+    },
+    "notes": {
+      "en": "Weather with low visibility; important when driving or cycling.",
+      "zh": "能见度低的天气，开车或骑车时要格外小心。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "mobiele-telefoon",
+    "dutch": "mobiele telefoon",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "mobile phone",
+      "zh": "手机"
+    },
+    "notes": {
+      "en": "Most people in the Netherlands communicate via mobile phone and apps like WhatsApp.",
+      "zh": "荷兰人主要通过手机和 WhatsApp 等应用联系彼此。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "moeten",
+    "dutch": "moeten",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "must / have to",
+      "zh": "必须"
+    },
+    "notes": {
+      "en": "Obligation. \"Ik moet werken\".",
+      "zh": "义务。\"Ik moet werken\"(我得工作)。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "mogen",
+    "dutch": "mogen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to be allowed to",
+      "zh": "可以 / 被允许"
+    },
+    "notes": {
+      "en": "\"Mag ik...?\" (May I...?). Permission.",
+      "zh": "\"Mag ik...?\" (我可以...吗？)。表示请求许可。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "morgen",
+    "dutch": "morgen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "tomorrow / morning",
+      "zh": "明天 / 早晨"
+    },
+    "notes": {
+      "en": "Can mean \"tomorrow\" or \"morning\". \"Goedemorgen\" (Good morning).",
+      "zh": "可以是\"明天\"也可以是\"早晨\"。\"Goedemorgen\" (早上好)。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "op-tijd-komen",
+    "dutch": "op tijd komen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to be on time",
+      "zh": "准时到达"
+    },
+    "notes": {
+      "en": "Very important, especially for formal appointments or official visits. If you are late, you must call.",
+      "zh": "在正式场合（如医院、面试）非常重要。如果迟到，必须打电话告知。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "openbaar-vervoer",
+    "dutch": "openbaar vervoer",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "public transport",
+      "zh": "公共交通"
+    },
+    "notes": {
+      "en": "Bus, train, metro, tram. You must check in (inchecken) and check out (uitchecken) with your OV-chipkaart.",
+      "zh": "公共汽车、火车、地铁。必须使用 OV-chipkaart 打卡进入和打卡离开。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "oplader",
+    "dutch": "oplader",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "charger",
+      "zh": "充电器"
+    },
+    "notes": {
+      "en": "Device you use to charge your phone, laptop or bike battery.",
+      "zh": "给手机、电脑或电动自行车电池充电的设备。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "oranje",
+    "dutch": "oranje",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "orange",
+      "zh": "橙色"
+    },
+    "notes": {
+      "en": "The national colour of the Netherlands (Royal House).",
+      "zh": "荷兰的国家代表色（王室）。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "ouderavond",
+    "dutch": "ouderavond",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "parents' evening",
+      "zh": "家长会"
+    },
+    "notes": {
+      "en": "Evening at school where parents talk with the teacher about their child.",
+      "zh": "学校组织的晚上家长会，家长和老师一起谈孩子的情况。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "ouders",
+    "dutch": "ouders",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "parents",
+      "zh": "父母"
+    },
+    "notes": {
+      "en": "Father and mother.",
+      "zh": "爸爸妈妈。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "ouders-vragen",
+    "dutch": "aan de school vragen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to ask the school for permission",
+      "zh": "向学校请假 / 请求许可"
+    },
+    "notes": {
+      "en": "If a child needs to miss school for special reasons (e.g., family celebration, unusual vacation), parents must ask the school beforehand.",
+      "zh": "如果孩子因特殊原因缺课（例如庆祝活动），家长必须事先向学校请假。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "ov-chipkaart",
+    "dutch": "ov-chipkaart",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "public transport card",
+      "zh": "公交卡 (OV卡)"
+    },
+    "notes": {
+      "en": "The universal card for train, bus, tram, metro. Must check in AND out.",
+      "zh": "通用于火车、巴士、电车、地铁。必须上下车都刷卡(check in/out)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "overstappen",
+    "dutch": "overstappen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to transfer",
+      "zh": "换乘"
+    },
+    "notes": {
+      "en": "Switching trains/buses. You usually check out and in again if changing operators (e.g. NS to Arriva).",
+      "zh": "换乘火车/巴士。如果换运营商(如NS换Arriva)通常需要先出再进。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "paraplu",
+    "dutch": "paraplu",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "umbrella",
+      "zh": "雨伞"
+    },
+    "notes": {
+      "en": "Essential survival gear in NL.",
+      "zh": "荷兰生存必备装备。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "parkeerplaats",
+    "dutch": "parkeerplaats",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "parking place / parking spot",
+      "zh": "停车位"
+    },
+    "notes": {
+      "en": "Marked place where you may park your car, sometimes paid.",
+      "zh": "画线允许停放车辆的地方，有时需要付费。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pasen",
+    "dutch": "Pasen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "Easter",
+      "zh": "复活节"
+    },
+    "notes": {
+      "en": "A Christian holiday (christelijke dag), often celebrated with eating eggs.",
+      "zh": "基督教节日，人们通常吃鸡蛋庆祝。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "peper",
+    "dutch": "peper",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "pepper",
+      "zh": "胡椒"
+    },
+    "notes": {
+      "en": "Spice.",
+      "zh": "香料。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pindakaas",
+    "dutch": "pindakaas",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "peanut butter",
+      "zh": "花生酱"
+    },
+    "notes": {
+      "en": "Literally \"peanut cheese\". Dutch people love it. DO NOT translate as \"peanut cheese\" to English speakers.",
+      "zh": "字面意思是\"花生奶酪\"，其实是花生酱。荷兰人超爱。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pinnen",
+    "dutch": "pinnen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "pay by card",
+      "zh": "刷卡支付"
+    },
+    "notes": {
+      "en": "Paying with debit card (Maestro/V-Pay). Credit cards are often NOT accepted in supermarkets (AH).",
+      "zh": "用借记卡支付。注意 Albert Heijn 超市通常不收信用卡(Credit Card)，只收储蓄卡。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "portemonnee",
+    "dutch": "portemonnee",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "wallet",
+      "zh": "钱包"
+    },
+    "notes": {
+      "en": "Small bag for your money and bank cards; don’t forget it when you go shopping.",
+      "zh": "装现金和银行卡的小包，出门购物时别忘了带。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "praten",
+    "dutch": "praten",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to talk",
+      "zh": "说话 / 交谈"
+    },
+    "notes": {
+      "en": "Communicating with words.",
+      "zh": "交谈。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "prijs",
+    "dutch": "prijs",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "price",
+      "zh": "价格"
+    },
+    "notes": {
+      "en": "How much something costs; combine with \"korting\" and \"aanbieding\".",
+      "zh": "东西的价钱，常和折扣 korting、特价 aanbieding 等词一起出现。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "rapport-school",
+    "dutch": "schoolrapport",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "school report",
+      "zh": "成绩单 / 学习报告"
+    },
+    "notes": {
+      "en": "Paper or digital report that shows how a child is doing at school.",
+      "zh": "记录孩子在学校学习和表现情况的纸质或电子报告。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "rare",
+    "dutch": "raar",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "weird / strange",
+      "zh": "奇怪"
+    },
+    "notes": {
+      "en": "FALSE FRIEND! \"Een rare man\" is a weird man, not a rare one. Rare (scarce) is \"zeldzaam\".",
+      "zh": "假朋友！\"Raar\" 是奇怪，不是稀有。稀有是 \"zeldzaam\"。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "recept",
+    "dutch": "recept",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "recipe",
+      "zh": "菜谱 / 食谱"
+    },
+    "notes": {
+      "en": "Instructions for how to cook a dish; many Dutch families share simple recepten.",
+      "zh": "教你做菜的说明，很多家庭会互相分享简单的 recepten。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "regen",
+    "dutch": "regen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "rain",
+      "zh": "雨"
+    },
+    "notes": {
+      "en": "Very common in the Netherlands; combine with \"paraplu\" and \"regenjas\".",
+      "zh": "荷兰非常常见的天气，常和雨伞 paraplu、雨衣 regenjas 一起出现。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "regenkleding",
+    "dutch": "regenkleding",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "rain gear",
+      "zh": "雨具 / 雨衣"
+    },
+    "notes": {
+      "en": "Rain suit (\"regenpak\") is common for cyclists.",
+      "zh": "骑行者常穿雨衣套装(\"regenpak\")。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "richting",
+    "dutch": "richting",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "direction",
+      "zh": "方向"
+    },
+    "notes": {
+      "en": "\"In de richting van...\" (In the direction of...).",
+      "zh": "\"In de richting van...\" (朝...方向)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "rok",
+    "dutch": "rok",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "skirt",
+      "zh": "半身裙"
+    },
+    "notes": {
+      "en": "Not to be confused with \"jurk\".",
+      "zh": "不要和\"jurk\"(连衣裙)混淆。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "rood",
+    "dutch": "rood",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "red",
+      "zh": "红色"
+    },
+    "notes": {
+      "en": "Colour of danger or stop.",
+      "zh": "危险或停止的颜色。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "rotonde",
+    "dutch": "rotonde",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "roundabout",
+      "zh": "环岛 / 旋转路口"
+    },
+    "notes": {
+      "en": "Circular intersection where traffic drives around a central island.",
+      "zh": "车辆绕中心岛行驶的圆形路口。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "schoenen",
+    "dutch": "schoenen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "shoes",
+      "zh": "鞋子"
+    },
+    "notes": {
+      "en": "Singular: \"schoen\".",
+      "zh": "单数：\"schoen\"。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "schoolplein",
+    "dutch": "schoolplein",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "schoolyard",
+      "zh": "学校操场 / 校园广场"
+    },
+    "notes": {
+      "en": "Outside area of the school where children play during breaks.",
+      "zh": "学校外面的活动区域，孩子在课间会到这里玩耍。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "shampoo",
+    "dutch": "shampoo",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "shampoo",
+      "zh": "洗发水 / 洗发露"
+    },
+    "notes": {
+      "en": "Used for washing your hair; bought at the supermarket or drogist.",
+      "zh": "用于洗头的洗发用品，可在超市或药妆店（drogist）购买。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "sjaal",
+    "dutch": "sjaal",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "scarf",
+      "zh": "围巾"
+    },
+    "notes": {
+      "en": "Worn around the neck in winter to keep warm.",
+      "zh": "冬天围在脖子上保暖的衣物。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "slapen",
+    "dutch": "slapen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to sleep",
+      "zh": "睡觉"
+    },
+    "notes": {
+      "en": "Resting at night.",
+      "zh": "晚上休息。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "sleutel",
+    "dutch": "sleutel",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "key",
+      "zh": "钥匙"
+    },
+    "notes": {
+      "en": "Don't lose your house keys (\"huissleutels\")!",
+      "zh": "别把家里的钥匙(\"huissleutels\")弄丢了！"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "slim",
+    "dutch": "slim",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "smart / clever",
+      "zh": "聪明"
+    },
+    "notes": {
+      "en": "FALSE FRIEND! Not \"slim\" (thin). Thin is \"dun\" or \"slank\".",
+      "zh": "假朋友！不是 \"slim\"(苗条)。苗条是 \"dun\" 或 \"slank\"。它是\"聪明\"的意思。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "smal",
+    "dutch": "smal",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "narrow",
+      "zh": "窄"
+    },
+    "notes": {
+      "en": "False friend. Looks like \"small\", but means \"narrow\". Small is \"klein\".",
+      "zh": "假朋友。看起来像 \"small\"，但意思是\"窄\"。小是 \"klein\"。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "sneeuw",
+    "dutch": "sneeuw",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "snow",
+      "zh": "雪"
+    },
+    "notes": {
+      "en": "Snow can make cycling and walking slippery.",
+      "zh": "下雪时路面很滑，骑车和走路都要注意安全。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "snelheid",
+    "dutch": "snelheid",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "speed",
+      "zh": "速度"
+    },
+    "notes": {
+      "en": "Watch your speed (\"maximumsnelheid\").",
+      "zh": "注意限速(\"maximumsnelheid\")。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "sokken",
+    "dutch": "sokken",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "socks",
+      "zh": "袜子"
+    },
+    "notes": {
+      "en": "Singular: \"sok\".",
+      "zh": "单数：\"sok\"。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "speeltuin",
+    "dutch": "speeltuin",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "playground",
+      "zh": "游乐场 / 儿童活动场"
+    },
+    "notes": {
+      "en": "Outdoor place with swings and slides where children can play.",
+      "zh": "有秋千、滑梯等设施，供孩子玩耍的户外场所。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "spits",
+    "dutch": "spits",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "rush hour",
+      "zh": "高峰期"
+    },
+    "notes": {
+      "en": "Busy traffic time. \"Ochtendspits\" (morning rush) and \"avondspits\" (evening rush).",
+      "zh": "交通繁忙时段。分为早高峰(\"Ochtendspits\")和晚高峰(\"avondspits\")。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "spoor",
+    "dutch": "spoor",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "track / platform",
+      "zh": "站台 / 轨道"
+    },
+    "notes": {
+      "en": "\"De trein vertrekt van spoor 5\". Pay attention to changes.",
+      "zh": "\"火车从5号站台出发\"。注意站台变更。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "sportvereniging",
+    "dutch": "sportvereniging",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "sports club / association",
+      "zh": "体育俱乐部 / 运动协会"
+    },
+    "notes": {
+      "en": "Place where people play sports in their free time (vrije tijd). Members pay a contribution (contributie).",
+      "zh": "人们在业余时间运动的社团。会员需要支付会费 (**contributie**)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "stamppot",
+    "dutch": "stamppot",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "mash pot",
+      "zh": "土豆泥杂烩"
+    },
+    "notes": {
+      "en": "Traditional winter dish. Mashed potatoes mixed with vegetables (kale, carrots) and sausage (\"rookworst\").",
+      "zh": "传统冬日菜。土豆泥混合蔬菜(羽衣甘蓝、胡萝卜)配熏香肠。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "statiegeld",
+    "dutch": "statiegeld",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "deposit (bottles)",
+      "zh": "瓶子押金"
+    },
+    "notes": {
+      "en": "Deposit on plastic bottles and cans. Return them to the supermarket machine (\"flessenautomaat\").",
+      "zh": "塑料瓶和罐头的押金。去超市机器(\"flessenautomaat\")退回可拿钱。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "station",
+    "dutch": "station",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "station",
+      "zh": "火车站"
+    },
+    "notes": {
+      "en": "\"Centraal Station\" (CS) is the main station.",
+      "zh": "\"Centraal Station\" (CS) 是中央火车站。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "stoep",
+    "dutch": "stoep",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "pavement / sidewalk",
+      "zh": "人行道"
+    },
+    "notes": {
+      "en": "Part of the street where pedestrians walk; not for bikes.",
+      "zh": "行人行走的路，一般不允许骑自行车。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "stoplicht",
+    "dutch": "stoplicht",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "traffic light",
+      "zh": "红绿灯"
+    },
+    "notes": {
+      "en": "Lamp with red, orange and green lights that controls traffic.",
+      "zh": "由红、黄、绿三色灯组成，用来控制交通的信号灯。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "straks",
+    "dutch": "straks",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "later / in a bit",
+      "zh": "过会儿 / 等一下"
+    },
+    "notes": {
+      "en": "\"Tot straks!\" means \"See you in a bit!\". \"Later\" usually means much further in the future.",
+      "zh": "指\"今天稍晚\"或\"不久后\"。\"Tot straks!\" 是\"一会儿见\"。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "suiker",
+    "dutch": "suiker",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "sugar",
+      "zh": "糖"
+    },
+    "notes": {
+      "en": "Sweetener.",
+      "zh": "甜味剂。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "supermarkt",
+    "dutch": "supermarkt",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "supermarket",
+      "zh": "超市"
+    },
+    "notes": {
+      "en": "AH (Albert Heijn) and Jumbo are common.",
+      "zh": "AH (Albert Heijn) 和 Jumbo 很常见。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "tandpasta",
+    "dutch": "tandpasta",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "toothpaste",
+      "zh": "牙膏"
+    },
+    "notes": {
+      "en": "You put toothpaste on your toothbrush to brush your teeth.",
+      "zh": "刷牙时挤在牙刷上的牙膏。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "tas",
+    "dutch": "tas",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "bag",
+      "zh": "袋子 / 包"
+    },
+    "notes": {
+      "en": "Can be a shopping bag, school bag or handbag.",
+      "zh": "可以是购物袋、书包或手提包。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "telefoon",
+    "dutch": "telefoon",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "telephone / phone",
+      "zh": "电话 / 手机"
+    },
+    "notes": {
+      "en": "Can be a landline or mobile phone, depending on the context.",
+      "zh": "既可以指座机，也可以指手机，具体含义看上下文。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "thee",
+    "dutch": "thee",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "tea",
+      "zh": "茶"
+    },
+    "notes": {
+      "en": "\"Kopje thee?\" (Cup of tea?).",
+      "zh": "\"Kopje thee?\" (来杯茶吗？)。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "tijd",
+    "dutch": "tijd",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "time",
+      "zh": "时间"
+    },
+    "notes": {
+      "en": "\"Heb je tijd?\" (Do you have time?).",
+      "zh": "\"Heb je tijd?\" (你有空吗？)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "trakteren",
+    "dutch": "trakteren",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to treat / buy treats",
+      "zh": "请客 / 招待"
+    },
+    "notes": {
+      "en": "On your birthday, you buy cake/treats for your colleagues/classmates (you treat them).",
+      "zh": "过生日时，通常是你自己买蛋糕或糖果请同事或同学吃。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "tram",
+    "dutch": "tram",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "tram",
+      "zh": "有轨电车"
+    },
+    "notes": {
+      "en": "Common public transport in big cities like Amsterdam, The Hague and Rotterdam.",
+      "zh": "阿姆斯特丹、海牙、鹿特丹等大城市常见的公共交通工具。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "trein",
+    "dutch": "trein",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "train",
+      "zh": "火车"
+    },
+    "notes": {
+      "en": "NS trains connect most Dutch cities; you can sit in \"stilte-coupé\" (quiet carriage).",
+      "zh": "NS 火车连接大部分城市，还可以选择安静车厢（stilte-coupé）。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "treinkaartje",
+    "dutch": "treinkaartje",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "train ticket",
+      "zh": "火车票"
+    },
+    "notes": {
+      "en": "Often digital now (OV-chipkaart or app), but the word is still used.",
+      "zh": "虽然现在多用OV卡或App，但这个词还在用。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "trui",
+    "dutch": "trui",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "sweater / jumper",
+      "zh": "毛衣 / 卫衣"
+    },
+    "notes": {
+      "en": "Warm clothes for winter.",
+      "zh": "冬天的保暖衣物。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "uitchecken",
+    "dutch": "uitchecken",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to check out",
+      "zh": "刷卡出站/下车"
+    },
+    "notes": {
+      "en": "Crucial! If you forget, you lose ~20 euros deposit.",
+      "zh": "非常重要！忘记刷下车会扣除约20欧押金。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "vandaag",
+    "dutch": "vandaag",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "today",
+      "zh": "今天"
+    },
+    "notes": {
+      "en": "This day.",
+      "zh": "今天。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "verjaardag",
+    "dutch": "verjaardag",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "birthday",
+      "zh": "生日"
+    },
+    "notes": {
+      "en": "Important! Congratulate the person AND their family/friends. \"Circle parties\" are common.",
+      "zh": "很重要！不仅祝贺寿星，还要祝贺ta的家人朋友。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "verkeer",
+    "dutch": "verkeer",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "traffic",
+      "zh": "交通"
+    },
+    "notes": {
+      "en": "Cars, bikes, trams together.",
+      "zh": "车流、人流的总称。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "vers",
+    "dutch": "vers",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "fresh",
+      "zh": "新鲜的"
+    },
+    "notes": {
+      "en": "\"Vers brood\" (fresh bread) or \"verse groenten\" (fresh vegetables).",
+      "zh": "\"Vers brood\"(新鲜面包) 或 \"verse groenten\"(新鲜蔬菜)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "vertraging",
+    "dutch": "vertraging",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "delay",
+      "zh": "晚点 / 延误"
+    },
+    "notes": {
+      "en": "Common word for train travelers. \"De trein heeft 5 minuten vertraging\".",
+      "zh": "坐火车常听到的词。\"火车晚点5分钟\"。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "verzuimen",
+    "dutch": "verzuimen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to be absent / truancy",
+      "zh": "缺课 / 旷课"
+    },
+    "notes": {
+      "en": "Missing school (wegblijven van school). If this happens, parents can be fined. Parents must request permission (aan de school vragen) for special leave.",
+      "zh": "无故缺课。家长可能因此被罚款。特殊情况必须事先向学校请假。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "vinden",
+    "dutch": "vinden",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to find / to think (opinion)",
+      "zh": "找到 / 觉得"
+    },
+    "notes": {
+      "en": "\"Ik vind het leuk\" (I think it's nice) OR finding an object.",
+      "zh": "\"Ik vind het leuk\" (我觉得它不错) 或者找到东西。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "vis",
+    "dutch": "vis",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "fish",
+      "zh": "鱼"
+    },
+    "notes": {
+      "en": "\"Haring\" (herring) is a Dutch snack.",
+      "zh": "\"Haring\"(鲱鱼)是荷兰特色小吃。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "vlees",
+    "dutch": "vlees",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "meat",
+      "zh": "肉"
+    },
+    "notes": {
+      "en": "\"Rundvlees\" (beef), \"varkensvlees\" (pork), \"kip\" (chicken).",
+      "zh": "\"Rundvlees\"(牛肉)，\"varkensvlees\"(猪肉)，\"kip\"(鸡肉)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "vragen",
+    "dutch": "vragen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to ask",
+      "zh": "问"
+    },
+    "notes": {
+      "en": "\"Mag ik iets vragen?\" (Can I ask something?).",
+      "zh": "\"Mag ik iets vragen?\" (我能问个问题吗？)。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "vrij",
+    "dutch": "vrij",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "free / off",
+      "zh": "空闲 / 自由"
+    },
+    "notes": {
+      "en": "\"Ben je vrij?\" (Are you off work? / Are you free?).",
+      "zh": "\"Ben je vrij?\" (你休息吗？/你有空吗？)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "vrijwillig",
+    "dutch": "vrijwillig",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "voluntary / optional",
+      "zh": "自愿的 / 非强制的"
+    },
+    "notes": {
+      "en": "Used for parental contribution (ouderbijdrage) to school or non-paid work (vrijwilligerswerk).",
+      "zh": "用于描述非强制性的捐款（如学校的杂费）或无偿工作。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "vrijwilligerswerk",
+    "dutch": "vrijwilligerswerk",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "volunteer work",
+      "zh": "志愿者工作"
+    },
+    "notes": {
+      "en": "Unpaid work you do to help others or the community, for example in a buurthuis or sportvereniging.",
+      "zh": "不拿工资、为了帮助他人或社区而做的工作，例如在社区中心或体育俱乐部当志愿者。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "water",
+    "dutch": "water",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "water",
+      "zh": "水"
+    },
+    "notes": {
+      "en": "Tap water (\"kraanwater\") is drinkable in NL.",
+      "zh": "荷兰的自来水(\"kraanwater\")可以直接喝。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "week",
+    "dutch": "week",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "week",
+      "zh": "周"
+    },
+    "notes": {
+      "en": "7 days.",
+      "zh": "7天。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "wijn",
+    "dutch": "wijn",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "wine",
+      "zh": "葡萄酒"
+    },
+    "notes": {
+      "en": "Red (\"rode\") or white (\"witte\").",
+      "zh": "红酒(\"rode\")或白酒(\"witte\")。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "willen",
+    "dutch": "willen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to want",
+      "zh": "想要"
+    },
+    "notes": {
+      "en": "\"Ik wil graag...\" (I would like...).",
+      "zh": "\"Ik wil graag...\" (我想要...)。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "wind",
+    "dutch": "wind",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "wind",
+      "zh": "风"
+    },
+    "notes": {
+      "en": "\"Tegenwind\" (headwind) is the cyclist's enemy. \"Meewind\" is rare luck.",
+      "zh": "\"Tegenwind\"(逆风)是骑车人的噩梦。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "winkel",
+    "dutch": "winkel",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "shop / store",
+      "zh": "商店"
+    },
+    "notes": {
+      "en": "\"Winkelcentrum\" (shopping center).",
+      "zh": "\"Winkelcentrum\" (购物中心)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "winter",
+    "dutch": "winter",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "winter",
+      "zh": "冬天"
+    },
+    "notes": {
+      "en": "Cold season; people wear a warm coat, scarf and gloves.",
+      "zh": "一年中最冷的季节，人们会穿厚外套、围巾和手套。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "wit",
+    "dutch": "wit",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "white",
+      "zh": "白色"
+    },
+    "notes": {
+      "en": "Opposite of black.",
+      "zh": "黑色的反义词。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "worden",
+    "dutch": "worden",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to become / to get",
+      "zh": "变得 / 成为"
+    },
+    "notes": {
+      "en": "Crucial verb. \"Ik word oud\" (I am getting old). Also used for passive voice.",
+      "zh": "核心动词。\"Ik word...\" (我变得...)。也用于被动语态。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "zebrapad",
+    "dutch": "zebrapad",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "pedestrian crossing",
+      "zh": "斑马线"
+    },
+    "notes": {
+      "en": "Striped crossing where cars must stop for pedestrians.",
+      "zh": "路面上画有条纹的行人过街线，车辆需要礼让行人。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "zeep",
+    "dutch": "zeep",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "soap",
+      "zh": "肥皂 / 香皂"
+    },
+    "notes": {
+      "en": "Solid or liquid soap for washing hands or body.",
+      "zh": "固体或液体的香皂/洗手液，用来洗手或洗澡。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "zeggen",
+    "dutch": "zeggen",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to say",
+      "zh": "说"
+    },
+    "notes": {
+      "en": "\"Wat zeg je?\" (What do you say?).",
+      "zh": "\"Wat zeg je?\" (你说什么？)。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "zoeken",
+    "dutch": "zoeken",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "to search / look for",
+      "zh": "寻找"
+    },
+    "notes": {
+      "en": "Looking for something lost.",
+      "zh": "找东西。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "zomer",
+    "dutch": "zomer",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "summer",
+      "zh": "夏天"
+    },
+    "notes": {
+      "en": "Often used in \"zomervakantie\" (summer holiday).",
+      "zh": "常见于 \"zomervakantie\"（暑假、暑期度假）。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "zout",
+    "dutch": "zout",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "salt",
+      "zh": "盐"
+    },
+    "notes": {
+      "en": "Seasoning.",
+      "zh": "调味料。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "zwart",
+    "dutch": "zwart",
+    "category": "daily",
+    "level": "A2",
+    "translations": {
+      "en": "black",
+      "zh": "黑色"
+    },
+    "notes": {
+      "en": "\"Zwartrijden\" (traveling without a ticket).",
+      "zh": "\"Zwartrijden\" (逃票)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "aannemen",
+    "dutch": "aannemen",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "to accept / to hire",
+      "zh": "接受 / 雇用"
+    },
+    "notes": {
+      "en": "Used for accepting something (\"een baan aannemen\") or hiring staff (\"iemand aannemen\").",
+      "zh": "既可以指接受一份工作 (een baan aannemen)，也可以指公司录用员工 (iemand aannemen)。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "aanwezig",
+    "dutch": "aanwezig",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "present",
+      "zh": "出席 / 在场"
+    },
+    "notes": {
+      "en": "Opposite of \"afwezig\".",
+      "zh": "\"Afwezig\"(缺席)的反义词。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "afdeling",
+    "dutch": "afdeling",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "department / section",
+      "zh": "部门 / 科室"
+    },
+    "notes": {
+      "en": "Used both at work (finance department, HR) and in shops (clothing department, fruit & vegetables).",
+      "zh": "既可指公司的财务部、人事部，也可指超市里的蔬果区、服装区等分区。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "afwezig",
+    "dutch": "afwezig",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "absent",
+      "zh": "缺席 / 不在"
+    },
+    "notes": {
+      "en": "Not being at work or school.",
+      "zh": "没来上班或上学。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "arbeidscontract",
+    "dutch": "arbeidscontract",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "employment contract",
+      "zh": "劳动合同"
+    },
+    "notes": {
+      "en": "Another word for arbeidsovereenkomst; describes your job conditions.",
+      "zh": "和 arbeidsovereenkomst 类似的说法，写明你的工作条件和权利义务。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "arbeidsovereenkomst",
+    "dutch": "arbeidsovereenkomst",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "employment contract",
+      "zh": "劳动合同"
+    },
+    "notes": {
+      "en": "Written agreement between employer and employee covering salary, hours, job duties (werkzaamheden), and whether it is fixed (vast) or temporary (tijdelijk).",
+      "zh": "书面合同。规定工作时间、工资、内容和合同期限（固定或临时）。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "arbeidstijden",
+    "dutch": "arbeidstijden",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "working hours",
+      "zh": "工作时间"
+    },
+    "notes": {
+      "en": "The times when you are expected to work, for example 9:00–17:00.",
+      "zh": "你需要上班的时间段，例如 9:00–17:00。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "arbowet",
+    "dutch": "Arbowet",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "Working Conditions Act",
+      "zh": "劳动安全法"
+    },
+    "notes": {
+      "en": "Requires employers to ensure a healthy and safe workplace.",
+      "zh": "要求雇主确保员工拥有健康安全的工作场所的法律。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "bedrijfsarts",
+    "dutch": "bedrijfsarts",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "company doctor / occupational physician",
+      "zh": "企业医生 / 职业病医生"
+    },
+    "notes": {
+      "en": "Doctor who advises employer and employee about health at work.",
+      "zh": "为雇主和雇员提供与工作相关健康建议的医生。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "beoordelingsgesprek",
+    "dutch": "beoordelingsgesprek",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "evaluation meeting",
+      "zh": "评估面谈 / 考核谈话"
+    },
+    "notes": {
+      "en": "Meeting where your manager officially judges your work performance, sometimes linked to salary increase.",
+      "zh": "上级正式评价你工作表现的谈话，有时会和加薪挂钩。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "bijscholen",
+    "dutch": "bijscholen",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "to retrain / further train",
+      "zh": "再培训 / 进修"
+    },
+    "notes": {
+      "en": "Taking a course (cursus) to update your skills for your current job (e.g., learning new computer skills).",
+      "zh": "为当前工作学习新技能，进行再培训。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "brutosalaris",
+    "dutch": "brutosalaris",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "gross salary",
+      "zh": "税前工资"
+    },
+    "notes": {
+      "en": "Salary before taxes (loonheffing) and premiums (like pension and unemployment insurance) are deducted.",
+      "zh": "尚未扣除税金和保险的工资总额。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "cao",
+    "dutch": "CAO",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "Collective Labour Agreement",
+      "zh": "集体劳动协议"
+    },
+    "notes": {
+      "en": "Agreements about working conditions, salary, etc., made between employers and unions (vakbonden) for an entire sector.",
+      "zh": "行业内雇主和工会达成的关于工作条件和工资的协议。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "collega",
+    "dutch": "collega",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "colleague",
+      "zh": "同事"
+    },
+    "notes": {
+      "en": "People you work with.",
+      "zh": "一起工作的人。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "computer",
+    "dutch": "computer",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "computer",
+      "zh": "电脑"
+    },
+    "notes": {
+      "en": "Important tool for work, study and administration.",
+      "zh": "工作、学习和处理行政事务时都离不开的工具。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "contract",
+    "dutch": "contract",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "contract",
+      "zh": "合同"
+    },
+    "notes": {
+      "en": "\"Vast contract\" (permanent) is gold for mortgages. \"Tijdelijk\" is temporary.",
+      "zh": "\"Vast contract\"(永久合同)对贷款买房很重要。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "cv",
+    "dutch": "cv",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "CV / curriculum vitae",
+      "zh": "简历"
+    },
+    "notes": {
+      "en": "Document with your work experience and education, used for job applications.",
+      "zh": "记录你的工作经历和教育背景，用于求职的文档。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "e-mail",
+    "dutch": "e-mail",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "e-mail",
+      "zh": "电子邮件"
+    },
+    "notes": {
+      "en": "Formal way of written communication for work, school and government.",
+      "zh": "在工作、学校和政府场景中常用的正式书面沟通方式。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "ervaring",
+    "dutch": "ervaring",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "experience",
+      "zh": "经验"
+    },
+    "notes": {
+      "en": "\"Werkervaring\" (work experience).",
+      "zh": "\"Werkervaring\" (工作经验)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "flexplek",
+    "dutch": "flexplek",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "flex desk / shared desk",
+      "zh": "共享办公位 / 流动工位"
+    },
+    "notes": {
+      "en": "Workplace in the office that is not fixed for one person; employees choose a free desk each day.",
+      "zh": "办公室里不固定分配给某一个人的工位，员工每天自由选择空位。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "fulltime",
+    "dutch": "fulltime",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "full-time",
+      "zh": "全职"
+    },
+    "notes": {
+      "en": "Working around 36–40 hours per week.",
+      "zh": "每周工作大约 36–40 小时。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "functioneringsgesprek",
+    "dutch": "functioneringsgesprek",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "performance review meeting",
+      "zh": "工作表现面谈 / 绩效沟通"
+    },
+    "notes": {
+      "en": "Planned talk between employee and manager about how the work is going and what can be improved.",
+      "zh": "员工和上级之间约好的谈话，讨论工作情况和可以改进的地方。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "kantoor",
+    "dutch": "kantoor",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "office",
+      "zh": "办公室"
+    },
+    "notes": {
+      "en": "Place where many people work at desks with computers.",
+      "zh": "很多人坐在电脑前工作的办公场所。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "kvk",
+    "dutch": "Kamer van Koophandel",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "Chamber of Commerce",
+      "zh": "工商局"
+    },
+    "notes": {
+      "en": "Mandatory place to register a new business.",
+      "zh": "在荷兰注册公司的强制性机构。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "loonheffing",
+    "dutch": "loonheffing",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "wage tax / payroll tax",
+      "zh": "所得税 / 薪资税"
+    },
+    "notes": {
+      "en": "The tax deducted from your gross salary (brutoloon). This includes income tax and national insurance contributions.",
+      "zh": "从税前工资 (**brutoloon**) 中扣除的税款。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "lunchpauze",
+    "dutch": "lunchpauze",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "lunch break",
+      "zh": "午休 / 午餐时间"
+    },
+    "notes": {
+      "en": "Break in the middle of the day to eat lunch, often bread with cheese.",
+      "zh": "中午的休息时间用来吃午饭，很多人吃面包配奶酪。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "map",
+    "dutch": "map",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "folder",
+      "zh": "文件夹"
+    },
+    "notes": {
+      "en": "FALSE FRIEND! Not a \"map\" (geographic). A map is \"kaart\" or \"plattegrond\". \"Map\" is a file folder.",
+      "zh": "假朋友！不是地图 (kaart)。\"Map\" 是文件夹。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "nettosalaris",
+    "dutch": "nettosalaris",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "net salary",
+      "zh": "税后工资"
+    },
+    "notes": {
+      "en": "The actual amount of money received in your bank account after all deductions.",
+      "zh": "扣除所有税费和保险后实际到账的金额。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "ondernemingsplan",
+    "dutch": "ondernemingsplan",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "business plan",
+      "zh": "商业计划书"
+    },
+    "notes": {
+      "en": "Required when starting your own business (eigen zaak) and seeking funding from a bank or municipality.",
+      "zh": "创建自己的公司时必需的文件，用于从银行或市政厅获得贷款。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "ontslag",
+    "dutch": "ontslag",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "dismissal / resignation",
+      "zh": "解雇 / 辞职"
+    },
+    "notes": {
+      "en": "\"Ontslag nemen\" (quit) or \"ontslag krijgen\" (get fired).",
+      "zh": "\"Ontslag nemen\" 是辞职，\"ontslag krijgen\" 是被解雇。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "ontslag-krijgen",
+    "dutch": "ontslag krijgen",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "to be dismissed / fired",
+      "zh": "被解雇 / 被辞退"
+    },
+    "notes": {
+      "en": "If dismissed, you must immediately write a letter disagreeing with the decision (niet eens zijn) and contact the UWV or the union.",
+      "zh": "如果被解雇，必须立即写信表示不同意，并联系 UWV 或工会。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "ontslagvergoeding",
+    "dutch": "ontslagvergoeding",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "severance pay",
+      "zh": "解雇补偿金"
+    },
+    "notes": {
+      "en": "Money you may receive from your employer when you are dismissed.",
+      "zh": "被解雇时雇主可能需要支付给你的补偿金。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "opdracht",
+    "dutch": "opdracht",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "assignment / task",
+      "zh": "任务 / 作业"
+    },
+    "notes": {
+      "en": "Task you have to do.",
+      "zh": "必须完成的任务。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "opleiding",
+    "dutch": "opleiding",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "education / training",
+      "zh": "教育 / 培训"
+    },
+    "notes": {
+      "en": "Your study or professional training.",
+      "zh": "你的学历或职业培训。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "overhemd",
+    "dutch": "overhemd",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "shirt (dress shirt)",
+      "zh": "衬衫"
+    },
+    "notes": {
+      "en": "Formal clothing for men.",
+      "zh": "男士正装。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "overuren",
+    "dutch": "overuren",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "overtime",
+      "zh": "加班"
+    },
+    "notes": {
+      "en": "Extra hours worked. Sometimes paid, sometimes \"tijd voor tijd\" (time back).",
+      "zh": "额外工作时间。有时给钱，有时调休(\"tijd voor tijd\")。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "parttime",
+    "dutch": "parttime",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "part-time",
+      "zh": "兼职 / 非全职"
+    },
+    "notes": {
+      "en": "Working fewer hours than a full-time job, for example 16 or 24 hours.",
+      "zh": "工作时间少于全职，例如每周 16 或 24 小时。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "pauze",
+    "dutch": "pauze",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "break / pause",
+      "zh": "休息 / 间歇"
+    },
+    "notes": {
+      "en": "Short break during work or school; you often drink coffee or tea.",
+      "zh": "工作或上课中的短暂休息时间，常会喝杯咖啡或茶。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "proeftijd",
+    "dutch": "proeftijd",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "probation period",
+      "zh": "试用期"
+    },
+    "notes": {
+      "en": "Usually 1 or 2 months. Both sides can quit immediately.",
+      "zh": "通常1-2个月。双方都可以随时解除合同。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "reiskostenvergoeding",
+    "dutch": "reiskostenvergoeding",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "travel expense allowance",
+      "zh": "交通补贴 / 车费报销"
+    },
+    "notes": {
+      "en": "Money your employer gives you for the costs of travelling to work, for example by train or car.",
+      "zh": "雇主为你上下班交通支出提供的补贴或报销，例如火车票、开车油费等。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "rooster",
+    "dutch": "rooster",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "schedule / timetable",
+      "zh": "排班表 / 时刻表"
+    },
+    "notes": {
+      "en": "Work schedule or school timetable.",
+      "zh": "工作排班或学校课表。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "salaris",
+    "dutch": "salaris",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "salary",
+      "zh": "工资 / 薪水"
+    },
+    "notes": {
+      "en": "Often paid monthly around the 24th. Don't forget \"vakantiegeld\" (holiday money) in May!",
+      "zh": "通常每月发。别忘了5月份发的 \"vakantiegeld\" (度假金，通常是年薪的8%)！"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "salarisstrook",
+    "dutch": "salarisstrook",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "payslip",
+      "zh": "工资单"
+    },
+    "notes": {
+      "en": "Paper or digital document that shows your salary and deductions each month.",
+      "zh": "每月列出工资和各种扣款的纸质或电子文件。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "sollicitatiebrief",
+    "dutch": "sollicitatiebrief",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "application letter",
+      "zh": "求职信"
+    },
+    "notes": {
+      "en": "Letter you send when you apply for a job, together with your CV.",
+      "zh": "应聘工作时随简历一起发送的求职信。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "solliciteren",
+    "dutch": "solliciteren",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "to apply (for job)",
+      "zh": "应聘 / 求职"
+    },
+    "notes": {
+      "en": "Applying for a job. Interview is \"sollicitatiegesprek\".",
+      "zh": "指应聘工作。面试是 \"sollicitatiegesprek\"。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "stage",
+    "dutch": "stage",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "internship",
+      "zh": "实习"
+    },
+    "notes": {
+      "en": "Period of practice at a company, often part of a study programme.",
+      "zh": "在公司进行实践学习的一段时间，通常是学业的一部分。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "teamleider",
+    "dutch": "teamleider",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "team leader / supervisor",
+      "zh": "组长 / 主管"
+    },
+    "notes": {
+      "en": "Person who is responsible for a small group of employees.",
+      "zh": "负责带领一个小团队员工的负责人。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "thuiswerken",
+    "dutch": "thuiswerken",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "to work from home",
+      "zh": "在家办公"
+    },
+    "notes": {
+      "en": "Doing your job from home, usually with a laptop and internet.",
+      "zh": "在家通过电脑和网络完成工作的方式。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "uitkering",
+    "dutch": "uitkering",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "benefit payment",
+      "zh": "救济金 / 福利金"
+    },
+    "notes": {
+      "en": "Money from gov if unemployed (\"WW\") or disabled (\"WIA\").",
+      "zh": "失业(\"WW\")或丧失劳动能力时政府发的钱。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "uitleg",
+    "dutch": "uitleg",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "explanation",
+      "zh": "解释"
+    },
+    "notes": {
+      "en": "Making something clear.",
+      "zh": "说明或解释。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "uitzendbureau",
+    "dutch": "uitzendbureau",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "employment agency / temp agency",
+      "zh": "劳务派遣中介"
+    },
+    "notes": {
+      "en": "Agency that mediates temporary work (tijdelijk werk). They pay salaries and deduct taxes/premiums.",
+      "zh": "提供临时工作的中介机构。他们负责支付工资和扣除税款/保险。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "urenregistratie",
+    "dutch": "urenregistratie",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "time registration",
+      "zh": "工时登记"
+    },
+    "notes": {
+      "en": "System where you write down or enter the hours you have worked.",
+      "zh": "记录你工作了多少小时的系统或表格。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "uurloon",
+    "dutch": "uurloon",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "hourly wage",
+      "zh": "时薪"
+    },
+    "notes": {
+      "en": "Amount of money you earn per hour of work.",
+      "zh": "你每工作一小时可以获得的工资数额。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "vaardigheid",
+    "dutch": "vaardigheid",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "skill",
+      "zh": "技能"
+    },
+    "notes": {
+      "en": "Things you can do well.",
+      "zh": "你会的技能。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "vacature",
+    "dutch": "vacature",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "job vacancy",
+      "zh": "职位空缺"
+    },
+    "notes": {
+      "en": "An open job position.",
+      "zh": "招聘广告/职位空缺。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "vakantie",
+    "dutch": "vakantie",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "holiday / vacation",
+      "zh": "假期 / 休假"
+    },
+    "notes": {
+      "en": "Time off from work or school; you build up vakantiedagen each year.",
+      "zh": "不上班不上学的休息时间，每年会累积一定的带薪假期（vakantiedagen）。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "vakbond",
+    "dutch": "vakbond",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "trade union",
+      "zh": "工会"
+    },
+    "notes": {
+      "en": "Organization for employees. Negotiates with employers about salaries and conditions (CAO). Provides legal aid (juridische hulp) if you are a member.",
+      "zh": "员工组织。与雇主协商集体劳动协议 (**CAO**)。提供法律援助。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "vergadering",
+    "dutch": "vergadering",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "meeting",
+      "zh": "会议"
+    },
+    "notes": {
+      "en": "Dutch meetings can be long and involve lots of discussion (\"polderen\").",
+      "zh": "荷兰会议可能很长，讨论很多(\"polderen\"模式)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "vergaderzaal",
+    "dutch": "vergaderzaal",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "meeting room",
+      "zh": "会议室"
+    },
+    "notes": {
+      "en": "Room in the office where meetings and discussions take place.",
+      "zh": "办公室里专门用于开会和讨论的房间。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "vrije-dagen",
+    "dutch": "vrije dagen",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "days off",
+      "zh": "休息日 / 休假日"
+    },
+    "notes": {
+      "en": "Days when you do not have to work, for example holidays or personal leave.",
+      "zh": "不用上班的日子，例如节假日或个人请假。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "werkdag",
+    "dutch": "werkdag",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "workday",
+      "zh": "工作日"
+    },
+    "notes": {
+      "en": "Normal day when you are expected to work, usually Monday to Friday.",
+      "zh": "需要上班的日子，通常是周一到周五。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "werkdruk",
+    "dutch": "werkdruk",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "work pressure / workload",
+      "zh": "工作压力 / 工作量"
+    },
+    "notes": {
+      "en": "Used when there is a lot of work and people feel stressed.",
+      "zh": "指工作任务很多、员工感到压力很大的情况。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "werkgever",
+    "dutch": "werkgever",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "employer",
+      "zh": "雇主 / 老板"
+    },
+    "notes": {
+      "en": "The company or person who hires you.",
+      "zh": "雇佣你的公司或人。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "werkloosheidsuitkering-ww",
+    "dutch": "werkloosheidsuitkering",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "unemployment benefit (WW)",
+      "zh": "失业救济金"
+    },
+    "notes": {
+      "en": "Benefit for those who lost their job and worked for at least 6 months. Administered by the UWV. You get approximately 1 month of WW per year worked.",
+      "zh": "失业金。如果你被解雇，向 **UWV** 申请。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "werknemer",
+    "dutch": "werknemer",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "employee",
+      "zh": "雇员 / 员工"
+    },
+    "notes": {
+      "en": "Person who works for the company.",
+      "zh": "为公司工作的人。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "werkoverleg",
+    "dutch": "werkoverleg",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "work consultation / staff meeting",
+      "zh": "工作会议 / 员工商议"
+    },
+    "notes": {
+      "en": "A meeting to discuss and organize the work tasks (werkzaamheden).",
+      "zh": "讨论工作安排和任务的会议。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "ziek-melden",
+    "dutch": "ziek melden",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "to report sick",
+      "zh": "报告生病 / 请病假"
+    },
+    "notes": {
+      "en": "Obligation to inform your employer immediately when you are sick. You cannot have someone else call for you.",
+      "zh": "生病时必须立即通知雇主。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "ziekmelden",
+    "dutch": "ziekmelden",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "call in sick",
+      "zh": "请病假"
+    },
+    "notes": {
+      "en": "Calling your employer to say you are sick.",
+      "zh": "打电话给雇主说生病了。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "zwart-werken",
+    "dutch": "zwart werken",
+    "category": "work",
+    "level": "A2",
+    "translations": {
+      "en": "working illegally (undeclared)",
+      "zh": "打黑工"
+    },
+    "notes": {
+      "en": "Working without paying taxes and premiums. This is forbidden (verboden) and results in no benefits (ziektegeld, uitkering).",
+      "zh": "不缴税和保险金工作。这是非法的，且生病或失业时无法获得任何津贴。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "aanrecht",
+    "dutch": "aanrecht",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "kitchen counter / sink",
+      "zh": "厨房操作台 / 洗菜池"
+    },
+    "notes": {
+      "en": "The worktop in the kitchen, often with the sink built in: \"het aanrecht schoonmaken\" (clean the counter).",
+      "zh": "厨房里带水槽的操作台，可说 \"het aanrecht schoonmaken\"（把台面擦干净）。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "aansprakelijkheidsverzekering",
+    "dutch": "aansprakelijkheidsverzekering",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "liability insurance",
+      "zh": "责任险"
+    },
+    "notes": {
+      "en": "Covers damage you accidentally cause to other people's property (e.g., your child breaks the neighbor's window).",
+      "zh": "承保您无意中对他人财产造成的损害（例如，您的孩子踢球打破邻居的窗户）。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "afval",
+    "dutch": "afval",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "waste / trash",
+      "zh": "垃圾"
+    },
+    "notes": {
+      "en": "Separating waste (\"afval scheiden\") is important (paper, glass, plastic, rest).",
+      "zh": "垃圾分类(\"afval scheiden\")很重要（纸、玻璃、塑料、其余）。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "afval-scheiden",
+    "dutch": "afval scheiden",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "waste separation / recycling",
+      "zh": "垃圾分类"
+    },
+    "notes": {
+      "en": "Mandatory in the Netherlands (e.g., GFT, paper, glass).",
+      "zh": "强制性垃圾分类（如 GFT 是果蔬园艺垃圾）。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "afvalstoffenheffing",
+    "dutch": "afvalstoffenheffing",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "waste tax",
+      "zh": "垃圾处理税"
+    },
+    "notes": {
+      "en": "Local tax paid to the municipality for collecting and processing household waste. Low-income people can apply for remission (kwijtschelding).",
+      "zh": "向市政厅支付的垃圾收集和处理费。低收入人群可申请豁免 (**kwijtschelding**)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "appartement",
+    "dutch": "appartement",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "apartment",
+      "zh": "公寓"
+    },
+    "notes": {
+      "en": "Home that is part of a larger building, not a separate house.",
+      "zh": "大楼里的一套住房，不是独立的整栋房子。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "badkamer",
+    "dutch": "badkamer",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "bathroom",
+      "zh": "浴室 / 卫生间"
+    },
+    "notes": {
+      "en": "Room with shower or bath, often combined with the toilet.",
+      "zh": "有淋浴或浴缸的房间，常常和马桶在同一个空间。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "balkon",
+    "dutch": "balkon",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "balcony",
+      "zh": "阳台"
+    },
+    "notes": {
+      "en": "Small outside space attached to your apartment.",
+      "zh": "连接在公寓上的小型室外空间，可以晒太阳或晾衣服。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "bewoner",
+    "dutch": "bewoner",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "resident",
+      "zh": "居民 / 住户"
+    },
+    "notes": {
+      "en": "The person living in a house.",
+      "zh": "住在房子里的人。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "borg",
+    "dutch": "borg",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "deposit",
+      "zh": "押金"
+    },
+    "notes": {
+      "en": "Security deposit when renting a house.",
+      "zh": "租房时的押金。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "brievenbus",
+    "dutch": "brievenbus",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "letterbox / mailbox",
+      "zh": "信箱 / 信件投递口"
+    },
+    "notes": {
+      "en": "Slot or box where the postman delivers letters at your house.",
+      "zh": "邮递员把信件投递到你家的小箱子或门上的投信口。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "chemobox",
+    "dutch": "chemobox",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "chemical waste box",
+      "zh": "化学垃圾盒"
+    },
+    "notes": {
+      "en": "Special container for small chemical waste (Klein chemisch afval), such as paint, nail polish, batteries, and old medicines.",
+      "zh": "用于投放涂料、指甲油、电池和旧药等小型化学垃圾的专用盒子。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "dak",
+    "dutch": "dak",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "roof",
+      "zh": "屋顶"
+    },
+    "notes": {
+      "en": "\"Een dak boven je hoofd\" means having a place to live.",
+      "zh": "荷兰语表达 \"een dak boven je hoofd\" 意为“头上有个屋顶”，也就是有地方住。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "energieleverancier",
+    "dutch": "energiebedrijf/ energieleverancier",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "energy provider",
+      "zh": "能源公司"
+    },
+    "notes": {
+      "en": "The company that supplies gas and electricity (gas en elektriciteit). You choose your own supplier.",
+      "zh": "提供天然气和电力给您家里的公司。您可以自己选择。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "energierekening",
+    "dutch": "energierekening",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "energy bill",
+      "zh": "能源账单 / 水电煤气账单"
+    },
+    "notes": {
+      "en": "Bill for gas and electricity that you receive from the energy provider.",
+      "zh": "能源公司寄来的燃气和电力费用账单。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "flat",
+    "dutch": "flat",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "apartment building / flat",
+      "zh": "公寓楼 / 高层住宅"
+    },
+    "notes": {
+      "en": "Tall building with many apartments.",
+      "zh": "包含很多套公寓的高层楼房。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "gas-water-licht",
+    "dutch": "gas / water / licht",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "utilities",
+      "zh": "水电煤"
+    },
+    "notes": {
+      "en": "GWL. Usually paid separately from rent (\"exclusief\").",
+      "zh": "简称GWL。通常房租不包(\"exclusief\")，需另付。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "geluidssoverlast",
+    "dutch": "geluidsoverlast",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "noise nuisance",
+      "zh": "噪音扰民"
+    },
+    "notes": {
+      "en": "Too much noise from neighbours or the street that bothers people.",
+      "zh": "来自邻居或街道、让人感到困扰的噪音。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "gemeenschappelijke-ruimte",
+    "dutch": "gemeenschappelijke ruimte",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "shared space",
+      "zh": "公共区域 / 共享空间"
+    },
+    "notes": {
+      "en": "Space in a building that all residents may use, such as hallway or laundry room.",
+      "zh": "楼里所有住户都可以使用的空间，比如走廊、洗衣房等。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "gft",
+    "dutch": "GFT",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "vegetable, fruit, and garden waste",
+      "zh": "果蔬园艺垃圾"
+    },
+    "notes": {
+      "en": "Specific green waste that must be separated from restafval.",
+      "zh": "必须分类的绿色垃圾，包含蔬菜、水果和花园废物。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "glasbak",
+    "dutch": "glasbak",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "glass recycling container",
+      "zh": "玻璃回收箱"
+    },
+    "notes": {
+      "en": "Container for recycling empty glass bottles and jars (potten en flessen). Lids (deksels) are usually allowed, but never ceramics.",
+      "zh": "回收空玻璃瓶和罐子的容器。盖子通常可以放入。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "grofvuil",
+    "dutch": "grofvuil",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "bulky waste",
+      "zh": "大件垃圾"
+    },
+    "notes": {
+      "en": "Large waste items (like furniture, kapotte driezitsbank). Needs to be taken to a recycling center (milieustraat) or picked up by the municipality after making an appointment.",
+      "zh": "体积大的垃圾（如家具、旧沙发）。需要预约市政厅回收或自行送去环保站。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "huismeester",
+    "dutch": "huismeester",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "caretaker (building)",
+      "zh": "大楼管理员"
+    },
+    "notes": {
+      "en": "Person in an apartment building who keeps an eye on the building and sometimes helps with small problems.",
+      "zh": "在公寓楼里负责打理大楼、处理一些小问题的管理员。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "huisnummer",
+    "dutch": "huisnummer",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "house number",
+      "zh": "门牌号"
+    },
+    "notes": {
+      "en": "Number on the front of the house, part of your official address.",
+      "zh": "写在房子门口或门上的号码，是正式地址的一部分。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "huren",
+    "dutch": "huren",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "to rent",
+      "zh": "租房"
+    },
+    "notes": {
+      "en": "False friend: looks like \"hire\". Use for houses/objects. Hiring a person is \"aannemen\".",
+      "zh": "虽像 \"hire\" 但指租房/物。雇人是 \"aannemen\"。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "huurbaas",
+    "dutch": "huurbaas",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "landlord",
+      "zh": "房东"
+    },
+    "notes": {
+      "en": "Owner of the rental property.",
+      "zh": "房子的主人。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "huurcommissie",
+    "dutch": "huurcommissie",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "rent commission",
+      "zh": "租金委员会"
+    },
+    "notes": {
+      "en": "Organization that helps resolve conflicts between tenants and landlords (huisbaas) over rent price or maintenance.",
+      "zh": "帮助解决租户与房东之间关于租金或维修问题的机构。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "huurcontract",
+    "dutch": "huurcontract",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "rental contract",
+      "zh": "租房合同"
+    },
+    "notes": {
+      "en": "Read carefully before signing!",
+      "zh": "签字前仔细阅读！"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "huurder",
+    "dutch": "huurder",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "tenant / renter",
+      "zh": "租户"
+    },
+    "notes": {
+      "en": "The person who pays rent to the landlord (verhuurder).",
+      "zh": "向房东（verhuurder）支付租金的人。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "huurprijs",
+    "dutch": "huurprijs",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "rent price",
+      "zh": "房租价格"
+    },
+    "notes": {
+      "en": "Amount of money you pay every month for renting a house.",
+      "zh": "你每个月为租房需要支付的金额。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "huurverhoging",
+    "dutch": "huurverhoging",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "rent increase",
+      "zh": "房租上涨"
+    },
+    "notes": {
+      "en": "Yearly increase of the rent; tenants receive a letter about it.",
+      "zh": "每年房租上涨时，房东会寄来说明涨价的信。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "hypotheek",
+    "dutch": "hypotheek",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "mortgage",
+      "zh": "房贷 / 按揭"
+    },
+    "notes": {
+      "en": "Loan for a house. Interest (\"rente\") is tax deductible (\"hypotheekrenteaftrek\").",
+      "zh": "买房贷款。利息(\"rente\")可以退税(\"hypotheekrenteaftrek\")。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "illegale-onderhuur",
+    "dutch": "illegale onderhuur",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "illegal subletting",
+      "zh": "非法转租"
+    },
+    "notes": {
+      "en": "Subletting a house without permission from the landlord or housing corporation. This is forbidden.",
+      "zh": "没有得到房东或房屋协会同意就转租房屋的行为，是违法的。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "inboedelverzekering",
+    "dutch": "inboedelverzekering",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "contents insurance",
+      "zh": "家庭财产保险"
+    },
+    "notes": {
+      "en": "Insurance for personal belongings inside the house (furniture, computer) against fire or theft. Not mandatory.",
+      "zh": "房屋内部财物（如家具、电脑）的保险。在火灾或盗窃时赔付。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "keuken",
+    "dutch": "keuken",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "kitchen",
+      "zh": "厨房"
+    },
+    "notes": {
+      "en": "Room where you cook; contains a cooker, fridge and kitchen cupboards.",
+      "zh": "做饭的地方，通常有灶台、冰箱和橱柜。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "makelaar",
+    "dutch": "makelaar",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "real estate agent",
+      "zh": "房产中介"
+    },
+    "notes": {
+      "en": "Person who helps you buy or sell a house. \"Aankoopmakelaar\" helps you buy.",
+      "zh": "帮你买卖房子的人。\"Aankoopmakelaar\" 是买方中介。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "meterstand",
+    "dutch": "meterstand",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "meter reading",
+      "zh": "能耗表读数"
+    },
+    "notes": {
+      "en": "The reading on your gas/electricity meter. Must be reported annually for the yearly bill (jaarrekening).",
+      "zh": "燃气或电表的读数。每年需要报告给能源公司，以计算年结单。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "milieustraat",
+    "dutch": "milieustraat",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "recycling center / waste depot",
+      "zh": "环保站 / 回收中心"
+    },
+    "notes": {
+      "en": "Place where residents can bring large/bulky waste (grof vuil) or chemical waste (chemisch afval).",
+      "zh": "居民可以丢弃大件或化学垃圾的地方。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "notaris",
+    "dutch": "notaris",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "notary / public notary",
+      "zh": "公证人 / 公证处"
+    },
+    "notes": {
+      "en": "Required when signing the deed of sale (verkoopakte) for a house.",
+      "zh": "买房时必须去公证处签署买卖契约。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "onderhoud",
+    "dutch": "onderhoud",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "maintenance",
+      "zh": "维护 / 维修"
+    },
+    "notes": {
+      "en": "Repairs and upkeep of the house.",
+      "zh": "房子的修理和保养。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "onderhuur",
+    "dutch": "onderhuur",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "subletting",
+      "zh": "转租 / 转租房屋"
+    },
+    "notes": {
+      "en": "When a tenant rents the house (or a room) again to someone else.",
+      "zh": "租户再把整套房子或其中一间房转租给别人的情况。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "opstalverzekering",
+    "dutch": "opstalverzekering",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "building insurance",
+      "zh": "房屋（结构）保险"
+    },
+    "notes": {
+      "en": "Covers damage to the structure of the house (roof, walls). Mandatory if you have a mortgage.",
+      "zh": "涵盖房屋结构本身的损失。如果你有房屋贷款，这是必须购买的。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "polis",
+    "dutch": "polis",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "insurance policy",
+      "zh": "保单 / 保险合同"
+    },
+    "notes": {
+      "en": "The official contract paper you receive from your insurance company (verzekering).",
+      "zh": "您从保险公司收到的正式合同文件。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "postbus",
+    "dutch": "postbus",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "PO box",
+      "zh": "邮政信箱"
+    },
+    "notes": {
+      "en": "Box at the post office where you can receive mail instead of at home.",
+      "zh": "在邮局租用的信箱，用来代替寄到家里的信件。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "renteaftrek",
+    "dutch": "renteaftrek",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "mortgage interest deduction",
+      "zh": "房贷利息抵税"
+    },
+    "notes": {
+      "en": "The interest (rente) paid on a mortgage can be claimed back from the Belastingdienst.",
+      "zh": "房贷的利息部分可以从税务局获得退税。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "schade",
+    "dutch": "schade",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "damage",
+      "zh": "损坏"
+    },
+    "notes": {
+      "en": "If you break something in a rented house.",
+      "zh": "如果弄坏了租来的房子里的东西。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "schuur",
+    "dutch": "schuur",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "shed / storage",
+      "zh": "小屋 / 储物间"
+    },
+    "notes": {
+      "en": "Small separate building or room for bikes and tools.",
+      "zh": "用于放自行车、工具等物品的小屋或储物间。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "servicekosten",
+    "dutch": "servicekosten",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "service costs",
+      "zh": "物业服务费"
+    },
+    "notes": {
+      "en": "Extra costs on top of rent for cleaning common areas, sometimes heating.",
+      "zh": "房租之外的费用，用于清洁公共区域，有时包含暖气费。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "slaapkamer",
+    "dutch": "slaapkamer",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "bedroom",
+      "zh": "卧室"
+    },
+    "notes": {
+      "en": "Room where you sleep; many Dutch houses have small slaapkamers.",
+      "zh": "睡觉的房间，很多荷兰房子的卧室都比较小。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "stroomstoring",
+    "dutch": "stroomstoring",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "power outage / electricity fault",
+      "zh": "停电 / 能源故障"
+    },
+    "notes": {
+      "en": "If you have an outage, first check if the whole house is affected and ask neighbors before calling the utility company (0800-9009).",
+      "zh": "停电时，先检查家里是否全停电并询问邻居。然后拨打故障热线 (0800-9009)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "toilet",
+    "dutch": "toilet",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "toilet / loo",
+      "zh": "厕所 / 卫生间"
+    },
+    "notes": {
+      "en": "Small room with a toilet; in Dutch houses it is sometimes separate from the bathroom.",
+      "zh": "只有马桶的小房间，在荷兰家庭里有时和浴室分开。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "trap",
+    "dutch": "trap",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "stairs",
+      "zh": "楼梯"
+    },
+    "notes": {
+      "en": "Dutch houses often have steep stairs; be careful with children.",
+      "zh": "荷兰很多住宅楼梯都比较陡，带孩子上下楼要特别小心。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "tuin",
+    "dutch": "tuin",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "garden",
+      "zh": "花园 / 庭院"
+    },
+    "notes": {
+      "en": "Outside area with grass or plants behind or in front of the house.",
+      "zh": "房子前面或后面的室外区域，可以种草和花。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "urgentieverklaring",
+    "dutch": "urgentieverklaring",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "urgent housing declaration",
+      "zh": "紧急住房声明"
+    },
+    "notes": {
+      "en": "A document from the municipality giving priority (voorrang) for housing due to severe circumstances (e.g., divorce with children, major health issues).",
+      "zh": "市政厅出具的文件，允许在住房分配中获得优先权，通常仅在情况非常紧急时发放。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "verhuizen",
+    "dutch": "verhuizen",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "to move (house)",
+      "zh": "搬家"
+    },
+    "notes": {
+      "en": "\"Ik ga verhuizen\". Don't forget to inform the municipality.",
+      "zh": "\"我要搬家了\"。别忘了通知市政厅。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "verhuurder",
+    "dutch": "verhuurder",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "landlord",
+      "zh": "房东"
+    },
+    "notes": {
+      "en": "The owner of the house who rents it out. Responsible for big repairs and major maintenance.",
+      "zh": "将房屋出租的人。负责主要的维修和维护。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "voorschot",
+    "dutch": "voorschot",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "advance payment",
+      "zh": "预付款 / 预交费用"
+    },
+    "notes": {
+      "en": "Money you pay in advance, for example every month for energy, which is later corrected with the real costs.",
+      "zh": "提前支付的一笔钱，例如每月预交的能源费用，之后会根据实际用量结算多退少补。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "wachtlijst",
+    "dutch": "wachtlijst",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "waiting list",
+      "zh": "等待名单 / 轮候名单"
+    },
+    "notes": {
+      "en": "Used when applying for social housing (sociale huurwoning) or sometimes child care (kinderopvang). Waiting times can be years, especially in large cities.",
+      "zh": "申请社会租房或托儿服务时需要排队等待。在大城市可能等待数年。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "woning",
+    "dutch": "woning",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "house / dwelling",
+      "zh": "住房 / 住处"
+    },
+    "notes": {
+      "en": "General word for a place where people live, such as an apartment or house.",
+      "zh": "人们居住的地方的通用说法，可以是公寓也可以是独栋房子。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "woningbouwvereniging",
+    "dutch": "woningbouwvereniging",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "housing corporation",
+      "zh": "房屋协会"
+    },
+    "notes": {
+      "en": "Provides social rental housing (sociale huurwoning). Often requires registration and results in a long waiting list (wachtlijst).",
+      "zh": "提供社会租房的机构。通常需要登记并进入等待名单 (wachtlijst)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "woonkamer",
+    "dutch": "woonkamer",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "living room",
+      "zh": "客厅"
+    },
+    "notes": {
+      "en": "Room where people sit, watch TV and receive visitors.",
+      "zh": "家里用来坐着休息、看电视、接待客人的房间。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "woonplaats",
+    "dutch": "woonplaats",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "place of residence",
+      "zh": "居住地 / 居住城市"
+    },
+    "notes": {
+      "en": "Often used on forms to indicate which city or town you live in.",
+      "zh": "表格上常见，用来填写你现在居住的城市或镇。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "woonruimte",
+    "dutch": "woonruimte",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "living space / accommodation",
+      "zh": "居住空间 / 住房"
+    },
+    "notes": {
+      "en": "General word for a place where people can live, such as a room, apartment or house.",
+      "zh": "人们可以居住的空间的总称，例如房间、公寓或整套房子。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "woonwijk",
+    "dutch": "woonwijk",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "residential area",
+      "zh": "住宅区 / 小区"
+    },
+    "notes": {
+      "en": "Area of a town with many houses and few businesses.",
+      "zh": "主要是住宅、商店较少的城区或街区。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "zolder",
+    "dutch": "zolder",
+    "category": "housing",
+    "level": "A2",
+    "translations": {
+      "en": "attic / loft",
+      "zh": "阁楼"
+    },
+    "notes": {
+      "en": "Space under the roof, often used for storage or an extra bedroom.",
+      "zh": "屋顶下面的空间，常被用来储物或改成额外卧室。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "allergie",
+    "dutch": "allergie",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "allergy",
+      "zh": "过敏"
+    },
+    "notes": {
+      "en": "You can say \"Ik heb een allergie voor pinda's\" (I am allergic to peanuts).",
+      "zh": "可以说 \"Ik heb een allergie voor ...\" 来表达“我对…过敏”。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "apotheek",
+    "dutch": "apotheek",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "pharmacy",
+      "zh": "药房"
+    },
+    "notes": {
+      "en": "Where you pick up prescription medicine from your huisarts. Drugstore (\"Drogist\" like Kruidvat) is for shampoo/aspirin.",
+      "zh": "拿处方药的地方。买洗发水或普通阿司匹林去 \"Drogist\" (如 Kruidvat)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "arm",
+    "dutch": "arm",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "arm",
+      "zh": "手臂"
+    },
+    "notes": {
+      "en": "\"Arm gebroken\" (broken arm).",
+      "zh": "\"Arm gebroken\" (断臂)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "asthma",
+    "dutch": "asthma",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "asthma",
+      "zh": "哮喘"
+    },
+    "notes": {
+      "en": "Chronic lung disease; important to mention to your huisarts.",
+      "zh": "一种慢性呼吸系统疾病，向家庭医生说明自己有哮喘非常重要。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "avondspreekuur",
+    "dutch": "avondspreekuur",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "evening consultation hour",
+      "zh": "夜间门诊时间"
+    },
+    "notes": {
+      "en": "Consultation hours at the GP or hospital that take place in the evening.",
+      "zh": "家庭医生或医院在晚上提供的门诊时间。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "been",
+    "dutch": "been",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "leg",
+      "zh": "腿"
+    },
+    "notes": {
+      "en": "Plural: \"benen\". \"Op de been zijn\" (to be up and about).",
+      "zh": "复数：\"benen\"。\"Op de been zijn\" (恢复活动)。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "behandeling",
+    "dutch": "behandeling",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "treatment",
+      "zh": "治疗"
+    },
+    "notes": {
+      "en": "Medical care provided by a doctor.",
+      "zh": "医生提供的治疗方案。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "beterschap",
+    "dutch": "beterschap",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "get well soon",
+      "zh": "早日康复"
+    },
+    "notes": {
+      "en": "What you say to someone who is sick.",
+      "zh": "对生病的人说的祝福语。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "bijwerking",
+    "dutch": "bijwerking",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "side effect",
+      "zh": "副作用"
+    },
+    "notes": {
+      "en": "Unwanted effect of a medicine.",
+      "zh": "药物的不良反应。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "bloeddruk",
+    "dutch": "bloeddruk",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "blood pressure",
+      "zh": "血压"
+    },
+    "notes": {
+      "en": "You can have high or low blood pressure; measured with a cuff.",
+      "zh": "可以是高血压或低血压，用袖带式仪器测量。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "bril",
+    "dutch": "bril",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "glasses",
+      "zh": "眼镜"
+    },
+    "notes": {
+      "en": "You wear glasses to see better; sunglasses are \"zonnebril\".",
+      "zh": "帮助看清楚的眼镜，太阳镜叫 \"zonnebril\"。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "buik",
+    "dutch": "buik",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "stomach / belly",
+      "zh": "肚子"
+    },
+    "notes": {
+      "en": "\"Buikpijn\" (stomach ache).",
+      "zh": "\"Buikpijn\" (肚子痛)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "controle",
+    "dutch": "controle",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "check-up / control",
+      "zh": "检查 / 复查"
+    },
+    "notes": {
+      "en": "Regular check at the huisarts, dentist or hospital.",
+      "zh": "在家庭医生、牙医或医院做的定期检查或复查。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "drogist",
+    "dutch": "drogist",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "drugstore",
+      "zh": "药妆店 / 日用品店"
+    },
+    "notes": {
+      "en": "Place where you can buy over-the-counter medicine (e.g., paracetamol, hoestdrank) without a prescription.",
+      "zh": "可以无需处方购买非处方药（如止痛药、止咳糖浆）的地方。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "duizelig",
+    "dutch": "duizelig",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "dizzy",
+      "zh": "头晕"
+    },
+    "notes": {
+      "en": "Feeling lightheaded.",
+      "zh": "头昏眼花。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "ehbo",
+    "dutch": "EHBO",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "first aid",
+      "zh": "急救 / 现场救护"
+    },
+    "notes": {
+      "en": "\"Eerste Hulp Bij Ongelukken\"; many schools and companies offer EHBO-courses.",
+      "zh": "全称 \"Eerste Hulp Bij Ongelukken\"，很多学校和公司都会提供 EHBO 急救课程。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "eigen-risico",
+    "dutch": "eigen risico",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "deductible / excess",
+      "zh": "自付额"
+    },
+    "notes": {
+      "en": "Mandatory amount you pay before insurance kicks in (usually ~€385/year).",
+      "zh": "医保理赔前需自付的金额，通常每年约 385 欧。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "fysiotherapeut",
+    "dutch": "fysiotherapeut",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "physiotherapist",
+      "zh": "理疗师 / 物理治疗师"
+    },
+    "notes": {
+      "en": "Helps with movement problems (lopen, arm, nek, rug). Usually covered by supplementary insurance (aanvullende verzekering).",
+      "zh": "帮助解决运动问题。通常需要额外保险 (**aanvullende verzekering**) 才能报销。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "fysiotherapie",
+    "dutch": "fysiotherapie",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "physiotherapy",
+      "zh": "物理治疗 / 理疗"
+    },
+    "notes": {
+      "en": "Treatment by a fysiotherapeut to improve movement or reduce pain.",
+      "zh": "由理疗师（fysiotherapeut）进行的治疗，帮助改善行动或减轻疼痛。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "gips",
+    "dutch": "gips",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "plaster cast",
+      "zh": "石膏"
+    },
+    "notes": {
+      "en": "Hard material around a broken arm or leg so it can heal.",
+      "zh": "包在骨折手臂或腿上的硬石膏，用来固定骨头帮助恢复。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "griep",
+    "dutch": "griep",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "flu",
+      "zh": "流感"
+    },
+    "notes": {
+      "en": "More serious than a simple cold; sometimes you get a griepprik (flu shot).",
+      "zh": "比普通感冒更严重，有时会接种流感疫苗（griepprik）。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "gynaecoloog",
+    "dutch": "gynaecoloog",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "gynecologist",
+      "zh": "妇科医生"
+    },
+    "notes": {
+      "en": "Specialist for women's health. You go here if there are medical problems during pregnancy, referred by the midwife.",
+      "zh": "妇科专科医生。如果在怀孕期间出现医疗问题，由助产士转诊。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "hand",
+    "dutch": "hand",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "hand",
+      "zh": "手"
+    },
+    "notes": {
+      "en": "\"Hand geven\" (shake hands).",
+      "zh": "\"Hand geven\" (握手)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "hoest",
+    "dutch": "hoest",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "cough",
+      "zh": "咳嗽"
+    },
+    "notes": {
+      "en": "Symptom where you cough; often together with verkoudheid or griep.",
+      "zh": "咳嗽是一种常见症状，常常和感冒或流感一起出现。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "hoestdrank",
+    "dutch": "hoestdrank",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "cough syrup",
+      "zh": "止咳糖浆"
+    },
+    "notes": {
+      "en": "Liquid medicine you drink to reduce coughing; bought at drogist or apotheek.",
+      "zh": "喝的止咳药水，可以在药妆店或药房购买。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "hoofd",
+    "dutch": "hoofd",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "head",
+      "zh": "头"
+    },
+    "notes": {
+      "en": "\"Hoofdpijn\" (headache).",
+      "zh": "\"Hoofdpijn\" (头痛)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "huisarts",
+    "dutch": "huisarts",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "GP (General Practitioner)",
+      "zh": "家庭医生"
+    },
+    "notes": {
+      "en": "First contact for ANY medical issue. Need referral (\"verwijsbrief\") for specialists.",
+      "zh": "医疗首要联系人。看专科必须有家庭医生的转诊信(\"verwijsbrief\")。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "huisartsenpost",
+    "dutch": "huisartsenpost",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "out-of-hours GP clinic",
+      "zh": "夜间 / 周末家庭医生急诊点"
+    },
+    "notes": {
+      "en": "Place where you can see a GP in the evening or weekend for urgent problems, when your own huisarts is closed.",
+      "zh": "在晚上或周末、自己家庭医生关门时，用于处理紧急但非危及生命问题的家庭医生急诊点。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "huisartsenpraktijk",
+    "dutch": "huisartsenpraktijk",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "GP practice",
+      "zh": "家庭医生诊所"
+    },
+    "notes": {
+      "en": "Building or group of huisartsen where you are registered.",
+      "zh": "你注册所属的家庭医生诊所或多位家庭医生组成的合伙诊所。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "inhaler",
+    "dutch": "inhaler",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "inhaler",
+      "zh": "吸入器"
+    },
+    "notes": {
+      "en": "Small device that people with asthma use to inhale medicine.",
+      "zh": "哮喘患者常用的小型吸入装置，用来吸入药物。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "injectie",
+    "dutch": "injectie",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "injection / shot",
+      "zh": "打针 / 注射"
+    },
+    "notes": {
+      "en": "Medicine that is put into your body with a needle.",
+      "zh": "通过针头打入身体里的药物。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "jeugdzorg",
+    "dutch": "Bureau Jeugdzorg",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "Youth Care Agency",
+      "zh": "青少年服务局"
+    },
+    "notes": {
+      "en": "Provides assistance for problems related to child upbringing (opvoeding), especially if a child is not listening or is having trouble.",
+      "zh": "为儿童抚养问题提供帮助和咨询。如果孩子不听话或有行为问题，可向其寻求帮助。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "keel",
+    "dutch": "keel",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "throat",
+      "zh": "喉咙"
+    },
+    "notes": {
+      "en": "\"Keelpijn\" (sore throat).",
+      "zh": "\"Keelpijn\" (喉咙痛)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "klacht",
+    "dutch": "klacht",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "complaint / symptom",
+      "zh": "症状 / 投诉"
+    },
+    "notes": {
+      "en": "In medical context: what is bothering you.",
+      "zh": "在医疗语境下指身体不适的症状。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "koorts",
+    "dutch": "koorts",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "fever",
+      "zh": "发烧"
+    },
+    "notes": {
+      "en": "High body temperature.",
+      "zh": "体温过高。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "kraamzorg",
+    "dutch": "kraamzorg",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "maternity care (postpartum)",
+      "zh": "产后护理服务"
+    },
+    "notes": {
+      "en": "In-home help from a kraamverzorgende for about a week after birth. Must be applied for early (5 months prior).",
+      "zh": "分娩后一周内，护工（kraamverzorgende）会上门帮忙。需要提前申请。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "medicatie",
+    "dutch": "medicatie",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "medication",
+      "zh": "药物治疗 / 药品"
+    },
+    "notes": {
+      "en": "General word for medicines someone uses for a longer time.",
+      "zh": "用于长期服用的药物的总称。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "medicijnen",
+    "dutch": "medicijnen",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "medicines",
+      "zh": "药物"
+    },
+    "notes": {
+      "en": "Prescription drugs from apotheek.",
+      "zh": "从药房拿的处方药。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "misselijk",
+    "dutch": "misselijk",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "nauseous",
+      "zh": "恶心"
+    },
+    "notes": {
+      "en": "Feeling like you need to vomit.",
+      "zh": "想吐的感觉。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "mond",
+    "dutch": "mond",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "mouth",
+      "zh": "嘴巴"
+    },
+    "notes": {
+      "en": "\"Mond houden\" (shut up - rude).",
+      "zh": "\"Mond houden\" (闭嘴 - 不礼貌)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "neus",
+    "dutch": "neus",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "nose",
+      "zh": "鼻子"
+    },
+    "notes": {
+      "en": "\"Verstopte neus\" (blocked nose).",
+      "zh": "\"Verstopte neus\" (鼻塞)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "ochtendmisselijkheid",
+    "dutch": "ochtendmisselijkheid",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "morning sickness",
+      "zh": "晨吐"
+    },
+    "notes": {
+      "en": "Nausea in the morning, often during pregnancy.",
+      "zh": "早晨感到恶心想吐，常见于怀孕早期。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "oog",
+    "dutch": "oog",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "eye",
+      "zh": "眼睛"
+    },
+    "notes": {
+      "en": "Plural: \"ogen\". \"Oogarts\" (eye doctor).",
+      "zh": "复数：\"ogen\"。\"Oogarts\" (眼科医生)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "oor",
+    "dutch": "oor",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "ear",
+      "zh": "耳朵"
+    },
+    "notes": {
+      "en": "Plural: \"oren\". \"Oorpijn\" (earache).",
+      "zh": "复数：\"oren\"。\"Oorpijn\" (耳痛)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "paracetamol",
+    "dutch": "paracetamol",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "paracetamol",
+      "zh": "扑热息痛"
+    },
+    "notes": {
+      "en": "The Dutch doctor's solution to everything. \"Take a paracetamol and come back in 2 weeks.\"",
+      "zh": "荷兰神药。医生常说：\"吃点扑热息痛，两周后不好再来。\""
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pil",
+    "dutch": "pil",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "pill",
+      "zh": "药丸 / 药片"
+    },
+    "notes": {
+      "en": "Small round medicine; you take it with water.",
+      "zh": "小圆形的药，用水送服。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "rug",
+    "dutch": "rug",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "back",
+      "zh": "背"
+    },
+    "notes": {
+      "en": "\"Rugpijn\" (back pain). Very common.",
+      "zh": "\"Rugpijn\" (背痛)。很常见。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "spoed",
+    "dutch": "spoed",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "emergency / urgency",
+      "zh": "紧急情况"
+    },
+    "notes": {
+      "en": "Used in expressions like \"spoedlijn\" and \"Spoedeisende Hulp\".",
+      "zh": "常见于 \"spoedlijn\"（紧急电话）和 \"Spoedeisende Hulp\"（急诊）。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "spoedeisende-hulp-seh",
+    "dutch": "Spoedeisende Hulp",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "Emergency Room (ER)",
+      "zh": "急诊室"
+    },
+    "notes": {
+      "en": "Hospital department for urgent cases (ernstig ongeluk, gebroken arm). Can be visited without appointment.",
+      "zh": "医院的急诊部门。处理紧急情况（如骨折），无需预约。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "spoedlijn-huisarts",
+    "dutch": "spoedlijn van de huisarts",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "GP emergency phone line",
+      "zh": "家庭医生紧急电话"
+    },
+    "notes": {
+      "en": "Special phone number of your GP practice for urgent medical questions during opening hours.",
+      "zh": "家庭医生诊所用于白天处理紧急医疗问题的专用电话号码。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "spoednummer",
+    "dutch": "spoednummer",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "emergency number",
+      "zh": "紧急电话号码"
+    },
+    "notes": {
+      "en": "In the Netherlands the national emergency number is 112.",
+      "zh": "荷兰全国统一的紧急电话号码是 112。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "spreekuur",
+    "dutch": "spreekuur",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "consultation hour",
+      "zh": "门诊时间"
+    },
+    "notes": {
+      "en": "Doctor's consultation time. Usually by appointment only.",
+      "zh": "医生看诊时间，通常需预约。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "tablet",
+    "dutch": "tablet",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "tablet (pill)",
+      "zh": "片剂药物"
+    },
+    "notes": {
+      "en": "Flat medicine in tablet form, similar to a pill.",
+      "zh": "扁平的片剂药物，和 pill 类似。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "tandarts",
+    "dutch": "tandarts",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "dentist",
+      "zh": "牙医"
+    },
+    "notes": {
+      "en": "Not covered by basic insurance usually! Need extra insurance (\"aanvullend\").",
+      "zh": "基本医保通常不报销！需要买附加险(\"aanvullend\")。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "verkouden",
+    "dutch": "verkouden",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "cold (illness)",
+      "zh": "感冒"
+    },
+    "notes": {
+      "en": "\"Ik ben verkouden\" (I have a cold).",
+      "zh": "\"Ik ben verkouden\" (我感冒了)。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "verloskundige",
+    "dutch": "verloskundige",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "midwife",
+      "zh": "助产士"
+    },
+    "notes": {
+      "en": "Primary caregiver for low-risk pregnant women, providing controls and assistance during delivery (bevalling).",
+      "zh": "正常怀孕期间的主要护理人员，负责产检和分娩协助。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "verwijsbrief",
+    "dutch": "verwijsbrief",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "referral letter",
+      "zh": "转诊信"
+    },
+    "notes": {
+      "en": "The magic paper from your GP you need to see a specialist or go to hospital.",
+      "zh": "家庭医生给的\"通行证\"，没有它看不了专科医生。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "vinger",
+    "dutch": "vinger",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "finger",
+      "zh": "手指"
+    },
+    "notes": {
+      "en": "You have 10 fingers.",
+      "zh": "你有10根手指。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "vitamines",
+    "dutch": "vitamines",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "vitamins",
+      "zh": "维生素"
+    },
+    "notes": {
+      "en": "You get vitamins from healthy food like fruit and vegetables or from supplements.",
+      "zh": "可以从水果、蔬菜等健康食物，或补充剂中获得维生素。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "voet",
+    "dutch": "voet",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "foot",
+      "zh": "脚"
+    },
+    "notes": {
+      "en": "Plural: \"voeten\". \"Te voet\" (on foot).",
+      "zh": "复数：\"voeten\"。\"Te voet\" (步行)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "wachtkamer",
+    "dutch": "wachtkamer",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "waiting room",
+      "zh": "候诊室 / 等候室"
+    },
+    "notes": {
+      "en": "Room where you wait before your appointment at the doctor or hospital.",
+      "zh": "在医生诊所或医院等候看诊的房间。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "wond",
+    "dutch": "wond",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "wound",
+      "zh": "伤口"
+    },
+    "notes": {
+      "en": "For cuts or open skin; you may need a plaster (pleister) or stitches.",
+      "zh": "指皮肤破损的伤口，可能需要贴创可贴 (pleister) 或缝针。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "wondverband",
+    "dutch": "wondverband",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "bandage / dressing",
+      "zh": "绷带 / 伤口敷料"
+    },
+    "notes": {
+      "en": "Material you put on a wound to protect it.",
+      "zh": "覆盖在伤口上的敷料或绷带，用来保护伤口。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "zenuwachtig",
+    "dutch": "zenuwachtig",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "nervous / anxious",
+      "zh": "紧张 / 焦虑"
+    },
+    "notes": {
+      "en": "Used when you feel tense before an exam, job interview or important talk.",
+      "zh": "常用来形容考试、面试或重要谈话前的紧张心情。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "ziek",
+    "dutch": "ziek",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "sick",
+      "zh": "生病"
+    },
+    "notes": {
+      "en": "\"Ik ben ziek\". When calling in sick for work: \"Zich ziek melden\".",
+      "zh": "\"我病了\"。向公司请病假叫 \"Zich ziek melden\"。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "ziekenauto",
+    "dutch": "ziekenauto",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "ambulance",
+      "zh": "救护车"
+    },
+    "notes": {
+      "en": "Emergency car that takes sick or injured people to the hospital. You call 112 in life‑threatening situations.",
+      "zh": "把重病或受伤的人送往医院的救护车，生命危险时拨打 112。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "ziekenhuis",
+    "dutch": "ziekenhuis",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "hospital",
+      "zh": "医院"
+    },
+    "notes": {
+      "en": "For emergencies or specialists.",
+      "zh": "处理急诊或专科问题。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "ziektekosten",
+    "dutch": "ziektekosten",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "healthcare costs",
+      "zh": "医疗费用"
+    },
+    "notes": {
+      "en": "Costs associated with health care, covered by the zorgverzekering.",
+      "zh": "与医疗护理相关的费用。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "zorgverzekering",
+    "dutch": "zorgverzekering",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "health insurance",
+      "zh": "医疗保险"
+    },
+    "notes": {
+      "en": "Mandatory for everyone living in NL.",
+      "zh": "所有荷兰居住者强制购买。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "zwanger",
+    "dutch": "zwanger",
+    "category": "health",
+    "level": "A2",
+    "translations": {
+      "en": "pregnant",
+      "zh": "怀孕的"
+    },
+    "notes": {
+      "en": "\"Ik ben zwanger\" (I am pregnant). In the Netherlands, pregnant women are often guided by a midwife (verloskundige).",
+      "zh": "可以说 \"Ik ben zwanger\"（我怀孕了）。荷兰通常由助产士 (verloskundige) 跟进孕期。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "aangifte",
+    "dutch": "aangifte doen",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "tax return / police report",
+      "zh": "报税 / 报案"
+    },
+    "notes": {
+      "en": "\"Belastingaangifte\" (tax return) or \"aangifte doen bij politie\" (report a crime).",
+      "zh": "通常指 \"Belastingaangifte\"(报税) 或去警察局 \"aangifte doen\"(报案)。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "aanmeldformulier",
+    "dutch": "aanmeldformulier",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "registration form",
+      "zh": "登记表 / 报名表"
+    },
+    "notes": {
+      "en": "Form you fill in to register for school, a course or at the gemeente.",
+      "zh": "用于在学校、课程或市政厅进行登记或报名时填写的表格。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "aanvraagformulier",
+    "dutch": "aanvraagformulier",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "application form",
+      "zh": "申请表"
+    },
+    "notes": {
+      "en": "Special form you use to apply for a benefit or permit.",
+      "zh": "用于申请补助、津贴或许可证的专门表格。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "aanvragen",
+    "dutch": "aanvragen",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "to apply for / request",
+      "zh": "申请"
+    },
+    "notes": {
+      "en": "You apply for a subsidy or permit (\"toeslag/vergunning aanvragen\").",
+      "zh": "申请津贴或许可证(\"toeslag/vergunning aanvragen\")。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "administratie",
+    "dutch": "administratie",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "administration / record keeping",
+      "zh": "行政管理 / 档案"
+    },
+    "notes": {
+      "en": "The process of managing official data. GBA (Gemeentelijke BasisAdministratie) is where personal data is registered.",
+      "zh": "管理官方数据的过程。GBA是市政厅的公民基本档案系统。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "afspraak",
+    "dutch": "afspraak",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "appointment / agreement",
+      "zh": "预约 / 约定"
+    },
+    "notes": {
+      "en": "Crucial. You need an \"afspraak\" for everything (doctor, city hall). \"Afspraak is afspraak\" (deal is a deal).",
+      "zh": "很重要。看医生、去市政厅都要预约。\"Afspraak is afspraak\" 意为\"说话算话\"。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "afspraakbevestiging",
+    "dutch": "afspraakbevestiging",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "appointment confirmation",
+      "zh": "预约确认"
+    },
+    "notes": {
+      "en": "Letter or e-mail that confirms the date and time of your appointment.",
+      "zh": "确认你预约的日期和时间的信件或电子邮件。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "arbeidsongeschikt",
+    "dutch": "arbeidsongeschikt",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "incapacitated for work / disabled",
+      "zh": "丧失工作能力"
+    },
+    "notes": {
+      "en": "Unable to work due to illness or injury. May qualify for a WIA benefit.",
+      "zh": "因疾病或受伤而无法工作。可申请 WIA 津贴。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "belasting",
+    "dutch": "belasting",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "tax",
+      "zh": "税"
+    },
+    "notes": {
+      "en": "Taxes. The \"Belastingdienst\" sends the dreaded blue envelopes (\"blauwe brief\").",
+      "zh": "税。\"Belastingdienst\"(税务局)寄来的蓝色信封让人瑟瑟发抖。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "belastingdienst",
+    "dutch": "Belastingdienst",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "Tax and Customs Administration",
+      "zh": "荷兰税务局 (Belastingdienst)"
+    },
+    "notes": {
+      "en": "Government organisation that collects taxes and sends the famous blue envelopes.",
+      "zh": "负责征税和寄出“蓝色信封”的政府机构。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "bewijs",
+    "dutch": "bewijs",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "proof / evidence",
+      "zh": "证明"
+    },
+    "notes": {
+      "en": "\"Bewijs van inschrijving\" (proof of registration).",
+      "zh": "\"Bewijs van inschrijving\" (注册证明)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "bezwaar",
+    "dutch": "bezwaar",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "objection / appeal",
+      "zh": "申诉 / 提出异议"
+    },
+    "notes": {
+      "en": "If you do not agree with a decision from the gemeente or Belastingdienst, you can \"bezwaar maken\".",
+      "zh": "如果不同意市政厅或税务局的决定，可以 \"bezwaar maken\"（提出书面异议）。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "boete",
+    "dutch": "boete",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "fine",
+      "zh": "罚款"
+    },
+    "notes": {
+      "en": "For parking, speeding, or no light on bike.",
+      "zh": "停车、超速或自行车没灯都会被罚。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "burgemeester",
+    "dutch": "burgemeester",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "mayor",
+      "zh": "市长"
+    },
+    "notes": {
+      "en": "The head (hoofd) of the municipality (gemeente). Leads the municipal council (gemeenteraad) meetings. The position is not elected directly by the people.",
+      "zh": "市政厅的首长。由市议会选举产生，而不是由市民直接选举。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "burgerlijke-staat",
+    "dutch": "burgerlijke staat",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "marital status",
+      "zh": "婚姻状况"
+    },
+    "notes": {
+      "en": "Refers to whether you are married, single, divorced, etc. Changes if you marry or divorce.",
+      "zh": "指个人是否已婚、单身、离婚等状态。结婚或离婚时会发生变化。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "Burgerservicenummer",
+    "dutch": "Burgerservicenummer",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "Citizen Service Number (BSN)",
+      "zh": "公民服务号 (BSN)"
+    },
+    "notes": {
+      "en": "The unique number for tax, work, and healthcare. Everyone calls it \"BSN\".",
+      "zh": "税务、工作和医疗必备的唯一号码。大家都叫它 \"BSN\"。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "coalitie",
+    "dutch": "coalitie",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "coalition (government)",
+      "zh": "联合政府 / 执政联盟"
+    },
+    "notes": {
+      "en": "Group of political parties that work together to form the government.",
+      "zh": "几个政党合作组成的执政联盟，称为联合政府。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "Digitale Identiteit",
+    "dutch": "Digitale Identiteit",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "Digital Identity (DigiD)",
+      "zh": "数字身份认证 (DigiD)"
+    },
+    "notes": {
+      "en": "Your online ID for government services. Everyone calls it \"DigiD\".",
+      "zh": "用于登录政府服务的在线ID。大家都叫它 \"DigiD\"。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "discriminatie",
+    "dutch": "discriminatie",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "discrimination",
+      "zh": "歧视"
+    },
+    "notes": {
+      "en": "Forbidden by the constitution (grondwet). Complaints can be filed at the Anti Discriminatie Bureau (ADB).",
+      "zh": "在荷兰是禁止的。投诉可以提交给反歧视局（ADB）。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "formulier",
+    "dutch": "formulier",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "form",
+      "zh": "表格"
+    },
+    "notes": {
+      "en": "General word for documents with boxes you have to fill in.",
+      "zh": "需要填写各种信息的表格的通称。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "gemeente",
+    "dutch": "gemeente",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "municipality",
+      "zh": "市政府 / 市政厅"
+    },
+    "notes": {
+      "en": "Local government. Go here for registration (\"inschrijven\"), ID, driving license.",
+      "zh": "地方政府。去那里注册地址(\"inschrijven\")、办身份证、驾照。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "gemeentebelasting",
+    "dutch": "gemeentebelasting",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "municipal tax",
+      "zh": "市政税"
+    },
+    "notes": {
+      "en": "Local taxes you pay to the municipality, for example for waste collection and water.",
+      "zh": "向市政厅缴纳的地方税，例如垃圾处理费、自来水相关费用等。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "gemeentegids",
+    "dutch": "gemeentegids",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "municipal guide / city guide",
+      "zh": "市政指南 / 市政手册"
+    },
+    "notes": {
+      "en": "Guide provided by the municipality with information about services, doctors, and local organizations.",
+      "zh": "市政厅提供的指南，包含服务信息、医生和本地组织联系方式。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "gemeentehuis",
+    "dutch": "gemeentehuis",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "town hall / municipal office",
+      "zh": "市政厅 / 市政府办公楼"
+    },
+    "notes": {
+      "en": "Building where the gemeente works and where you go for many procedures.",
+      "zh": "市政工作人员办公的地方，很多手续需要去那里办理。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "gemeenteraad",
+    "dutch": "gemeenteraad",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "municipal council",
+      "zh": "市议会"
+    },
+    "notes": {
+      "en": "Members elected every 4 years. They decide on local issues like building schools or roads.",
+      "zh": "每 4 年选举一次。决定地方事务，例如新建学校或道路。合法居住满 5 年的外国人可参与投票。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "groenlinks",
+    "dutch": "GroenLinks",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "GreenLeft (Political Party)",
+      "zh": "绿色左翼 (政党)"
+    },
+    "notes": {
+      "en": "A left-wing party that focuses heavily on the environment (milieu) and equal opportunities.",
+      "zh": "左翼政党，重视环境（milieu）保护和缩小贫富差距。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "grondrechten",
+    "dutch": "grondrechten",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "fundamental rights",
+      "zh": "基本权利"
+    },
+    "notes": {
+      "en": "Basic rights in the Constitution, such as freedom of religion and freedom of speech.",
+      "zh": "写入宪法中的基本权利，例如宗教自由、言论自由等。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "grondwet",
+    "dutch": "Grondwet",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "Constitution",
+      "zh": "宪法"
+    },
+    "notes": {
+      "en": "The most important law of the country, which describes the basic rules of the state and citizens' rights.",
+      "zh": "一个国家最重要的法律，规定国家的基本制度和公民的基本权利。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "handtekening",
+    "dutch": "handtekening",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "signature",
+      "zh": "签名"
+    },
+    "notes": {
+      "en": "You need to put this at the bottom of contracts.",
+      "zh": "合同底部必须签这个。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "herinneringsbrief",
+    "dutch": "herinneringsbrief",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "reminder letter",
+      "zh": "提醒信 / 催缴信"
+    },
+    "notes": {
+      "en": "Letter you receive if you forgot to pay a bill or respond to an earlier letter.",
+      "zh": "如果你忘记付账单或没有回复之前的信件，就可能会收到的提醒或催缴信。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "huurtoeslag",
+    "dutch": "huurtoeslag",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "rent allowance",
+      "zh": "租房补贴"
+    },
+    "notes": {
+      "en": "Money received from the Belastingdienst for rent, depending on income and rent price.",
+      "zh": "税务局根据收入和房租价格发放的住房补贴。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "identiteitskaart",
+    "dutch": "identiteitskaart",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "identity card",
+      "zh": "身份证件 / 身份证"
+    },
+    "notes": {
+      "en": "Official ID document besides a passport or residence permit.",
+      "zh": "除护照、居留卡之外的一种官方带照片身份证件。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "inburgering",
+    "dutch": "inburgering",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "civic integration",
+      "zh": "社会融入"
+    },
+    "notes": {
+      "en": "The process/exam to become integrated. Needed for PR or citizenship.",
+      "zh": "融入考试。申请永居或入籍必须通过。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "IND",
+    "dutch": "IND",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "Immigration and Naturalisation Service",
+      "zh": "移民局 (IND)"
+    },
+    "notes": {
+      "en": "Government agency handling visas and residence permits.",
+      "zh": "处理签证和居留许可的政府机构。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "inschrijfnummer",
+    "dutch": "inschrijfnummer",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "registration number",
+      "zh": "登记号 / 注册号"
+    },
+    "notes": {
+      "en": "Number you receive when you are registered, for example at a housing corporation.",
+      "zh": "在房屋协会等机构注册后获得的编号。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "inschrijven",
+    "dutch": "inschrijven",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "to register",
+      "zh": "注册 / 登记"
+    },
+    "notes": {
+      "en": "Mandatory registering your address at the municipality. Illegal to live somewhere without it.",
+      "zh": "在市政厅注册地址。必须做，否则违法 (\"illegal onderhuur\")。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "jaaropgave",
+    "dutch": "jaaropgave",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "annual statement (income)",
+      "zh": "年度工资单 / 年结单"
+    },
+    "notes": {
+      "en": "Annual document from your employer or benefit provider showing total income and paid taxes. Used for tax declaration (belastingaangifte). Must be saved for 5 years.",
+      "zh": "每年收到的收入和已缴税费总结。用于报税。必须保存 5 年。"
+    },
+    "partOfSpeech": "adjective"
+  },
+  {
+    "id": "kiesrecht",
+    "dutch": "kiesrecht",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "right to vote",
+      "zh": "选举权"
+    },
+    "notes": {
+      "en": "The right to vote in elections. In the Netherlands, most people have the right to vote from 18 years old.",
+      "zh": "在选举中投票的权利。荷兰人大多从 18 岁起拥有选举权。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "kinderbijslag",
+    "dutch": "kinderbijslag",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "child benefit",
+      "zh": "儿童金"
+    },
+    "notes": {
+      "en": "Quarterly allowance paid to parents for each child up to 18 years old, managed by the SVB (Sociale Verzekeringsbank).",
+      "zh": "每季度发放的津贴，支付给有 18 岁以下子女的父母，由 SVB 管理。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "kopie",
+    "dutch": "kopie",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "copy",
+      "zh": "复印件 / 复制件"
+    },
+    "notes": {
+      "en": "Often you must send a copy of your ID or contract.",
+      "zh": "很多手续需要提供身份证或合同的复印件。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "leges",
+    "dutch": "leges",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "administrative fee",
+      "zh": "行政手续费"
+    },
+    "notes": {
+      "en": "Money you pay to the gemeente for handling an application, for example for a passport.",
+      "zh": "为办理护照等事项向市政厅支付的手续费用。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "legitimatie",
+    "dutch": "legitimatie",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "ID / identification",
+      "zh": "身份证件"
+    },
+    "notes": {
+      "en": "ID card/passport. Mandatory to carry from age 14 (\"toonplicht\").",
+      "zh": "身份证/护照。14岁以上必须随身携带(\"toonplicht\")。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "loket",
+    "dutch": "loket",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "counter / desk",
+      "zh": "办事窗口"
+    },
+    "notes": {
+      "en": "The desk at the municipality where you ask questions.",
+      "zh": "市政厅的办事柜台。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "melding",
+    "dutch": "melding",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "report / notification",
+      "zh": "报告 / 通知"
+    },
+    "notes": {
+      "en": "\"Melding maken\" (to report an issue).",
+      "zh": "\"Melding maken\" (报告问题)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "melding-discriminatie",
+    "dutch": "meldpunt discriminatie",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "discrimination reporting center",
+      "zh": "歧视举报中心"
+    },
+    "notes": {
+      "en": "Place to report discrimination complaints.",
+      "zh": "举报歧视的地方，如 Anti Discriminatie Bureau (ADB)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "minister-president",
+    "dutch": "minister-president",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "prime minister",
+      "zh": "首相 / 总理"
+    },
+    "notes": {
+      "en": "The leader of the Dutch government. He or she leads the ministers.",
+      "zh": "荷兰政府的领袖，负责领导各个部长。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "nationaliteit",
+    "dutch": "nationaliteit",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "nationality",
+      "zh": "国籍"
+    },
+    "notes": {
+      "en": "On forms you often must fill in your nationality.",
+      "zh": "在各种表格中，经常需要填写自己的国籍。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "naturalisatie",
+    "dutch": "naturalisatie",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "naturalisation",
+      "zh": "入籍 / 归化"
+    },
+    "notes": {
+      "en": "Applying for Dutch citizenship. Requires passing the inburgeringsexamen.",
+      "zh": "申请荷兰国籍。需要通过融入考试 (inburgeringsexamen)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "openbaar-register",
+    "dutch": "openbaar register",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "public register",
+      "zh": "公共登记簿"
+    },
+    "notes": {
+      "en": "Official list that is open for everyone to check, for example company details.",
+      "zh": "任何人都可以查阅的官方登记列表，例如公司登记信息。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "oppositie",
+    "dutch": "oppositie",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "opposition (parties)",
+      "zh": "反对党 / 在野党"
+    },
+    "notes": {
+      "en": "Political parties that are not in the government and often criticise the coalition.",
+      "zh": "没有进入政府、通常对执政联盟提出批评的政党。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "origineel",
+    "dutch": "origineel",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "original",
+      "zh": "原件"
+    },
+    "notes": {
+      "en": "The original document, not a copy; sometimes you must show it at the gemeente.",
+      "zh": "文件的原始版本，不是复印件，有时需要带去市政厅出示。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "pasfoto",
+    "dutch": "pasfoto",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "passport photo",
+      "zh": "证件照 / 护照照片"
+    },
+    "notes": {
+      "en": "Small official photo used for IDs, driving licence and OV-chipkaart.",
+      "zh": "用于身份证、驾照、公交卡等的标准小照片。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "paspoort",
+    "dutch": "paspoort",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "passport",
+      "zh": "护照"
+    },
+    "notes": {
+      "en": "Travel document. Keep it safe.",
+      "zh": "旅行证件。妥善保管。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "politieke-partij",
+    "dutch": "politieke partij",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "political party",
+      "zh": "政党"
+    },
+    "notes": {
+      "en": "Organizations people can vote for. They have different ideas (left/links or right/rechts).",
+      "zh": "人们可以投票选举的组织。分为左翼、右翼和中间党派。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "postcode",
+    "dutch": "postcode",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "postal code",
+      "zh": "邮政编码"
+    },
+    "notes": {
+      "en": "Four digits plus two letters in Dutch addresses, for example 1234 AB.",
+      "zh": "荷兰地址中的邮编格式是 4 位数字 + 2 个字母，例如 1234 AB。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "prinsjesdag",
+    "dutch": "Prinsjesdag",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "Prince's Day (Budget Day)",
+      "zh": "王子日"
+    },
+    "notes": {
+      "en": "Third Tuesday of September. The King travels to the Binnenhof in the Gouden Koets to read the Troonrede.",
+      "zh": "每年 9 月的第三个星期二，国王乘坐金色马车（gouden koets）前往议会宣读政府计划。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "raadslid",
+    "dutch": "raadslid",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "council member / councillor",
+      "zh": "市议员"
+    },
+    "notes": {
+      "en": "Elected member of the Gemeenteraad.",
+      "zh": "市议会（Gemeenteraad）的成员。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "regering",
+    "dutch": "regering",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "government (cabinet)",
+      "zh": "政府 / 内阁"
+    },
+    "notes": {
+      "en": "The ministers and the prime minister (minister-president) who govern the country.",
+      "zh": "由首相（minister-president）和各部长组成、负责治理国家的机构。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "rekening-bank",
+    "dutch": "rekening",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "account / bill",
+      "zh": "账户 / 账单"
+    },
+    "notes": {
+      "en": "\"Bankrekening\" (bank account). In a restaurant: \"Mag ik de rekening?\" (Can I have the bill?).",
+      "zh": "\"Bankrekening\"(银行账户)。餐厅里说 \"Mag ik de rekening?\" (买单)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "rijbewijs",
+    "dutch": "rijbewijs",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "driving license",
+      "zh": "驾照"
+    },
+    "notes": {
+      "en": "Valid for 10 years usually. Can also be used as ID in some cases.",
+      "zh": "通常有效期10年。某些情况下可作身份证使用。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "stadhuis",
+    "dutch": "stadhuis",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "city hall",
+      "zh": "市政厅 / 市府大楼"
+    },
+    "notes": {
+      "en": "Often another word for gemeentehuis, especially in bigger cities.",
+      "zh": "在大城市里常用来指市政厅，与 gemeentehuis 含义接近。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "stembureau",
+    "dutch": "stembureau",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "polling station",
+      "zh": "投票站"
+    },
+    "notes": {
+      "en": "Place where you go to cast your vote on election day. You must bring your ID and your voting card (stempas).",
+      "zh": "选举日去投票的地方。需要带身份证和投票卡（stempas）。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "stemmen",
+    "dutch": "stemmen",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "to vote",
+      "zh": "投票"
+    },
+    "notes": {
+      "en": "Dutch nationals aged 18+ have the right to vote (actief kiesrecht). Non-nationals living legally for 5 years can vote for the Gemeenteraad.",
+      "zh": "投票。18岁以上荷兰人有选举权。合法居住满 5 年的外国人可投票选举市议会。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "stempas",
+    "dutch": "stempas",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "voting card",
+      "zh": "投票卡"
+    },
+    "notes": {
+      "en": "Official card you receive at home before an election. You must show it at the stembureau to vote.",
+      "zh": "选举前邮寄到家中的官方投票卡，去投票站（stembureau）时必须出示。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "svb",
+    "dutch": "SVB",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "Social Insurance Bank (SVB)",
+      "zh": "社会保险银行 (SVB)"
+    },
+    "notes": {
+      "en": "Organisation that pays child benefit (kinderbijslag) and AOW pensions.",
+      "zh": "负责发放儿童金 (kinderbijslag) 和 AOW 养老金的机构。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "toeslag",
+    "dutch": "toeslag",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "allowance / benefit",
+      "zh": "津贴 / 补助"
+    },
+    "notes": {
+      "en": "Government financial help: \"zorgtoeslag\" (health), \"huurtoeslag\" (rent).",
+      "zh": "政府补助：如 \"zorgtoeslag\"(医保津贴)、\"huurtoeslag\"(房租津贴)。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "troonrede",
+    "dutch": "troonrede",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "Speech from the Throne",
+      "zh": "国王/女王演讲"
+    },
+    "notes": {
+      "en": "The King reads the government's plans for the next year on Prinsjesdag (third Tuesday of September).",
+      "zh": "在王子日（9 月第三个星期二），国王宣读政府下一年的计划。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "uwv",
+    "dutch": "UWV",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "Employee Insurance Agency (UWV)",
+      "zh": "员工保险执行机构 (UWV)"
+    },
+    "notes": {
+      "en": "Government agency that handles unemployment benefits and some disability benefits.",
+      "zh": "负责办理失业金和部分伤残津贴的政府机构。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "verblijfsvergunning",
+    "dutch": "verblijfsvergunning",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "residence permit",
+      "zh": "居留许可"
+    },
+    "notes": {
+      "en": "The ID card that proves you are allowed to live in NL.",
+      "zh": "证明你可以在荷兰居住的证件（ID卡）。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "vergunning",
+    "dutch": "vergunning",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "permit",
+      "zh": "许可证"
+    },
+    "notes": {
+      "en": "For building, parking, or staying (\"parkeervergunning\").",
+      "zh": "如建筑许可、停车许可(\"parkeervergunning\")。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "verkiezing",
+    "dutch": "verkiezing",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "election",
+      "zh": "选举"
+    },
+    "notes": {
+      "en": "Voting event. Elections are held every 4 years for the Tweede Kamer and Gemeenteraad.",
+      "zh": "投票活动。例如每 4 年举行一次的国会二院和市议会选举。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "vernieuwen",
+    "dutch": "vernieuwen",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "to renew",
+      "zh": "更新 / 续期"
+    },
+    "notes": {
+      "en": "To extend the validity of documents like a driver's license (rijbewijs) or passport.",
+      "zh": "延长文件（如驾照或护照）的有效期。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "wachtwoord",
+    "dutch": "wachtwoord",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "password",
+      "zh": "密码"
+    },
+    "notes": {
+      "en": "Literally \"wait word\". Essential for logging into websites.",
+      "zh": "字面意是\"等待词\"。登录网站必备。"
+    },
+    "partOfSpeech": "noun"
+  },
+  {
+    "id": "wijzigen",
+    "dutch": "wijzigen",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "to change / modify",
+      "zh": "修改 / 变更"
+    },
+    "notes": {
+      "en": "Changing your data or address.",
+      "zh": "修改数据或地址。"
+    },
+    "partOfSpeech": "verb"
+  },
+  {
+    "id": "zorgtoeslag",
+    "dutch": "zorgtoeslag",
+    "category": "admin",
+    "level": "A2",
+    "translations": {
+      "en": "healthcare allowance",
+      "zh": "医疗津贴 / 医保补贴"
+    },
+    "notes": {
+      "en": "Money received from the Belastingdienst to help pay health insurance premiums, depending on income.",
+      "zh": "税务局根据收入发放的补贴，用于支付医疗保险费。"
+    },
+    "partOfSpeech": "noun"
+  }
+]
