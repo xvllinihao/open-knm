@@ -18,7 +18,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
     <div className="flex flex-col gap-12 lg:gap-20 h-full">
       <div className="flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-20">
         {/* Left: Hero Section */}
-        <section className="flex-1 text-center lg:text-left space-y-6 max-w-3xl lg:max-w-none">
+        <section className="w-full lg:flex-1 text-center lg:text-left space-y-6 max-w-3xl lg:max-w-none mx-auto lg:mx-0">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 text-orange-600 text-xs font-bold uppercase tracking-wider">
             <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
             {isZh ? '免费 · 开源 · 社区驱动' : 'Free · Open Source · Community Driven'}
@@ -58,7 +58,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
           {/* Latest Update */}
           <div className="pt-8 border-t border-slate-100 mt-8">
             <Link href={`/${locale}/changelog`} className="group block">
-              <div className="flex items-center gap-2 mb-2">
+              <div className="flex items-center gap-2 mb-2 justify-center lg:justify-start">
                 <span className="inline-flex items-center justify-center px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600 uppercase tracking-wide">
                   {isZh ? "最新更新" : "Latest Update"}
                 </span>
@@ -74,29 +74,31 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
         </section>
 
         {/* Right: Feature Cards */}
-        <section className="flex-1 w-full max-w-md lg:max-w-lg">
+        <section className="w-full lg:flex-1 max-w-md lg:max-w-lg mx-auto">
           <div className="grid gap-4">
              {/* AI Assistant Promo Card */}
              <Link
                href={`/${locale}/ai-assistant`}
-               className="group flex items-center p-5 bg-slate-900 rounded-2xl border border-slate-800 shadow-lg shadow-slate-900/20 hover:shadow-xl transition-all hover:-translate-y-0.5 overflow-hidden relative"
+               className="group flex items-center p-4 sm:p-5 bg-slate-900 rounded-2xl border border-slate-800 shadow-lg shadow-slate-900/20 hover:shadow-xl transition-all hover:-translate-y-0.5 overflow-hidden relative"
              >
                 {/* Ambient Glow */}
                 <div className="absolute -right-10 -top-10 w-32 h-32 bg-[var(--primary)] blur-3xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
                 
-                <div className="w-12 h-12 bg-white/10 rounded-xl flex items-center justify-center text-2xl mr-5 group-hover:scale-110 transition-transform border border-white/10">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform border border-white/10 shrink-0">
                   🤖
                 </div>
                 <div className="flex-1 min-w-0 relative z-10">
-                  <h3 className="text-lg font-bold text-white truncate flex items-center gap-2">
-                    {assistant.promoTitle}
-                    <span className="inline-flex h-2 w-2 rounded-full bg-[var(--primary)] animate-pulse"></span>
-                  </h3>
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <h3 className="text-base sm:text-lg font-bold text-white truncate min-w-0">
+                      {assistant.promoTitle}
+                    </h3>
+                    <span className="inline-flex h-2 w-2 rounded-full bg-[var(--primary)] animate-pulse shrink-0"></span>
+                  </div>
                   <p className="text-slate-400 text-sm truncate">
                     {assistant.promoDesc}
                   </p>
                 </div>
-                <div className="ml-3 relative z-10">
+                <div className="ml-2 sm:ml-3 relative z-10">
                   <span className="text-[var(--primary)] font-bold text-sm group-hover:text-white transition-colors">
                     {assistant.promoAction}
                   </span>
@@ -106,21 +108,23 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
              {/* Writing Promo Card */}
              <Link
                href={`/${locale}/writing`}
-               className="group flex items-center p-5 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl border border-emerald-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
+               className="group flex items-center p-4 sm:p-5 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl border border-emerald-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
              >
-                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl mr-5 group-hover:scale-110 transition-transform border border-emerald-100 shadow-sm">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform border border-emerald-100 shadow-sm shrink-0">
                   ✍️
                 </div>
                 <div className="flex-1 min-w-0 relative z-10">
-                  <h3 className="text-lg font-bold text-slate-900 truncate flex items-center gap-2">
-                    {isZh ? 'A2 写作速成' : 'Writing Crash Course'}
-                    <span className="inline-flex px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-bold uppercase tracking-wide">New</span>
-                  </h3>
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 truncate min-w-0">
+                      {isZh ? 'A2 写作速成' : 'Writing Crash Course'}
+                    </h3>
+                    <span className="inline-flex px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-bold uppercase tracking-wide shrink-0">New</span>
+                  </div>
                   <p className="text-slate-600 text-sm truncate">
                     {isZh ? '万能模板 + 全真模拟题库。' : 'Templates, rules & mock exams.'}
                   </p>
                 </div>
-                <div className="ml-3 relative z-10">
+                <div className="ml-2 sm:ml-3 relative z-10">
                   <span className="text-emerald-600 group-hover:text-emerald-700 transition-colors text-lg">→</span>
                 </div>
              </Link>
@@ -128,21 +132,23 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
              {/* Vocabulary Promo Card */}
              <Link
                href={`/${locale}/vocabulary`}
-               className="group flex items-center p-5 bg-gradient-to-r from-orange-50 to-amber-50 rounded-2xl border border-orange-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
+               className="group flex items-center p-4 sm:p-5 bg-gradient-to-r from-orange-50 to-amber-50 rounded-2xl border border-orange-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
              >
-                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl mr-5 group-hover:scale-110 transition-transform border border-orange-100 shadow-sm">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform border border-orange-100 shadow-sm shrink-0">
                   📚
                 </div>
                 <div className="flex-1 min-w-0 relative z-10">
-                  <h3 className="text-lg font-bold text-slate-900 truncate flex items-center gap-2">
-                    {isZh ? 'A2 高频词汇表' : 'Essential Vocabulary'}
-                    <span className="inline-flex px-2 py-0.5 rounded-full bg-orange-100 text-orange-700 text-[10px] font-bold uppercase tracking-wide">New</span>
-                  </h3>
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 truncate min-w-0">
+                      {isZh ? 'A2 高频词汇表' : 'Essential Vocabulary'}
+                    </h3>
+                    <span className="inline-flex px-2 py-0.5 rounded-full bg-orange-100 text-orange-700 text-[10px] font-bold uppercase tracking-wide shrink-0">New</span>
+                  </div>
                   <p className="text-slate-600 text-sm truncate">
                     {isZh ? '涵盖基础生活高频词与 KNM 考试核心术语。' : 'Covers essential daily vocabulary & KNM exam key terms.'}
                   </p>
                 </div>
-                <div className="ml-3 relative z-10">
+                <div className="ml-2 sm:ml-3 relative z-10">
                   <span className="text-orange-600 group-hover:text-orange-700 transition-colors text-lg">→</span>
                 </div>
              </Link>
@@ -150,21 +156,23 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
              {/* Speaking Promo Card */}
              <Link
                href={`/${locale}/speaking`}
-               className="group flex items-center p-5 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
+               className="group flex items-center p-4 sm:p-5 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
              >
-                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-2xl mr-5 group-hover:scale-110 transition-transform border border-blue-100 shadow-sm">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform border border-blue-100 shadow-sm shrink-0">
                   🗣️
                 </div>
                 <div className="flex-1 min-w-0 relative z-10">
-                  <h3 className="text-lg font-bold text-slate-900 truncate flex items-center gap-2">
-                    {isZh ? 'A2 口语模拟' : 'Speaking Practice'}
-                    <span className="inline-flex px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 text-[10px] font-bold uppercase tracking-wide">Beta</span>
-                  </h3>
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 truncate min-w-0">
+                      {isZh ? 'A2 口语模拟' : 'Speaking Practice'}
+                    </h3>
+                    <span className="inline-flex px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 text-[10px] font-bold uppercase tracking-wide shrink-0">Beta</span>
+                  </div>
                   <p className="text-slate-600 text-sm truncate">
                     {isZh ? '实时语音反馈，模拟真实考试场景。' : 'Interactive practice with real-time feedback.'}
                   </p>
                 </div>
-                <div className="ml-3 relative z-10">
+                <div className="ml-2 sm:ml-3 relative z-10">
                   <span className="text-blue-600 group-hover:text-blue-700 transition-colors text-lg">→</span>
                 </div>
              </Link>
@@ -172,20 +180,20 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
              {/* Unified KNM Card */}
              <Link
                href={`/${locale}/knm`}
-               className="group flex items-center p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
+               className="group flex items-center p-4 sm:p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
              >
-                <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center text-2xl mr-5 group-hover:scale-110 transition-transform">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-50 rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform shrink-0">
                   🇳🇱
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="text-lg font-bold text-slate-900 truncate">
+                  <h3 className="text-base sm:text-lg font-bold text-slate-900 truncate min-w-0">
                     {isZh ? 'KNM 知识考点' : 'Knowledge of Dutch Society'}
                   </h3>
                   <p className="text-slate-500 text-sm truncate">
                     {isZh ? '历史、法律、医疗、工作全覆盖。' : 'History, Law, Health, Work & Regulations.'}
                   </p>
                 </div>
-                <div className="ml-3">
+                <div className="ml-2 sm:ml-3">
                   <span className="text-slate-300 group-hover:text-[var(--primary)] transition-colors text-lg">→</span>
                 </div>
              </Link>

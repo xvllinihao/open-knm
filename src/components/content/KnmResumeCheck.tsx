@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Locale, uiTexts } from "@/lib/uiTexts";
 import { ResumePrompt } from "@/components/ResumePrompt";
+import { getArticleBySlug } from "@/lib/articles";
 
 const STORAGE_KEY = "knm-bookmark";
 
@@ -62,6 +63,8 @@ export function KnmResumeCheck({ locale }: { locale: Locale }) {
   if (!bookmark) return null;
 
   const prompts = uiTexts[locale].vocabulary.bookmarkPrompt;
+  const article = getArticleBySlug(bookmark.slug);
+  const displayTitle = article ? article.titles[locale] : bookmark.title;
 
   const handleConfirm = () => {
     router.push(`/${bookmark.locale}/articles/${bookmark.slug}`);
@@ -74,7 +77,7 @@ export function KnmResumeCheck({ locale }: { locale: Locale }) {
 
   return (
     <ResumePrompt
-      message={`${prompts.resume} “${bookmark.title}”`}
+      message={`${prompts.resume} “${displayTitle}”`}
       confirmText={prompts.continueReading}
       dismissText={prompts.dismiss}
       onConfirm={handleConfirm}
