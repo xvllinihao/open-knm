@@ -204,13 +204,13 @@ export const uiTexts: Record<Locale, UiTexts> = {
   },
   en: {
     nav: {
-      life: "Useful Resources",
+      life: "Resources",
       knm: "KNM Zone",
       assistant: "AI Assistant",
       vocabulary: "Vocabulary",
       speaking: "Speaking",
       writing: "Writing",
-      about: "About & Contribute",
+      about: "About",
     },
     footer: {
       tagline: "© open-knm — open knowledge for expats.",
