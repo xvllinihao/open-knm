@@ -155,7 +155,12 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
     { id: "work", label: texts.categories.work },
     { id: "housing", label: texts.categories.housing },
     { id: "health", label: texts.categories.health },
-    { id: "admin", label: texts.categories.admin },
+    { id: "geography", label: texts.categories.geography },
+    { id: "politics", label: texts.categories.politics },
+    { id: "history", label: texts.categories.history },
+    { id: "education", label: texts.categories.education },
+    { id: "culture", label: texts.categories.culture },
+    { id: "law", label: texts.categories.law },
   ];
 
   const filteredItems = useMemo(() => {
@@ -449,7 +454,9 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
 function VocabularyCard({ item, locale }: { item: VocabularyItem; locale: Locale }) {
   const isZh = locale === 'zh';
   const texts = uiTexts[locale].vocabulary;
-  const { isPlaying, play } = useAudio(item.dutch);
+  const wordToSpeak = item.article ? `${item.article} ${item.dutch}` : item.dutch;
+  const { isPlaying, play } = useAudio(wordToSpeak);
+  const { isPlaying: isExamplePlaying, play: playExample } = useAudio(item.example?.dutch || "");
   
   return (
     <div className="group relative bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
@@ -471,8 +478,11 @@ function VocabularyCard({ item, locale }: { item: VocabularyItem; locale: Locale
       </div>
 
       <div className="mb-4">
-        <div className="flex items-center gap-3 mb-1">
+        <div className="flex items-center gap-3 mb-1 flex-wrap">
           <h3 className="text-3xl font-black text-slate-900 tracking-tight group-hover:text-[var(--primary)] transition-colors">
+            {item.article && (
+              <span className="text-xl font-normal text-slate-400 mr-2">{item.article}</span>
+            )}
             {item.dutch}
           </h3>
           <button
@@ -505,8 +515,39 @@ function VocabularyCard({ item, locale }: { item: VocabularyItem; locale: Locale
           <span className="block font-semibold text-slate-400 text-xs uppercase mb-1 tracking-wider">
             {isZh ? '笔记' : 'Note'}
           </span>
-          {item.notes[locale]}
+          {item.notes[locale] || (isZh ? "暂无笔记" : "No notes")}
         </div>
+
+        {item.example && (
+          <div className="bg-orange-50/50 rounded-xl p-3 text-sm leading-relaxed text-slate-600 border border-orange-100/50">
+            <div className="flex justify-between items-start">
+              <span className="block font-semibold text-orange-400 text-xs uppercase mb-1 tracking-wider">
+                {texts.example}
+              </span>
+              <button
+                onClick={playExample}
+                disabled={isExamplePlaying}
+                aria-label="Play example"
+                className="p-1 rounded-full text-orange-300 hover:text-orange-500 hover:bg-orange-100 transition-colors"
+              >
+                {isExamplePlaying ? (
+                  <span className="flex space-x-0.5 h-3 items-center">
+                    <span className="w-0.5 h-2 bg-current rounded-full animate-[bounce_1s_infinite]"></span>
+                    <span className="w-0.5 h-2.5 bg-current rounded-full animate-[bounce_1s_infinite_0.2s]"></span>
+                    <span className="w-0.5 h-2 bg-current rounded-full animate-[bounce_1s_infinite_0.4s]"></span>
+                  </span>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                    <path d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.508c-1.141 0-2.318.664-2.66 1.905A9.76 9.76 0 001.5 12c0 .898.121 1.768.35 2.595.341 1.24 1.518 1.905 2.659 1.905h1.93l4.5 4.5c.945.945 2.561.276 2.561-1.06V4.06zM18.584 5.106a.75.75 0 011.06 0c3.808 3.807 3.808 9.98 0 13.788a.75.75 0 11-1.06-1.06 8.25 8.25 0 000-11.668.75.75 0 010-1.06z" />
+                    <path d="M15.932 7.757a.75.75 0 011.061 0 6 6 0 010 8.486.75.75 0 01-1.06-1.061 4.5 4.5 0 000-6.364.75.75 0 010-1.06z" />
+                  </svg>
+                )}
+              </button>
+            </div>
+            <p className="font-medium text-slate-800 mb-0.5">{item.example.dutch}</p>
+            <p className="text-slate-500 text-xs">{item.example[locale]}</p>
+          </div>
+        )}
       </div>
     </div>
   );
@@ -524,7 +565,9 @@ function VocabularyListItem({
 }) {
   const isZh = locale === 'zh';
   const texts = uiTexts[locale].vocabulary;
-  const { isPlaying, play } = useAudio(item.dutch);
+  const wordToSpeak = item.article ? `${item.article} ${item.dutch}` : item.dutch;
+  const { isPlaying, play } = useAudio(wordToSpeak);
+  const { isPlaying: isExamplePlaying, play: playExample } = useAudio(item.example?.dutch || "");
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
@@ -543,6 +586,9 @@ function VocabularyListItem({
           <div className="flex-1 min-w-0">
             <div className="flex items-baseline gap-2 flex-wrap">
               <h3 className={`text-lg font-bold truncate transition-colors ${isExpanded ? 'text-[var(--primary)]' : 'text-slate-900'}`}>
+                {item.article && (
+                  <span className="text-sm font-normal text-slate-400 mr-1.5">{item.article}</span>
+                )}
                 {item.dutch}
               </h3>
               <span
@@ -590,14 +636,50 @@ function VocabularyListItem({
       </div>
 
       {/* Expanded Details */}
-      <div className={`overflow-hidden transition-all duration-200 ease-in-out ${isExpanded ? 'max-h-48 opacity-100 border-t border-slate-100' : 'max-h-0 opacity-0'}`}>
-        <div className="p-3 sm:p-4 bg-slate-50/50 text-sm text-slate-600">
-          <div className="mb-2 flex items-center gap-2">
-             <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{isZh ? '笔记' : 'Note'}</span>
-             <span className="text-xs text-slate-400 px-1.5 py-0.5 bg-white rounded border border-slate-200">{item.category}</span>
-             <span className="text-xs text-slate-400 px-1.5 py-0.5 bg-blue-50 rounded border border-blue-100">{texts.partOfSpeech[item.partOfSpeech]}</span>
+      <div className={`overflow-hidden transition-all duration-200 ease-in-out ${isExpanded ? 'max-h-64 opacity-100 border-t border-slate-100' : 'max-h-0 opacity-0'}`}>
+        <div className="p-3 sm:p-4 bg-slate-50/50 text-sm text-slate-600 space-y-3">
+          <div>
+            <div className="mb-1 flex items-center gap-2">
+               <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{isZh ? '笔记' : 'Note'}</span>
+               <span className="text-xs text-slate-400 px-1.5 py-0.5 bg-white rounded border border-slate-200">{item.category}</span>
+               <span className="text-xs text-slate-400 px-1.5 py-0.5 bg-blue-50 rounded border border-blue-100">{texts.partOfSpeech[item.partOfSpeech]}</span>
+            </div>
+            {item.notes[locale] || (isZh ? "暂无笔记" : "No notes")}
           </div>
-          {item.notes[locale]}
+
+          {item.example && (
+            <div className="bg-orange-50/50 rounded-lg p-2.5 border border-orange-100/50">
+              <div className="flex justify-between items-start">
+               <span className="block font-semibold text-orange-400 text-xs uppercase mb-1 tracking-wider">
+                {texts.example}
+              </span>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  playExample(e);
+                }}
+                disabled={isExamplePlaying}
+                aria-label="Play example"
+                className="p-1 rounded-full text-orange-300 hover:text-orange-500 hover:bg-orange-100 transition-colors"
+              >
+                {isExamplePlaying ? (
+                  <span className="flex space-x-0.5 h-3 items-center">
+                    <span className="w-0.5 h-2 bg-current rounded-full animate-[bounce_1s_infinite]"></span>
+                    <span className="w-0.5 h-2.5 bg-current rounded-full animate-[bounce_1s_infinite_0.2s]"></span>
+                    <span className="w-0.5 h-2 bg-current rounded-full animate-[bounce_1s_infinite_0.4s]"></span>
+                  </span>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                    <path d="M13.5 4.06c0-1.336-1.616-2.005-2.56-1.06l-4.5 4.5H4.508c-1.141 0-2.318.664-2.66 1.905A9.76 9.76 0 001.5 12c0 .898.121 1.768.35 2.595.341 1.24 1.518 1.905 2.659 1.905h1.93l4.5 4.5c.945.945 2.561.276 2.561-1.06V4.06zM18.584 5.106a.75.75 0 011.06 0c3.808 3.807 3.808 9.98 0 13.788a.75.75 0 11-1.06-1.06 8.25 8.25 0 000-11.668.75.75 0 010-1.06z" />
+                    <path d="M15.932 7.757a.75.75 0 011.061 0 6 6 0 010 8.486.75.75 0 01-1.06-1.061 4.5 4.5 0 000-6.364.75.75 0 010-1.06z" />
+                  </svg>
+                )}
+              </button>
+              </div>
+              <p className="font-medium text-slate-800 mb-0.5">{item.example.dutch}</p>
+              <p className="text-slate-500 text-xs">{item.example[locale]}</p>
+            </div>
+          )}
         </div>
       </div>
     </div>

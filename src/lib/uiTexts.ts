@@ -30,7 +30,12 @@ export type VocabularyTexts = {
     work: string;
     housing: string;
     health: string;
-    admin: string;
+    geography: string;
+    politics: string;
+    history: string;
+    education: string;
+    culture: string;
+    law: string;
   };
   partOfSpeech: {
     noun: string;
@@ -49,6 +54,7 @@ export type VocabularyTexts = {
     continueStudying: string;
     dismiss: string;
   };
+  example: string;
 };
 
 export type UiTexts = {
@@ -137,10 +143,10 @@ export const uiTexts: Record<Locale, UiTexts> = {
     vocabulary: {
       title: "荷兰语高频词汇 (A2)",
       description:
-        "精选约500个与荷兰生活、工作、住房、医疗和行政相关的高频词汇。完整的 A2 词汇量远不止这些，但先把这 500 个吃透，可以大大降低读教材、做题和看官方材料的门槛。",
+        "精选涵盖基础生活和 KNM 考试重点的高频词汇。掌握这些核心单词，不仅能应对日常生活，更能大大降低备考 KNM 和阅读官方材料的门槛。",
       promoTitle: "A2 高频词汇表",
       promoDesc:
-        "并非覆盖所有 A2 词汇，但这约 500 个核心单词，足够帮你打好基础，读懂更多 KNM 与荷兰语教材。",
+        "并非覆盖所有 A2 词汇，但这核心单词，足够帮你打好基础，读懂更多 KNM 与荷兰语教材。",
       loadMore: "加载更多",
       showing: "正在展示",
       of: "共",
@@ -149,8 +155,13 @@ export const uiTexts: Record<Locale, UiTexts> = {
         daily: "日常生活",
         work: "工作",
         housing: "住房",
-        health: "医疗",
-        admin: "行政",
+    health: "医疗",
+    geography: "地理",
+    politics: "政治",
+    history: "历史",
+        education: "教育",
+        culture: "文化",
+        law: "法律",
       },
       partOfSpeech: {
         noun: "名词",
@@ -175,6 +186,7 @@ export const uiTexts: Record<Locale, UiTexts> = {
         continueStudying: "继续浏览该模式",
         dismiss: "不，谢谢",
       },
+      example: "例句",
     },
     disclaimer: {
       title: "免责声明",
@@ -227,10 +239,10 @@ export const uiTexts: Record<Locale, UiTexts> = {
     vocabulary: {
       title: "Essential Dutch Vocabulary (A2)",
       description:
-        "A curated list of around 500 high‑frequency words for daily life, work, housing, health, and administration in the Netherlands. Full A2 vocabulary is much larger, but truly mastering these 500 or so words will make other textbooks and official materials much easier to read.",
+        "A curated list covering essential daily vocabulary and key KNM exam terms. Mastering these core words will not only help in daily life but also significantly lower the barrier for KNM exam preparation and reading official materials.",
       promoTitle: "A2 Essential Vocabulary",
       promoDesc:
-        "This list doesn’t cover every A2 word, but these ~500 core items give you a solid base for KNM study and general Dutch learning.",
+        "This list doesn’t cover every A2 word, but these core items give you a solid base for KNM study and general Dutch learning.",
       loadMore: "Load More",
       showing: "Showing",
       of: "of",
@@ -240,7 +252,12 @@ export const uiTexts: Record<Locale, UiTexts> = {
         work: "Work",
         housing: "Housing",
         health: "Health",
-        admin: "Admin",
+        geography: "Geography",
+        politics: "Politics",
+        history: "History",
+        education: "Education",
+        culture: "Culture",
+        law: "Law",
       },
       partOfSpeech: {
         noun: "noun",
@@ -265,6 +282,7 @@ export const uiTexts: Record<Locale, UiTexts> = {
         continueStudying: "Return to this mode",
         dismiss: "No thanks",
       },
+      example: "Example",
     },
     disclaimer: {
       title: "Disclaimer",

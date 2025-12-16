@@ -7,6 +7,18 @@ export type ChangelogItem = {
 
 export const changelogData: ChangelogItem[] = [
   {
+    version: "1.6.0",
+    date: "2025-12-16",
+    title: {
+      zh: "KNM 核心词汇与卡片升级",
+      en: "KNM Vocabulary & Card UI Update",
+    },
+    description: {
+      zh: "新增了 60+ KNM 核心词汇（覆盖历史、政治、医疗等），并优化了词汇卡片结构，支持显示词性、例句和分类。",
+      en: "Added 60+ essential KNM vocabulary words (covering history, politics, health, etc.) and updated the vocabulary card structure to show part of speech, examples, and categories.",
+    },
+  },
+  {
     version: "1.5.0",
     date: "2025-12-15",
     title: {

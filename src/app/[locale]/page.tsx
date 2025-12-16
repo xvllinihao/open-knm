@@ -139,7 +139,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                     <span className="inline-flex px-2 py-0.5 rounded-full bg-orange-100 text-orange-700 text-[10px] font-bold uppercase tracking-wide">New</span>
                   </h3>
                   <p className="text-slate-600 text-sm truncate">
-                    {isZh ? '500+ 核心词汇，覆盖生活全场景。' : '500+ core words for daily life & exam.'}
+                    {isZh ? '涵盖基础生活高频词与 KNM 考试核心术语。' : 'Covers essential daily vocabulary & KNM exam key terms.'}
                   </p>
                 </div>
                 <div className="ml-3 relative z-10">
