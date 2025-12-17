@@ -42,6 +42,8 @@ export type VocabularyTexts = {
     pronoun: string;
     interjection: string;
     article: string;
+    all: string;
+    filterBy: string;
   };
   bookmarkPrompt: {
     resume: string;
@@ -162,6 +164,8 @@ export const uiTexts: Record<Locale, UiTexts> = {
         pronoun: "代词",
         interjection: "感叹词",
         article: "冠词",
+        all: "全部词性",
+        filterBy: "按词性筛选",
       },
       viewMode: {
         card: "学习模式",
@@ -252,6 +256,8 @@ export const uiTexts: Record<Locale, UiTexts> = {
         pronoun: "pronoun",
         interjection: "interjection",
         article: "article",
+        all: "All Parts of Speech",
+        filterBy: "Filter by Part of Speech",
       },
       viewMode: {
         card: "Learning Mode",
