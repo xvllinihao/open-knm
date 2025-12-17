@@ -6,7 +6,7 @@
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
-[![Discord](https://img.shields.io/discord/1443916344876859455?color=5865F2&label=Discord&logo=discord&logoColor=white)](https://discord.gg/KXfHMHMw)
+[![Discord](https://img.shields.io/discord/1443916344876859455?color=5865F2&label=Discord&logo=discord&logoColor=white)](https://open-knm.org/discord)
 
 **[中文]** | [English](#english)
 
