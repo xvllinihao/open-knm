@@ -144,7 +144,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                     <a href="https://github.com/xvllinihao/open-knm/graphs/contributors" target="_blank" rel="noopener noreferrer" className="block hover:opacity-80 transition-opacity">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img 
-                            src="https://contrib.rocks/image?repo=xvllinihao/open-knm" 
+                            src="https://contrib.rocks/image?repo=xvllinihao/open-knm&columns=12&max=100" 
                             alt="Contributors" 
                             className="mx-auto"
                         />

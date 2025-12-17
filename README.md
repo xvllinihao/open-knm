@@ -60,7 +60,7 @@
 
 感谢每一位通过 Issue、PR 或分享经验支持 Open KNM 的朋友！
 
-[![Contributors](https://contrib.rocks/image?repo=xvllinihao/open-knm)](https://github.com/xvllinihao/open-knm/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=xvllinihao/open-knm&columns=12&max=100)](https://github.com/xvllinihao/open-knm/graphs/contributors)
 
 ### 社区寄语
 
@@ -118,7 +118,7 @@ Please read our [Contribution Guide (CONTRIBUTING.md)](./CONTRIBUTING.md) for mo
 
 Big thanks to everyone who has supported Open KNM through issues, PRs, and shared knowledge!
 
-[![Contributors](https://contrib.rocks/image?repo=xvllinihao/open-knm)](https://github.com/xvllinihao/open-knm/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=xvllinihao/open-knm&columns=12&max=100)](https://github.com/xvllinihao/open-knm/graphs/contributors)
 
 ### Community Note
 
