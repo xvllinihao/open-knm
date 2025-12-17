@@ -24,6 +24,15 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: "/discord",
+        destination: "https://discord.gg/6kBRn64mYM",
+        permanent: false,
+      },
+    ];
+  },
   // This is required to support PostHog trailing slash API requests
   skipTrailingSlashRedirect: true,
 };
