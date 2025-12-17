@@ -10,6 +10,7 @@ type ViewMode = 'card' | 'list';
 
 type VocabBookmark = {
   category: string;
+  partOfSpeech: string;
   page: number;
   viewMode: ViewMode;
   updatedAt: number;
@@ -141,6 +142,7 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
   const texts = uiTexts[locale].vocabulary;
   
   const [activeCategory, setActiveCategory] = useState<string>("all");
+  const [activePartOfSpeech, setActivePartOfSpeech] = useState<string>("all");
   const [currentPage, setCurrentPage] = useState(1);
   const [viewMode, setViewMode] = useState<ViewMode>('card');
   const [hideTranslations, setHideTranslations] = useState(false);
@@ -163,12 +165,34 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
     { id: "law", label: texts.categories.law },
   ];
 
+  const partOfSpeechOptions = [
+    { id: "all", label: texts.partOfSpeech.all },
+    { id: "noun", label: texts.partOfSpeech.noun },
+    { id: "verb", label: texts.partOfSpeech.verb },
+    { id: "adjective", label: texts.partOfSpeech.adjective },
+    { id: "adverb", label: texts.partOfSpeech.adverb },
+    { id: "preposition", label: texts.partOfSpeech.preposition },
+    { id: "conjunction", label: texts.partOfSpeech.conjunction },
+    { id: "pronoun", label: texts.partOfSpeech.pronoun },
+    { id: "interjection", label: texts.partOfSpeech.interjection },
+    { id: "article", label: texts.partOfSpeech.article },
+  ];
+
   const filteredItems = useMemo(() => {
-    if (activeCategory === "all") {
-      return vocabularyList;
+    let filtered = vocabularyList;
+    
+    // Filter by category
+    if (activeCategory !== "all") {
+      filtered = filtered.filter((item) => item.category === activeCategory);
     }
-    return vocabularyList.filter((item) => item.category === activeCategory);
-  }, [activeCategory]);
+    
+    // Filter by part of speech
+    if (activePartOfSpeech !== "all") {
+      filtered = filtered.filter((item) => item.partOfSpeech === activePartOfSpeech);
+    }
+    
+    return filtered;
+  }, [activeCategory, activePartOfSpeech]);
 
   const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -176,6 +200,11 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
 
   const handleCategoryChange = (categoryId: string) => {
     setActiveCategory(categoryId);
+    setCurrentPage(1);
+  };
+
+  const handlePartOfSpeechChange = (partOfSpeechId: string) => {
+    setActivePartOfSpeech(partOfSpeechId);
     setCurrentPage(1);
   };
 
@@ -209,6 +238,7 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
         // Current state is initial (all, 1, card).
         if (
           parsed.category !== "all" ||
+          parsed.partOfSpeech !== "all" ||
           parsed.page !== 1 ||
           parsed.viewMode !== "card"
         ) {
@@ -227,6 +257,7 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
     if (typeof window === "undefined") return;
     const payload: VocabBookmark = {
       category: activeCategory,
+      partOfSpeech: activePartOfSpeech,
       page: currentPage,
       viewMode,
       updatedAt: Date.now(),
@@ -236,11 +267,12 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
     } catch (error) {
       console.error("Failed to save vocabulary bookmark:", error);
     }
-  }, [activeCategory, currentPage, viewMode]);
+  }, [activeCategory, activePartOfSpeech, currentPage, viewMode]);
 
   const handleResume = () => {
     if (!pendingBookmark) return;
     setActiveCategory(pendingBookmark.category);
+    setActivePartOfSpeech(pendingBookmark.partOfSpeech);
     setViewMode(pendingBookmark.viewMode);
     setCurrentPage(pendingBookmark.page);
     setIsResumeVisible(false);
@@ -258,6 +290,10 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
         <ResumePrompt
           message={`${texts.bookmarkPrompt.resume} “${
             categories.find((c) => c.id === pendingBookmark.category)?.label || pendingBookmark.category
+          }${
+            pendingBookmark.partOfSpeech !== "all"
+              ? ` - ${partOfSpeechOptions.find((p) => p.id === pendingBookmark.partOfSpeech)?.label || pendingBookmark.partOfSpeech}`
+              : ""
           }” - ${texts.viewMode[pendingBookmark.viewMode]} ${
             pendingBookmark.page > 1
               ? locale === "zh"
@@ -302,6 +338,28 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
               {cat.label}
             </button>
           ))}
+        </div>
+
+        {/* Part of Speech Filter */}
+        <div className="flex flex-col items-center gap-3">
+          <span className="text-xs font-medium text-slate-500 uppercase tracking-wider">
+            {texts.partOfSpeech.filterBy}
+          </span>
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+            {partOfSpeechOptions.map((pos) => (
+              <button
+                key={pos.id}
+                onClick={() => handlePartOfSpeechChange(pos.id)}
+                className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
+                  activePartOfSpeech === pos.id
+                    ? "bg-blue-500 text-white shadow-md shadow-blue-200 transform scale-105"
+                    : "bg-white text-slate-600 border border-slate-200 hover:bg-blue-50 hover:border-blue-300"
+                }`}
+              >
+                {pos.label}
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* View Options Bar */}
