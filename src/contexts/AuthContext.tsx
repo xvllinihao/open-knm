@@ -163,7 +163,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       // Supabase stores auth in localStorage with key starting with 'sb-'
       if (e.key?.startsWith('sb-') && e.key?.includes('-auth-token')) {
         // Auth state changed in another tab, re-fetch session
-        supabase.auth.getSession().then(({ data: { session } }) => {
+        supabase.auth.getSession().then((result: { data: { session: Session | null } }) => {
+          const session = result.data.session;
           if (pendingRedirectRef.current) return;
           
           setUser(session?.user ?? null);
