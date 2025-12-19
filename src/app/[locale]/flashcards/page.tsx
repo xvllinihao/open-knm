@@ -347,6 +347,19 @@ export default function FlashcardsPage({ params }: { params: Promise<{ locale: L
 
   return (
     <div className="min-h-[80vh] flex flex-col items-center py-8 px-4">
+      {/* Back to Vocabulary Link */}
+      <div className="w-full max-w-md mb-4">
+        <Link
+          href={`/${locale}/vocabulary`}
+          className="inline-flex items-center gap-1.5 text-sm text-slate-500 hover:text-[var(--primary)] transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">
+            <path fillRule="evenodd" d="M17 10a.75.75 0 01-.75.75H5.612l4.158 3.96a.75.75 0 11-1.04 1.08l-5.5-5.25a.75.75 0 010-1.08l5.5-5.25a.75.75 0 111.04 1.08L5.612 9.25H16.25A.75.75 0 0117 10z" clipRule="evenodd" />
+          </svg>
+          {locale === 'zh' ? '返回词汇表' : 'Back to Vocabulary'}
+        </Link>
+      </div>
+
       {/* Header */}
       <div className="text-center mb-8 max-w-md">
         <h1 className="text-3xl font-black text-slate-900 mb-2">{texts.title}</h1>
