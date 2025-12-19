@@ -8,7 +8,7 @@ export type ChangelogItem = {
 export const changelogData: ChangelogItem[] = [
   {
     version: "1.7.0",
-    date: "2024-12-19",
+    date: "2025-12-19",
     title: {
       zh: "云端同步与闪卡升级",
       en: "Cloud Sync & Flashcards Update",
