@@ -7,6 +7,18 @@ export type ChangelogItem = {
 
 export const changelogData: ChangelogItem[] = [
   {
+    version: "1.7.0",
+    date: "2024-12-19",
+    title: {
+      zh: "云端同步与闪卡升级",
+      en: "Cloud Sync & Flashcards Update",
+    },
+    description: {
+      zh: "✨ 重磅更新：支持登录账号，实现多端进度自动同步（KNM 阅读历史 + 词汇表 + 闪卡进度）。\n🔒 安全升级：引入 Turnstile 人机验证，加强账号与心愿单安全性。\n🃏 闪卡优化：免费版新增「每日随机」算法，每天 20 个新词不重样。",
+      en: "✨ Major Update: User login is now supported with auto-sync across devices (Read history, Vocabulary & Flashcards progress).\n🔒 Security: Implemented Turnstile captcha for enhanced account & waitlist security.\n🃏 Flashcards: Added 'Daily Random' algorithm for free users, ensuring 20 fresh words every day.",
+    },
+  },
+  {
     version: "1.6.0",
     date: "2025-12-16",
     title: {

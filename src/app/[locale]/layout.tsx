@@ -6,6 +6,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { SITE_URL, GA_ID } from "@/lib/siteConfig";
 import { PostHogProvider } from "@/components/PostHogProvider";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
+import { AuthProvider } from "@/contexts/AuthContext";
 
 const metadataPerLocale: Record<
   Locale,
@@ -138,13 +139,15 @@ export default async function RootLayout({
   return (
     <html lang={validLocale}>
       <body className="antialiased min-h-screen flex flex-col">
-        <PostHogProvider>
-          <SiteLayout locale={validLocale}>
-            {children}
-          </SiteLayout>
-          <Analytics />
-          <GoogleAnalytics gaId={GA_ID} />
-        </PostHogProvider>
+        <AuthProvider>
+          <PostHogProvider>
+            <SiteLayout locale={validLocale}>
+              {children}
+            </SiteLayout>
+            <Analytics />
+            <GoogleAnalytics gaId={GA_ID} />
+          </PostHogProvider>
+        </AuthProvider>
       </body>
     </html>
   );
