@@ -146,6 +146,24 @@ export default function FlashcardsPage({ params }: { params: Promise<{ locale: L
     }
   }, [user, isPro, authLoading]);
 
+  // Prevent page scroll when swiping on card (non-passive listener required)
+  useEffect(() => {
+    const card = cardRef.current;
+    if (!card) return;
+
+    const preventScroll = (e: TouchEvent) => {
+      // Prevent scroll when card is flipped (ready for swipe)
+      if (isFlipped) {
+        e.preventDefault();
+      }
+    };
+
+    card.addEventListener('touchmove', preventScroll, { passive: false });
+    return () => {
+      card.removeEventListener('touchmove', preventScroll);
+    };
+  }, [isFlipped]);
+
   const currentCard = deck[currentIndex];
   const sessionTotal = sessionStats.correct + sessionStats.incorrect;
   const startCount = (user && !isPro) ? dailyUsageCount : 0;
@@ -159,6 +177,9 @@ export default function FlashcardsPage({ params }: { params: Promise<{ locale: L
   // Handle swipe/answer
   const handleAnswer = useCallback((correct: boolean) => {
     if (hasReachedLimit || isSessionComplete) return;
+
+    // Save current scroll position
+    const scrollY = window.scrollY;
 
     setSwipeDirection(correct ? 'right' : 'left');
     setSessionStats(prev => ({
@@ -186,6 +207,11 @@ export default function FlashcardsPage({ params }: { params: Promise<{ locale: L
       } else {
         setCurrentIndex(prev => prev + 1);
       }
+      
+      // Restore scroll position after state update
+      requestAnimationFrame(() => {
+        window.scrollTo(0, scrollY);
+      });
     }, 300);
   }, [hasReachedLimit, isSessionComplete, isGuest, totalReviewed, showLoginNudge, currentIndex, deck.length, cardLimit, user, isPro]);
 
@@ -223,6 +249,10 @@ export default function FlashcardsPage({ params }: { params: Promise<{ locale: L
     if (Math.abs(diff) > threshold) {
       handleAnswer(diff > 0); // Right = correct, Left = incorrect
     }
+    
+    // Reset touch state
+    startX.current = 0;
+    currentX.current = 0;
   };
 
   // Mouse handlers for desktop swipe
@@ -346,7 +376,7 @@ export default function FlashcardsPage({ params }: { params: Promise<{ locale: L
   }
 
   return (
-    <div className="min-h-[80vh] flex flex-col items-center py-8 px-4">
+    <div className="min-h-[80vh] flex flex-col items-center py-8 px-4 overscroll-none">
       {/* Back to Vocabulary Link */}
       <div className="w-full max-w-md mb-4">
         <Link
@@ -436,7 +466,7 @@ export default function FlashcardsPage({ params }: { params: Promise<{ locale: L
       </div>
 
       {/* Card Area */}
-      <div className="relative w-full max-w-md aspect-[3/4] mb-8 perspective-1000">
+      <div className="relative w-full max-w-md aspect-[3/4] mb-8 perspective-1000 touch-none">
         {isSessionComplete || hasReachedLimit ? (
           // Session Complete / Limit Screen
           <div className="absolute inset-0 bg-white rounded-3xl shadow-xl border border-slate-100 flex flex-col items-center justify-center p-8 text-center">
@@ -524,7 +554,7 @@ export default function FlashcardsPage({ params }: { params: Promise<{ locale: L
           // Active Flashcard
           <div
             ref={cardRef}
-            className={`absolute inset-0 cursor-pointer select-none transition-all duration-300 transform-style-3d
+            className={`absolute inset-0 cursor-pointer select-none transition-all duration-300 transform-style-3d touch-none
               ${swipeDirection === 'right' ? 'translate-x-[120%] rotate-12 opacity-0' : ''}
               ${swipeDirection === 'left' ? '-translate-x-[120%] -rotate-12 opacity-0' : ''}
               ${isFlipped ? 'rotate-y-180' : ''}
@@ -539,55 +569,78 @@ export default function FlashcardsPage({ params }: { params: Promise<{ locale: L
             onMouseLeave={handleMouseUp}
           >
             {/* Front of Card */}
-            <div className="absolute inset-0 bg-white rounded-3xl shadow-xl border border-slate-100 flex flex-col items-center justify-center p-8 backface-hidden">
-              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">
+            <div className="absolute inset-0 bg-white rounded-3xl shadow-xl border border-slate-100 flex flex-col items-center p-6 sm:p-8 backface-hidden">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider">
                 {currentCard.category}
               </span>
-              <h2 className="text-4xl sm:text-5xl font-black text-slate-900 text-center mb-2">
+              <div className="flex-1 flex flex-col items-center w-full max-w-full px-2 pt-12 sm:pt-16">
                 {currentCard.article && (
-                  <span className="text-2xl font-normal text-slate-400 mr-2">{currentCard.article}</span>
+                  <span className="text-lg sm:text-xl font-normal text-slate-400 mb-1">{currentCard.article}</span>
                 )}
-                {currentCard.dutch}
-              </h2>
-              {/* TTS Button */}
-              <div className="mt-4">
-                <SpeakButton 
-                  text={currentCard.article ? `${currentCard.article} ${currentCard.dutch}` : currentCard.dutch} 
-                  speak={speak} 
-                />
+                <h2 className={`font-black text-slate-900 text-center break-words hyphens-auto w-full ${
+                  currentCard.dutch.length > 15 
+                    ? 'text-2xl sm:text-3xl' 
+                    : currentCard.dutch.length > 10 
+                      ? 'text-3xl sm:text-4xl' 
+                      : 'text-4xl sm:text-5xl'
+                }`}>
+                  {currentCard.dutch}
+                </h2>
+                {/* TTS Button */}
+                <div className="mt-6">
+                  <SpeakButton 
+                    text={currentCard.article ? `${currentCard.article} ${currentCard.dutch}` : currentCard.dutch} 
+                    speak={speak} 
+                  />
+                </div>
               </div>
+              
               <div className="mt-auto text-slate-400 text-sm">{texts.tapToFlip}</div>
             </div>
 
             {/* Back of Card */}
-            <div className="absolute inset-0 bg-gradient-to-br from-[var(--primary)] to-orange-500 rounded-3xl shadow-xl flex flex-col items-center justify-center p-8 backface-hidden rotate-y-180 text-white">
-              <span className="text-xs font-bold text-white/70 uppercase tracking-wider mb-4">
+            <div className="absolute inset-0 bg-[var(--primary)] rounded-3xl shadow-xl flex flex-col items-center p-6 sm:p-8 backface-hidden rotate-y-180 text-white overflow-hidden">
+              {/* Swipe Indicators on sides - Simplified */}
+              <div className="absolute left-4 top-1/2 -translate-y-1/2 text-white/40 animate-pulse">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-8 h-8">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+                </svg>
+              </div>
+              <div className="absolute right-4 top-1/2 -translate-y-1/2 text-white/40 animate-pulse">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-8 h-8">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+                </svg>
+              </div>
+
+              <span className="text-xs font-bold text-white/70 uppercase tracking-wider">
                 {uiTexts[locale].vocabulary.partOfSpeech[currentCard.partOfSpeech]}
               </span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-center mb-4">
-                {currentCard.translations[locale]}
-              </h2>
-              {currentCard.example && (
-                <div className="bg-white/20 rounded-xl p-4 w-full max-w-xs text-center">
-                  <div className="flex items-center justify-center gap-2 mb-1">
-                    <p className="text-sm font-medium">{currentCard.example.dutch}</p>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        speak(currentCard.example!.dutch);
-                      }}
-                      className="p-1 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
-                      aria-label="Play example"
-                    >
-                      <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M11 5L6 9H2v6h4l5 4V5z" />
-                      </svg>
-                    </button>
+              
+              <div className="flex-1 flex flex-col items-center w-full pt-12 sm:pt-16 px-8">
+                <h2 className="text-3xl sm:text-4xl font-bold text-center mb-6">
+                  {currentCard.translations[locale]}
+                </h2>
+                {currentCard.example && (
+                  <div className="bg-white/20 rounded-xl p-4 w-full max-w-xs text-center">
+                    <div className="flex items-center justify-center gap-2 mb-1">
+                      <p className="text-sm font-medium">{currentCard.example.dutch}</p>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          speak(currentCard.example!.dutch);
+                        }}
+                        className="p-1 rounded-full bg-white/20 hover:bg-white/30 transition-colors"
+                        aria-label="Play example"
+                      >
+                        <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M11 5L6 9H2v6h4l5 4V5z" />
+                        </svg>
+                      </button>
+                    </div>
+                    <p className="text-xs text-white/70">{currentCard.example[locale]}</p>
                   </div>
-                  <p className="text-xs text-white/70">{currentCard.example[locale]}</p>
-                </div>
-              )}
-              <div className="mt-auto text-white/80 text-sm font-medium">{texts.swipeHint}</div>
+                )}
+              </div>
             </div>
           </div>
         ) : null}
@@ -595,26 +648,36 @@ export default function FlashcardsPage({ params }: { params: Promise<{ locale: L
 
       {/* Answer Buttons (visible when card is flipped) */}
       {isFlipped && !isSessionComplete && !hasReachedLimit && (
-        <div className="flex gap-4 animate-fade-in">
+        <div className="flex gap-8 animate-fade-in">
           <button
             onClick={() => handleAnswer(false)}
-            className="flex items-center gap-2 px-6 py-3 bg-red-100 text-red-600 font-bold rounded-full hover:bg-red-200 transition-all"
+            className="flex items-center justify-center w-14 h-14 bg-red-50 text-red-500 rounded-full hover:bg-red-100 hover:scale-110 transition-all shadow-sm border-2 border-red-100"
+            aria-label={texts.incorrect}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
             </svg>
-            {texts.incorrect}
           </button>
           <button
             onClick={() => handleAnswer(true)}
-            className="flex items-center gap-2 px-6 py-3 bg-green-100 text-green-600 font-bold rounded-full hover:bg-green-200 transition-all"
+            className="flex items-center justify-center w-14 h-14 bg-green-50 text-green-500 rounded-full hover:bg-green-100 hover:scale-110 transition-all shadow-sm border-2 border-green-100"
+            aria-label={texts.correct}
           >
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-5 h-5">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" className="w-6 h-6">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
             </svg>
-            {texts.correct}
           </button>
         </div>
+      )}
+
+      {/* Swipe Disclaimer */}
+      {isFlipped && !isSessionComplete && !hasReachedLimit && (
+        <p className="mt-6 text-xs text-slate-400 animate-fade-in flex items-center gap-1.5 px-4 text-center">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5 flex-shrink-0">
+            <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a.75.75 0 000 1.5h.253a.25.25 0 01.244.304l-.459 2.066A1.75 1.75 0 0010.747 15H11a.75.75 0 000-1.5h-.253a.25.25 0 01-.244-.304l.459-2.066A1.75 1.75 0 009.253 9H9z" clipRule="evenodd" />
+          </svg>
+          {locale === 'zh' ? '也可以左右滑动卡片来快速回答' : 'You can also swipe left/right to answer'}
+        </p>
       )}
 
       {/* Login Nudge */}

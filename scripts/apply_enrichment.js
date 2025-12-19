@@ -40,3 +40,4 @@ console.log(`Updated ${updatedCount} items.`);
 fs.writeFileSync(VOCAB_FILE, JSON.stringify(updatedVocab, null, 2), 'utf8');
 
 
+
