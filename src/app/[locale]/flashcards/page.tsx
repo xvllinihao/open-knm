@@ -309,6 +309,7 @@ export default function FlashcardsPage({ params }: { params: Promise<{ locale: L
       proFeature: "Pro 专属",
       cardsLeft: "剩余",
       dailyRandomHint: "今日随机 20 词",
+      guestPreviewHint: "访客预览 5 词",
     },
     en: {
       title: "Flash Cards",
@@ -332,6 +333,7 @@ export default function FlashcardsPage({ params }: { params: Promise<{ locale: L
       proFeature: "Pro Feature",
       cardsLeft: "cards left",
       dailyRandomHint: "Today's Random 20",
+      guestPreviewHint: "Guest Preview: 5 cards",
     }
   }[locale];
 
@@ -352,7 +354,18 @@ export default function FlashcardsPage({ params }: { params: Promise<{ locale: L
         
         {/* Mode Toggle (Pro Only) */}
         <div className="mt-4 flex flex-col items-center gap-2">
-          {!isPro && (
+          {/* Guest users: show preview hint */}
+          {isGuest && (
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 text-slate-600 text-xs font-medium border border-slate-200">
+               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
+                 <path d="M10 12.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5z" />
+                 <path fillRule="evenodd" d="M.664 10.59a1.651 1.651 0 010-1.186A10.004 10.004 0 0110 3c4.257 0 7.893 2.66 9.336 6.41.147.381.146.804 0 1.186A10.004 10.004 0 0110 17c-4.257 0-7.893-2.66-9.336-6.41zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clipRule="evenodd" />
+               </svg>
+               {texts.guestPreviewHint}
+            </div>
+          )}
+          {/* Free users: show daily limit hint */}
+          {isFree && (
             <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-orange-50 text-orange-600 text-xs font-medium border border-orange-100">
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm.75-13a.75.75 0 00-1.5 0v5c0 .414.336.75.75.75h4a.75.75 0 000-1.5h-3.25V5z" clipRule="evenodd" />
