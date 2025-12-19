@@ -83,3 +83,4 @@ export default async function WritingPage({
   return <WritingContent locale={locale} />;
 }
 
+

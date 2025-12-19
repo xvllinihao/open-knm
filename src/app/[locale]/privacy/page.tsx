@@ -139,3 +139,4 @@ function PolicySection({ title, content }: { title: string; content: React.React
     </section>
   );
 }
+

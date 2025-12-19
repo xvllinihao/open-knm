@@ -105,6 +105,30 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                 </div>
              </Link>
 
+             {/* Membership Promo Card */}
+             <Link
+               href={`/${locale}/pricing`}
+               className="group flex items-center p-4 sm:p-5 bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl border border-purple-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
+             >
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform border border-purple-100 shadow-sm shrink-0">
+                  💎
+                </div>
+                <div className="flex-1 min-w-0 relative z-10">
+                  <div className="flex items-center gap-2 mb-0.5">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 truncate min-w-0">
+                      {isZh ? '会员计划' : 'Membership Plan'}
+                    </h3>
+                    <span className="inline-flex px-2 py-0.5 rounded-full bg-purple-100 text-purple-700 text-[10px] font-bold uppercase tracking-wide shrink-0">Pro</span>
+                  </div>
+                  <p className="text-slate-600 text-sm truncate">
+                    {isZh ? '解锁无限单词卡、多端同步与随机复习。' : 'Unlock unlimited flashcards, sync & shuffle.'}
+                  </p>
+                </div>
+                <div className="ml-2 sm:ml-3 relative z-10">
+                  <span className="text-purple-600 group-hover:text-purple-700 transition-colors text-lg">→</span>
+                </div>
+             </Link>
+
              {/* Writing Promo Card */}
              <Link
                href={`/${locale}/writing`}

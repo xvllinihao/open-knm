@@ -1,0 +1,73 @@
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101260934,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:fetchSession:result","message":"getSession result","data":{"hasSession":true,"userEmail":"xvllinihao@gmail.com"},"timestamp":1766101261006,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"INITIAL_SESSION","hasSession":true},"timestamp":1766101261042,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:signOut:entry","message":"signOut called","data":{"hasUser":true},"timestamp":1766101268681,"sessionId":"debug-session","hypothesisId":"H1"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"SIGNED_OUT","hasSession":false},"timestamp":1766101268742,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:signOut:result","message":"signOut result","data":{"error":null},"timestamp":1766101268743,"sessionId":"debug-session","hypothesisId":"H1"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101274864,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:fetchSession:result","message":"getSession result","data":{"hasSession":false,"userEmail":null},"timestamp":1766101274900,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"INITIAL_SESSION","hasSession":false},"timestamp":1766101274902,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101281038,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:fetchSession:result","message":"getSession result","data":{"hasSession":false,"userEmail":null},"timestamp":1766101281074,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"INITIAL_SESSION","hasSession":false},"timestamp":1766101281075,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"SIGNED_IN","hasSession":true},"timestamp":1766101310601,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:signOut:entry","message":"signOut called","data":{"hasUser":true},"timestamp":1766101314061,"sessionId":"debug-session","hypothesisId":"H1"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"SIGNED_OUT","hasSession":false},"timestamp":1766101314108,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:signOut:result","message":"signOut result","data":{"error":null},"timestamp":1766101314108,"sessionId":"debug-session","hypothesisId":"H1"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101332924,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"SIGNED_IN","hasSession":true},"timestamp":1766101332927,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"SIGNED_IN","hasSession":true},"timestamp":1766101332927,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"SIGNED_IN","hasSession":true},"timestamp":1766101363939,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101363971,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:fetchSession:result","message":"getSession result","data":{"hasSession":true,"userEmail":"xvllinihao@gmail.com"},"timestamp":1766101364006,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"INITIAL_SESSION","hasSession":true},"timestamp":1766101364094,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101443717,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:fetchSession:result","message":"getSession result","data":{"hasSession":true,"userEmail":"xvllinihao@gmail.com"},"timestamp":1766101443810,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"INITIAL_SESSION","hasSession":true},"timestamp":1766101443823,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101443891,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"SIGNED_IN","hasSession":true},"timestamp":1766101443893,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"SIGNED_IN","hasSession":true},"timestamp":1766101443900,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101493113,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:signOut:entry","message":"signOut called","data":{"hasUser":true},"timestamp":1766101507797,"sessionId":"debug-session","hypothesisId":"H1"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101509077,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"SIGNED_IN","hasSession":true},"timestamp":1766101509078,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:signOut:entry","message":"signOut called","data":{"hasUser":true},"timestamp":1766101512811,"sessionId":"debug-session","hypothesisId":"H1"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101513776,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"SIGNED_IN","hasSession":true},"timestamp":1766101513777,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101522933,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"SIGNED_IN","hasSession":true},"timestamp":1766101522936,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:signOut:entry","message":"signOut called","data":{"hasUser":true},"timestamp":1766101525244,"sessionId":"debug-session","hypothesisId":"H1"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101526985,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"SIGNED_IN","hasSession":true},"timestamp":1766101526988,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101623997,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"SIGNED_IN","hasSession":true},"timestamp":1766101624025,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:signOut:entry","message":"signOut called","data":{"hasUser":true},"timestamp":1766101645211,"sessionId":"debug-session","hypothesisId":"H1"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101652303,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"SIGNED_IN","hasSession":true},"timestamp":1766101652304,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:signOut:entry","message":"signOut called","data":{"hasUser":true},"timestamp":1766101654194,"sessionId":"debug-session","hypothesisId":"H1"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101664229,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"SIGNED_IN","hasSession":true},"timestamp":1766101664231,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101665881,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"SIGNED_IN","hasSession":true},"timestamp":1766101665883,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:signOut:entry","message":"signOut called","data":{"hasUser":true},"timestamp":1766101667194,"sessionId":"debug-session","hypothesisId":"H1"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101727101,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"SIGNED_IN","hasSession":true},"timestamp":1766101727101,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:signOut:entry","message":"signOut called","data":{"hasUser":true},"timestamp":1766101768298,"sessionId":"debug-session","hypothesisId":"H1"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101770471,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"SIGNED_IN","hasSession":true},"timestamp":1766101770494,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:signOut:entry","message":"signOut called","data":{"hasUser":true},"timestamp":1766101775295,"sessionId":"debug-session","hypothesisId":"H1"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101778868,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"SIGNED_IN","hasSession":true},"timestamp":1766101778892,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101790257,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"SIGNED_IN","hasSession":true},"timestamp":1766101790288,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101791363,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"SIGNED_IN","hasSession":true},"timestamp":1766101791391,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:signOut:entry","message":"signOut called","data":{"hasUser":true},"timestamp":1766101795244,"sessionId":"debug-session","hypothesisId":"H1"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101796376,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"SIGNED_IN","hasSession":true},"timestamp":1766101796377,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101801666,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:fetchSession:result","message":"getSession result","data":{"hasSession":true,"userEmail":"xvllinihao@gmail.com"},"timestamp":1766101801706,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"INITIAL_SESSION","hasSession":true},"timestamp":1766101801716,"sessionId":"debug-session","hypothesisId":"H1-H4"}
+{"location":"AuthContext.tsx:fetchSession:entry","message":"fetchSession called","data":{},"timestamp":1766101804002,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:fetchSession:result","message":"getSession result","data":{"hasSession":true,"userEmail":"xvllinihao@gmail.com"},"timestamp":1766101804042,"sessionId":"debug-session","hypothesisId":"H4"}
+{"location":"AuthContext.tsx:onAuthStateChange","message":"Auth state changed","data":{"event":"INITIAL_SESSION","hasSession":true},"timestamp":1766101804051,"sessionId":"debug-session","hypothesisId":"H1-H4"}
