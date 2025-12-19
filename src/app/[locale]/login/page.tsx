@@ -1,7 +1,7 @@
 "use client";
 
 import { useAuth } from "@/contexts/AuthContext";
-import { useEffect, useState, use, useRef } from "react";
+import { Suspense, useEffect, useState, use, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { Locale } from "@/lib/uiTexts";
 import { Turnstile } from '@marsidev/react-turnstile';
@@ -28,7 +28,20 @@ function EyeIcon({ open }: { open: boolean }) {
   );
 }
 
+// Wrapper component to handle Suspense for useSearchParams
 export default function LoginPage({ params }: { params: Promise<{ locale: Locale }> }) {
+  return (
+    <Suspense fallback={
+      <div className="flex min-h-[60vh] items-center justify-center">
+        <div className="animate-pulse text-slate-400">Loading...</div>
+      </div>
+    }>
+      <LoginPageContent params={params} />
+    </Suspense>
+  );
+}
+
+function LoginPageContent({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = use(params);
   const { user, signInWithEmail, signUpWithEmail, resetPassword, loading } = useAuth();
   const router = useRouter();
@@ -43,7 +56,7 @@ export default function LoginPage({ params }: { params: Promise<{ locale: Locale
   const [success, setSuccess] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [turnstileToken, setTurnstileToken] = useState<string>("");
-  const turnstileRef = useRef<any>(null);
+  const turnstileRef = useRef<React.ComponentRef<typeof Turnstile>>(null);
 
   const isZh = locale === "zh";
   const texts = {

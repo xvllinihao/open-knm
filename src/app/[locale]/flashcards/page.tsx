@@ -113,7 +113,9 @@ export default function FlashcardsPage({ params }: { params: Promise<{ locale: L
     return items;
   }, []);
 
-  // Initialize deck
+  // Initialize deck when auth state or shuffle preference changes
+  // This effect intentionally sets multiple states on mount/dependency change
+  /* eslint-disable react-hooks/set-state-in-effect */
   useEffect(() => {
     if (authLoading) return;
     
@@ -135,6 +137,7 @@ export default function FlashcardsPage({ params }: { params: Promise<{ locale: L
     setSessionStats({ correct: 0, incorrect: 0 });
     setIsSessionComplete(false);
   }, [authLoading, isShuffled, isPro, getDailyDeck]);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   // Fetch daily usage for free users
   useEffect(() => {

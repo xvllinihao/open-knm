@@ -39,7 +39,7 @@ export function ArticleTracker({ slug, title, locale }: ArticleTrackerProps) {
 
         // 2. Update Local Read History
         const historyRaw = window.localStorage.getItem(HISTORY_KEY);
-        let history: string[] = historyRaw ? JSON.parse(historyRaw) : [];
+        const history: string[] = historyRaw ? JSON.parse(historyRaw) : [];
         if (!history.includes(slug)) {
           history.push(slug);
           window.localStorage.setItem(HISTORY_KEY, JSON.stringify(history));

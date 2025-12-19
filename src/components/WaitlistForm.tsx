@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Locale, uiTexts } from "@/lib/uiTexts";
 import { joinWaitlist, getWaitlistCount } from "@/app/actions/waitlist";
 import { useAuth } from "@/contexts/AuthContext";
@@ -17,20 +17,16 @@ const BASE_COUNT_OFFSET = 37;
 export function WaitlistForm({ locale, onSuccess }: WaitlistFormProps) {
   const { user } = useAuth();
   const texts = uiTexts[locale].wishlist;
-  const [email, setEmail] = useState("");
+  // 使用 user?.email 作为受控组件的值来源，避免 effect 中的 setState
+  const [customEmail, setCustomEmail] = useState("");
+  const email = user?.email || customEmail;
+  const setEmail = (value: string) => setCustomEmail(value);
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error" | "exists">("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [count, setCount] = useState<number | null>(null);
   const [turnstileToken, setTurnstileToken] = useState<string>("");
-  const turnstileRef = useRef<any>(null);
+  const turnstileRef = useRef<React.ComponentRef<typeof Turnstile>>(null);
   const isZh = locale === "zh";
-
-  // 自动填充登录用户的邮箱
-  useEffect(() => {
-    if (user?.email) {
-      setEmail(user.email);
-    }
-  }, [user?.email]);
 
   useEffect(() => {
     getWaitlistCount().then(setCount);

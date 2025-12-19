@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 import { Locale, uiTexts } from "@/lib/uiTexts";
 import { ResumePrompt } from "@/components/ResumePrompt";
@@ -23,7 +23,7 @@ export function KnmResumeCheck({ locale }: { locale: Locale }) {
   const { user, loading: authLoading } = useAuth();
   const [bookmark, setBookmark] = useState<BookmarkData | null>(null);
 
-  const checkBookmark = () => {
+  const checkBookmark = useCallback(() => {
     try {
       const raw = window.localStorage.getItem(STORAGE_KEY);
       if (!raw) return;
@@ -49,7 +49,7 @@ export function KnmResumeCheck({ locale }: { locale: Locale }) {
     } catch (error) {
       console.error("Failed to read KNM bookmark:", error);
     }
-  };
+  }, [locale]);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -118,7 +118,7 @@ export function KnmResumeCheck({ locale }: { locale: Locale }) {
     return () => {
       document.removeEventListener("visibilitychange", handleVisibilityChange);
     };
-  }, [locale, user, authLoading]);
+  }, [locale, user, authLoading, checkBookmark]);
 
   if (!bookmark) return null;
 

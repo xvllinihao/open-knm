@@ -243,14 +243,3 @@ export default function PricingPage({ params }: { params: Promise<{ locale: Loca
     </div>
   );
 }
-
-function FeatureItem({ icon, label, bg }: { icon: string, label: string, bg: string }) {
-  return (
-    <div className="flex flex-col items-center gap-3 group">
-      <div className={`w-14 h-14 rounded-2xl ${bg} flex items-center justify-center text-2xl shadow-sm group-hover:scale-110 transition-transform duration-300`}>
-        {icon}
-      </div>
-      <span className="text-xs font-bold text-slate-600 uppercase tracking-wide">{label}</span>
-    </div>
-  );
-}

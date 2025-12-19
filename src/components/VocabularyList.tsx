@@ -176,7 +176,7 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
     const init = async () => {
       // 1. Load Local
       const raw = localStorage.getItem(STORAGE_KEY);
-      let localData: VocabBookmark | null = raw ? JSON.parse(raw) : null;
+      const localData: VocabBookmark | null = raw ? JSON.parse(raw) : null;
       
       // Initial state check from local
       if (localData) {
