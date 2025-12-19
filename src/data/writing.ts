@@ -77,3 +77,4 @@ export type WritingCourseData = {
 };
 
 export const courseData = writingData as WritingCourseData;
+

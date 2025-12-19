@@ -1,10 +1,13 @@
 "use client";
 
 import React, { useState, useMemo, useRef, useEffect } from "react";
+import Link from "next/link";
 import { Locale, uiTexts } from "@/lib/uiTexts";
 import { vocabularyList, VocabularyItem } from "@/data/vocabulary";
 import { TTSDisclaimer } from "@/components/TTSDisclaimer";
 import { ResumePrompt } from "@/components/ResumePrompt";
+import { useAuth } from "@/contexts/AuthContext";
+import { syncVocabProgress } from "@/app/actions/progress";
 
 type ViewMode = 'card' | 'list';
 
@@ -48,7 +51,6 @@ function useAudio(text: string) {
     isPendingRef.current = true;
     window.speechSynthesis.cancel();
 
-    // Clear any pending listeners/timeouts
     if (voicesHandlerRef.current) {
       window.speechSynthesis.removeEventListener('voiceschanged', voicesHandlerRef.current);
       voicesHandlerRef.current = null;
@@ -60,14 +62,11 @@ function useAudio(text: string) {
 
     const runSpeak = (voices: SpeechSynthesisVoice[]) => {
       const utterance = new SpeechSynthesisUtterance(text);
-      // Try to find a Dutch voice
-      // Explicitly try to find a voice for the requested language
-      // This ensures we get a Dutch voice instead of the system default (which might be English)
       const lang = 'nl-NL';
       const dutchVoice = 
         voices.find(v => v.lang === lang) || 
         voices.find(v => v.lang.startsWith(lang.split('-')[0])) ||
-        voices.find(v => v.lang.includes('nl')); // Fallback to any Dutch voice
+        voices.find(v => v.lang.includes('nl'));
         
       if (dutchVoice) {
         utterance.voice = dutchVoice;
@@ -138,6 +137,7 @@ function useAudio(text: string) {
 }
 
 export default function VocabularyList({ locale }: { locale: Locale }) {
+  const { user, loading: authLoading } = useAuth();
   const texts = uiTexts[locale].vocabulary;
   
   const [activeCategory, setActiveCategory] = useState<string>("all");
@@ -164,13 +164,112 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
   ];
 
   const filteredItems = useMemo(() => {
-    if (activeCategory === "all") {
-      return vocabularyList;
-    }
-    return vocabularyList.filter((item) => item.category === activeCategory);
+    return activeCategory === "all"
+      ? vocabularyList
+      : vocabularyList.filter((item) => item.category === activeCategory);
   }, [activeCategory]);
 
+  // Load bookmark from localStorage and Sync with Server
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+
+    const init = async () => {
+      // 1. Load Local
+      const raw = localStorage.getItem(STORAGE_KEY);
+      const localData: VocabBookmark | null = raw ? JSON.parse(raw) : null;
+      
+      // Initial state check from local
+      if (localData) {
+        if (
+          localData.category !== "all" ||
+          localData.page !== 1 ||
+          localData.viewMode !== "card"
+        ) {
+          setPendingBookmark(localData);
+          setIsResumeVisible(true);
+        }
+      }
+
+      // 2. Sync with Server
+      if (user && !authLoading) {
+        try {
+          // Prepare sync payload
+          const syncPayload = localData ? {
+            category: localData.category,
+            page: localData.page,
+            view_mode: localData.viewMode,
+            updated_at: localData.updatedAt
+          } : {
+            category: "all",
+            page: 1,
+            view_mode: "card",
+            updated_at: 0 
+          };
+
+          const result = await syncVocabProgress(syncPayload);
+
+          if (result.success && result.data) {
+             const serverData = result.data;
+             const serverTime = serverData.updated_at;
+             const localTime = localData?.updatedAt || 0;
+
+             if (serverTime > localTime) {
+                // Server is newer
+                const newBookmark: VocabBookmark = {
+                   category: serverData.category,
+                   page: serverData.page,
+                   viewMode: serverData.view_mode as ViewMode,
+                   updatedAt: serverTime
+                };
+                
+                localStorage.setItem(STORAGE_KEY, JSON.stringify(newBookmark));
+                setPendingBookmark(newBookmark);
+                setIsResumeVisible(true);
+             }
+          }
+        } catch (error) {
+           console.error("Failed to sync vocab progress:", error);
+        }
+      }
+    };
+
+    if (!authLoading) {
+        init();
+    }
+  }, [user, authLoading]);
+
+  // Save bookmark to localStorage and Sync
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    
+    const now = Date.now();
+    const payload: VocabBookmark = {
+      category: activeCategory,
+      page: currentPage,
+      viewMode,
+      updatedAt: now,
+    };
+    
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+
+    // Sync remote if logged in
+    if (user && !authLoading) {
+        syncVocabProgress({
+            category: activeCategory,
+            page: currentPage,
+            view_mode: viewMode,
+            updated_at: now
+        }).catch(err => console.error("Background sync failed", err));
+    }
+  }, [activeCategory, currentPage, viewMode, user, authLoading]);
+
   const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   const startIndex = (currentPage - 1) * itemsPerPage;
   const visibleItems = filteredItems.slice(startIndex, startIndex + itemsPerPage);
 
@@ -179,64 +278,10 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
     setCurrentPage(1);
   };
 
-  const handlePageChange = (page: number) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
   const handleViewModeChange = (mode: ViewMode) => {
     setViewMode(mode);
     setCurrentPage(1);
   };
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (!raw) return;
-      
-      const parsed: VocabBookmark = JSON.parse(raw);
-      if (
-        parsed &&
-        parsed.category &&
-        typeof parsed.page === "number" &&
-        (parsed.viewMode === "card" || parsed.viewMode === "list")
-      ) {
-        // Only show if different from default or current (if current is default)
-        // Actually, just show if valid. But checking against "all" and page 1 might be nice.
-        // But user might want to resume even if they just left.
-        // Let's check if it matches current state? 
-        // Current state is initial (all, 1, card).
-        if (
-          parsed.category !== "all" ||
-          parsed.page !== 1 ||
-          parsed.viewMode !== "card"
-        ) {
-           setTimeout(() => {
-             setPendingBookmark(parsed);
-             setIsResumeVisible(true);
-           }, 0);
-        }
-      }
-    } catch (error) {
-      console.error("Failed to read vocabulary bookmark:", error);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const payload: VocabBookmark = {
-      category: activeCategory,
-      page: currentPage,
-      viewMode,
-      updatedAt: Date.now(),
-    };
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
-    } catch (error) {
-      console.error("Failed to save vocabulary bookmark:", error);
-    }
-  }, [activeCategory, currentPage, viewMode]);
 
   const handleResume = () => {
     if (!pendingBookmark) return;
@@ -256,9 +301,9 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
     <div className="space-y-12">
       {pendingBookmark && isResumeVisible && (
         <ResumePrompt
-          message={`${texts.bookmarkPrompt.resume} “${
+          message={`${texts.bookmarkPrompt.resume} "${
             categories.find((c) => c.id === pendingBookmark.category)?.label || pendingBookmark.category
-          }” - ${texts.viewMode[pendingBookmark.viewMode]} ${
+          }" - ${texts.viewMode[pendingBookmark.viewMode]} ${
             pendingBookmark.page > 1
               ? locale === "zh"
                 ? `(第 ${pendingBookmark.page} 页)`
@@ -271,6 +316,7 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
           onDismiss={handleDismissResume}
         />
       )}
+      
       {/* Header */}
       <div className="text-center space-y-4 max-w-2xl mx-auto">
         <h1 className="text-4xl font-black tracking-tight text-slate-900 sm:text-5xl">
@@ -279,6 +325,21 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
         <p className="text-lg text-slate-600 leading-relaxed">
           {texts.description}
         </p>
+        
+        {/* CTA to Flashcard Practice */}
+        <div className="pt-4">
+          <Link
+            href={`/${locale}/flashcards`}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--primary)] text-white font-bold rounded-full hover:brightness-110 transition-all shadow-lg shadow-orange-200 hover:scale-105"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
+              <path d="M11.644 1.59a.75.75 0 01.712 0l9.75 5.25a.75.75 0 010 1.32l-9.75 5.25a.75.75 0 01-.712 0l-9.75-5.25a.75.75 0 010-1.32l9.75-5.25z" />
+              <path d="M3.265 10.602l7.668 4.129a2.25 2.25 0 002.134 0l7.668-4.13 1.37.739a.75.75 0 010 1.32l-9.75 5.25a.75.75 0 01-.71 0l-9.75-5.25a.75.75 0 010-1.32l1.37-.738z" />
+              <path d="M10.933 19.231l-7.668-4.13-1.37.739a.75.75 0 000 1.32l9.75 5.25c.221.12.489.12.71 0l9.75-5.25a.75.75 0 000-1.32l-1.37-.738-7.668 4.13a2.25 2.25 0 01-2.134-.001z" />
+            </svg>
+            {locale === 'zh' ? '闪卡刷词' : 'Flash Cards'}
+          </Link>
+        </div>
       </div>
 
       <div className="max-w-2xl mx-auto w-full">
@@ -305,61 +366,63 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
         </div>
 
         {/* View Options Bar */}
-        <div className="bg-slate-100 p-1 rounded-lg inline-flex items-center shadow-inner gap-1">
-          <button
-            onClick={() => handleViewModeChange('card')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
-              viewMode === 'card'
-                ? "bg-white text-[var(--primary)] shadow-sm"
-                : "text-slate-500 hover:text-slate-700 hover:bg-slate-200/50"
-            }`}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
-            </svg>
-            <span className="inline">{texts.viewMode.card}</span>
-          </button>
-          <button
-            onClick={() => handleViewModeChange('list')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
-              viewMode === 'list'
-                ? "bg-white text-[var(--primary)] shadow-sm"
-                : "text-slate-500 hover:text-slate-700 hover:bg-slate-200/50"
-            }`}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-            <span className="inline">{texts.viewMode.list}</span>
-          </button>
+        <div className="flex items-center gap-4">
+          <div className="bg-slate-100 p-1 rounded-lg inline-flex items-center shadow-inner gap-1">
+            <button
+              onClick={() => handleViewModeChange('card')}
+              className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                viewMode === 'card'
+                  ? "bg-white text-[var(--primary)] shadow-sm"
+                  : "text-slate-500 hover:text-slate-700 hover:bg-slate-200/50"
+              }`}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+              </svg>
+              <span className="inline">{texts.viewMode.card}</span>
+            </button>
+            <button
+              onClick={() => handleViewModeChange('list')}
+              className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                viewMode === 'list'
+                  ? "bg-white text-[var(--primary)] shadow-sm"
+                  : "text-slate-500 hover:text-slate-700 hover:bg-slate-200/50"
+              }`}
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+              <span className="inline">{texts.viewMode.list}</span>
+            </button>
 
-          {/* Divider and Hide Option (List Mode Only) */}
-          {viewMode === 'list' && (
-            <>
-              <div className="w-px h-5 bg-slate-300 mx-1" />
-              <button
-                onClick={() => setHideTranslations((v) => !v)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
-                  hideTranslations
-                    ? "bg-white text-[var(--primary)] shadow-sm"
-                    : "text-slate-500 hover:text-slate-700 hover:bg-slate-200/50"
-                }`}
-                title={hideTranslations ? texts.showTranslations : texts.hideTranslations}
-              >
-                {hideTranslations ? (
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-                  </svg>
-                ) : (
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
-                  </svg>
-                )}
-                <span>{hideTranslations ? texts.showTranslations : texts.hideTranslations}</span>
-              </button>
-            </>
-          )}
+            {/* Divider and Hide Option (List Mode Only) */}
+            {viewMode === 'list' && (
+              <>
+                <div className="w-px h-5 bg-slate-300 mx-1" />
+                <button
+                  onClick={() => setHideTranslations((v) => !v)}
+                  className={`flex items-center gap-2 px-4 py-2 rounded-md text-sm font-medium transition-all ${
+                    hideTranslations
+                      ? "bg-white text-[var(--primary)] shadow-sm"
+                      : "text-slate-500 hover:text-slate-700 hover:bg-slate-200/50"
+                  }`}
+                  title={hideTranslations ? texts.showTranslations : texts.hideTranslations}
+                >
+                  {hideTranslations ? (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                    </svg>
+                  ) : (
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                    </svg>
+                  )}
+                  <span>{hideTranslations ? texts.showTranslations : texts.hideTranslations}</span>
+                </button>
+              </>
+            )}
+          </div>
         </div>
       </div>
 
@@ -405,7 +468,6 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
 
             <div className="flex items-center gap-1">
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => {
-                // Smart pagination logic: show first, last, current, and adjacent pages
                 if (
                   page === 1 ||
                   page === totalPages ||
@@ -460,7 +522,6 @@ function VocabularyCard({ item, locale }: { item: VocabularyItem; locale: Locale
   
   return (
     <div className="group relative bg-white rounded-2xl p-6 border border-slate-100 shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-      {/* Top decorative bar */}
       <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-[var(--primary)] to-orange-300 opacity-0 group-hover:opacity-100 transition-opacity" />
       
       <div className="flex justify-between items-start mb-4">
@@ -579,10 +640,6 @@ function VocabularyListItem({
     >
       <div className="p-3 sm:p-4 flex items-center justify-between gap-4">
         <div className="flex items-center gap-3 flex-1 min-w-0">
-          <div className="flex-shrink-0 w-6 text-xs font-mono text-slate-300 text-center">
-             {/* You could put numbering here if you had global index, but index is local to page */}
-          </div>
-          
           <div className="flex-1 min-w-0">
             <div className="flex items-baseline gap-2 flex-wrap">
               <h3 className={`text-lg font-bold truncate transition-colors ${isExpanded ? 'text-[var(--primary)]' : 'text-slate-900'}`}>

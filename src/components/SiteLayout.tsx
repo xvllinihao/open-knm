@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Logo } from "./Logo";
 import { AiDisclaimer } from "./AiDisclaimer";
+import { AuthButton } from "./AuthButton";
 import { Locale, getLocalizedPath, uiTexts } from "../lib/uiTexts";
 
 type SiteLayoutProps = {
@@ -23,8 +24,7 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
     { href: getLocalizedPath(locale, "/vocabulary"), label: texts.nav.vocabulary },
     { href: getLocalizedPath(locale, "/speaking"), label: texts.nav.speaking },
     { href: getLocalizedPath(locale, "/writing"), label: texts.nav.writing },
-    { href: getLocalizedPath(locale, "/life"), label: texts.nav.life },
-    { href: getLocalizedPath(locale, "/about"), label: texts.nav.about, isAccent: true },
+    { href: getLocalizedPath(locale, "/about"), label: texts.nav.about },
   ];
 
   const aiAssistantLink = {
@@ -56,10 +56,7 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
                     href={item.href}
                     aria-current={isActive ? "page" : undefined}
                     className={[
-                      "transition-colors border-b-2 border-transparent pb-1",
-                      item.isAccent
-                        ? "font-semibold text-[var(--primary)] hover:text-[var(--primary)]"
-                        : "hover:text-[var(--primary)]",
+                      "transition-colors border-b-2 border-transparent pb-1 hover:text-[var(--primary)]",
                       isActive
                         ? "text-[var(--primary)] border-[var(--primary)] font-semibold"
                         : "text-slate-600",
@@ -83,6 +80,8 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
               </span>
               {aiAssistantLink.label}
             </Link>
+
+            <AuthButton locale={locale} />
 
             {/* Mobile menu button */}
             <button
@@ -131,6 +130,8 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
                  </span>
                  <span>→</span>
               </Link>
+
+              <AuthButton locale={locale} mobile onClose={() => setIsMobileMenuOpen(false)} />
               
               {navLinks.map((item) => {
                 const isActive = pathname?.startsWith(item.href);
@@ -146,15 +147,7 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
                     ].join(" ")}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <span
-                      className={
-                        item.isAccent
-                          ? "font-semibold text-[var(--primary)]"
-                          : undefined
-                      }
-                    >
-                      {item.label}
-                    </span>
+                    <span>{item.label}</span>
                     <span className="text-slate-300">→</span>
                   </Link>
                 );
@@ -178,6 +171,12 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
              <span>{texts.footer.tagline}</span>
           </div>
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
+            <Link
+              href={getLocalizedPath(locale, "/pricing")}
+              className="text-slate-500 hover:text-[var(--primary)] transition-colors"
+            >
+              {locale === "zh" ? "会员计划" : "Membership"}
+            </Link>
             <Link
               href={getLocalizedPath(locale, "/privacy")}
               className="text-slate-500 hover:text-[var(--primary)] transition-colors"

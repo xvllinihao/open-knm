@@ -376,3 +376,4 @@ export function WritingContent({ locale }: { locale: Locale }) {
         </div>
     );
 }
+
