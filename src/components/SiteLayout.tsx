@@ -1,13 +1,15 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { LanguageSwitcher } from "./LanguageSwitcher";
 import { Logo } from "./Logo";
 import { AiDisclaimer } from "./AiDisclaimer";
 import { AuthButton } from "./AuthButton";
+import { LoginBanner } from "./LoginBanner";
 import { Locale, getLocalizedPath, uiTexts } from "../lib/uiTexts";
+import { useAuth } from "@/contexts/AuthContext";
 
 type SiteLayoutProps = {
   children: React.ReactNode;
@@ -18,6 +20,20 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
   const texts = uiTexts[locale];
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const pathname = usePathname();
+  const { user, loading: authLoading } = useAuth();
+  const [bannerDismissed, setBannerDismissed] = useState(false);
+  const [bannerReady, setBannerReady] = useState(false);
+
+  // Delay showing banner to avoid flash
+  useEffect(() => {
+    if (!authLoading && !user && !bannerDismissed) {
+      const timer = setTimeout(() => setBannerReady(true), 500);
+      return () => clearTimeout(timer);
+    }
+  }, [authLoading, user, bannerDismissed]);
+
+  // Derived state: show banner only when ready and user not logged in
+  const showLoginBanner = bannerReady && !authLoading && !user && !bannerDismissed;
 
   const navLinks = [
     { href: getLocalizedPath(locale, "/knm"), label: texts.nav.knm },
@@ -83,6 +99,11 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
 
             <AuthButton locale={locale} />
 
+            {/* Mobile: Compact Language Switcher */}
+            <div className="md:hidden">
+              <LanguageSwitcher currentLocale={locale} compact />
+            </div>
+
             {/* Mobile menu button */}
             <button
               type="button"
@@ -106,7 +127,8 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
               </svg>
             </button>
 
-            <div className="pl-2 border-l border-slate-200">
+            {/* Desktop: Full Language Switcher */}
+            <div className="hidden md:block pl-2 border-l border-slate-200">
               <LanguageSwitcher currentLocale={locale} />
             </div>
           </div>
@@ -130,8 +152,6 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
                  </span>
                  <span>→</span>
               </Link>
-
-              <AuthButton locale={locale} mobile onClose={() => setIsMobileMenuOpen(false)} />
               
               {navLinks.map((item) => {
                 const isActive = pathname?.startsWith(item.href);
@@ -158,6 +178,10 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
       </header>
 
       <AiDisclaimer locale={locale} />
+      
+      {showLoginBanner && (
+        <LoginBanner locale={locale} onDismiss={() => setBannerDismissed(true)} />
+      )}
 
       <main className="flex-1 flex flex-col justify-center">
         <div className="mx-auto w-full max-w-7xl px-6 py-8 sm:py-10">{children}</div>
