@@ -55,7 +55,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [loading, setLoading] = useState(true);
-  const initRef = useRef(false);
   const supabase = getSupabase();
   
   // Track pending redirect to prevent state updates after navigation
@@ -121,10 +120,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, [loadProfile]);
 
   useEffect(() => {
-    // Prevent double initialization in React StrictMode
-    if (initRef.current) return;
-    initRef.current = true;
-    
     // Reset redirect flag on mount
     pendingRedirectRef.current = false;
 
