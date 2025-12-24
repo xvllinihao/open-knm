@@ -444,7 +444,7 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: Loca
           </div>
         ) : (
           <Link
-            href={getLocalizedPath(locale, "/pricing")}
+            href={getLocalizedPath(locale, "/resources")}
             className="block bg-purple-50 border border-purple-100 rounded-2xl p-6 mb-6 hover:bg-purple-100 transition-all hover:-translate-y-0.5"
           >
             <div className="flex items-center justify-between">
