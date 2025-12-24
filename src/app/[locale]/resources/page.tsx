@@ -1,18 +1,28 @@
 "use client";
 
-import { use } from "react";
+import { use, Suspense, useEffect, useState } from "react";
 import { Locale, uiTexts } from "@/lib/uiTexts";
 import { FlashcardGame } from "@/components/FlashcardGame";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 
-export default function ResourcesPage({ params }: { params: Promise<{ locale: Locale }> }) {
-  const { locale } = use(params);
+function ResourcesContent({ locale }: { locale: Locale }) {
   const { profile, user } = useAuth();
   const texts = uiTexts[locale].resources;
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   
   const isPro = profile?.tier === "pro";
+
+  useEffect(() => {
+    if (searchParams.get("purchase_success") === "true") {
+      setShowSuccessModal(true);
+      // 5秒后自动关闭提示
+      const timer = setTimeout(() => setShowSuccessModal(false), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [searchParams]);
   
   const handlePurchase = () => {
     if (!user) {
@@ -33,6 +43,22 @@ export default function ResourcesPage({ params }: { params: Promise<{ locale: Lo
   return (
     <div className="min-h-[80vh] flex flex-col items-center py-12 px-4 relative overflow-hidden">
       
+      {/* Success Toast */}
+      {showSuccessModal && (
+        <div className="fixed top-24 left-1/2 -translate-x-1/2 z-50 animate-in fade-in slide-in-from-top-4 duration-300">
+          <div className="bg-green-600 text-white px-6 py-3 rounded-2xl shadow-2xl flex items-center gap-3 border border-green-500">
+            <div className="bg-white/20 rounded-full p-1">
+              <svg className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            <span className="font-bold">
+              {locale === 'zh' ? '支付成功！正在为您解锁 Pro 功能...' : 'Payment successful! Unlocking Pro features...'}
+            </span>
+          </div>
+        </div>
+      )}
+
       {/* Background Decor */}
       <div className="absolute top-0 left-0 w-full h-full -z-10 overflow-hidden pointer-events-none">
         <div className="absolute top-[-10%] right-[10%] w-[400px] h-[400px] bg-orange-100 rounded-full mix-blend-multiply filter blur-[80px] opacity-40 animate-blob"></div>
@@ -103,5 +129,19 @@ export default function ResourcesPage({ params }: { params: Promise<{ locale: Lo
       )}
 
     </div>
+  );
+}
+
+export default function ResourcesPage({ params }: { params: Promise<{ locale: Locale }> }) {
+  const { locale } = use(params);
+  
+  return (
+    <Suspense fallback={
+      <div className="min-h-[60vh] flex items-center justify-center">
+        <div className="w-8 h-8 border-4 border-[var(--primary)] border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    }>
+      <ResourcesContent locale={locale} />
+    </Suspense>
   );
 }
