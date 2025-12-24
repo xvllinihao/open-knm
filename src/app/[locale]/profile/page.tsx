@@ -42,9 +42,9 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: Loca
   const texts = {
     title: isZh ? "我的账户" : "My Account",
     memberSince: isZh ? "注册时间" : "Member since",
-    tier: isZh ? "会员等级" : "Membership",
-    free: isZh ? "免费用户" : "Free",
-    pro: isZh ? "Pro 会员" : "Pro Member",
+    tier: isZh ? "账户状态" : "Account Status",
+    free: isZh ? "标准版" : "Basic",
+    pro: isZh ? "已解锁单词包" : "Study Pack Unlocked",
     learningProgress: isZh ? "学习进度" : "Learning Progress",
     knmArticles: isZh ? "KNM 文章阅读" : "KNM Articles",
     vocabularyProgress: isZh ? "词汇学习进度" : "Vocabulary Progress",
@@ -53,13 +53,13 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: Loca
     page: isZh ? "页" : "pages",
     todayFlashcards: isZh ? "今日闪卡练习" : "Today's Flashcards",
     remaining: isZh ? "剩余" : "remaining",
-    unlimited: isZh ? "无限制" : "Unlimited",
+    unlimited: isZh ? "无限" : "Unlimited",
     flashcardMastery: isZh ? "闪卡记忆进度" : "Flashcard Mastery",
     flashcardMasteryDesc: isZh ? "基于闪卡测试的单词掌握程度" : "Word mastery based on flashcard tests",
-    proOnly: isZh ? "Pro 专属功能" : "Pro Feature",
-    unlockWithPro: isZh ? "升级 Pro 解锁" : "Unlock with Pro",
-    upgradeToPro: isZh ? "升级 Pro 会员" : "Upgrade to Pro",
-    proFeatures: isZh ? "解锁无限闪卡、乱序模式等专属功能" : "Unlock unlimited flashcards, shuffle mode & more",
+    proOnly: isZh ? "已解锁功能" : "Unlocked Feature",
+    unlockWithPro: isZh ? "解锁后开启" : "Unlock to enable",
+    upgradeToPro: isZh ? "解锁无限闪卡单词包" : "Unlock Unlimited Flashcards",
+    proFeatures: isZh ? "解锁无限闪卡、乱序模式、生词同步等专属功能" : "Unlock unlimited flashcards, shuffle mode, sync & more",
     logout: isZh ? "退出登录" : "Log Out",
     email: isZh ? "邮箱" : "Email",
     articles: isZh ? "篇" : "articles",
@@ -133,9 +133,16 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: Loca
       const flashcardUsage = localStorage.getItem("flashcard-today-count");
       const todayFlashcards = flashcardUsage ? parseInt(flashcardUsage, 10) : 0;
 
-      // 闪卡记忆进度 (Pro only) - 模拟数据，实际应该从后端获取
-      const flashcardMastery = localStorage.getItem("flashcard-mastery");
-      const masteryValue = flashcardMastery ? parseInt(flashcardMastery, 10) : 0;
+      // 闪卡记忆进度 (Pro only) - 计算掌握程度
+      let masteryValue = 0;
+      if (isPro && profile?.unknown_words) {
+        const totalWords = vocabularyList.length;
+        const unknownCount = profile.unknown_words.length;
+        masteryValue = Math.max(0, Math.round(((totalWords - unknownCount) / totalWords) * 100));
+      } else {
+        const flashcardMastery = localStorage.getItem("flashcard-mastery");
+        masteryValue = flashcardMastery ? parseInt(flashcardMastery, 10) : 0;
+      }
 
       setProgress({
         knmArticlesRead,
@@ -147,7 +154,7 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: Loca
         flashcardMastery: masteryValue,
       });
     }
-  }, []);
+  }, [isPro, profile?.unknown_words]);
 
   const handleLogout = async () => {
     setIsLoggingOut(true);

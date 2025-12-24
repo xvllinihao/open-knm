@@ -11,6 +11,7 @@ type Profile = {
   tier: Tier;
   stripe_customer_id?: string;
   username?: string;
+  unknown_words?: string[];
 };
 
 type AuthResult = {
@@ -68,8 +69,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         .select("*")
         .eq("id", userId)
         .single();
+      
+      let profileData = data;
+
+      // 为测试账号硬编码 Pro 权限
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user?.email === "xvllinihao@gmail.com" && profileData) {
+        profileData = { ...profileData, tier: "pro" };
+      }
+
       if (!pendingRedirectRef.current) {
-        setProfile(data);
+        setProfile(profileData);
       }
     } catch (error) {
       console.error("Error loading profile:", error);

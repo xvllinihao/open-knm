@@ -329,7 +329,7 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
         {/* CTA to Flashcard Practice */}
         <div className="pt-4">
           <Link
-            href={`/${locale}/flashcards`}
+            href={`/${locale}/resources`}
             className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--primary)] text-white font-bold rounded-full hover:brightness-110 transition-all shadow-lg shadow-orange-200 hover:scale-105"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">

@@ -38,7 +38,7 @@ export function AuthButton({ locale, mobile, onClose }: AuthButtonProps) {
             </span>
             <span>{texts.myProfile}</span>
             {isPro && (
-              <span className="text-[10px] bg-purple-500 text-white px-1.5 py-0.5 rounded-full uppercase font-bold">Pro</span>
+              <span className="text-[10px] bg-purple-500 text-white px-1.5 py-0.5 rounded-full uppercase font-bold">Unlocked</span>
             )}
           </span>
           <span className="text-slate-300">→</span>
@@ -56,7 +56,7 @@ export function AuthButton({ locale, mobile, onClose }: AuthButtonProps) {
         </span>
         <span className="hidden lg:inline">{texts.myProfile}</span>
         {isPro && (
-          <span className="text-[10px] bg-purple-500 text-white px-1.5 py-0.5 rounded-full uppercase font-bold">Pro</span>
+          <span className="text-[10px] bg-purple-500 text-white px-1.5 py-0.5 rounded-full uppercase font-bold">Unlocked</span>
         )}
       </Link>
     );
