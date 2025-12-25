@@ -7,15 +7,15 @@ export type ChangelogItem = {
 
 export const changelogData: ChangelogItem[] = [
   {
-    version: "1.7.1",
+    version: "1.8.0",
     date: "2025-12-25",
     title: {
-      zh: "资源页面体验优化",
-      en: "Resources Page Improvements",
+      zh: "闪卡词包功能上线",
+      en: "Flashcard Pack Feature Released",
     },
     description: {
-      zh: "💡 布局优化：将闪卡操作提示移至卡片上方，提升引导视觉效果。\n🔐 安全增强：激活码输入现在需要先登录账号，确保激活码与用户账户正确绑定。",
-      en: "💡 Layout: Moved flashcard interaction hint to the top for better visibility.\n🔐 Security: Added login requirement for license key activation to ensure proper account binding.",
+      zh: "新增了闪卡词包功能，可以无限刷词，支持乱序/顺序背词模式，复习模式 (随机抽题)，自动同步生词与学习进度。",
+      en: "Added flashcard pack feature, allowing unlimited word practice with shuffle/sequential modes, review mode (random questions), and automatic sync of learned words.",
     },
   },
   {
