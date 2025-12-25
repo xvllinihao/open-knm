@@ -6,8 +6,9 @@ import { Locale, uiTexts } from "@/lib/uiTexts";
 import { vocabularyList, VocabularyItem } from "@/data/vocabulary";
 import { useWebSpeech } from "@/hooks/useWebSpeech";
 import { useAuth } from "@/contexts/AuthContext";
-import { syncUnknownWords, syncFlashcardProgress } from "@/app/actions/progress";
+import { syncFlashcardWords, syncFlashcardProgress } from "@/app/actions/progress";
 import { ResumePrompt } from "@/components/ResumePrompt";
+import { FlashcardStats } from "@/components/FlashcardStats";
 
 // TTS 播放按钮组件
 function SpeakButton({ text, speak }: { text: string; speak: (text: string) => void }) {
@@ -59,7 +60,7 @@ interface FlashcardGameProps {
 
 export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
   const { speak } = useWebSpeech();
-  const { profile } = useAuth();
+  const { profile, refreshProfile, user } = useAuth();
   const isPro = profile?.tier === "pro";
   
   // PRO 特权：无限刷词
@@ -73,11 +74,13 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
   const [isSessionComplete, setIsSessionComplete] = useState(false);
   const [isReverse, setIsReverse] = useState(false);
   const [isReviewMode, setIsReviewMode] = useState(false);
+  const [isReviewKnownMode, setIsReviewKnownMode] = useState(false);
   const [pendingProgress, setPendingProgress] = useState<{
     current_index: number;
     deck_ids: string[];
     is_reverse: boolean;
     is_review_mode: boolean;
+    is_review_known_mode?: boolean;
   } | null>(null);
   const [isResumeVisible, setIsResumeVisible] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
@@ -99,23 +102,31 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
 
       // 2. Sync with Server (PRO only)
       let serverData = null;
-      if (isPro) {
+      if (isPro && !isInitialized) {
         try {
           const result = await syncFlashcardProgress({
             current_index: localData?.current_index || 0,
             deck_ids: localData?.deck_ids || [],
             is_reverse: localData?.is_reverse || false,
             is_review_mode: localData?.is_review_mode || false,
+            is_review_known_mode: localData?.is_review_known_mode || false,
             updated_at: localData?.updated_at || 0
           });
           if (result.success) serverData = result.data;
 
-          // Sync unknown words from profile to local storage (Server is source of truth for PRO)
-          if (profile?.unknown_words) {
-            const serverDutches = profile.unknown_words;
+          // Sync known/unknown words from profile to local storage (Initial load only)
+          if (profile) {
             const idMap = new Map(vocabularyList.map(i => [i.dutch, i]));
-            const serverItems = serverDutches.map(d => idMap.get(d)).filter(Boolean);
-            localStorage.setItem('vocabulary-unknown', JSON.stringify(serverItems));
+            
+            if (profile.unknown_words && profile.unknown_words.length > 0) {
+              const serverItems = profile.unknown_words.map(d => idMap.get(d)).filter(Boolean);
+              localStorage.setItem('vocabulary-unknown', JSON.stringify(serverItems));
+            }
+            
+            if (profile.known_words && profile.known_words.length > 0) {
+              const serverItems = profile.known_words.map(d => idMap.get(d)).filter(Boolean);
+              localStorage.setItem('vocabulary-known', JSON.stringify(serverItems));
+            }
           }
         } catch (e) {
           console.error("Sync failed", e);
@@ -124,7 +135,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
 
       const finalData = (serverData?.updated_at || 0) > (localData?.updated_at || 0) ? serverData : localData;
 
-      if (finalData && finalData.current_index > 0) {
+      if (user && finalData && finalData.current_index > 0) {
         setPendingProgress(finalData);
         setIsResumeVisible(true);
       }
@@ -141,31 +152,30 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     };
 
     init();
-  }, [isPro, effectiveLimit, profile, isInitialized, isReverse]);
+  }, [isPro, effectiveLimit, profile, isInitialized, isReverse, user]);
 
   // Handle deck updates (mode changes)
-  const updateDeck = useCallback((review: boolean, reverse: boolean) => {
-    let baseItems = review 
-      ? JSON.parse(localStorage.getItem('vocabulary-unknown') || '[]')
-      : [...vocabularyList];
+  const updateDeck = useCallback((review: boolean, reverse: boolean, reviewKnown: boolean = false) => {
+    let baseItems: VocabularyItem[] = [];
     
-    if (baseItems.length === 0 && review) {
-      // Fallback if no unknown words
+    if (review) {
+      baseItems = JSON.parse(localStorage.getItem('vocabulary-unknown') || '[]');
+    } else if (reviewKnown) {
+      const knownItems = JSON.parse(localStorage.getItem('vocabulary-known') || '[]');
+      baseItems = [...knownItems].sort(() => Math.random() - 0.5).slice(0, 10);
+    } else {
       baseItems = [...vocabularyList];
-      setIsReviewMode(false);
-      review = false;
     }
-
-    // mode logic:
-    // if reverse is true -> sequential (original order)
-    // if reverse is false and !review -> random shuffle
-    // if review is true -> unknown words (keep their original relative order)
     
-    if (!reverse && !review) {
-      baseItems = baseItems.sort(() => Math.random() - 0.5);
+    if (baseItems.length === 0 && (review || reviewKnown)) {
+      setDeck([]);
+    } else {
+      if (!reverse && !review && !reviewKnown) {
+        baseItems = baseItems.sort(() => Math.random() - 0.5);
+      }
+      setDeck(baseItems.slice(0, effectiveLimit));
     }
 
-    setDeck(baseItems.slice(0, effectiveLimit));
     setCurrentIndex(0);
     setIsFlipped(false);
     setSessionStats({ correct: 0, incorrect: 0 });
@@ -176,9 +186,15 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     if (!pendingProgress) return;
     
     // Restore deck state
-    let baseItems = pendingProgress.is_review_mode
-      ? JSON.parse(localStorage.getItem('vocabulary-unknown') || '[]')
-      : [...vocabularyList];
+    let baseItems: VocabularyItem[] = [];
+    
+    if (pendingProgress.is_review_mode) {
+      baseItems = JSON.parse(localStorage.getItem('vocabulary-unknown') || '[]');
+    } else if (pendingProgress.is_review_known_mode) {
+      baseItems = JSON.parse(localStorage.getItem('vocabulary-known') || '[]');
+    } else {
+      baseItems = [...vocabularyList];
+    }
     
     // If we're resuming a specific random deck, we should ideally have the IDs
     if (pendingProgress.deck_ids.length > 0) {
@@ -186,7 +202,10 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
       baseItems = pendingProgress.deck_ids.map(id => idMap.get(id)).filter(Boolean) as VocabularyItem[];
     } else if (pendingProgress.is_reverse) {
       // already in original order
-    } else if (!pendingProgress.is_review_mode) {
+      if (!pendingProgress.is_review_mode && !pendingProgress.is_review_known_mode) {
+        baseItems = baseItems.reverse();
+      }
+    } else if (!pendingProgress.is_review_mode && !pendingProgress.is_review_known_mode) {
       // was random but no ids? shuffle again (fallback)
       baseItems = baseItems.sort(() => Math.random() - 0.5);
     }
@@ -195,6 +214,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     setCurrentIndex(pendingProgress.current_index);
     setIsReverse(pendingProgress.is_reverse);
     setIsReviewMode(pendingProgress.is_review_mode);
+    setIsReviewKnownMode(pendingProgress.is_review_known_mode || false);
     setIsResumeVisible(false);
     setPendingProgress(null);
   };
@@ -214,6 +234,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
       deck_ids: deck.map(i => i.id),
       is_reverse: isReverse,
       is_review_mode: isReviewMode,
+      is_review_known_mode: isReviewKnownMode,
       updated_at: now
     };
     
@@ -222,7 +243,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     if (isPro) {
       syncFlashcardProgress(payload).catch(console.error);
     }
-  }, [currentIndex, deck, isReverse, isReviewMode, isPro, isInitialized]);
+  }, [currentIndex, deck, isReverse, isReviewMode, isReviewKnownMode, isPro, isInitialized]);
 
   // Handle swipe/answer
   const handleAnswer = useCallback((correct: boolean) => {
@@ -230,25 +251,47 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
 
     setSwipeDirection(correct ? 'right' : 'left');
     
-    // PRO 功能逻辑
-    if (isPro && currentCard) {
+    // 记录不认识/认识的单词进度 (Pro 同步到服务器，非 Pro 仅保存在本地)
+    if (currentCard) {
       const savedUnknown: VocabularyItem[] = JSON.parse(localStorage.getItem('vocabulary-unknown') || '[]');
+      const savedKnown: VocabularyItem[] = JSON.parse(localStorage.getItem('vocabulary-known') || '[]');
+      
+      let newUnknown = [...savedUnknown];
+      let newKnown = [...savedKnown];
+      let changed = false;
       
       if (!correct) {
-        // 记录不认识的单词
+        // 标记为“不认识”：加入不认识列表，从认识列表移除
         if (!savedUnknown.find((item: VocabularyItem) => item.dutch === currentCard.dutch)) {
-          const newUnknown = [...savedUnknown, currentCard];
-          localStorage.setItem('vocabulary-unknown', JSON.stringify(newUnknown));
-          // Sync to Supabase
-          syncUnknownWords(newUnknown.map((i: VocabularyItem) => i.dutch)).catch(console.error);
+          newUnknown.push(currentCard);
+          changed = true;
         }
+        const initialKnownCount = newKnown.length;
+        newKnown = newKnown.filter((item: VocabularyItem) => item.dutch !== currentCard.dutch);
+        if (newKnown.length < initialKnownCount) changed = true;
       } else {
-        // 如果标记为“认识”，从不认识列表中移除
-        const newUnknown = savedUnknown.filter((item: VocabularyItem) => item.dutch !== currentCard.dutch);
-        if (newUnknown.length < savedUnknown.length) {
-          localStorage.setItem('vocabulary-unknown', JSON.stringify(newUnknown));
-          // Sync update to Supabase
-          syncUnknownWords(newUnknown.map((i: VocabularyItem) => i.dutch)).catch(console.error);
+        // 标记为“认识”：加入认识列表，从不认识列表移除
+        if (!savedKnown.find((item: VocabularyItem) => item.dutch === currentCard.dutch)) {
+          newKnown.push(currentCard);
+          changed = true;
+        }
+        const initialUnknownCount = newUnknown.length;
+        newUnknown = newUnknown.filter((item: VocabularyItem) => item.dutch !== currentCard.dutch);
+        if (newUnknown.length < initialUnknownCount) changed = true;
+      }
+
+      if (changed) {
+        localStorage.setItem('vocabulary-unknown', JSON.stringify(newUnknown));
+        localStorage.setItem('vocabulary-known', JSON.stringify(newKnown));
+        if (isPro) {
+          // Sync to Supabase if Pro
+          syncFlashcardWords(
+            newUnknown.map((i: VocabularyItem) => i.dutch),
+            newKnown.map((i: VocabularyItem) => i.dutch)
+          ).then(() => {
+            // Refresh profile to keep AuthContext in sync
+            refreshProfile();
+          }).catch(console.error);
         }
       }
     }
@@ -264,10 +307,26 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
       cardRef.current.style.opacity = '0';
     }
 
-    setSessionStats(prev => ({
-      correct: prev.correct + (correct ? 1 : 0),
-      incorrect: prev.incorrect + (correct ? 0 : 1),
-    }));
+    setSessionStats(prev => {
+      const newStats = {
+        correct: prev.correct + (correct ? 1 : 0),
+        incorrect: prev.incorrect + (correct ? 0 : 1),
+      };
+      
+      // Update daily count in localStorage
+      const today = new Date().toISOString().split('T')[0];
+      const lastUpdate = localStorage.getItem('flashcard-last-update');
+      let dailyCount = 0;
+      
+      if (lastUpdate === today) {
+        dailyCount = parseInt(localStorage.getItem('flashcard-today-count') || '0', 10);
+      }
+      
+      localStorage.setItem('flashcard-today-count', (dailyCount + 1).toString());
+      localStorage.setItem('flashcard-last-update', today);
+      
+      return newStats;
+    });
 
     // Move to next card after animation
     setTimeout(() => {
@@ -280,7 +339,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
         setCurrentIndex(prev => prev + 1);
       }
     }, 300);
-  }, [isSessionComplete, currentIndex, deck.length, isFlipped, isPro, currentCard]);
+  }, [isSessionComplete, currentIndex, deck.length, isFlipped, isPro, currentCard, refreshProfile]);
 
   // Touch handlers
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -312,7 +371,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     } else if (cardRef.current) {
       // Reset position if not swiped far enough
       cardRef.current.style.transition = 'transform 0.3s ease';
-      cardRef.current.style.transform = isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
+      cardRef.current.style.transform = '';
     }
     
     startX.current = 0;
@@ -349,7 +408,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     } else if (cardRef.current) {
       // Reset position if not swiped far enough
       cardRef.current.style.transition = 'transform 0.3s ease';
-      cardRef.current.style.transform = isFlipped ? 'rotateY(180deg)' : 'rotateY(0deg)';
+      cardRef.current.style.transform = '';
     }
 
     startX.current = 0;
@@ -366,29 +425,39 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     }
   };
 
-  const setMode = (mode: 'sequential' | 'random' | 'review') => {
+  const setMode = (mode: 'sequential' | 'random' | 'unknown' | 'review') => {
     if (!isPro) return;
     
     let newReview = false;
     let newReverse = false;
+    let newReviewKnown = false;
 
     if (mode === 'sequential') {
       newReverse = true;
-    } else if (mode === 'review') {
+    } else if (mode === 'unknown') {
       newReview = true;
+    } else if (mode === 'review') {
+      newReviewKnown = true;
     }
-    // random is false for both
+    // random is false for all
 
     setIsReviewMode(newReview);
     setIsReverse(newReverse);
-    updateDeck(newReview, newReverse);
+    setIsReviewKnownMode(newReviewKnown);
+    updateDeck(newReview, newReverse, newReviewKnown);
   };
 
   const reviewedCount = sessionStats.correct + sessionStats.incorrect;
 
   const resetSession = () => {
-    updateDeck(isReviewMode, isReverse);
+    updateDeck(isReviewMode, isReverse, isReviewKnownMode);
   };
+
+  // Get current mastery counts
+  const savedKnown = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('vocabulary-known') || '[]') : [];
+  const savedUnknown = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('vocabulary-unknown') || '[]') : [];
+  const knownCount = isPro ? (profile?.known_words?.length || savedKnown.length) : savedKnown.length;
+  const unknownCount = isPro ? (profile?.unknown_words?.length || savedUnknown.length) : savedUnknown.length;
 
   const texts = {
     zh: {
@@ -396,44 +465,58 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
       correct: "认识",
       incorrect: "不认识",
       progress: "进度",
-      limitReached: isPro ? "本轮练习已完成！" : "访客预览结束",
-      loginToUnlock: isPro ? "太棒了！您已掌握以上单词。" : "登录解锁每日 20 词",
-      restart: isPro ? "再来一轮" : "再次体验",
+      limitReached: "本轮练习已完成！",
+      loginToUnlock: isPro ? "太棒了！您已掌握以上单词。" : "注册账户以永久保存背词进度",
+      restart: "再来一轮",
       unlockAction: "免费注册/登录",
       sessionResult: "本轮练习结果",
-      proFeature: "已解锁",
-      infinite: "无限刷词已激活",
-      unknownRecorded: "已记录不认识单词",
+      proFeature: "单词包",
+      infinite: "无限模式",
+      unknownRecorded: "已记录生词",
       resumeMsg: "是否回到上次刷到的位置？",
       resumeBtn: "恢复进度",
-      dismissBtn: "从头开始",
+      dismissBtn: "不了，谢谢",
       modeSequential: "顺序背词",
       modeRandom: "乱序背词",
-      modeReview: "只背不会的",
+      modeUnknown: "只背生词",
+      modeReview: "复习模式",
+      modeUnknownEmpty: "没有生词了！快去复习模式巩固一下吧。",
+      modeReviewEmpty: "你还没有掌握任何单词，先去背词吧！",
+      descSequential: "顺序背词模式",
+      descRandom: "乱序挑战模式",
+      descUnknown: "生词强化模式",
+      descReview: "已掌握词复习模式",
     },
     en: {
       tapToFlip: "Tap to flip",
       correct: "Know",
       incorrect: "Don't know",
       progress: "Progress",
-      limitReached: isPro ? "Session Complete!" : "Guest preview ended",
-      loginToUnlock: isPro ? "Great job! You've reviewed all cards." : "Log in to unlock daily 20 words",
-      restart: isPro ? "Review Again" : "Try Again",
+      limitReached: "Session Complete!",
+      loginToUnlock: isPro ? "Great job! You've reviewed all cards." : "Sign up to save your learning progress",
+      restart: "Review Again",
       unlockAction: "Sign Up / Log In",
       sessionResult: "Session Result",
       proFeature: "Unlocked",
       infinite: "Infinite mode active",
-      unknownRecorded: "Unknown words recorded",
+      unknownRecorded: "New words recorded",
       resumeMsg: "Do you want to resume from where you left off?",
       resumeBtn: "Resume Progress",
-      dismissBtn: "Start Over",
+      dismissBtn: "No, thanks",
       modeSequential: "Sequential",
       modeRandom: "Random",
-      modeReview: "Unknown Only",
+      modeUnknown: "New Words Only",
+      modeReview: "Review Mode",
+      modeUnknownEmpty: "No new words! Time to review what you've learned.",
+      modeReviewEmpty: "No mastered words yet. Start learning some first!",
+      descSequential: "Sequential Mode",
+      descRandom: "Random Mode",
+      descUnknown: "New Words Mode",
+      descReview: "Review Mode",
     }
   }[locale];
 
-  if (deck.length === 0) {
+  if (!isInitialized) {
     return null;
   }
 
@@ -452,21 +535,14 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
         </div>
       )}
 
-      {/* PRO Controls */}
+      {/* Study Pack Controls */}
       {isPro && !isSessionComplete && (
         <div className="flex flex-col gap-3 mb-4 px-1">
-          <div className="flex items-center gap-1.5 bg-purple-100 text-purple-700 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider w-fit">
-            <svg className="w-3 h-3" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-            </svg>
-            {texts.proFeature}: {texts.infinite}
-          </div>
-          
-          <div className="grid grid-cols-3 gap-2">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
             <button
               onClick={() => setMode('sequential')}
               className={`py-2 px-1 rounded-xl text-[10px] sm:text-xs font-bold transition-all border ${
-                !isReviewMode && isReverse 
+                !isReviewMode && !isReviewKnownMode && isReverse 
                   ? "bg-[var(--primary)] text-white border-[var(--primary)] shadow-md" 
                   : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
               }`}
@@ -476,7 +552,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
             <button
               onClick={() => setMode('random')}
               className={`py-2 px-1 rounded-xl text-[10px] sm:text-xs font-bold transition-all border ${
-                !isReviewMode && !isReverse 
+                !isReviewMode && !isReviewKnownMode && !isReverse 
                   ? "bg-[var(--primary)] text-white border-[var(--primary)] shadow-md" 
                   : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
               }`}
@@ -484,11 +560,21 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
               {texts.modeRandom}
             </button>
             <button
-              onClick={() => setMode('review')}
+              onClick={() => setMode('unknown')}
               className={`py-2 px-1 rounded-xl text-[10px] sm:text-xs font-bold transition-all border ${
                 isReviewMode 
                   ? "bg-purple-600 text-white border-purple-600 shadow-md" 
                   : "bg-white text-purple-600 border-purple-200 hover:bg-purple-50"
+              }`}
+            >
+              {texts.modeUnknown}
+            </button>
+            <button
+              onClick={() => setMode('review')}
+              className={`py-2 px-1 rounded-xl text-[10px] sm:text-xs font-bold transition-all border ${
+                isReviewKnownMode 
+                  ? "bg-green-600 text-white border-green-600 shadow-md" 
+                  : "bg-white text-green-600 border-green-200 hover:bg-green-50"
               }`}
             >
               {texts.modeReview}
@@ -498,18 +584,25 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
       )}
 
       {/* Progress Bar */}
-      <div className="mb-6">
-        <div className="flex justify-between text-xs text-slate-500 mb-1">
-          <span>{texts.progress}: {reviewedCount} / {effectiveLimit === 9999 ? deck.length : effectiveLimit}</span>
-          <span className="text-green-600">{sessionStats.correct} ✓</span>
+      {!isSessionComplete && deck.length > 0 && (
+        <div className="mb-6">
+          <div className="flex justify-between items-center mb-2">
+            <span className="text-sm font-bold text-slate-700">
+              {isReviewMode ? texts.descUnknown : isReviewKnownMode ? texts.descReview : isReverse ? texts.descSequential : texts.descRandom}
+            </span>
+            <span className="text-xs text-slate-500">{texts.progress}: {reviewedCount} / {effectiveLimit === 9999 ? deck.length : effectiveLimit}</span>
+          </div>
+          <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+            <div 
+              className="h-full bg-[var(--primary)] transition-all duration-300"
+              style={{ width: `${(reviewedCount / (effectiveLimit === 9999 ? deck.length : effectiveLimit)) * 100}%` }}
+            />
+          </div>
+          <div className="flex justify-end mt-1">
+            <span className="text-[10px] font-bold text-green-600">{sessionStats.correct} ✓</span>
+          </div>
         </div>
-        <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-          <div 
-            className="h-full bg-[var(--primary)] transition-all duration-300"
-            style={{ width: `${(reviewedCount / (effectiveLimit === 9999 ? deck.length : effectiveLimit)) * 100}%` }}
-          />
-        </div>
-      </div>
+      )}
 
       {/* Card Area */}
       <div className="relative w-full aspect-[3/4] mb-8 perspective-1000 touch-none">
@@ -556,6 +649,29 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
                 {texts.restart}
               </button>
             </div>
+          </div>
+        ) : deck.length === 0 ? (
+          // Empty State Screen
+          <div className="absolute inset-0 bg-white rounded-3xl shadow-xl border border-slate-100 flex flex-col items-center justify-center p-8 text-center animate-fade-in">
+            <div className="w-16 h-16 bg-purple-50 text-purple-600 rounded-full flex items-center justify-center mb-6">
+              <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-bold text-slate-800 mb-2">
+              {isReviewMode ? texts.modeUnknown : texts.modeReview}
+            </h3>
+            <p className="text-slate-500 text-sm leading-relaxed">
+              {isReviewMode ? texts.modeUnknownEmpty : texts.modeReviewEmpty}
+            </p>
+            
+            <button
+              onClick={() => setMode(isReviewMode ? 'review' : 'random')}
+              className="mt-8 px-6 py-2 bg-slate-100 text-slate-600 font-bold rounded-full hover:bg-slate-200 transition-all"
+            >
+              {isReviewMode ? texts.modeReview : texts.modeRandom}
+            </button>
           </div>
         ) : currentCard ? (
           // Active Flashcard
@@ -643,7 +759,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
       </div>
 
       {/* Answer Buttons */}
-      {!isSessionComplete && (
+      {!isSessionComplete && deck.length > 0 && (
         <div className="flex gap-8 justify-center animate-fade-in">
           <button
             onClick={() => handleAnswer(false)}
@@ -663,6 +779,13 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
               <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
             </svg>
           </button>
+        </div>
+      )}
+
+      {/* Mastery Stats at Bottom */}
+      {isPro && !isSessionComplete && (
+        <div className="mt-12 pt-8 border-t border-slate-100">
+          <FlashcardStats locale={locale} knownCount={knownCount} unknownCount={unknownCount} />
         </div>
       )}
     </div>

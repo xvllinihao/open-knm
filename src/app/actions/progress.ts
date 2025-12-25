@@ -177,18 +177,18 @@ export async function getFlashcardUsage() {
   };
 }
 
-export async function syncUnknownWords(words: string[]) {
+export async function syncFlashcardWords(unknownWords: string[], knownWords: string[]) {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
-  if (!user) return { success: false, data: words };
+  if (!user) return { success: false, unknown: unknownWords, known: knownWords };
 
-  // 直接更新为当前最新的完整列表（支持增加和删除）
   await supabase.from("profiles").update({
-    unknown_words: words,
+    unknown_words: unknownWords,
+    known_words: knownWords,
   }).eq("id", user.id);
 
-  return { success: true, data: words };
+  return { success: true, unknown: unknownWords, known: knownWords };
 }
 
 export async function syncFlashcardProgress(localData: {
@@ -196,6 +196,7 @@ export async function syncFlashcardProgress(localData: {
   deck_ids: string[];
   is_reverse: boolean;
   is_review_mode: boolean;
+  is_review_known_mode: boolean;
   updated_at: number;
 }) {
   const supabase = await createClient();
@@ -216,6 +217,7 @@ export async function syncFlashcardProgress(localData: {
       deck_ids: localData.deck_ids,
       is_reverse: localData.is_reverse,
       is_review_mode: localData.is_review_mode,
+      is_review_known_mode: localData.is_review_known_mode,
       updated_at: new Date(localData.updated_at).toISOString(),
     });
     return { success: true, data: localData };
@@ -228,6 +230,7 @@ export async function syncFlashcardProgress(localData: {
       deck_ids: remoteData.deck_ids,
       is_reverse: remoteData.is_reverse,
       is_review_mode: remoteData.is_review_mode,
+      is_review_known_mode: remoteData.is_review_known_mode,
       updated_at: new Date(remoteData.updated_at).getTime(),
     },
   };

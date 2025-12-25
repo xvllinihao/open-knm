@@ -12,6 +12,7 @@ type Profile = {
   stripe_customer_id?: string;
   username?: string;
   unknown_words?: string[];
+  known_words?: string[];
 };
 
 type AuthResult = {
@@ -29,6 +30,7 @@ type AuthContextType = {
   resetPassword: (email: string, captchaToken?: string) => Promise<AuthResult>;
   updatePassword: (newPassword: string) => Promise<AuthResult>;
   signOut: () => Promise<void>;
+  refreshProfile: () => Promise<void>;
 };
 
 const AuthContext = createContext<AuthContextType>({
@@ -41,6 +43,7 @@ const AuthContext = createContext<AuthContextType>({
   resetPassword: async () => ({ success: false }),
   updatePassword: async () => ({ success: false }),
   signOut: async () => {},
+  refreshProfile: async () => {},
 });
 
 // Create a single supabase instance outside component to avoid re-creation
@@ -64,19 +67,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   // Helper to load profile
   const loadProfile = useCallback(async (userId: string) => {
     try {
-      const { data } = await supabase
+      const { data, error } = await supabase
         .from("profiles")
         .select("*")
         .eq("id", userId)
         .single();
       
-      let profileData = data;
-
-      // 为测试账号硬编码 Pro 权限
-      const { data: { user } } = await supabase.auth.getUser();
-      if (user?.email === "xvllinihao@gmail.com" && profileData) {
-        profileData = { ...profileData, tier: "pro" };
-      }
+      if (error) throw error;
+      const profileData = data;
 
       if (!pendingRedirectRef.current) {
         setProfile(profileData);
@@ -85,6 +83,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       console.error("Error loading profile:", error);
     }
   }, [supabase]);
+
+  const refreshProfile = useCallback(async () => {
+    if (user) {
+      await loadProfile(user.id);
+    }
+  }, [user, loadProfile]);
 
   // Handle auth state changes
   const handleAuthChange = useCallback(async (event: AuthChangeEvent, session: Session | null) => {
@@ -309,7 +313,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, profile, loading, signInWithGoogle, signInWithEmail, signUpWithEmail, resetPassword, updatePassword, signOut }}>
+    <AuthContext.Provider value={{ user, profile, loading, signInWithGoogle, signInWithEmail, signUpWithEmail, resetPassword, updatePassword, signOut, refreshProfile }}>
       {children}
     </AuthContext.Provider>
   );

@@ -114,6 +114,15 @@ export type UiTexts = {
       action: string;
       footer: string;
     };
+    activation: {
+      title: string;
+      subtitle: string;
+      placeholder: string;
+      button: string;
+      success: string;
+      error: string;
+      xhsNotice: string;
+    };
   };
   auth: {
     login: string;
@@ -234,21 +243,30 @@ export const uiTexts: Record<Locale, UiTexts> = {
       home: "回到主页",
     },
     resources: {
-      title: " 闪卡单词包",
+      title: "闪卡单词包",
       description: "Open KNM 的核心内容永远免费。购买词包可以解锁无限闪卡，同时支持我们持续维护这个开源项目。",
-      proDescription: "感谢支持！您已解锁无限闪卡单词包。您可以根据需要选择不同的背词模式，巩固学习成果。",
+      proDescription: "感谢支持！您已解锁单词包功能。您可以根据需要选择不同的背词模式，巩固学习成果。",
       cta: {
-        title: "解锁闪卡 & 支持项目",
+        title: "解锁单词包 & 支持项目",
         price: "€5",
         features: [
           "解锁无限量闪卡刷词",
           "支持乱序/顺序背词模式",
-          "自动记录不会的单词",
-          "支持服务器与开发成本",
+          "复习模式 (随机抽题)",
+          "自动同步生词与学习进度",
           "一次付费，永久有效"
         ],
-        action: "支付 €5 解锁",
+        action: "立即解锁",
         footer: "安全支付 · 即刻生效"
+      },
+      activation: {
+        title: "我有激活码",
+        subtitle: "输入从邮件或小红书获得的激活码以解锁",
+        placeholder: "在此输入您的 16 位激活码",
+        button: "激活解锁",
+        success: "激活成功！已为您解锁单词包功能。3秒后自动刷新...",
+        error: "无效或已被使用的激活码，请重试。",
+        xhsNotice: "🍎 小红书用户：请输入以 XHS- 开头的专属激活码",
       }
     },
     auth: {
@@ -377,12 +395,21 @@ export const uiTexts: Record<Locale, UiTexts> = {
         features: [
           "Unlimited daily flashcards",
           "Shuffle & Sequential modes",
-          "Auto track words you don't know",
-          "Support server & dev costs",
+          "Mastery Review mode (Random)",
+          "Auto sync words & progress",
           "One-time payment, lifetime access"
         ],
         action: "Unlock for €5",
         footer: "Secure payment · Activate instantly"
+      },
+      activation: {
+        title: "I have a License Key",
+        subtitle: "Enter the code from your email to unlock",
+        placeholder: "Enter your 16-digit code here",
+        button: "Activate Now",
+        success: "Activation successful! Pro unlocked. Refreshing in 3s...",
+        error: "Invalid or already used key. Please try again.",
+        xhsNotice: "🍎 RED (Xiaohongshu) users: Enter your key starting with XHS-",
       }
     },
     auth: {
