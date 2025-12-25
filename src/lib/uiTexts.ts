@@ -122,6 +122,7 @@ export type UiTexts = {
       success: string;
       error: string;
       xhsNotice: string;
+      loginFirst: string;
     };
     support: {
       title: string;
@@ -283,6 +284,7 @@ export const uiTexts: Record<Locale, UiTexts> = {
         success: "激活成功！已为您解锁单词包功能。3秒后自动刷新...",
         error: "无效或已被使用的激活码，请重试。",
         xhsNotice: "🍎 小红书用户：请输入以 XHS- 开头的专属激活码",
+        loginFirst: "请先登录以使用激活码",
       },
       support: {
         title: "遇到问题？",
@@ -442,6 +444,7 @@ export const uiTexts: Record<Locale, UiTexts> = {
         success: "Activation successful! Pro unlocked. Refreshing in 3s...",
         error: "Invalid or already used key. Please try again.",
         xhsNotice: "🍎 RED (Xiaohongshu) users: Enter your key starting with XHS-",
+        loginFirst: "Please login first to use a license key",
       },
       support: {
         title: "Need Help?",

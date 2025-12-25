@@ -159,12 +159,12 @@ function ResourcesContent({ locale }: { locale: Locale }) {
 
       {/* Flashcard Section */}
       <div className="w-full max-w-4xl mx-auto mb-16">
+        <p className="text-center text-sm text-slate-400 mb-4">
+          {isZh ? '👆 左右滑动卡片进行练习' : '👆 Swipe cards to practice'}
+        </p>
         <div className="relative">
            <FlashcardGame locale={locale} limit={5} />
         </div>
-        <p className="text-center text-sm text-slate-400 mt-4">
-          {isZh ? '👆 左右滑动卡片进行练习' : '👆 Swipe cards to practice'}
-        </p>
       </div>
 
       {/* Pricing & Activation Section - Only shown for non-activated users */}
@@ -223,33 +223,47 @@ function ResourcesContent({ locale }: { locale: Locale }) {
               </div>
             )}
 
-            <form onSubmit={handleActivate} className="space-y-4">
-              <div className="flex flex-col gap-3">
-                <input
-                  type="text"
-                  value={activationCode}
-                  onChange={(e) => setActivationCode(e.target.value)}
-                  placeholder={texts.activation.placeholder}
-                  className="w-full px-4 py-3 rounded-xl border border-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500/20 text-slate-900 placeholder:text-slate-400"
-                  disabled={isActivating}
-                />
-                <div className="flex justify-center sm:justify-start py-2">
-                  <Turnstile siteKey={SITE_KEY} onSuccess={setTurnstileToken} />
-                </div>
-                <button
-                  type="submit"
-                  disabled={isActivating || !activationCode.trim() || !turnstileToken}
-                  className="w-full bg-purple-700 text-white px-8 py-3 rounded-xl font-bold hover:bg-purple-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                >
-                  {isActivating ? "..." : texts.activation.button}
-                </button>
-              </div>
-              {activationError && (
-                <p className="text-sm text-red-600 font-medium animate-shake">
-                  {activationError}
+            {!user ? (
+              <div className="space-y-4">
+                <p className="text-purple-700 font-medium text-center py-2">
+                  {texts.activation.loginFirst}
                 </p>
-              )}
-            </form>
+                <Link
+                  href={getLocalizedPath(locale, `/login?returnTo=/${locale}/resources`)}
+                  className="block w-full bg-purple-700 text-white px-8 py-3 rounded-xl font-bold hover:bg-purple-800 transition-colors text-center"
+                >
+                  {uiTexts[locale].auth.login}
+                </Link>
+              </div>
+            ) : (
+              <form onSubmit={handleActivate} className="space-y-4">
+                <div className="flex flex-col gap-3">
+                  <input
+                    type="text"
+                    value={activationCode}
+                    onChange={(e) => setActivationCode(e.target.value)}
+                    placeholder={texts.activation.placeholder}
+                    className="w-full px-4 py-3 rounded-xl border border-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500/20 text-slate-900 placeholder:text-slate-400"
+                    disabled={isActivating}
+                  />
+                  <div className="flex justify-center sm:justify-start py-2">
+                    <Turnstile siteKey={SITE_KEY} onSuccess={setTurnstileToken} />
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={isActivating || !activationCode.trim() || !turnstileToken}
+                    className="w-full bg-purple-700 text-white px-8 py-3 rounded-xl font-bold hover:bg-purple-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isActivating ? "..." : texts.activation.button}
+                  </button>
+                </div>
+                {activationError && (
+                  <p className="text-sm text-red-600 font-medium animate-shake">
+                    {activationError}
+                  </p>
+                )}
+              </form>
+            )}
           </div>
           
           {/* Support Section */}
