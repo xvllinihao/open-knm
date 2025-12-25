@@ -1,4 +1,4 @@
-import { Locale, uiTexts, isLocale } from "@/lib/uiTexts";
+import { Locale, isLocale } from "@/lib/uiTexts";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { changelogData } from "@/data/changelog";
@@ -11,7 +11,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
   }
 
   const isZh = locale === 'zh';
-  const { assistant } = uiTexts[locale];
   const latestUpdate = changelogData[0];
 
   return (
@@ -76,63 +75,35 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
         {/* Right: Feature Cards */}
         <section className="w-full lg:flex-1 max-w-md lg:max-w-lg mx-auto">
           <div className="grid gap-4">
-             {/* AI Assistant Promo Card */}
+             
+             {/* Resources / Support Promo Card */}
              <Link
-               href={`/${locale}/ai-assistant`}
-               className="group flex items-center p-4 sm:p-5 bg-slate-900 rounded-2xl border border-slate-800 shadow-lg shadow-slate-900/20 hover:shadow-xl transition-all hover:-translate-y-0.5 overflow-hidden relative"
+               href={`/${locale}/resources`}
+               className="group flex items-center p-4 sm:p-5 bg-orange-50 rounded-2xl border border-orange-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
              >
-                {/* Ambient Glow */}
-                <div className="absolute -right-10 -top-10 w-32 h-32 bg-[var(--primary)] blur-3xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
-                
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white/10 rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform border border-white/10 shrink-0">
-                  🤖
-                </div>
-                <div className="flex-1 min-w-0 relative z-10">
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <h3 className="text-base sm:text-lg font-bold text-white truncate min-w-0">
-                      {assistant.promoTitle}
-                    </h3>
-                    <span className="inline-flex h-2 w-2 rounded-full bg-[var(--primary)] animate-pulse shrink-0"></span>
-                  </div>
-                  <p className="text-slate-400 text-sm truncate">
-                    {assistant.promoDesc}
-                  </p>
-                </div>
-                <div className="ml-2 sm:ml-3 relative z-10">
-                  <span className="text-[var(--primary)] font-bold text-sm group-hover:text-white transition-colors">
-                    {assistant.promoAction}
-                  </span>
-                </div>
-             </Link>
-
-             {/* Membership Promo Card */}
-             <Link
-               href={`/${locale}/pricing`}
-               className="group flex items-center p-4 sm:p-5 bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl border border-purple-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
-             >
-                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform border border-purple-100 shadow-sm shrink-0">
-                  💎
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform border border-orange-100 shadow-sm shrink-0">
+                  🧋
                 </div>
                 <div className="flex-1 min-w-0 relative z-10">
                   <div className="flex items-center gap-2 mb-0.5">
                     <h3 className="text-base sm:text-lg font-bold text-slate-900 truncate min-w-0">
-                      {isZh ? '会员计划' : 'Membership Plan'}
+                      {isZh ? '闪卡刷词 & 支持' : 'Flashcards & Support'}
                     </h3>
-                    <span className="inline-flex px-2 py-0.5 rounded-full bg-purple-100 text-purple-700 text-[10px] font-bold uppercase tracking-wide shrink-0">Pro</span>
+                    <span className="inline-flex px-2 py-0.5 rounded-full bg-orange-100 text-orange-700 text-[10px] font-bold uppercase tracking-wide shrink-0">€5</span>
                   </div>
                   <p className="text-slate-600 text-sm truncate">
-                    {isZh ? '解锁无限单词卡、多端同步与随机复习。' : 'Unlock unlimited flashcards, sync & shuffle.'}
+                    {isZh ? '请喝一杯奶茶，解锁无限刷词功能。' : 'Buy me a tea to unlock unlimited flashcards.'}
                   </p>
                 </div>
                 <div className="ml-2 sm:ml-3 relative z-10">
-                  <span className="text-purple-600 group-hover:text-purple-700 transition-colors text-lg">→</span>
+                  <span className="text-orange-600 group-hover:text-orange-700 transition-colors text-lg">→</span>
                 </div>
              </Link>
 
              {/* Writing Promo Card */}
              <Link
                href={`/${locale}/writing`}
-               className="group flex items-center p-4 sm:p-5 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-2xl border border-emerald-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
+               className="group flex items-center p-4 sm:p-5 bg-emerald-50 rounded-2xl border border-emerald-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
              >
                 <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform border border-emerald-100 shadow-sm shrink-0">
                   ✍️
@@ -156,7 +127,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
              {/* Vocabulary Promo Card */}
              <Link
                href={`/${locale}/vocabulary`}
-               className="group flex items-center p-4 sm:p-5 bg-gradient-to-r from-orange-50 to-amber-50 rounded-2xl border border-orange-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
+               className="group flex items-center p-4 sm:p-5 bg-orange-50 rounded-2xl border border-orange-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
              >
                 <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform border border-orange-100 shadow-sm shrink-0">
                   📚
@@ -180,7 +151,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
              {/* Speaking Promo Card */}
              <Link
                href={`/${locale}/speaking`}
-               className="group flex items-center p-4 sm:p-5 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl border border-blue-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
+               className="group flex items-center p-4 sm:p-5 bg-blue-50 rounded-2xl border border-blue-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
              >
                 <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform border border-blue-100 shadow-sm shrink-0">
                   🗣️

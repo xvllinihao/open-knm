@@ -7,14 +7,13 @@ export function isLocale(value: unknown): value is Locale {
 }
 
 export type NavTexts = {
-  life: string;
+  resources: string;
   knm: string;
   assistant: string;
   vocabulary: string;
   speaking: string;
   writing: string;
   about: string;
-  pricing: string;
 };
 
 export type VocabularyTexts = {
@@ -104,20 +103,25 @@ export type UiTexts = {
     next: string;
     home: string;
   };
-  pricing: {
+  resources: {
     title: string;
     description: string;
-    free: {
+    proDescription: string;
+    cta: {
       title: string;
       price: string;
       features: string[];
       action: string;
+      footer: string;
     };
-    pro: {
+    activation: {
       title: string;
-      price: string;
-      features: string[];
-      action: string;
+      subtitle: string;
+      placeholder: string;
+      button: string;
+      success: string;
+      error: string;
+      xhsNotice: string;
     };
   };
   auth: {
@@ -125,52 +129,33 @@ export type UiTexts = {
     logout: string;
     myProfile: string;
   };
-  wishlist: {
+  loginNudge: {
     title: string;
     description: string;
+    action: string;
+    dismiss: string;
+  };
+  wishlist: {
     placeholder: string;
     action: string;
-    success: string;
-    error: string;
-    exists: string;
-    heroBadge: string;
-    heroTitle: string;
-    heroTitleHighlight: string;
-    heroSubtitle: string;
-    offer: string;
     socialProof: string;
-    features: {
-      aiCompanion: string;
-      cloudSync: string;
-      realPronunciation: string;
-      smartCards: string;
-      aiTutor: string;
-    };
+    offer: string;
+    success: string;
+    exists: string;
+    error: string;
   };
-    membershipPromo: {
-      title: string;
-      description: string;
-      action: string;
-    };
-    loginNudge: {
-      title: string;
-      description: string;
-      action: string;
-      dismiss: string;
-    };
-  };
+};
 
 export const uiTexts: Record<Locale, UiTexts> = {
   zh: {
     nav: {
-      life: "实用资源",
+      resources: "学习资源",
       knm: "KNM 专区",
       assistant: "AI 助教",
       vocabulary: "高频词汇",
       speaking: "口语练习",
       writing: "写作速成",
       about: "关于与贡献",
-      pricing: "会员计划",
     },
     footer: {
       tagline: "© open-knm，欢迎开源共享。",
@@ -257,53 +242,37 @@ export const uiTexts: Record<Locale, UiTexts> = {
       next: "下一篇",
       home: "回到主页",
     },
-    pricing: {
-      title: "选择适合您的计划",
-      description: "词汇表完全免费。升级会员解锁无限闪卡刷词与专属功能。",
-      free: {
-        title: "免费账户",
-        price: "€0",
-        features: ["完整词汇表浏览", "每日 20 次闪卡刷词", "云端同步学习进度", "全站 KNM 文章", "加入 Discord 社区"],
-        action: "免费注册",
+    resources: {
+      title: "闪卡单词包",
+      description: "Open KNM 的核心内容永远免费。购买词包可以解锁无限闪卡，同时支持我们持续维护这个开源项目。",
+      proDescription: "感谢支持！您已解锁单词包功能。您可以根据需要选择不同的背词模式，巩固学习成果。",
+      cta: {
+        title: "解锁单词包 & 支持项目",
+        price: "€5",
+        features: [
+          "解锁无限量闪卡刷词",
+          "支持乱序/顺序背词模式",
+          "复习模式 (随机抽题)",
+          "自动同步生词与学习进度",
+          "一次付费，永久有效"
+        ],
+        action: "立即解锁",
+        footer: "安全支付 · 即刻生效"
       },
-      pro: {
-        title: "Pro 会员",
-        price: "€9.9/月",
-        features: ["无限量闪卡刷词", "乱序背词模式", "错题本（即将上线）", "未来权益：AI 语音包折扣", "未来权益：AI 作文批改折扣", "支持开源项目发展"],
-        action: "加入心愿单",
-      },
+      activation: {
+        title: "我有激活码",
+        subtitle: "输入从邮件或小红书获得的激活码以解锁",
+        placeholder: "在此输入您的 16 位激活码",
+        button: "激活解锁",
+        success: "激活成功！已为您解锁单词包功能。3秒后自动刷新...",
+        error: "无效或已被使用的激活码，请重试。",
+        xhsNotice: "🍎 小红书用户：请输入以 XHS- 开头的专属激活码",
+      }
     },
     auth: {
       login: "登录",
       logout: "退出登录",
       myProfile: "我的账户",
-    },
-    wishlist: {
-      title: "加入 Pro 心愿单",
-      description: "支付系统正在最后调试中。留下邮箱，我们将第一时间通知您并提供早鸟优惠。",
-      placeholder: "输入你的邮箱地址",
-      action: "加入心愿单",
-      success: "🎉 你已成功加入心愿单！上线时我们会第一时间通知你。",
-      error: "出错了，请稍后再试。",
-      exists: "你已经在心愿单里了！",
-      heroBadge: "COMING SOON",
-      heroTitle: "Open KNM",
-      heroTitleHighlight: "Pro",
-      heroSubtitle: "解锁云端同步、真人发音与 AI 私教，让备考效率翻倍。",
-      offer: "加入心愿单，上线即享 5 折优惠",
-      socialProof: "人已加入",
-      features: {
-        aiCompanion: "AI 伴读",
-        cloudSync: "云端同步",
-        realPronunciation: "真人发音",
-        smartCards: "智能卡片",
-        aiTutor: "AI 私教",
-      },
-    },
-    membershipPromo: {
-      title: "解锁 Pro 会员",
-      description: "无限闪卡刷词、乱序背词、错题本。加入心愿单，享受早鸟优惠。",
-      action: "查看详情",
     },
     loginNudge: {
       title: "不错过任何进度 ☁️",
@@ -311,17 +280,25 @@ export const uiTexts: Record<Locale, UiTexts> = {
       action: "免费注册/登录",
       dismiss: "稍后再说",
     },
+    wishlist: {
+      placeholder: "输入您的邮箱",
+      action: "加入心愿单",
+      socialProof: "人已加入期待",
+      offer: "现在加入，上线时即可获得 5 折优惠码 🧧",
+      success: "已加入！请检查邮箱确认。",
+      exists: "您已在心愿单中！",
+      error: "出错了，请稍后再试。",
+    },
   },
   en: {
     nav: {
-      life: "Resources",
+      resources: "Resources",
       knm: "KNM Zone",
       assistant: "AI Assistant",
       vocabulary: "Vocabulary",
       speaking: "Speaking",
       writing: "Writing",
       about: "About",
-      pricing: "Membership",
     },
     footer: {
       tagline: "© open-knm — open knowledge for expats.",
@@ -408,59 +385,52 @@ export const uiTexts: Record<Locale, UiTexts> = {
       next: "Next Article",
       home: "Back to Home",
     },
-    pricing: {
-      title: "Choose the right plan",
-      description: "Vocabulary list is free for everyone. Upgrade for unlimited flash cards.",
-      free: {
-        title: "Free Account",
-        price: "€0",
-        features: ["Full vocabulary access", "20 daily flash card reviews", "Cloud sync progress", "All KNM articles", "Join Discord Community"],
-        action: "Sign Up Free",
+    resources: {
+      title: "Study Resources",
+      description: "Open KNM's core content is always free. Buying the resource pack unlocks flashcards and helps us maintain this open-source project.",
+      proDescription: "Thank you for your support! You've unlocked the full flashcard deck. Choose your preferred study mode below to maximize your learning.",
+      cta: {
+        title: "Unlock Flashcards",
+        price: "€5",
+        features: [
+          "Unlimited daily flashcards",
+          "Shuffle & Sequential modes",
+          "Mastery Review mode (Random)",
+          "Auto sync words & progress",
+          "One-time payment, lifetime access"
+        ],
+        action: "Unlock for €5",
+        footer: "Secure payment · Activate instantly"
       },
-      pro: {
-        title: "Pro Member",
-        price: "€9.9/mo",
-        features: ["Unlimited flash cards", "Shuffle mode", "Wrong answer tracking (soon)", "Future: AI Voice Pack Discount", "Future: AI Correction Discount", "Support open source"],
-        action: "Join Wishlist",
-      },
+      activation: {
+        title: "I have a License Key",
+        subtitle: "Enter the code from your email to unlock",
+        placeholder: "Enter your 16-digit code here",
+        button: "Activate Now",
+        success: "Activation successful! Pro unlocked. Refreshing in 3s...",
+        error: "Invalid or already used key. Please try again.",
+        xhsNotice: "🍎 RED (Xiaohongshu) users: Enter your key starting with XHS-",
+      }
     },
     auth: {
       login: "Login",
       logout: "Logout",
       myProfile: "My Profile",
     },
-    wishlist: {
-      title: "Join Pro Wishlist",
-      description: "Payment system is in final testing. Enter your email to get notified and receive early bird pricing.",
-      placeholder: "Enter your email address",
-      action: "Join Wishlist",
-      success: "🎉 You're on the wishlist! We'll notify you when Pro launches.",
-      error: "Something went wrong. Please try again.",
-      exists: "You're already on the wishlist!",
-      heroBadge: "COMING SOON",
-      heroTitle: "Open KNM",
-      heroTitleHighlight: "Pro",
-      heroSubtitle: "Unlock cloud sync, real pronunciation & AI tutor. Double your study efficiency.",
-      offer: "Join wishlist, get 50% off upon launch",
-      socialProof: "people joined",
-      features: {
-        aiCompanion: "AI Companion",
-        cloudSync: "Cloud Sync",
-        realPronunciation: "Real Audio",
-        smartCards: "Smart Cards",
-        aiTutor: "AI Tutor",
-      },
-    },
-    membershipPromo: {
-      title: "Unlock Pro Membership",
-      description: "Unlimited flash cards, shuffle mode, and wrong answer tracking. Join the wishlist.",
-      action: "Learn More",
-    },
     loginNudge: {
       title: "Save Your Progress ☁️",
       description: "You are in guest mode. Log in to sync your progress across devices.",
       action: "Sign Up / Login",
       dismiss: "Later",
+    },
+    wishlist: {
+      placeholder: "Enter your email",
+      action: "Join Wishlist",
+      socialProof: "people joined",
+      offer: "Join now to get 50% off when we launch 💎",
+      success: "Joined! Check your email to confirm.",
+      exists: "You're already on the list!",
+      error: "Something went wrong. Try again.",
     },
   },
 };

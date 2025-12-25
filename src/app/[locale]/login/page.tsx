@@ -63,7 +63,7 @@ function LoginPageContent({ params }: { params: Promise<{ locale: Locale }> }) {
     title: isZh ? "登录 Open KNM" : "Sign in to Open KNM",
     registerTitle: isZh ? "注册 Open KNM" : "Create an Account",
     forgotTitle: isZh ? "重置密码" : "Reset Password",
-    subtitle: isZh ? "同步进度、解锁 Pro 功能" : "Sync progress & unlock Pro features",
+    subtitle: isZh ? "同步进度、解锁闪卡词包" : "Sync progress & unlock flashcard pack",
     forgotSubtitle: isZh ? "输入邮箱，我们将发送重置链接" : "Enter your email and we'll send a reset link",
     email: isZh ? "邮箱地址" : "Email address",
     password: isZh ? "密码" : "Password",
@@ -92,9 +92,14 @@ function LoginPageContent({ params }: { params: Promise<{ locale: Locale }> }) {
 
   useEffect(() => {
     if (user && !loading) {
-      router.push(`/${locale}`);
+      const returnTo = searchParams.get('returnTo');
+      if (returnTo) {
+        router.push(returnTo);
+      } else {
+        router.push(`/${locale}`);
+      }
     }
-  }, [user, loading, router, locale]);
+  }, [user, loading, router, locale, searchParams]);
 
   // Check for errors in URL
   useEffect(() => {

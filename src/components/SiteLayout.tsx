@@ -40,6 +40,7 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
     { href: getLocalizedPath(locale, "/vocabulary"), label: texts.nav.vocabulary },
     { href: getLocalizedPath(locale, "/speaking"), label: texts.nav.speaking },
     { href: getLocalizedPath(locale, "/writing"), label: texts.nav.writing },
+    { href: getLocalizedPath(locale, "/resources"), label: texts.nav.resources },
     { href: getLocalizedPath(locale, "/about"), label: texts.nav.about },
   ];
 
@@ -88,7 +89,7 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
 
             <Link
               href={aiAssistantLink.href}
-              className="hidden md:inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-slate-900 to-slate-800 px-4 py-1.5 text-sm font-bold text-white shadow-md shadow-slate-900/20 transition-all hover:scale-105 hover:shadow-lg hover:from-black hover:to-slate-900"
+              className="hidden md:inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-1.5 text-sm font-bold text-white shadow-md shadow-slate-900/20 transition-all hover:scale-105 hover:shadow-lg hover:bg-black"
             >
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--primary)] opacity-75"></span>
@@ -195,12 +196,6 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
              <span>{texts.footer.tagline}</span>
           </div>
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
-            <Link
-              href={getLocalizedPath(locale, "/pricing")}
-              className="text-slate-500 hover:text-[var(--primary)] transition-colors"
-            >
-              {locale === "zh" ? "会员计划" : "Membership"}
-            </Link>
             <Link
               href={getLocalizedPath(locale, "/privacy")}
               className="text-slate-500 hover:text-[var(--primary)] transition-colors"

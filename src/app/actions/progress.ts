@@ -177,3 +177,62 @@ export async function getFlashcardUsage() {
   };
 }
 
+export async function syncFlashcardWords(unknownWords: string[], knownWords: string[]) {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) return { success: false, unknown: unknownWords, known: knownWords };
+
+  await supabase.from("profiles").update({
+    unknown_words: unknownWords,
+    known_words: knownWords,
+  }).eq("id", user.id);
+
+  return { success: true, unknown: unknownWords, known: knownWords };
+}
+
+export async function syncFlashcardProgress(localData: {
+  current_index: number;
+  deck_ids: string[];
+  is_reverse: boolean;
+  is_review_mode: boolean;
+  is_review_known_mode: boolean;
+  updated_at: number;
+}) {
+  const supabase = await createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  if (!user) return { success: false, data: localData };
+
+  const { data: remoteData } = await supabase
+    .from("flashcard_progress")
+    .select("*")
+    .eq("user_id", user.id)
+    .single();
+
+  if (!remoteData || localData.updated_at > new Date(remoteData.updated_at).getTime()) {
+    await supabase.from("flashcard_progress").upsert({
+      user_id: user.id,
+      current_index: localData.current_index,
+      deck_ids: localData.deck_ids,
+      is_reverse: localData.is_reverse,
+      is_review_mode: localData.is_review_mode,
+      is_review_known_mode: localData.is_review_known_mode,
+      updated_at: new Date(localData.updated_at).toISOString(),
+    });
+    return { success: true, data: localData };
+  }
+
+  return {
+    success: true,
+    data: {
+      current_index: remoteData.current_index,
+      deck_ids: remoteData.deck_ids,
+      is_reverse: remoteData.is_reverse,
+      is_review_mode: remoteData.is_review_mode,
+      is_review_known_mode: remoteData.is_review_known_mode,
+      updated_at: new Date(remoteData.updated_at).getTime(),
+    },
+  };
+}
+

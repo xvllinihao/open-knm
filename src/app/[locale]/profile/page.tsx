@@ -9,6 +9,7 @@ import { vocabularyList } from "@/data/vocabulary";
 import { getArticlesByCategory } from "@/lib/articles";
 import { createClient } from "@/utils/supabase/client";
 import { checkWishlistStatus, leaveWishlist } from "@/app/actions/waitlist";
+import { FlashcardStats } from "@/components/FlashcardStats";
 
 // 常量配置
 const FREE_DAILY_FLASHCARD_LIMIT = 20;
@@ -34,6 +35,8 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: Loca
     vocabularyIsLearningMode: false,
     todayFlashcards: 0,
     flashcardMastery: 0, // Pro only: 0-100
+    knownCount: 0,
+    unknownCount: 0,
   });
 
   const isZh = locale === "zh";
@@ -42,9 +45,9 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: Loca
   const texts = {
     title: isZh ? "我的账户" : "My Account",
     memberSince: isZh ? "注册时间" : "Member since",
-    tier: isZh ? "会员等级" : "Membership",
-    free: isZh ? "免费用户" : "Free",
-    pro: isZh ? "Pro 会员" : "Pro Member",
+    tier: isZh ? "账户状态" : "Account Status",
+    free: isZh ? "标准版" : "Basic",
+    pro: isZh ? "已解锁单词包" : "Study Pack Unlocked",
     learningProgress: isZh ? "学习进度" : "Learning Progress",
     knmArticles: isZh ? "KNM 文章阅读" : "KNM Articles",
     vocabularyProgress: isZh ? "词汇学习进度" : "Vocabulary Progress",
@@ -53,13 +56,13 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: Loca
     page: isZh ? "页" : "pages",
     todayFlashcards: isZh ? "今日闪卡练习" : "Today's Flashcards",
     remaining: isZh ? "剩余" : "remaining",
-    unlimited: isZh ? "无限制" : "Unlimited",
-    flashcardMastery: isZh ? "闪卡记忆进度" : "Flashcard Mastery",
+    unlimited: isZh ? "无限" : "Unlimited",
+    flashcardMastery: isZh ? "词汇掌握情况" : "Vocabulary Mastery",
     flashcardMasteryDesc: isZh ? "基于闪卡测试的单词掌握程度" : "Word mastery based on flashcard tests",
-    proOnly: isZh ? "Pro 专属功能" : "Pro Feature",
-    unlockWithPro: isZh ? "升级 Pro 解锁" : "Unlock with Pro",
-    upgradeToPro: isZh ? "升级 Pro 会员" : "Upgrade to Pro",
-    proFeatures: isZh ? "解锁无限闪卡、乱序模式等专属功能" : "Unlock unlimited flashcards, shuffle mode & more",
+    proOnly: isZh ? "单词包功能" : "Study Pack Feature",
+    unlockWithPro: isZh ? "购买单词包后开启" : "Unlock study pack to enable",
+    upgradeToPro: isZh ? "获取全库单词包" : "Get Full Vocabulary Pack",
+    proFeatures: isZh ? "解锁无限闪卡、乱序模式、生词同步等功能" : "Unlock unlimited flashcards, shuffle mode, sync & more",
     logout: isZh ? "退出登录" : "Log Out",
     email: isZh ? "邮箱" : "Email",
     articles: isZh ? "篇" : "articles",
@@ -133,9 +136,14 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: Loca
       const flashcardUsage = localStorage.getItem("flashcard-today-count");
       const todayFlashcards = flashcardUsage ? parseInt(flashcardUsage, 10) : 0;
 
-      // 闪卡记忆进度 (Pro only) - 模拟数据，实际应该从后端获取
-      const flashcardMastery = localStorage.getItem("flashcard-mastery");
-      const masteryValue = flashcardMastery ? parseInt(flashcardMastery, 10) : 0;
+      // 闪卡统计数据
+      const savedKnown = JSON.parse(localStorage.getItem('vocabulary-known') || '[]');
+      const savedUnknown = JSON.parse(localStorage.getItem('vocabulary-unknown') || '[]');
+      
+      const knownCount = isPro ? (profile?.known_words?.length || savedKnown.length) : savedKnown.length;
+      const unknownCount = isPro ? (profile?.unknown_words?.length || savedUnknown.length) : savedUnknown.length;
+      const totalWords = vocabularyList.length;
+      const masteryValue = totalWords > 0 ? Math.max(0, Math.round((knownCount / totalWords) * 100)) : 0;
 
       setProgress({
         knmArticlesRead,
@@ -145,9 +153,11 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: Loca
         vocabularyIsLearningMode,
         todayFlashcards,
         flashcardMastery: masteryValue,
+        knownCount,
+        unknownCount,
       });
     }
-  }, []);
+  }, [isPro, profile?.known_words, profile?.unknown_words]);
 
   const handleLogout = async () => {
     setIsLoggingOut(true);
@@ -369,45 +379,30 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: Loca
             </div>
           </div>
 
-          {/* Flashcard Mastery - Pro Only */}
-          <div className={`p-3 rounded-xl relative ${isPro ? 'bg-slate-50' : 'bg-slate-100'}`}>
-            {!isPro && (
-              <div className="absolute inset-0 bg-slate-100/80 rounded-xl flex items-center justify-center z-10">
-                <div className="flex items-center gap-2 px-3 py-1.5 bg-purple-100 rounded-full">
-                  <svg className="w-4 h-4 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                  </svg>
-                  <span className="text-sm font-medium text-purple-700">{texts.unlockWithPro}</span>
+          {/* Flashcard Mastery */}
+          {isPro ? (
+            <FlashcardStats 
+              locale={locale} 
+              knownCount={progress.knownCount} 
+              unknownCount={progress.unknownCount} 
+            />
+          ) : (
+            <Link 
+              href={getLocalizedPath(locale, "/resources")}
+              className="p-3 rounded-xl bg-purple-50 border border-purple-100 flex items-center justify-between group hover:bg-purple-100 transition-colors"
+            >
+              <div className="flex items-center gap-3">
+                <span className="text-2xl opacity-50">🧠</span>
+                <div>
+                  <span className="text-slate-700 block font-medium">{texts.flashcardMastery}</span>
+                  <span className="text-xs text-purple-600 font-bold">{texts.unlockWithPro}</span>
                 </div>
               </div>
-            )}
-            <div className={`${!isPro ? 'opacity-50' : ''}`}>
-              <div className="flex justify-between items-center mb-2">
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">🧠</span>
-                  <div>
-                    <span className="text-slate-700">{texts.flashcardMastery}</span>
-                    {isPro && (
-                      <span className="ml-2 px-1.5 py-0.5 bg-purple-100 text-purple-700 text-xs font-bold rounded">PRO</span>
-                    )}
-                  </div>
-                </div>
-                <span className="font-bold text-slate-900">
-                  {isPro ? `${progress.flashcardMastery}%` : '--'}
-                </span>
-              </div>
-              {/* Progress Bar */}
-              <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
-                <div 
-                  className="h-full bg-purple-500 rounded-full transition-all duration-300"
-                  style={{ width: isPro ? `${progress.flashcardMastery}%` : '0%' }}
-                />
-              </div>
-              <p className="text-xs text-slate-500 mt-1">
-                {texts.flashcardMasteryDesc}
-              </p>
-            </div>
-          </div>
+              <svg className="w-5 h-5 text-purple-400 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          )}
         </div>
       </div>
 
@@ -437,7 +432,7 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: Loca
           </div>
         ) : (
           <Link
-            href={getLocalizedPath(locale, "/pricing")}
+            href={getLocalizedPath(locale, "/resources")}
             className="block bg-purple-50 border border-purple-100 rounded-2xl p-6 mb-6 hover:bg-purple-100 transition-all hover:-translate-y-0.5"
           >
             <div className="flex items-center justify-between">

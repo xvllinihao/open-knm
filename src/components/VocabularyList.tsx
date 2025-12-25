@@ -329,7 +329,7 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
         {/* CTA to Flashcard Practice */}
         <div className="pt-4">
           <Link
-            href={`/${locale}/flashcards`}
+            href={`/${locale}/resources`}
             className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--primary)] text-white font-bold rounded-full hover:brightness-110 transition-all shadow-lg shadow-orange-200 hover:scale-105"
           >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">
@@ -337,7 +337,12 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
               <path d="M3.265 10.602l7.668 4.129a2.25 2.25 0 002.134 0l7.668-4.13 1.37.739a.75.75 0 010 1.32l-9.75 5.25a.75.75 0 01-.71 0l-9.75-5.25a.75.75 0 010-1.32l1.37-.738z" />
               <path d="M10.933 19.231l-7.668-4.13-1.37.739a.75.75 0 000 1.32l9.75 5.25c.221.12.489.12.71 0l9.75-5.25a.75.75 0 000-1.32l-1.37-.738-7.668 4.13a2.25 2.25 0 01-2.134-.001z" />
             </svg>
-            {locale === 'zh' ? '闪卡刷词' : 'Flash Cards'}
+            <span className="flex items-center gap-1.5">
+              {locale === 'zh' ? '闪卡刷词' : 'Flash Cards'}
+              <span className="px-1.5 py-0.5 bg-white/20 rounded-md text-[10px] font-black tracking-tighter border border-white/20">
+                NEW
+              </span>
+            </span>
           </Link>
         </div>
       </div>

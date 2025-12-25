@@ -11,7 +11,7 @@ interface AuthButtonProps {
 }
 
 export function AuthButton({ locale, mobile, onClose }: AuthButtonProps) {
-  const { user, profile, loading } = useAuth();
+  const { user, loading } = useAuth();
   const texts = uiTexts[locale].auth;
 
   if (loading) {
@@ -23,8 +23,6 @@ export function AuthButton({ locale, mobile, onClose }: AuthButtonProps) {
 
   // 已登录 - 显示账户链接
   if (user) {
-    const isPro = profile?.tier === "pro";
-    
     if (mobile) {
       return (
         <Link
@@ -37,9 +35,6 @@ export function AuthButton({ locale, mobile, onClose }: AuthButtonProps) {
               {user.email?.charAt(0).toUpperCase() || "U"}
             </span>
             <span>{texts.myProfile}</span>
-            {isPro && (
-              <span className="text-[10px] bg-purple-500 text-white px-1.5 py-0.5 rounded-full uppercase font-bold">Pro</span>
-            )}
           </span>
           <span className="text-slate-300">→</span>
         </Link>
@@ -55,9 +50,6 @@ export function AuthButton({ locale, mobile, onClose }: AuthButtonProps) {
           {user.email?.charAt(0).toUpperCase() || "U"}
         </span>
         <span className="hidden lg:inline">{texts.myProfile}</span>
-        {isPro && (
-          <span className="text-[10px] bg-purple-500 text-white px-1.5 py-0.5 rounded-full uppercase font-bold">Pro</span>
-        )}
       </Link>
     );
   }
