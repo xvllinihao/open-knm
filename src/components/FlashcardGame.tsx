@@ -7,7 +7,6 @@ import { vocabularyList, VocabularyItem } from "@/data/vocabulary";
 import { useWebSpeech } from "@/hooks/useWebSpeech";
 import { useAuth } from "@/contexts/AuthContext";
 import { syncFlashcardWords, syncFlashcardProgress } from "@/app/actions/progress";
-import { ResumePrompt } from "@/components/ResumePrompt";
 import { FlashcardStats } from "@/components/FlashcardStats";
 
 // TTS 播放按钮组件
@@ -82,7 +81,6 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     is_review_mode: boolean;
     is_review_known_mode?: boolean;
   } | null>(null);
-  const [isResumeVisible, setIsResumeVisible] = useState(false);
   const [isInitialized, setIsInitialized] = useState(false);
   
   // Touch handling state
@@ -102,7 +100,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
 
       // 2. Sync with Server (PRO only)
       let serverData = null;
-      if (isPro && !isInitialized) {
+      if (isPro) {
         try {
           const result = await syncFlashcardProgress({
             current_index: localData?.current_index || 0,
@@ -114,7 +112,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
           });
           if (result.success) serverData = result.data;
 
-          // Sync known/unknown words from profile to local storage (Initial load only)
+          // Sync known/unknown words from profile to local storage
           if (profile) {
             const idMap = new Map(vocabularyList.map(i => [i.dutch, i]));
             
@@ -137,14 +135,15 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
 
       if (user && finalData && finalData.current_index > 0) {
         setPendingProgress(finalData);
-        setIsResumeVisible(true);
       }
 
       // Initial Deck Load
       if (!isInitialized) {
+        // 默认开启乱序刷词 (Random Mode)
         let items = [...vocabularyList];
-        if (isReverse) items = items.reverse();
-        else items = items.sort(() => Math.random() - 0.5);
+        if (!isReverse && !isReviewMode && !isReviewKnownMode) {
+          items = items.sort(() => Math.random() - 0.5);
+        }
         
         setDeck(items.slice(0, effectiveLimit));
         setIsInitialized(true);
@@ -152,7 +151,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     };
 
     init();
-  }, [isPro, effectiveLimit, profile, isInitialized, isReverse, user]);
+  }, [isPro, effectiveLimit, profile, isInitialized, isReverse, user, isReviewMode, isReviewKnownMode]);
 
   // Handle deck updates (mode changes)
   const updateDeck = useCallback((review: boolean, reverse: boolean, reviewKnown: boolean = false) => {
@@ -200,12 +199,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     if (pendingProgress.deck_ids.length > 0) {
       const idMap = new Map(vocabularyList.map(i => [i.id, i]));
       baseItems = pendingProgress.deck_ids.map(id => idMap.get(id)).filter(Boolean) as VocabularyItem[];
-    } else if (pendingProgress.is_reverse) {
-      // already in original order
-      if (!pendingProgress.is_review_mode && !pendingProgress.is_review_known_mode) {
-        baseItems = baseItems.reverse();
-      }
-    } else if (!pendingProgress.is_review_mode && !pendingProgress.is_review_known_mode) {
+    } else if (!pendingProgress.is_review_mode && !pendingProgress.is_review_known_mode && !pendingProgress.is_reverse) {
       // was random but no ids? shuffle again (fallback)
       baseItems = baseItems.sort(() => Math.random() - 0.5);
     }
@@ -215,12 +209,6 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     setIsReverse(pendingProgress.is_reverse);
     setIsReviewMode(pendingProgress.is_review_mode);
     setIsReviewKnownMode(pendingProgress.is_review_known_mode || false);
-    setIsResumeVisible(false);
-    setPendingProgress(null);
-  };
-
-  const handleDismissResume = () => {
-    setIsResumeVisible(false);
     setPendingProgress(null);
   };
 
@@ -434,6 +422,11 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
 
     if (mode === 'sequential') {
       newReverse = true;
+      // 只有进入顺序背词模式时，如果存在之前的顺序进度，则自动恢复，不提示
+      if (pendingProgress && pendingProgress.is_reverse && !pendingProgress.is_review_mode && !pendingProgress.is_review_known_mode) {
+        handleResume();
+        return;
+      }
     } else if (mode === 'unknown') {
       newReview = true;
     } else if (mode === 'review') {
@@ -448,6 +441,12 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
   };
 
   const reviewedCount = sessionStats.correct + sessionStats.incorrect;
+
+  // 进度条显示逻辑：顺序模式显示整体进度，其他模式显示本次 session 进度
+  const displayProgressCount = (isReverse && !isReviewMode && !isReviewKnownMode) 
+    ? currentIndex 
+    : reviewedCount;
+  const displayTotalCount = (effectiveLimit === 9999 ? deck.length : effectiveLimit);
 
   const resetSession = () => {
     updateDeck(isReviewMode, isReverse, isReviewKnownMode);
@@ -522,19 +521,6 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
 
   return (
     <div className="w-full max-w-md mx-auto">
-      {/* Resume Prompt */}
-      {isResumeVisible && pendingProgress && (
-        <div className="mb-6">
-          <ResumePrompt
-            message={texts.resumeMsg}
-            confirmText={texts.resumeBtn}
-            dismissText={texts.dismissBtn}
-            onConfirm={handleResume}
-            onDismiss={handleDismissResume}
-          />
-        </div>
-      )}
-
       {/* Study Pack Controls */}
       {isPro && !isSessionComplete && (
         <div className="flex flex-col gap-3 mb-4 px-1">
@@ -587,17 +573,17 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
       {!isSessionComplete && deck.length > 0 && (
         <div className="mb-6">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm font-bold text-slate-700">
-              {isReviewMode ? texts.descUnknown : isReviewKnownMode ? texts.descReview : isReverse ? texts.descSequential : texts.descRandom}
-            </span>
-            <span className="text-xs text-slate-500">{texts.progress}: {reviewedCount} / {effectiveLimit === 9999 ? deck.length : effectiveLimit}</span>
-          </div>
-          <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
-            <div 
-              className="h-full bg-[var(--primary)] transition-all duration-300"
-              style={{ width: `${(reviewedCount / (effectiveLimit === 9999 ? deck.length : effectiveLimit)) * 100}%` }}
-            />
-          </div>
+             <span className="text-sm font-bold text-slate-700">
+               {isReviewMode ? texts.descUnknown : isReviewKnownMode ? texts.descReview : isReverse ? texts.descSequential : texts.descRandom}
+             </span>
+             <span className="text-xs text-slate-500">{texts.progress}: {displayProgressCount} / {displayTotalCount}</span>
+           </div>
+           <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
+             <div 
+               className="h-full bg-[var(--primary)] transition-all duration-300"
+               style={{ width: `${(displayProgressCount / displayTotalCount) * 100}%` }}
+             />
+           </div>
           <div className="flex justify-end mt-1">
             <span className="text-[10px] font-bold text-green-600">{sessionStats.correct} ✓</span>
           </div>

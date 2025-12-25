@@ -114,7 +114,7 @@ export type UiTexts = {
       action: string;
       footer: string;
     };
-    activation: {
+      activation: {
       title: string;
       subtitle: string;
       placeholder: string;
@@ -122,6 +122,22 @@ export type UiTexts = {
       success: string;
       error: string;
       xhsNotice: string;
+    };
+    support: {
+      title: string;
+      description: string;
+      contactBtn: string;
+      form: {
+        title: string;
+        emailLabel: string;
+        messageLabel: string;
+        messagePlaceholder: string;
+        submit: string;
+        sending: string;
+        success: string;
+        error: string;
+      };
+      terms: string;
     };
   };
   auth: {
@@ -267,6 +283,22 @@ export const uiTexts: Record<Locale, UiTexts> = {
         success: "激活成功！已为您解锁单词包功能。3秒后自动刷新...",
         error: "无效或已被使用的激活码，请重试。",
         xhsNotice: "🍎 小红书用户：请输入以 XHS- 开头的专属激活码",
+      },
+      support: {
+        title: "遇到问题？",
+        description: "如果您在激活或使用过程中遇到任何问题，请联系我们。",
+        contactBtn: "联系客服",
+        form: {
+          title: "联系支持",
+          emailLabel: "您的邮箱",
+          messageLabel: "问题描述",
+          messagePlaceholder: "请详细描述您遇到的问题（如激活码无效等）...",
+          submit: "发送消息",
+          sending: "发送中...",
+          success: "消息已发送，我们会尽快通过邮件回复您。",
+          error: "发送失败，请稍后重试。",
+        },
+        terms: "服务条款",
       }
     },
     auth: {
@@ -410,6 +442,22 @@ export const uiTexts: Record<Locale, UiTexts> = {
         success: "Activation successful! Pro unlocked. Refreshing in 3s...",
         error: "Invalid or already used key. Please try again.",
         xhsNotice: "🍎 RED (Xiaohongshu) users: Enter your key starting with XHS-",
+      },
+      support: {
+        title: "Need Help?",
+        description: "Contact us if you have any issues with activation or usage.",
+        contactBtn: "Contact Support",
+        form: {
+          title: "Contact Support",
+          emailLabel: "Your Email",
+          messageLabel: "Message",
+          messagePlaceholder: "Please describe your issue (e.g. invalid activation code)...",
+          submit: "Send Message",
+          sending: "Sending...",
+          success: "Message sent! We'll reply to your email shortly.",
+          error: "Failed to send message. Please try again.",
+        },
+        terms: "Terms of Service",
       }
     },
     auth: {

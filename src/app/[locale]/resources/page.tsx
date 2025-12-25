@@ -1,11 +1,14 @@
 "use client";
 
 import { use, Suspense, useEffect, useState } from "react";
-import { Locale, uiTexts } from "@/lib/uiTexts";
+import { Locale, uiTexts, getLocalizedPath } from "@/lib/uiTexts";
 import { FlashcardGame } from "@/components/FlashcardGame";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useAuth } from "@/contexts/AuthContext";
 import { activateLicense } from "@/app/actions/license";
+import { sendSupportMessage } from "@/app/actions/support";
+import { Turnstile } from "@marsidev/react-turnstile";
+import Link from "next/link";
 
 function ResourcesContent({ locale }: { locale: Locale }) {
   const { profile, user } = useAuth();
@@ -13,13 +16,25 @@ function ResourcesContent({ locale }: { locale: Locale }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   
+  // Activation State
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [activationCode, setActivationCode] = useState("");
   const [isActivating, setIsActivating] = useState(false);
   const [activationError, setActivationError] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState("");
+
+  // Support State
+  const [isSupportOpen, setIsSupportOpen] = useState(false);
+  const [supportEmail, setSupportEmail] = useState("");
+  const [supportMessage, setSupportMessage] = useState("");
+  const [supportToken, setSupportToken] = useState("");
+  const [isSendingSupport, setIsSendingSupport] = useState(false);
+  const [supportStatus, setSupportStatus] = useState<{success?: boolean; message?: string} | null>(null);
   
   const isPro = profile?.tier === "pro";
   const isZh = locale === "zh";
+
+  const SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || "1x00000000000000000000AA"; // Fallback for dev
 
   useEffect(() => {
     if (searchParams.get("purchase_success") === "true") {
@@ -51,12 +66,16 @@ function ResourcesContent({ locale }: { locale: Locale }) {
     }
 
     if (!activationCode.trim()) return;
+    if (!turnstileToken) {
+      setActivationError("Please complete the security check");
+      return;
+    }
 
     setIsActivating(true);
     setActivationError("");
 
     try {
-      const result = await activateLicense(activationCode, user.id);
+      const result = await activateLicense(activationCode, user.id, turnstileToken);
       if (result.success) {
         setShowSuccessModal(true);
         setActivationCode("");
@@ -66,11 +85,36 @@ function ResourcesContent({ locale }: { locale: Locale }) {
         }, 3000);
       } else {
         setActivationError(result.error || texts.activation.error);
+        // Reset token on failure so user has to verify again (good practice for security)
+        // But might be annoying. Usually Turnstile resets itself or expires.
       }
     } catch {
       setActivationError(texts.activation.error);
     } finally {
       setIsActivating(false);
+    }
+  };
+
+  const handleSupportSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!supportEmail || !supportMessage || !supportToken) return;
+
+    setIsSendingSupport(true);
+    setSupportStatus(null);
+
+    try {
+      const result = await sendSupportMessage(supportEmail, supportMessage, supportToken);
+      if (result.success) {
+        setSupportStatus({ success: true, message: texts.support.form.success });
+        setSupportMessage("");
+        // Optional: close after success
+      } else {
+        setSupportStatus({ success: false, message: result.error || texts.support.form.error });
+      }
+    } catch {
+      setSupportStatus({ success: false, message: texts.support.form.error });
+    } finally {
+      setIsSendingSupport(false);
     }
   };
 
@@ -180,19 +224,22 @@ function ResourcesContent({ locale }: { locale: Locale }) {
             )}
 
             <form onSubmit={handleActivate} className="space-y-4">
-              <div className="flex flex-col sm:flex-row gap-3">
+              <div className="flex flex-col gap-3">
                 <input
                   type="text"
                   value={activationCode}
                   onChange={(e) => setActivationCode(e.target.value)}
                   placeholder={texts.activation.placeholder}
-                  className="flex-1 px-4 py-3 rounded-xl border border-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500/20 text-slate-900 placeholder:text-slate-400"
+                  className="w-full px-4 py-3 rounded-xl border border-purple-200 focus:outline-none focus:ring-2 focus:ring-purple-500/20 text-slate-900 placeholder:text-slate-400"
                   disabled={isActivating}
                 />
+                <div className="flex justify-center sm:justify-start py-2">
+                  <Turnstile siteKey={SITE_KEY} onSuccess={setTurnstileToken} />
+                </div>
                 <button
                   type="submit"
-                  disabled={isActivating || !activationCode.trim()}
-                  className="bg-purple-700 text-white px-8 py-3 rounded-xl font-bold hover:bg-purple-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap"
+                  disabled={isActivating || !activationCode.trim() || !turnstileToken}
+                  className="w-full bg-purple-700 text-white px-8 py-3 rounded-xl font-bold hover:bg-purple-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isActivating ? "..." : texts.activation.button}
                 </button>
@@ -203,6 +250,66 @@ function ResourcesContent({ locale }: { locale: Locale }) {
                 </p>
               )}
             </form>
+          </div>
+          
+          {/* Support Section */}
+          <div className="text-center pt-8 border-t border-slate-100">
+            <p className="text-slate-500 mb-4 text-sm">{texts.support.description}</p>
+            <button
+              onClick={() => setIsSupportOpen(!isSupportOpen)}
+              className="text-purple-700 font-medium hover:underline text-sm"
+            >
+              {texts.support.contactBtn}
+            </button>
+            <span className="mx-2 text-slate-300">|</span>
+            <Link href={getLocalizedPath(locale, "/terms")} className="text-slate-500 hover:text-slate-700 text-sm hover:underline">
+              {texts.support.terms}
+            </Link>
+
+            {/* Collapsible Support Form */}
+            {isSupportOpen && (
+              <div className="mt-6 text-left bg-white p-6 rounded-2xl border border-slate-100 shadow-sm animate-in slide-in-from-top-2">
+                <h4 className="font-bold text-slate-900 mb-4">{texts.support.form.title}</h4>
+                <form onSubmit={handleSupportSubmit} className="space-y-4">
+                  <div>
+                    <label className="block text-xs font-medium text-slate-700 mb-1">{texts.support.form.emailLabel}</label>
+                    <input 
+                      type="email" 
+                      required
+                      value={supportEmail}
+                      onChange={e => setSupportEmail(e.target.value)}
+                      className="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium text-slate-700 mb-1">{texts.support.form.messageLabel}</label>
+                    <textarea 
+                      required
+                      rows={4}
+                      value={supportMessage}
+                      onChange={e => setSupportMessage(e.target.value)}
+                      placeholder={texts.support.form.messagePlaceholder}
+                      className="w-full px-3 py-2 rounded-lg border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-3">
+                    <Turnstile siteKey={SITE_KEY} onSuccess={setSupportToken} />
+                    <button 
+                      type="submit"
+                      disabled={isSendingSupport || !supportEmail || !supportMessage || !supportToken}
+                      className="w-full py-2.5 bg-slate-900 text-white rounded-lg text-sm font-bold hover:bg-slate-800 disabled:opacity-50"
+                    >
+                      {isSendingSupport ? texts.support.form.sending : texts.support.form.submit}
+                    </button>
+                  </div>
+                  {supportStatus && (
+                    <div className={`text-sm font-medium p-3 rounded-lg ${supportStatus.success ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}>
+                      {supportStatus.message}
+                    </div>
+                  )}
+                </form>
+              </div>
+            )}
           </div>
 
         </div>

@@ -2,6 +2,7 @@
 
 import { createClient } from "@/utils/supabase/server";
 import { Resend } from "resend";
+import { verifyTurnstile } from "@/utils/turnstile";
 
 // 初始化 Resend（如果有 API key）
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
@@ -26,32 +27,6 @@ function checkRateLimit(email: string): boolean {
   
   record.count++;
   return true;
-}
-
-// Turnstile Verification
-async function verifyTurnstile(token: string) {
-  const secretKey = process.env.TURNSTILE_SECRET_KEY;
-  if (!secretKey) {
-     console.error("TURNSTILE_SECRET_KEY is missing!");
-     return false;
-  }
-
-  const url = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
-  const formData = new FormData();
-  formData.append('secret', secretKey);
-  formData.append('response', token);
-
-  try {
-    const result = await fetch(url, {
-      body: formData,
-      method: 'POST',
-    });
-    const outcome = await result.json();
-    return outcome.success;
-  } catch (e) {
-    console.error("Turnstile error:", e);
-    return false;
-  }
 }
 
 export async function joinWaitlist(email: string, token?: string) {
@@ -96,18 +71,16 @@ export async function joinWaitlist(email: string, token?: string) {
     return { success: false, error: "Failed to join wishlist" };
   }
 
-  // 发送确认邮件（带速率限制）
-  console.log("[Wishlist] Attempting to send email:", { 
-    hasResend: !!resend, 
-    email,
-    fromEmail: process.env.RESEND_FROM_EMAIL 
-  });
-  
   if (resend && checkRateLimit(email)) {
+    const fromEmail = process.env.RESEND_FROM_EMAIL;
+    if (!fromEmail) {
+      console.error("RESEND_FROM_EMAIL is missing. Cannot send waitlist confirmation.");
+      return { success: true }; // Still return true for waitlist join
+    }
+
     try {
-      console.log("[Wishlist] Sending email to:", email);
       await resend.emails.send({
-        from: process.env.RESEND_FROM_EMAIL || "Open KNM <noreply@openknm.com>",
+        from: fromEmail,
         to: email,
         subject: "🎉 You're on the Open KNM Pro Wishlist!",
         html: `
@@ -138,16 +111,10 @@ export async function joinWaitlist(email: string, token?: string) {
           </div>
         `,
       });
-      console.log("[Wishlist] Email sent successfully to:", email);
     } catch (emailError) {
       // 邮件发送失败不影响加入心愿单
       console.error("[Wishlist] Failed to send email:", emailError);
     }
-  } else {
-    console.log("[Wishlist] Email not sent:", { 
-      hasResend: !!resend, 
-      rateLimitPassed: resend ? checkRateLimit(email) : 'N/A' 
-    });
   }
 
   return { success: true };

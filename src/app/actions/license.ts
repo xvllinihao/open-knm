@@ -1,13 +1,28 @@
 "use server";
 
 import { createAdminClient } from "@/utils/supabase/admin";
+import { verifyTurnstile } from "@/utils/turnstile";
 
 export type ActivationResult = {
   success: boolean;
   error?: string;
 };
 
-export async function activateLicense(code: string, userId: string): Promise<ActivationResult> {
+export async function activateLicense(code: string, userId: string, turnstileToken?: string): Promise<ActivationResult> {
+  // 0. Verify Turnstile
+  if (turnstileToken) {
+    const isHuman = await verifyTurnstile(turnstileToken);
+    if (!isHuman) {
+      return { success: false, error: "Security check failed. Please try again." };
+    }
+  } else {
+    // Ideally we enforce token, but for backward compatibility or testing might be optional
+    // Given the user request, we should probably enforce it, but let's check if it's safe.
+    // If we are calling from client, we should provide it.
+    // Let's enforce it.
+    return { success: false, error: "Security check required." };
+  }
+
   const supabase = createAdminClient();
   const normalizedCode = code.trim().toUpperCase();
 
@@ -59,7 +74,6 @@ export async function activateLicense(code: string, userId: string): Promise<Act
 
   // 2. Handle Lemon Squeezy Code
   const apiKey = process.env.LEMON_SQUEEZY_API_KEY;
-  console.log(`[License] Validating code with Lemon Squeezy: ${normalizedCode.substring(0, 4)}...`);
   
   try {
     // Use the official Lemon Squeezy License API v1 endpoint
