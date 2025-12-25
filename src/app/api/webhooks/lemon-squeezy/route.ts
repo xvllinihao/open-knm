@@ -26,8 +26,6 @@ export async function POST(req: NextRequest) {
     const eventName = payload.meta?.event_name;
     const customData = payload.meta?.custom_data;
 
-    console.log(`Received Lemon Squeezy webhook: ${eventName}`, customData);
-
     // Only handle order_created for now (or subscription_created if using subscriptions)
     if (eventName === 'order_created') {
       const userId = customData?.user_id;
@@ -51,8 +49,6 @@ export async function POST(req: NextRequest) {
         console.error('Error updating user tier:', error);
         return NextResponse.json({ error: 'Database update failed' }, { status: 500 });
       }
-
-      console.log(`User ${userId} successfully upgraded to PRO`);
     }
 
     return NextResponse.json({ received: true }, { status: 200 });
