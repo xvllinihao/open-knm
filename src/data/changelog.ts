@@ -7,6 +7,18 @@ export type ChangelogItem = {
 
 export const changelogData: ChangelogItem[] = [
   {
+    version: "1.9.0",
+    date: "2025-12-31",
+    title: {
+      zh: "2025 KNM 考点更新",
+      en: "2025 KNM Syllabus Update",
+    },
+    description: {
+      zh: "根据 2025 年考试重点，补充了大量 KNM 细节知识。涵盖：工作合同 (ZZP/税务)、医疗 (转诊/自付额)、教育 (家长责任/特殊教育)、住房 (急诊/能源)、政治 (选举权/公投) 及社交礼仪等多个板块。",
+      en: "Updated KNM content with 2025 exam focus points. Covers detailed additions in Work (ZZP/Tax), Healthcare (Referrals/Deductibles), Education (Parental Liability/Special Ed), Housing (Urgency/Energy), Politics (Voting Rights/Referendums), and Social Etiquette.",
+    },
+  },
+  {
     version: "1.8.0",
     date: "2025-12-25",
     title: {

@@ -37,6 +37,12 @@ import KnmSocialZh from "@/data/articles/knm-social-etiquette.zh.mdx";
 import KnmSocialEn from "@/data/articles/knm-social-etiquette.en.mdx";
 import KnmHolidaysZh from "@/data/articles/knm-culture-holidays.zh.mdx";
 import KnmHolidaysEn from "@/data/articles/knm-culture-holidays.en.mdx";
+import KnmHistoryRepublicZh from "@/data/articles/knm-history-republic-golden-age.zh.mdx";
+import KnmHistoryRepublicEn from "@/data/articles/knm-history-republic-golden-age.en.mdx";
+import KnmSocialCareZh from "@/data/articles/knm-social-care-elderly-disabled.zh.mdx";
+import KnmSocialCareEn from "@/data/articles/knm-social-care-elderly-disabled.en.mdx";
+import KnmGovInstZh from "@/data/articles/knm-government-institutions.zh.mdx";
+import KnmGovInstEn from "@/data/articles/knm-government-institutions.en.mdx";
 
 type Props = {
   params: Promise<{ locale: Locale; slug: string }>;
@@ -100,6 +106,18 @@ const articleBodies: Record<string, Partial<Record<Locale, ComponentType>>> = {
   "knm-culture-holidays": {
     zh: KnmHolidaysZh,
     en: KnmHolidaysEn,
+  },
+  "knm-history-republic-golden-age": {
+    zh: KnmHistoryRepublicZh,
+    en: KnmHistoryRepublicEn,
+  },
+  "knm-social-care-elderly-disabled": {
+    zh: KnmSocialCareZh,
+    en: KnmSocialCareEn,
+  },
+  "knm-government-institutions": {
+    zh: KnmGovInstZh,
+    en: KnmGovInstEn,
   },
 };
 
