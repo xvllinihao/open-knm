@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Locale } from "@/lib/i18n";
-import { getArticlesByCategory } from "@/lib/articles";
+import { getArticlesByCategory, KnmTheme } from "@/lib/articles";
 import { ArticleList } from "@/components/ArticleList";
 import { KnmResumeCheck } from "@/components/content/KnmResumeCheck";
 import Link from "next/link";
@@ -104,7 +104,16 @@ export default async function KnmPage({
   const topicParam =
     typeof rawTopic === "string" ? rawTopic : Array.isArray(rawTopic) ? rawTopic[0] : undefined;
 
-  const topicKeys = ["history-geography", "law-government", "health-education", "work-income", "social-culture"] as const;
+  const topicKeys = [
+    "history-geography",
+    "housing",
+    "politics-law",
+    "work-income",
+    "institutions",
+    "education",
+    "values-norms",
+    "healthcare",
+  ] as const;
   type TopicKey = (typeof topicKeys)[number] | "all";
 
   const isValidTopic = (value: string | undefined): value is TopicKey =>
@@ -112,28 +121,32 @@ export default async function KnmPage({
 
   const activeTopic: TopicKey = isValidTopic(topicParam) ? topicParam : "all";
 
-  const topicTagMap: Record<Exclude<TopicKey, "all">, string[]> = {
-    "history-geography": ["History", "Geography"],
-    "law-government": ["Politics", "Law"],
-    "health-education": ["Health", "Education"],
-    "work-income": ["Work", "Finance"],
-    "social-culture": ["Culture"],
+  const topicThemeMap: Record<Exclude<TopicKey, "all">, KnmTheme> = {
+    "history-geography": "geschiedenis en geografie",
+    housing: "wonen",
+    "politics-law": "staatsinrichting en rechtsstaat",
+    "work-income": "werk en inkomen",
+    institutions: "instanties",
+    education: "onderwijs en opvoeding",
+    "values-norms": "omgangsvormen, waarden en normen",
+    healthcare: "gezondheid en gezondheidszorg",
   };
 
   const filteredArticles =
     activeTopic === "all"
       ? allArticles
-      : allArticles.filter((article) =>
-          article.tags?.some((tag) => topicTagMap[activeTopic].includes(tag)),
-        );
+      : allArticles.filter((article) => article.theme === topicThemeMap[activeTopic]);
 
   const filters: { key: TopicKey; zh: string; en: string }[] = [
     { key: "all", zh: "全部", en: "All topics" },
     { key: "history-geography", zh: "历史与地理", en: "History & Geography" },
-    { key: "law-government", zh: "法律与政府", en: "Law & Government" },
-    { key: "health-education", zh: "医疗与教育", en: "Health & Education" },
+    { key: "housing", zh: "住房与生活", en: "Housing" },
+    { key: "politics-law", zh: "政治与法治", en: "Politics & Law" },
     { key: "work-income", zh: "工作与收入", en: "Work & Income" },
-    { key: "social-culture", zh: "社交与文化", en: "Social & Culture" },
+    { key: "institutions", zh: "公共机构", en: "Institutions" },
+    { key: "education", zh: "教育与抚育", en: "Education" },
+    { key: "values-norms", zh: "价值观与礼仪", en: "Values & Norms" },
+    { key: "healthcare", zh: "医疗与健康", en: "Healthcare" },
   ];
 
   return (
@@ -202,8 +215,8 @@ export default async function KnmPage({
         </p>
         <p>
           {isZh
-            ? "常见主题包括就业与劳工、住房与保险、民主制度、历史地理、医疗与教育。"
-            : "Topics include employment and labor, housing and insurance, democratic institutions, history and geography, plus healthcare and education."}
+            ? "常见主题包括：历史与地理 (geschiedenis en geografie)、住房 (wonen)、政治与法治 (staatsinrichting en rechtsstaat)、工作与收入 (werk en inkomen)、公共机构 (instanties)、教育与抚育 (onderwijs en opvoeding)、价值观与礼仪 (omgangsvormen, waarden en normen) 以及医疗与健康 (gezondheid en gezondheidszorg)。"
+            : "Topics include: History & Geography (geschiedenis en geografie), Housing (wonen), Politics & Law (staatsinrichting en rechtsstaat), Work & Income (werk en inkomen), Institutions (instanties), Education (onderwijs en opvoeding), Values & Norms (omgangsvormen, waarden en normen), and Healthcare (gezondheid en gezondheidszorg)."}
         </p>
         <p className="text-xs text-slate-600">
           {isZh

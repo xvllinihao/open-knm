@@ -1,124 +1,119 @@
-<div className="space-y-8">
-  <div className="text-sm text-slate-500 bg-slate-50 border border-slate-100 rounded-xl px-4 py-3 space-y-1">
-    <p className="font-medium">
-      This article explains the unique geography of the Netherlands: <strong>Water and Safety</strong>, <strong>Polders (reclaimed land)</strong>, and the busy <strong>Randstad</strong> area.
+import { ArticleSummary, BilingualGrid, DutchColumn, EnglishColumn, SourceLink } from '@/components/content/ArticleComponents';
+
+<ArticleSummary title="Article Summary" icon="🌊">
+  This article explains the unique geography of the Netherlands: **Water and Safety**, **Polders (reclaimed land)**, and the busy **Randstad** area.
+</ArticleSummary>
+
+<BilingualGrid>
+  {/* Section 1 */}
+  <DutchColumn title="1. Water en Veiligheid">
+    <p>
+      Nederland is een vlak land. Een groot deel van het land ligt lager dan de zee (**onder de zeespiegel**).
     </p>
-  </div>
+    <p>
+      Daarom zijn er **dijken** en **duinen** om het land te beschermen.
+    </p>
+    <p>
+      Na de watersnoodramp van 1953 zijn de **Deltawerken** gebouwd. Deze grote dammen beschermen Zeeland tegen de zee.
+    </p>
+  </DutchColumn>
 
-  <div className="grid gap-8 md:grid-cols-2">
-    {/* Left: Dutch (A2 Level) */}
-    <div className="space-y-4">
-      <h2>1. Water en Veiligheid</h2>
-      <p>
-        Nederland is een vlak land. Een groot deel van het land ligt lager dan de zee (<strong>onder de zeespiegel</strong>).
-      </p>
-      <p>
-        Daarom moet Nederland zichzelf beschermen. Zonder <strong>dijken</strong> en <strong>duinen</strong> zou een deel van Nederland overstromen.
-      </p>
-      <p>
-        De <strong>dijken</strong> zijn hoog om het land veilig te houden tegen het water. Nederland ligt aan de <strong>Noordzee</strong>.
-      </p>
+  <EnglishColumn title="1. Water and Safety">
+    <p>
+      The Netherlands is a flat country. A large part of the country lies below sea level (**onder de zeespiegel**).
+    </p>
+    <p>
+      Therefore, there are **dikes** and **dunes** to protect the land.
+    </p>
+    <p>
+      After the flood disaster of 1953, the **Delta Works (Deltawerken)** were built. These large dams protect Zeeland against the sea.
+    </p>
+  </EnglishColumn>
 
-      <h2>2. Polders en Waterschap</h2>
-      <p>
-        Nederlanders hebben veel nieuw land gemaakt. Dit land dat vroeger water was, heet <strong>Polders</strong>. Het maken van nieuw land heet <strong>inpolderen</strong>.
-      </p>
-      <p>
-        <strong>Flevoland</strong> is een provincie die gemaakt is van een <strong>Polder</strong>.
-      </p>
-      <p>
-        Het <strong>Waterschap</strong> is een organisatie die het water in Nederland regelt. U betaalt <strong>waterschapsbelasting</strong> om de dijken en het schone water te onderhouden.
-      </p>
+  {/* Section 2 */}
+  <DutchColumn title="2. Polders en Waterschap">
+    <p>
+      Een **polder** is een stuk land waar vroeger water was. Nederlanders hebben dit land zelf gemaakt (**inpolderen**).
+    </p>
+    <p>
+      De provincie **Flevoland** bestaat bijna helemaal uit polders.
+    </p>
+    <p>
+      Het **Waterschap** zorgt voor veilige dijken en schoon water. U betaalt hiervoor **waterschapsbelasting**.
+    </p>
+  </DutchColumn>
 
-      <h2>3. De Randstad</h2>
-      <p>
-        De <strong>Randstad</strong> is het drukke westen van Nederland. De vier grootste steden liggen in de <strong>Randstad</strong>: <strong>Amsterdam</strong>, <strong>Rotterdam</strong>, <strong>Den Haag</strong>, en <strong>Utrecht</strong>.
-      </p>
-      <p>
-        De helft van alle Nederlanders woont en werkt in de <strong>Randstad</strong>. Daar is veel werk. Maar er zijn vaak <strong>files</strong> op de snelwegen.
-      </p>
+  <EnglishColumn title="2. Polders and Water Board">
+    <p>
+      A **polder** is a piece of land where there used to be water. The Dutch created this land themselves (**inpolderen**).
+    </p>
+    <p>
+      The province of **Flevoland** consists almost entirely of polders.
+    </p>
+    <p>
+      The **Water Board (Waterschap)** ensures safe dikes and clean water. You pay **water authority tax (waterschapsbelasting)** for this.
+    </p>
+  </EnglishColumn>
 
-      <h2>4. Provincies en Hoofdstad</h2>
-      <p>
-        Nederland heeft <strong>12 provincies</strong>.
-      </p>
-      <p>
-        <strong>Amsterdam</strong> is de <strong>hoofdstad</strong> van Nederland en ligt in <strong>Noord-Holland</strong>. De <strong>hoofdstad</strong> van Noord-Holland is <strong>Haarlem</strong>.
-      </p>
-      <p>
-        De regering zit echter in <strong>Den Haag</strong>.
-      </p>
-    </div>
+  {/* Section 3 */}
+  <DutchColumn title="3. De Randstad">
+    <p>
+      De **Randstad** is het drukke westen van Nederland. De vier grootste steden liggen in de **Randstad**: **Amsterdam**, **Rotterdam**, **Den Haag**, en **Utrecht**.
+    </p>
+    <p>
+      De helft van alle Nederlanders woont en werkt in de **Randstad**. Daar is veel werk. Maar er zijn vaak **files** op de snelwegen.
+    </p>
+  </DutchColumn>
 
-    {/* Right: English Translation (Agent Translation) */}
-    <div className="space-y-4">
-      <h2>1. Water and Safety</h2>
-      <p>
-        The Netherlands is a flat country. A large part of the country lies below sea level (<strong>onder de zeespiegel</strong>).
-      </p>
-      <p>
-        Therefore, the Netherlands must protect itself. Without <strong>dikes (dijken)</strong> and <strong>dunes (duinen)</strong>, part of the Netherlands would flood.
-      </p>
-      <p>
-        The <strong>dikes</strong> are high to keep the land safe from the water. The Netherlands lies on the <strong>North Sea (Noordzee)</strong>.
-        (Note: The Netherlands uses **NAP** as the standard for measuring water levels).
-      </p>
+  <EnglishColumn title="3. The Randstad">
+    <p>
+      The **Randstad** is the busy west of the Netherlands. The four largest cities are located in the **Randstad**: **Amsterdam**, **Rotterdam**, **The Hague**, and **Utrecht**.
+    </p>
+    <p>
+      Half of all Dutch people live and work in the **Randstad**. There is a lot of work there. But there are often **traffic jams (files)** on the highways.
+    </p>
+  </EnglishColumn>
 
-      <h2>2. Polders and Water Board</h2>
-      <p>
-        The Dutch have created a lot of new land. This land that used to be water is called <strong>Polders</strong>. Creating new land is called <strong>inpolderen</strong>.
-      </p>
-      <p>
-        <strong>Flevoland</strong> is a province made entirely of a <strong>Polder</strong>.
-      </p>
-      <p>
-        The <strong>Water Board (Waterschap)</strong> is an organization that manages the water in the Netherlands. You pay <strong>water authority tax (waterschapsbelasting)</strong> to maintain the dikes and clean water.
-      </p>
+  {/* Section 4 */}
+  <DutchColumn title="4. Provincies en Hoofdstad">
+    <p>
+      Nederland heeft **12 provincies**.
+    </p>
+    <p>
+      **Amsterdam** is de **hoofdstad** van Nederland en ligt in **Noord-Holland**. De **hoofdstad** van Noord-Holland is **Haarlem**.
+    </p>
+    <p>
+      De regering zit echter in **Den Haag**.
+    </p>
+  </DutchColumn>
 
-      <h2>3. The Randstad</h2>
-      <p>
-        The <strong>Randstad</strong> is the busy west of the Netherlands. The four largest cities are located in the <strong>Randstad</strong>: <strong>Amsterdam</strong>, <strong>Rotterdam</strong>, <strong>The Hague</strong>, and <strong>Utrecht</strong>.
-      </p>
-      <p>
-        Half of all Dutch people live and work in the <strong>Randstad</strong>. There is a lot of work there. But there are often <strong>traffic jams (files)</strong> on the highways.
-      </p>
+  <EnglishColumn title="4. Provinces and Capital">
+    <p>
+      The Netherlands has **12 provinces**.
+    </p>
+    <p>
+      **Amsterdam** is the **capital** of the Netherlands, located in **North Holland (Noord-Holland)**. The **capital** of North Holland is **Haarlem**.
+    </p>
+    <p>
+      However, the government is located in **The Hague (Den Haag)**.
+    </p>
+  </EnglishColumn>
+</BilingualGrid>
 
-      <h2>4. Provinces and Capital</h2>
-      <p>
-        The Netherlands has <strong>12 provinces</strong>.
-      </p>
-      <p>
-        <strong>Amsterdam</strong> is the <strong>capital</strong> of the Netherlands, located in <strong>North Holland (Noord-Holland)</strong>. The <strong>capital</strong> of North Holland is <strong>Haarlem</strong>.
-      </p>
-      <p>
-        However, the government is located in <strong>The Hague (Den Haag)</strong>.
-      </p>
-    </div>
-  </div>
-
-  <div className="pt-4 border-t border-slate-100 text-sm text-slate-500 space-y-2">
-    <h3 className="font-semibold text-slate-700">Further reading on Wikipedia</h3>
-    <ul className="list-disc list-inside space-y-1">
-      <li>
-        <a
-          href="https://en.wikipedia.org/wiki/Flood_control_in_the_Netherlands"
-          target="_blank"
-          rel="noreferrer"
-          className="text-blue-600 hover:underline"
-        >
-          Flood control in the Netherlands – Wikipedia
-        </a>
-      </li>
-      <li>
-        <a
-          href="https://www.government.nl/topics/water-management"
-          target="_blank"
-          rel="noreferrer"
-          className="text-blue-600 hover:underline"
-        >
-          Government.nl: Water management
-        </a>
-      </li>
-    </ul>
-  </div>
+<div className="mt-12 pt-8 border-t border-slate-100">
+  <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
+    <span className="text-xl">🔗</span> Further Reading
+  </h3>
+  <ul className="space-y-3 list-none pl-0">
+    <li>
+      <SourceLink href="https://en.wikipedia.org/wiki/Flood_control_in_the_Netherlands">
+        Flood control in the Netherlands – Wikipedia
+      </SourceLink>
+    </li>
+    <li>
+      <SourceLink href="https://www.government.nl/topics/water-management">
+        Government.nl: Water management
+      </SourceLink>
+    </li>
+  </ul>
 </div>
