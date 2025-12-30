@@ -1,0 +1,90 @@
+import { ArticleSummary, BilingualGrid, DutchColumn, ChineseColumn, SourceLink } from '@/components/content/ArticleComponents';
+
+<ArticleSummary icon="🧑‍🦽">
+  This article explains care services for the **elderly** and **disabled** in the Netherlands: **Home Care (Thuiszorg)**, **Nursing Homes (Verzorgingshuis)**, and the principle of **Independent Living**.
+</ArticleSummary>
+
+<BilingualGrid>
+  {/* Section 1 */}
+  <DutchColumn title="1. Thuiszorg">
+    <p>
+      Ouderen en zieke mensen willen graag zo lang mogelijk thuis blijven wonen.
+    </p>
+    <p>
+      Als zij hulp nodig hebben (bijvoorbeeld bij het wassen of aankleden), kunnen zij **thuiszorg** krijgen. Een verpleegkundige of verzorgende komt dan aan huis.
+    </p>
+    <p>
+      Via de **thuiszorg** kunt u ook hulpmiddelen lenen, zoals een rolstoel of een speciaal bed.
+    </p>
+  </DutchColumn>
+
+  <ChineseColumn title="1. Home Care">
+    <p>
+      Elderly and sick people generally want to live at home for as long as possible.
+    </p>
+    <p>
+      If they need help (for example with washing or dressing), they can receive **home care (thuiszorg)**. A nurse or caregiver will come to their home.
+    </p>
+    <p>
+      Through **home care**, you can also borrow equipment, such as a wheelchair or a special bed.
+    </p>
+  </ChineseColumn>
+
+  {/* Section 2 */}
+  <DutchColumn title="2. Verzorgingshuis">
+    <p>
+      Soms kunnen mensen niet meer thuis wonen, bijvoorbeeld als ze erg oud zijn (bijv. 90 jaar) of niet meer kunnen lopen en niemand voor hen kan zorgen.
+    </p>
+    <p>
+      Dan verhuizen ze naar een **verzorgingshuis** (of verpleeghuis). Daar is dag en nacht zorg aanwezig.
+    </p>
+  </DutchColumn>
+
+  <ChineseColumn title="2. Nursing Homes">
+    <p>
+      Sometimes people can no longer live at home, for example if they are very old (e.g. 90 years) or can no longer walk and have no one to care for them.
+    </p>
+    <p>
+      Then they move to a **nursing home (verzorgingshuis)**. Care is available there day and night.
+    </p>
+  </ChineseColumn>
+
+  {/* Section 3 */}
+  <DutchColumn title="3. Gehandicapten">
+    <p>
+      Voor mensen met een handicap geldt: zij wonen **zoveel mogelijk zelfstandig**.
+    </p>
+    <p>
+      De gemeente helpt hierbij (WMO). Zij kunnen bijvoorbeeld aanpassingen in huis krijgen.
+    </p>
+    <p>
+      Alleen als het echt niet anders kan, gaan zij naar een instelling.
+    </p>
+  </DutchColumn>
+
+  <ChineseColumn title="3. Disabled People">
+    <p>
+      For people with a disability, the principle is: they live **as independently as possible (zoveel mogelijk zelfstandig)**.
+    </p>
+    <p>
+      The municipality helps with this (Social Support Act / WMO). For example, they can get home adaptations.
+    </p>
+    <p>
+      Only if there is really no other way do they go to an institution.
+    </p>
+  </ChineseColumn>
+</BilingualGrid>
+
+<div className="mt-12 pt-8 border-t border-slate-100">
+  <h3 className="font-bold text-slate-900 mb-4 flex items-center gap-2">
+    <span className="text-xl">🔗</span> Further Reading
+  </h3>
+  <ul className="space-y-3 list-none pl-0">
+    <li>
+      <SourceLink href="https://www.government.nl/topics/care-and-support-at-home">
+        Government.nl: Care and support at home
+      </SourceLink>
+    </li>
+  </ul>
+</div>
+
