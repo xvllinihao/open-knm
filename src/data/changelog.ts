@@ -7,6 +7,18 @@ export type ChangelogItem = {
 
 export const changelogData: ChangelogItem[] = [
   {
+    version: "2.0.0",
+    date: "2026-02-07",
+    title: {
+      zh: "口语练习全面升级：真实考试格式 + 学习资源",
+      en: "Speaking Practice Major Update: Real Exam Format + Learning Resources",
+    },
+    description: {
+      zh: "🎯 真实考试格式：问答题现在采用真实考试格式，先播放情景陈述（Context），然后提出双重问题（必须回答两个部分）。\n📚 学习资源：添加了 YouTube 推荐视频系列，帮助用户更好地准备口语考试。\n🎧 听力练习模式：新增「隐藏题目文本」选项，模拟真实考试中只能听题、不能看题的情况。\n⚡ 播放速度控制：为问题播放添加了独立的速度控制（0.5x/0.75x/1.0x），方便不同水平的用户练习。\n📝 题目优化：更新了所有问答题，涵盖日常生活、业余爱好、交通出行、社交邻里等真实场景。",
+      en: "🎯 Real Exam Format: Q&A questions now follow the real exam format with context statements followed by two-part questions.\n📚 Learning Resources: Added recommended YouTube video series to help users prepare for the speaking exam.\n🎧 Listening Practice Mode: Added 'Hide question text' option to simulate real exam conditions where you can only listen, not read.\n⚡ Playback Speed Control: Added independent speed control (0.5x/0.75x/1.0x) for question playback to accommodate different skill levels.\n📝 Question Updates: Updated all Q&A questions covering real-life scenarios: daily life, hobbies, transportation, and social interactions.",
+    },
+  },
+  {
     version: "1.9.0",
     date: "2025-12-31",
     title: {
