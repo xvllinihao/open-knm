@@ -77,8 +77,11 @@ export function SpeakingPracticeCard({ question, locale }: Props) {
     useWebSpeech();
   
   const [playbackSpeed, setPlaybackSpeed] = useState<0.5 | 0.75 | 1.0>(0.75);
+  const [questionPlaybackSpeed, setQuestionPlaybackSpeed] = useState<0.5 | 0.75 | 1.0>(0.75);
   const [showAnswer, setShowAnswer] = useState(false);
   const [isSpeedMenuOpen, setIsSpeedMenuOpen] = useState(false);
+  const [isQuestionSpeedMenuOpen, setIsQuestionSpeedMenuOpen] = useState(false);
+  const [hideQuestionText, setHideQuestionText] = useState(false);
 
   // Simple keyword matching
   const keywords = question.answer.nl
@@ -110,6 +113,14 @@ export function SpeakingPracticeCard({ question, locale }: Props) {
       speak(question.answer.nl, playbackSpeed);
   };
 
+  const handlePlayQuestion = () => {
+    // Combine scenario and question if scenario exists
+    const fullText = question.scenario 
+      ? `${question.scenario.nl} ${question.question.nl}`
+      : question.question.nl;
+    speak(fullText, questionPlaybackSpeed);
+  };
+
   return (
     <article className="group relative overflow-hidden rounded-3xl border border-slate-100 bg-white p-6 shadow-sm transition-all duration-300 hover:shadow-lg hover:border-orange-100">
       
@@ -123,7 +134,26 @@ export function SpeakingPracticeCard({ question, locale }: Props) {
         </div>
       </div>
 
-      {/* Question */}
+      {/* Hide Question Text Toggle */}
+      {question.scenario && (
+        <div className="mb-4 flex items-center gap-2">
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={hideQuestionText}
+              onChange={(e) => setHideQuestionText(e.target.checked)}
+              className="w-4 h-4 rounded border-slate-300 text-[var(--primary)] focus:ring-[var(--primary)]"
+            />
+            <span className="text-sm text-slate-600">
+              {locale === "zh" 
+                ? "隐藏题目文本（模拟真实考试）" 
+                : "Hide question text (simulate real exam)"}
+            </span>
+          </label>
+        </div>
+      )}
+
+      {/* Combined Scenario + Question */}
       <div className="mb-8">
         {question.images && question.images.length > 0 && (
           <div className={`
@@ -153,15 +183,99 @@ export function SpeakingPracticeCard({ question, locale }: Props) {
             ))}
           </div>
         )}
-        <div className="flex justify-between items-start gap-4">
-          <TriLangDisplay text={question.question} locale={locale} className="flex-1" />
-          <button
-              onClick={() => speak(question.question.nl)}
-              className="flex-shrink-0 p-2.5 rounded-full bg-slate-50 text-slate-400 hover:text-[var(--primary)] hover:bg-orange-50 transition-colors ring-1 ring-slate-100"
-              title={locale === "zh" ? "听问题" : "Listen to question"}
-          >
-              <PlayIcon />
-          </button>
+        
+        <div className={`p-5 rounded-2xl border ${question.scenario ? 'bg-blue-50 border-blue-100' : 'bg-slate-50 border-slate-100'}`}>
+          <div className="flex justify-between items-start gap-4">
+            {!hideQuestionText ? (
+              <div className="flex-1">
+                {question.scenario && (
+                  <div className="mb-4">
+                    <div className="flex items-start gap-3">
+                      <div className="flex-shrink-0 mt-0.5">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-blue-600">
+                          <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                        </svg>
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-sm font-medium text-blue-900 leading-relaxed mb-2">
+                          {locale === 'zh' ? question.scenario.zh : question.scenario.en}
+                        </p>
+                        <p className="text-xs text-blue-700 italic border-l-2 border-blue-200 pl-3">
+                          {question.scenario.nl}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="mt-4 pt-4 border-t border-blue-200">
+                      <TriLangDisplay text={question.question} locale={locale} />
+                    </div>
+                  </div>
+                )}
+                {!question.scenario && (
+                  <TriLangDisplay text={question.question} locale={locale} />
+                )}
+              </div>
+            ) : (
+              <div className="flex-1 flex items-center justify-center min-h-[100px]">
+                <div className="text-center">
+                  <p className="text-sm text-slate-500 mb-2">
+                    {locale === "zh" 
+                      ? "题目文本已隐藏，请点击播放按钮听题" 
+                      : "Question text is hidden. Click play to listen"}
+                  </p>
+                  <div className="flex items-center justify-center gap-2 text-slate-400">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-4 h-4">
+                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                    </svg>
+                    <span className="text-xs">+</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-4 h-4">
+                      <path fillRule="evenodd" d="M4.5 5.653c0-1.426 1.529-2.33 2.779-1.643l11.54 6.348c1.295.712 1.295 2.573 0 3.285L7.28 19.991c-1.25.687-2.779-.217-2.779-1.643V5.653z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            )}
+            
+            <div className="flex flex-col items-center gap-2 flex-shrink-0">
+              <button
+                onClick={handlePlayQuestion}
+                className="p-3 rounded-full bg-[var(--primary)] text-white hover:bg-orange-600 transition-colors shadow-sm hover:shadow-md"
+                title={locale === "zh" ? "听题目" : "Listen to question"}
+              >
+                <PlayIcon />
+              </button>
+              
+              {/* Question Speed Toggle */}
+              <div className="relative">
+                <button 
+                  onClick={() => setIsQuestionSpeedMenuOpen(!isQuestionSpeedMenuOpen)}
+                  className="text-[10px] font-bold text-slate-400 bg-slate-100 px-2 py-1 rounded-full hover:bg-slate-200 transition-colors flex items-center gap-1 min-w-[3rem] justify-center"
+                  title={locale === "zh" ? "切换语速" : "Toggle speed"}
+                >
+                  {questionPlaybackSpeed}x
+                </button>
+
+                {isQuestionSpeedMenuOpen && (
+                  <div className="absolute top-full right-0 mt-2 flex flex-col bg-white rounded-xl shadow-lg border border-slate-100 py-1 z-10 w-20 overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+                    {[0.5, 0.75, 1.0].map((speed) => (
+                      <button
+                        key={speed}
+                        onClick={() => {
+                          setQuestionPlaybackSpeed(speed as 0.5 | 0.75 | 1.0);
+                          setIsQuestionSpeedMenuOpen(false);
+                        }}
+                        className={`
+                          px-3 py-2 text-xs font-medium text-left transition-colors hover:bg-slate-50
+                          ${questionPlaybackSpeed === speed ? "text-[var(--primary)] bg-orange-50/50" : "text-slate-600"}
+                        `}
+                      >
+                        {speed}x
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

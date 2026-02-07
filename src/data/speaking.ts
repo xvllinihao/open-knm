@@ -169,9 +169,9 @@ export const speakingThemes: SpeakingTheme[] = [
       en: "1. Question & Answer",
     },
     description: {
-      nl: "Luister naar de vraag en geef antwoord.",
-      zh: "听视频中的问题并回答（通常有两个问题）。",
-      en: "Listen to the question and answer.",
+      nl: "Luister naar de situatie en beantwoord de vragen.",
+      zh: "先听一段情景描述，然后回答问题（模拟真实考试）。",
+      en: "Listen to the scenario and answer the questions.",
     },
   },
   {
@@ -454,6 +454,7 @@ export const universalPhrases: UniversalPhraseGroup[] = [
 export type SpeakingQuestion = {
   id: string;
   topic: SpeakingTheme["id"];
+  scenario?: TriText; // Optional scenario/context description (for type1_qa)
   question: TriText;
   answer: TriText;
   variations?: TriText[];
@@ -463,233 +464,205 @@ export type SpeakingQuestion = {
 };
 
 export const speakingQuestions: SpeakingQuestion[] = [
-  // --- TYPE 1: Q&A ---
+  // --- TYPE 1: Q&A (真实考试格式：Context + 双重问题) ---
+  
+  // 1. 关于日常生活 (Dagelijks leven)
   {
-    id: "q1-family",
+    id: "q1-cleaning-house",
     topic: "type1_qa",
+    scenario: {
+      nl: "Ik maak mijn huis meestal schoon in het weekend.",
+      zh: "我通常在周末打扫房子。",
+      en: "I usually clean my house on the weekend.",
+    },
     question: {
-      nl: "Heb je familie in Nederland?",
-      zh: "你在荷兰有家人吗？",
-      en: "Do you have family in the Netherlands?",
+      nl: "Wanneer maakt u uw huis meestal schoon? Vertel ook waarom u dat doet.",
+      zh: "您通常什么时候打扫房子？也请说明您为什么这样做。",
+      en: "When do you usually clean your house? Also tell why you do that.",
     },
     answer: {
-      nl: "Ja, mijn man en mijn kinderen wonen hier. De rest van mijn familie woont in mijn land.",
-      zh: "是的，我的丈夫和孩子住在这里。我其他的家人们住在我的祖国。",
-      en: "Yes, my husband and children live here. The rest of my family lives in my country.",
+      nl: "Ik maak mijn huis op maandag schoon, want dan heb ik een vrije dag.",
+      zh: "我在周一打扫房子，因为那天我有空。",
+      en: "I clean my house on Monday, because then I have a free day.",
     },
     tip: {
-      nl: "Antwoord met 'Ja' of 'Nee' en leg uit.",
-      zh: "用“是”或“否”回答并解释。",
-      en: "Answer with 'Yes' or 'No' and explain.",
+      nl: "Beantwoord beide delen: wanneer EN waarom. Gebruik 'want' of 'omdat'.",
+      zh: "回答两个部分：什么时候和为什么。使用 'want' 或 'omdat'。",
+      en: "Answer both parts: when AND why. Use 'want' or 'omdat'.",
     },
   },
   {
-    id: "q1-duration",
+    id: "q1-breakfast-drink",
     topic: "type1_qa",
+    scenario: {
+      nl: "Ik drink elke ochtend koffie.",
+      zh: "我每天早上喝咖啡。",
+      en: "I drink coffee every morning.",
+    },
     question: {
-      nl: "Hoelang woon je al in Nederland?",
-      zh: "你在荷兰住多久了？",
-      en: "How long have you lived in the Netherlands?",
+      nl: "Wat drinkt u bij uw ontbijt? Vertel ook hoe laat u ontbijt.",
+      zh: "您早餐喝什么？也请说明您几点吃早餐。",
+      en: "What do you drink with your breakfast? Also tell what time you have breakfast.",
     },
     answer: {
-      nl: "Ik woon nu twee jaar in Nederland.",
-      zh: "我在荷兰住了两年了。",
-      en: "I have lived in the Netherlands for two years now.",
+      nl: "Ik drink thee bij mijn ontbijt. Ik ontbijt meestal om acht uur.",
+      zh: "我早餐喝茶。我通常在八点吃早餐。",
+      en: "I drink tea with my breakfast. I usually have breakfast at eight o'clock.",
     },
     tip: {
-      nl: "Gebruik 'al' (tijdsduur) of een aantal jaar.",
-      zh: "提到具体的年数。",
-      en: "Mention the number of years.",
+      nl: "Beantwoord beide vragen: wat drink je EN hoe laat ontbijt je.",
+      zh: "回答两个问题：你喝什么和你几点吃早餐。",
+      en: "Answer both questions: what do you drink AND what time do you have breakfast.",
+    },
+  },
+  
+  // 2. 关于业余爱好与空闲时间 (Vrije tijd)
+  {
+    id: "q1-homework-location",
+    topic: "type1_qa",
+    scenario: {
+      nl: "Ik maak graag huiswerk op mijn slaapkamer.",
+      zh: "我喜欢在卧室做作业。",
+      en: "I like to do homework in my bedroom.",
+    },
+    question: {
+      nl: "Waar maakt u graag huiswerk? Vertel ook waarom.",
+      zh: "您喜欢在哪里做作业？也请说明原因。",
+      en: "Where do you like to do homework? Also tell why.",
+    },
+    answer: {
+      nl: "Ik maak graag huiswerk in de bibliotheek, omdat het daar lekker rustig is.",
+      zh: "我喜欢在图书馆做作业，因为那里很安静。",
+      en: "I like to do homework in the library, because it's nice and quiet there.",
+    },
+    tip: {
+      nl: "Geef een plaats EN een reden met 'omdat' of 'want'.",
+      zh: "给出一个地点和一个理由，使用 'omdat' 或 'want'。",
+      en: "Give a place AND a reason with 'omdat' or 'want'.",
     },
   },
   {
-    id: "q1-opinion-nl",
+    id: "q1-reading-books",
     topic: "type1_qa",
+    scenario: {
+      nl: "Ik lees graag boeken in het weekend.",
+      zh: "我喜欢在周末读书。",
+      en: "I like to read books on the weekend.",
+    },
     question: {
-      nl: "Wat vind je leuk aan Nederland?",
-      zh: "你喜欢荷兰的什么？",
-      en: "What do you like about the Netherlands?",
+      nl: "Wat leest u graag? Vertel ook hoe vaak u leest.",
+      zh: "您喜欢读什么？也请说明您多久读一次。",
+      en: "What do you like to read? Also tell how often you read.",
     },
     answer: {
-      nl: "Ik vind de vrijheid fijn en de mensen zijn aardig.",
-      zh: "我喜欢这里的自由，而且人们很友善。",
-      en: "I like the freedom and the people are nice.",
+      nl: "Ik lees graag de krant. Ik lees elke dag.",
+      zh: "我喜欢读报纸。我每天都读。",
+      en: "I like to read the newspaper. I read every day.",
     },
     tip: {
-      nl: "Noem één of twee positieve dingen.",
-      zh: "列举一两个积极的方面。",
-      en: "Mention one or two positive things.",
+      nl: "Beantwoord beide delen: wat lees je EN hoe vaak.",
+      zh: "回答两个部分：你读什么和你多久读一次。",
+      en: "Answer both parts: what do you read AND how often.",
+    },
+  },
+  
+  // 3. 关于交通与出行 (Vervoer)
+  {
+    id: "q1-bicycles",
+    topic: "type1_qa",
+    scenario: {
+      nl: "Ik heb twee fietsen: één om mee naar het werk te gaan en één om te sporten.",
+      zh: "我有两辆自行车：一辆用来上班，一辆用来运动。",
+      en: "I have two bicycles: one to go to work and one for sports.",
+    },
+    question: {
+      nl: "Hoeveel fietsen heeft u? Vertel ook wanneer u een fiets gebruikt.",
+      zh: "您有多少辆自行车？也请说明您什么时候使用自行车。",
+      en: "How many bicycles do you have? Also tell when you use a bicycle.",
+    },
+    answer: {
+      nl: "Ik heb één fiets. Ik gebruik mijn fiets om naar de supermarkt te gaan.",
+      zh: "我有一辆自行车。我用我的自行车去超市。",
+      en: "I have one bicycle. I use my bicycle to go to the supermarket.",
+    },
+    tip: {
+      nl: "Beantwoord beide delen: hoeveel EN wanneer gebruik je een fiets.",
+      zh: "回答两个部分：多少辆和什么时候使用。",
+      en: "Answer both parts: how many AND when do you use a bicycle.",
     },
   },
   {
-    id: "q1-weather-opinion",
+    id: "q1-bus-travel",
     topic: "type1_qa",
+    scenario: {
+      nl: "Ik reis vaak met de bus.",
+      zh: "我经常坐公交车。",
+      en: "I often travel by bus.",
+    },
     question: {
-      nl: "Wat vind je van het weer in Nederland?",
-      zh: "你觉得荷兰的天气怎么样？",
-      en: "What do you think of the weather in the Netherlands?",
+      nl: "Reist u vaak met de bus? Vertel ook waarom wel of waarom niet.",
+      zh: "您经常坐公交车吗？也请说明为什么或为什么不。",
+      en: "Do you often travel by bus? Also tell why or why not.",
     },
     answer: {
-      nl: "Ik vind het weer niet zo leuk, want het regent vaak.",
-      zh: "我不太喜欢这里的气候，因为经常下雨。",
-      en: "I don't like the weather much, because it rains often.",
+      nl: "Nee, ik reis niet vaak met de bus, want ik ga liever met de auto.",
+      zh: "不，我不经常坐公交车，因为我更喜欢开车。",
+      en: "No, I don't often travel by bus, because I prefer to go by car.",
     },
     tip: {
-      nl: "Gebruik 'Ik vind...' om je mening te geven.",
-      zh: "使用 'Ik vind...' 来表达观点。",
-      en: "Use 'Ik vind...' to express your opinion.",
+      nl: "Geef een antwoord (ja/nee) EN leg uit waarom met 'want' of 'omdat'.",
+      zh: "给出答案（是/否）并用 'want' 或 'omdat' 解释原因。",
+      en: "Give an answer (yes/no) AND explain why with 'want' or 'omdat'.",
+    },
+  },
+  
+  // 4. 关于社交与邻里 (Sociaal & Buren)
+  {
+    id: "q1-neighbors-talk",
+    topic: "type1_qa",
+    scenario: {
+      nl: "Ik praat elke dag met mijn buren.",
+      zh: "我每天都和邻居聊天。",
+      en: "I talk to my neighbors every day.",
+    },
+    question: {
+      nl: "Hoe vaak praat u met uw buren? Vertel ook wat u van uw buren vindt.",
+      zh: "您多久和邻居聊一次天？也请说明您对邻居的看法。",
+      en: "How often do you talk to your neighbors? Also tell what you think of your neighbors.",
+    },
+    answer: {
+      nl: "Ik praat twee keer per week met mijn buren. Ik vind ze heel aardig.",
+      zh: "我每周和邻居聊两次天。我觉得他们很友善。",
+      en: "I talk to my neighbors twice a week. I think they are very nice.",
+    },
+    tip: {
+      nl: "Beantwoord beide delen: hoe vaak EN wat vind je van je buren.",
+      zh: "回答两个部分：多久一次和你对邻居的看法。",
+      en: "Answer both parts: how often AND what do you think of your neighbors.",
     },
   },
   {
-    id: "q1-supermarket-transport",
+    id: "q1-dutch-haste",
     topic: "type1_qa",
+    scenario: {
+      nl: "Nederlanders hebben vaak haast.",
+      zh: "荷兰人经常很匆忙。",
+      en: "Dutch people are often in a hurry.",
+    },
     question: {
-      nl: "Hoe ga je meestal naar de supermarkt?",
-      zh: "你通常怎么去超市？",
-      en: "How do you usually go to the supermarket?",
+      nl: "Wat vindt u daarvan? Vertel ook wanneer u zelf haast heeft.",
+      zh: "您对此有什么看法？也请说明您自己什么时候会匆忙。",
+      en: "What do you think of that? Also tell when you yourself are in a hurry.",
     },
     answer: {
-      nl: "Ik ga meestal met de fiets, want de supermarkt is dichtbij.",
-      zh: "我通常骑自行车去，因为超市很近。",
-      en: "I usually go by bike, because the supermarket is close.",
+      nl: "Ik vind dat niet fijn. Ik heb haast als ik te laat ben voor mijn werk.",
+      zh: "我觉得这不太好。当我上班迟到时我会匆忙。",
+      en: "I don't like that. I'm in a hurry when I'm late for work.",
     },
     tip: {
-      nl: "Vertel hoe (vervoersmiddel) en waarom.",
-      zh: "说明交通方式和原因。",
-      en: "State the transport mode and why.",
-    },
-  },
-  {
-    id: "q1-dutch-food",
-    topic: "type1_qa",
-    question: {
-      nl: "Wat vind je van het Nederlandse eten?",
-      zh: "你觉得荷兰食物怎么样？",
-      en: "What do you think of Dutch food?",
-    },
-    answer: {
-      nl: "Ik vind het Nederlandse eten lekker, vooral de stamppot en de kaas.",
-      zh: "我觉得荷兰食物很好吃，特别是捣碎的土豆泥蔬菜和奶酪。",
-      en: "I think Dutch food is tasty, especially the 'stamppot' and the cheese.",
-    },
-    tip: {
-      nl: "Wees positief of beleefd. Noem een specifiek gerecht.",
-      zh: "保持积极或礼貌。提到一个具体的菜。",
-      en: "Be positive or polite. Mention a specific dish.",
-    },
-  },
-  {
-    id: "q1-holiday",
-    topic: "type1_qa",
-    question: {
-      nl: "Wat is je favoriete feestdag?",
-      zh: "你最喜欢的节日是什么？",
-      en: "What is your favorite holiday?",
-    },
-    answer: {
-      nl: "Mijn favoriete feestdag is Kerstmis, want dan ben ik samen met familie.",
-      zh: "我最喜欢的节日是圣诞节，因为那时候我和家人在一起。",
-      en: "My favorite holiday is Christmas, because then I am together with family.",
-    },
-    tip: {
-      nl: "Noem een dag (Kerst, Koningsdag) en waarom.",
-      zh: "提一个节日（圣诞节、国王节）并说明原因。",
-      en: "Name a day (Christmas, King's Day) and why.",
-    },
-  },
-  {
-    id: "q1-work-desire",
-    topic: "type1_qa",
-    question: {
-      nl: "Wat voor werk doe je nu, of wat voor werk wil je doen?",
-      zh: "你现在做什么工作，或者你想做什么工作？",
-      en: "What kind of work do you do now, or what do you want to do?",
-    },
-    answer: {
-      nl: "Ik werk nu niet, maar ik wil graag in een winkel werken.",
-      zh: "我现在没工作，但我很想在商店工作。",
-      en: "I am not working now, but I would like to work in a shop.",
-    },
-    tip: {
-      nl: "Vertel wat je wilt ('Ik wil graag...').",
-      zh: "说出你的意愿 ('Ik wil graag...')。",
-      en: "Say what you want ('Ik wil graag...').",
-    },
-  },
-  {
-    id: "q1-work-time",
-    topic: "type1_qa",
-    question: {
-      nl: "Hoe laat begint je werk of school meestal?",
-      zh: "你通常几点开始工作或上学？",
-      en: "What time do your work or school usually start?",
-    },
-    answer: {
-      nl: "Ik begin meestal om half negen 's ochtends.",
-      zh: "我通常早上八点半开始。",
-      en: "I usually start at half past eight in the morning.",
-    },
-    tip: {
-      nl: "Noem een tijdstip (bijv. 9 uur, half 9).",
-      zh: "提到一个时间点（如9点，8点半）。",
-      en: "Mention a time (e.g., 9 o'clock, half past 8).",
-    },
-  },
-  {
-    id: "q1-weekend",
-    topic: "type1_qa",
-    question: {
-      nl: "Wat doe je graag in het weekend? En waarom?",
-      zh: "你周末喜欢做什么？为什么？",
-      en: "What do you like to do on the weekend? And why?",
-    },
-    answer: {
-      nl: "In het weekend wandel ik graag in het park, want ik houd van de natuur.",
-      zh: "周末我喜欢在公园散步，因为我热爱大自然。",
-      en: "On the weekend I like to walk in the park, because I love nature.",
-    },
-    tip: {
-      nl: "Geef een activiteit én een reden (want...).",
-      zh: "给出一个活动和一个理由 (want...)。",
-      en: "Give an activity AND a reason (want...).",
-    },
-  },
-  {
-    id: "q1-food",
-    topic: "type1_qa",
-    question: {
-      nl: "Wat eet je liever: Hollandse pot of eten uit je eigen land? En waarom?",
-      zh: "你更喜欢吃什么：荷兰菜还是你家乡的菜？为什么？",
-      en: "What do you prefer to eat: Dutch food or food from your own country? And why?",
-    },
-    answer: {
-      nl: "Ik eet liever eten uit mijn eigen land, want dat is kruidiger.",
-      zh: "我更喜欢吃我家乡的菜，因为那个味道更丰富（更辣/更有味）。",
-      en: "I prefer food from my own country, because it is spicier.",
-    },
-    tip: {
-      nl: "Kies één optie en leg uit waarom.",
-      zh: "选择一个选项并解释原因。",
-      en: "Choose one option and explain why.",
-    },
-  },
-  {
-    id: "q1-travel",
-    topic: "type1_qa",
-    question: {
-      nl: "Hoe ga je meestal naar je werk of school? En waarom?",
-      zh: "你通常怎么去上班或上学？为什么？",
-      en: "How do you usually go to work or school? And why?",
-    },
-    answer: {
-      nl: "Ik ga meestal met de fiets, want dat is gratis en gezond.",
-      zh: "我通常骑自行车去，因为那是免费且健康的。",
-      en: "I usually go by bike, because that is free and healthy.",
-    },
-    tip: {
-      nl: "Noem het vervoersmiddel en een voordeel.",
-      zh: "提到交通工具和一个优点。",
-      en: "Mention the transport mode and a benefit.",
+      nl: "Geef je mening met 'Ik vind...' EN vertel wanneer je zelf haast hebt.",
+      zh: "用 'Ik vind...' 给出你的观点，并说明你自己什么时候会匆忙。",
+      en: "Give your opinion with 'Ik vind...' AND tell when you yourself are in a hurry.",
     },
   },
 
