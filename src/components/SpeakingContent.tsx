@@ -37,6 +37,11 @@ const DesktopIcon = () => (
     <line x1="12" x2="12" y1="17" y2="21" />
   </svg>
 );
+const YouTubeIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
+    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+  </svg>
+);
 
 // --- Helper Components ---
 function TriLangStack({
@@ -333,6 +338,43 @@ export function SpeakingContent({ locale }: Props) {
               onSpeak={(text, speed) => speak(text, speed)}
             />
           ))}
+        </div>
+      </section>
+
+      {/* YouTube Learning Resource Section */}
+      <section className="space-y-4">
+        <div className="p-6 rounded-2xl border border-slate-100 bg-white shadow-sm hover:shadow-md transition-all">
+          <div className="flex items-start gap-4">
+            <div className="flex-shrink-0 p-3 bg-red-50 text-red-600 rounded-xl">
+              <YouTubeIcon />
+            </div>
+            <div className="flex-1">
+              <h3 className="text-lg font-bold text-slate-900 mb-2">
+                {locale === "zh" 
+                  ? "推荐学习视频" 
+                  : "Recommended Learning Videos"}
+              </h3>
+              <p className="text-sm text-slate-600 mb-4 leading-relaxed">
+                {locale === "zh"
+                  ? "这个 YouTube 系列视频提供了实用的口语考试技巧和示例，建议在开始练习前观看。"
+                  : "This YouTube playlist offers practical speaking exam tips and examples. We recommend watching before starting practice."}
+              </p>
+              <a
+                href="https://www.youtube.com/watch?v=_tkoK4nhpVU&list=PLXhM-IdBEVjgVPw6drrCScntDW05asFzL"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 text-white font-bold rounded-lg hover:bg-red-700 transition-colors shadow-sm hover:shadow-md"
+              >
+                <YouTubeIcon />
+                <span>
+                  {locale === "zh" ? "观看播放列表" : "Watch Playlist"}
+                </span>
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 
