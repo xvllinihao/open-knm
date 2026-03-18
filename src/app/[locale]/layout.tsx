@@ -7,6 +7,8 @@ import { SITE_URL, GA_ID } from "@/lib/siteConfig";
 import { PostHogProvider } from "@/components/PostHogProvider";
 import { GoogleAnalytics } from "@/components/GoogleAnalytics";
 import { AuthProvider } from "@/contexts/AuthContext";
+import { JsonLd } from "@/components/StructuredData";
+import { organizationSchema, webSiteSchema } from "@/lib/structured-data";
 
 const metadataPerLocale: Record<
   Locale,
@@ -121,6 +123,41 @@ export async function generateMetadata({
       shortcut: "/logo-open-knm.svg",
       apple: "/logo-open-knm.svg",
     },
+    // AEO: Additional metadata for AI search engines
+    authors: [{ name: "Open KNM Community", url: SITE_URL }],
+    creator: "Open KNM",
+    publisher: "Open KNM",
+    category: "Education",
+    classification: "Educational Resources",
+    // Add referrer policy for better analytics
+    referrer: "origin-when-cross-origin",
+    // Add viewport for better mobile indexing
+    viewport: {
+      width: "device-width",
+      initialScale: 1,
+      maximumScale: 5,
+    },
+    // Verify ownership (add your verification codes here)
+    verification: {
+      google: "your-google-verification-code",
+      yandex: "your-yandex-verification-code",
+    },
+    // AEO: Help AI engines understand the content
+    other: {
+      "edu-level": "A2",
+      "exam-type": "KNM,Inburgering",
+      "language": "Dutch",
+      "target-audience": locale === "zh" ? "Chinese speakers learning Dutch" : "English speakers learning Dutch",
+      "content-type": "educational,exam-preparation",
+    },
+    // AEO: Add manifest for PWA and better discovery
+    manifest: "/manifest.json",
+    // AEO: Add apple touch icon for iOS
+    appleWebApp: {
+      capable: true,
+      statusBarStyle: "default",
+      title: "Open KNM",
+    },
   };
 }
 
@@ -132,12 +169,21 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await params;
-  
+
   // Validate locale or default to 'zh' if somehow invalid (though generateStaticParams prevents this for static export)
   const validLocale = (locales.includes(locale as Locale) ? locale : 'zh') as Locale;
 
+  // AEO: Add structured data for AI search engines
+  const schemas = [
+    organizationSchema(),
+    webSiteSchema(),
+  ];
+
   return (
     <html lang={validLocale}>
+      <head>
+        <JsonLd schemas={schemas} />
+      </head>
       <body className="antialiased min-h-screen flex flex-col">
         <AuthProvider>
           <PostHogProvider>

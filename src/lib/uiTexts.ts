@@ -14,6 +14,7 @@ export type NavTexts = {
   speaking: string;
   writing: string;
   about: string;
+  faq: string;
 };
 
 export type VocabularyTexts = {
@@ -173,6 +174,7 @@ export const uiTexts: Record<Locale, UiTexts> = {
       speaking: "口语练习",
       writing: "写作速成",
       about: "关于与贡献",
+      faq: "常见问题",
     },
     footer: {
       tagline: "© open-knm，欢迎开源共享。",
@@ -199,12 +201,12 @@ export const uiTexts: Record<Locale, UiTexts> = {
       desktopBanner: "Beta 功能：语音识别持续优化中。为获得最佳体验，建议使用桌面端访问。",
     },
     vocabulary: {
-      title: "荷兰语高频词汇 (A2)",
+      title: "荷兰语高频词汇 (A2+B1)",
       description:
         "精选涵盖基础生活和 KNM 考试重点的高频词汇。掌握这些核心单词，不仅能应对日常生活，更能大大降低备考 KNM 和阅读官方材料的门槛。",
-      promoTitle: "A2 高频词汇表",
+      promoTitle: "A2+B1 高频词汇表",
       promoDesc:
-        "并非覆盖所有 A2 词汇，但这核心单词，足够帮你打好基础，读懂更多 KNM 与荷兰语教材。",
+        "包含 A2 和 B1 核心词汇，助你打好基础，读懂更多 KNM 与荷兰语教材。",
       loadMore: "加载更多",
       showing: "正在展示",
       of: "共",
@@ -333,6 +335,7 @@ export const uiTexts: Record<Locale, UiTexts> = {
       speaking: "Speaking",
       writing: "Writing",
       about: "About",
+      faq: "FAQ",
     },
     footer: {
       tagline: "© open-knm — open knowledge for expats.",
@@ -359,12 +362,12 @@ export const uiTexts: Record<Locale, UiTexts> = {
       desktopBanner: "Beta Feature: Speech recognition is being optimized. For best results, use a desktop computer.",
     },
     vocabulary: {
-      title: "Essential Dutch Vocabulary (A2)",
+      title: "Essential Dutch Vocabulary (A2+B1)",
       description:
         "A curated list covering essential daily vocabulary and key KNM exam terms. Mastering these core words will not only help in daily life but also significantly lower the barrier for KNM exam preparation and reading official materials.",
-      promoTitle: "A2 Essential Vocabulary",
+      promoTitle: "A2+B1 Essential Vocabulary",
       promoDesc:
-        "This list doesn’t cover every A2 word, but these core items give you a solid base for KNM study and general Dutch learning.",
+        "Includes core A2 and B1 vocabulary items to give you a solid base for KNM study and general Dutch learning.",
       loadMore: "Load More",
       showing: "Showing",
       of: "of",

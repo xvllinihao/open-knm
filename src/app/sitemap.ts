@@ -7,7 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const sitemapEntries: MetadataRoute.Sitemap = [];
 
   // 1. Static routes for each locale
-  const staticRoutes = ['', '/knm', '/life', '/about', '/vocabulary', '/speaking', '/writing', '/ai-assistant', '/privacy'];
+  const staticRoutes = ['', '/knm', '/life', '/about', '/vocabulary', '/speaking', '/writing', '/ai-assistant', '/privacy', '/faq'];
 
   const now = new Date();
 
