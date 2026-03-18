@@ -9230,5 +9230,632 @@
       "zh": "使用DigiD可以登录政府网站。"
     },
     "article": "de"
+  },
+  {
+    "id": "bekennen",
+    "dutch": "bekennen",
+    "translations": {
+      "en": "to confess",
+      "zh": "承认 / 坦白"
+    },
+    "notes": {
+      "en": "Often used when admitting a mistake or a crime.",
+      "zh": "常用于承认错误或罪行。"
+    },
+    "category": "daily",
+    "level": "B1",
+    "partOfSpeech": "verb",
+    "example": {
+      "dutch": "Hij wilde zijn fout niet bekennen.",
+      "en": "He did not want to confess his mistake.",
+      "zh": "他不想承认自己的错误。"
+    }
+  },
+  {
+    "id": "bereiken",
+    "dutch": "bereiken",
+    "translations": {
+      "en": "to achieve",
+      "zh": "达到 / 实现"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "work",
+    "level": "B1",
+    "partOfSpeech": "verb",
+    "example": {
+      "dutch": "Ik hoop dit jaar mijn doelen te bereiken.",
+      "en": "I hope to achieve my goals this year.",
+      "zh": "我希望今年能实现我的目标。"
+    }
+  },
+  {
+    "id": "bevallen",
+    "dutch": "bevallen",
+    "translations": {
+      "en": "to please",
+      "zh": "使满意 / 喜欢"
+    },
+    "notes": {
+      "en": "Also means 'to give birth', but in this chapter context means 'to please/suit'.",
+      "zh": "在此章节中意为使满意，也有分娩的意思。"
+    },
+    "category": "daily",
+    "level": "B1",
+    "partOfSpeech": "verb",
+    "example": {
+      "dutch": "De nieuwe stad bevalt me erg goed.",
+      "en": "The new city pleases me very much.",
+      "zh": "我很喜欢这座新城市。"
+    }
+  },
+  {
+    "id": "functioneren",
+    "dutch": "functioneren",
+    "translations": {
+      "en": "to function",
+      "zh": "运作 / 起作用"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "work",
+    "level": "B1",
+    "partOfSpeech": "verb",
+    "example": {
+      "dutch": "Deze oude machine functioneert niet meer.",
+      "en": "This old machine doesn't function anymore.",
+      "zh": "这台旧机器无法运作了。"
+    }
+  },
+  {
+    "id": "kennismaken-met",
+    "dutch": "kennismaken met",
+    "translations": {
+      "en": "to meet, to be introduced to",
+      "zh": "认识 / 结识"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "daily",
+    "level": "B1",
+    "partOfSpeech": "verb",
+    "example": {
+      "dutch": "Ik wil graag kennismaken met uw familie.",
+      "en": "I would like to meet your family.",
+      "zh": "我很想结识您的家人。"
+    }
+  },
+  {
+    "id": "onthouden",
+    "dutch": "onthouden",
+    "translations": {
+      "en": "to remember",
+      "zh": "记住"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "daily",
+    "level": "B1",
+    "partOfSpeech": "verb",
+    "example": {
+      "dutch": "Ik kan zijn moeilijke naam niet onthouden.",
+      "en": "I cannot remember his difficult name.",
+      "zh": "我记不住他那复杂的名字。"
+    }
+  },
+  {
+    "id": "ontwikkelen",
+    "dutch": "ontwikkelen",
+    "translations": {
+      "en": "to develop",
+      "zh": "发展 / 开发"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "work",
+    "level": "B1",
+    "partOfSpeech": "verb",
+    "example": {
+      "dutch": "Het bedrijf wil nieuwe producten ontwikkelen.",
+      "en": "The company wants to develop new products.",
+      "zh": "公司想开发新产品。"
+    }
+  },
+  {
+    "id": "opmerken",
+    "dutch": "opmerken",
+    "translations": {
+      "en": "to notice",
+      "zh": "注意到 / 察觉"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "daily",
+    "level": "B1",
+    "partOfSpeech": "verb",
+    "example": {
+      "dutch": "Zij merkte op dat hij erg moe was.",
+      "en": "She noticed that he was very tired.",
+      "zh": "她注意到他非常累。"
+    }
+  },
+  {
+    "id": "presteren",
+    "dutch": "presteren",
+    "translations": {
+      "en": "to achieve / to perform",
+      "zh": "表现 / 取得成绩"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "work",
+    "level": "B1",
+    "partOfSpeech": "verb",
+    "example": {
+      "dutch": "De studenten presteren dit jaar erg goed.",
+      "en": "The students are performing very well this year.",
+      "zh": "学生们今年的表现很好。"
+    }
+  },
+  {
+    "id": "samenwerken",
+    "dutch": "samenwerken",
+    "translations": {
+      "en": "to collaborate, to work together",
+      "zh": "合作"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "work",
+    "level": "B1",
+    "partOfSpeech": "verb",
+    "example": {
+      "dutch": "We moeten goed samenwerken om de taak af te maken.",
+      "en": "We have to collaborate well to finish the task.",
+      "zh": "我们必须好好合作来完成这项任务。"
+    }
+  },
+  {
+    "id": "spijten",
+    "dutch": "spijten",
+    "translations": {
+      "en": "to be sorry",
+      "zh": "抱歉 / 遗憾"
+    },
+    "notes": {
+      "en": "Usually used as 'het spijt me' (I am sorry).",
+      "zh": "通常用作 'het spijt me'（我很抱歉）。"
+    },
+    "category": "daily",
+    "level": "B1",
+    "partOfSpeech": "verb",
+    "example": {
+      "dutch": "Het spijt me dat ik te laat ben.",
+      "en": "I am sorry that I am late.",
+      "zh": "很抱歉我迟到了。"
+    }
+  },
+  {
+    "id": "steunen",
+    "dutch": "steunen",
+    "translations": {
+      "en": "to support",
+      "zh": "支持"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "daily",
+    "level": "B1",
+    "partOfSpeech": "verb",
+    "example": {
+      "dutch": "Mijn vrienden zullen mij altijd steunen.",
+      "en": "My friends will always support me.",
+      "zh": "我的朋友们总是支持我。"
+    }
+  },
+  {
+    "id": "tegenvallen",
+    "dutch": "tegenvallen",
+    "translations": {
+      "en": "to disappoint",
+      "zh": "令人失望 / 不如预期"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "daily",
+    "level": "B1",
+    "partOfSpeech": "verb",
+    "example": {
+      "dutch": "Het weer op vakantie viel erg tegen.",
+      "en": "The weather on holiday was very disappointing.",
+      "zh": "假期的天气令人非常失望。"
+    }
+  },
+  {
+    "id": "teleurstellen",
+    "dutch": "teleurstellen",
+    "translations": {
+      "en": "to disappoint",
+      "zh": "让人失望"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "daily",
+    "level": "B1",
+    "partOfSpeech": "verb",
+    "example": {
+      "dutch": "Ik wil mijn ouders niet teleurstellen.",
+      "en": "I don't want to disappoint my parents.",
+      "zh": "我不想让我的父母失望。"
+    }
+  },
+  {
+    "id": "verdienen",
+    "dutch": "verdienen",
+    "translations": {
+      "en": "to deserve / to earn",
+      "zh": "应得 / 赚取"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "work",
+    "level": "B1",
+    "partOfSpeech": "verb",
+    "example": {
+      "dutch": "Jij verdient een lange vakantie na dit project.",
+      "en": "You deserve a long holiday after this project.",
+      "zh": "在这个项目之后，你值得拥有一个长假。"
+    }
+  },
+  {
+    "id": "verwarren",
+    "dutch": "verwarren",
+    "translations": {
+      "en": "to confuse",
+      "zh": "使困惑 / 混淆"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "daily",
+    "level": "B1",
+    "partOfSpeech": "verb",
+    "example": {
+      "dutch": "Die twee regels verwarren mij vaak.",
+      "en": "Those two rules often confuse me.",
+      "zh": "这两条规则经常让我感到困惑。"
+    }
+  },
+  {
+    "id": "voorstellen",
+    "dutch": "voorstellen",
+    "translations": {
+      "en": "to introduce / to suggest",
+      "zh": "介绍 / 提议"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "daily",
+    "level": "B1",
+    "partOfSpeech": "verb",
+    "example": {
+      "dutch": "Mag ik me even voorstellen?",
+      "en": "May I introduce myself?",
+      "zh": "我可以自我介绍一下吗？"
+    }
+  },
+  {
+    "id": "de-teleurstelling",
+    "dutch": "de teleurstelling",
+    "translations": {
+      "en": "disappointment",
+      "zh": "失望"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "daily",
+    "level": "B1",
+    "partOfSpeech": "noun",
+    "article": "de",
+    "example": {
+      "dutch": "Het verlies was een grote teleurstelling voor het team.",
+      "en": "The loss was a big disappointment for the team.",
+      "zh": "这场失利对球队来说是一个巨大的失望。"
+    }
+  },
+  {
+    "id": "de-verwarring",
+    "dutch": "de verwarring",
+    "translations": {
+      "en": "confusion",
+      "zh": "困惑 / 混乱"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "daily",
+    "level": "B1",
+    "partOfSpeech": "noun",
+    "article": "de",
+    "example": {
+      "dutch": "Er was veel verwarring over het nieuwe systeem.",
+      "en": "There was a lot of confusion about the new system.",
+      "zh": "大家对新系统有很多困惑。"
+    }
+  },
+  {
+    "id": "de-werkzaamheden",
+    "dutch": "de werkzaamheden",
+    "translations": {
+      "en": "activities, duties",
+      "zh": "工作 / 活动"
+    },
+    "notes": {
+      "en": "Usually used in plural form.",
+      "zh": "通常以复数形式使用。"
+    },
+    "category": "work",
+    "level": "B1",
+    "partOfSpeech": "noun",
+    "article": "de",
+    "example": {
+      "dutch": "De werkzaamheden aan de weg duren nog een week.",
+      "en": "The road works will last another week.",
+      "zh": "道路施工还将持续一周。"
+    }
+  },
+  {
+    "id": "het-geduld",
+    "dutch": "het geduld",
+    "translations": {
+      "en": "patience",
+      "zh": "耐心"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "daily",
+    "level": "B1",
+    "partOfSpeech": "noun",
+    "article": "het",
+    "example": {
+      "dutch": "Je moet veel geduld hebben in deze baan.",
+      "en": "You need to have a lot of patience in this job.",
+      "zh": "做这份工作需要很大的耐心。"
+    }
+  },
+  {
+    "id": "het-geluk",
+    "dutch": "het geluk",
+    "translations": {
+      "en": "(good) luck",
+      "zh": "运气 / 幸福"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "daily",
+    "level": "B1",
+    "partOfSpeech": "noun",
+    "article": "het",
+    "example": {
+      "dutch": "Ik wens je veel geluk met je nieuwe bedrijf.",
+      "en": "I wish you a lot of luck with your new company.",
+      "zh": "祝你的新公司好运。"
+    }
+  },
+  {
+    "id": "het-humeur",
+    "dutch": "het humeur",
+    "translations": {
+      "en": "mood",
+      "zh": "心情 / 脾气"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "daily",
+    "level": "B1",
+    "partOfSpeech": "noun",
+    "article": "het",
+    "example": {
+      "dutch": "Zij heeft vandaag een slecht humeur.",
+      "en": "She is in a bad mood today.",
+      "zh": "她今天心情很差。"
+    }
+  },
+  {
+    "id": "het-resultaat",
+    "dutch": "het resultaat",
+    "translations": {
+      "en": "result",
+      "zh": "结果"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "work",
+    "level": "B1",
+    "partOfSpeech": "noun",
+    "article": "het",
+    "example": {
+      "dutch": "Het resultaat van de test was zeer positief.",
+      "en": "The result of the test was very positive.",
+      "zh": "测试结果非常积极。"
+    }
+  },
+  {
+    "id": "dankbaar",
+    "dutch": "dankbaar",
+    "translations": {
+      "en": "grateful",
+      "zh": "感激的"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "daily",
+    "level": "B1",
+    "partOfSpeech": "adjective",
+    "example": {
+      "dutch": "Ik ben heel dankbaar voor je snelle reactie.",
+      "en": "I am very grateful for your quick response.",
+      "zh": "我非常感激你的快速回复。"
+    }
+  },
+  {
+    "id": "hartelijk",
+    "dutch": "hartelijk",
+    "translations": {
+      "en": "hearty; best",
+      "zh": "热情的 / 衷心的"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "daily",
+    "level": "B1",
+    "partOfSpeech": "adjective",
+    "example": {
+      "dutch": "Bedankt voor de hartelijke ontvangst.",
+      "en": "Thank you for the hearty welcome.",
+      "zh": "感谢你们的热情接待。"
+    }
+  },
+  {
+    "id": "jaloers",
+    "dutch": "jaloers",
+    "translations": {
+      "en": "jealous",
+      "zh": "嫉妒的"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "daily",
+    "level": "B1",
+    "partOfSpeech": "adjective",
+    "example": {
+      "dutch": "Hij is jaloers op het succes van zijn vriend.",
+      "en": "He is jealous of his friend's success.",
+      "zh": "他嫉妒朋友的成功。"
+    }
+  },
+  {
+    "id": "onmogelijk",
+    "dutch": "onmogelijk",
+    "translations": {
+      "en": "impossible",
+      "zh": "不可能的"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "daily",
+    "level": "B1",
+    "partOfSpeech": "adjective",
+    "example": {
+      "dutch": "Het is onmogelijk om dat allemaal in één dag te doen.",
+      "en": "It is impossible to do all that in one day.",
+      "zh": "要在一天内做完所有这些是不可能的。"
+    }
+  },
+  {
+    "id": "overspannen",
+    "dutch": "overspannen",
+    "translations": {
+      "en": "overworked, overstrained",
+      "zh": "劳累过度的"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "health",
+    "level": "B1",
+    "partOfSpeech": "adjective",
+    "example": {
+      "dutch": "Hij werkte zeventig uur per week en is nu overspannen.",
+      "en": "He worked seventy hours a week and is now overworked.",
+      "zh": "他每周工作70个小时，现在已经劳累过度了。"
+    }
+  },
+  {
+    "id": "tevreden",
+    "dutch": "tevreden",
+    "translations": {
+      "en": "content, satisfied",
+      "zh": "满意的"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "daily",
+    "level": "B1",
+    "partOfSpeech": "adjective",
+    "example": {
+      "dutch": "De leraar is erg tevreden met mijn huiswerk.",
+      "en": "The teacher is very content with my homework.",
+      "zh": "老师对我的作业非常满意。"
+    }
+  },
+  {
+    "id": "vrolijk",
+    "dutch": "vrolijk",
+    "translations": {
+      "en": "cheerful",
+      "zh": "快乐的 / 高兴的"
+    },
+    "notes": {
+      "en": "",
+      "zh": ""
+    },
+    "category": "daily",
+    "level": "B1",
+    "partOfSpeech": "adjective",
+    "example": {
+      "dutch": "Ik word vrolijk van de zon.",
+      "en": "I get cheerful from the sun.",
+      "zh": "阳光让我感到很快乐。"
+    }
   }
 ]
