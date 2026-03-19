@@ -12,7 +12,7 @@ export type VocabularyItem = {
     zh: string;
   };
   category: "daily" | "work" | "housing" | "health" | "admin";
-  level: "A2";
+  level: "A2" | "B1";
   article?: "de" | "het";
   partOfSpeech: "noun" | "verb" | "adjective" | "adverb" | "preposition" | "conjunction" | "pronoun" | "interjection" | "article";
   example?: {

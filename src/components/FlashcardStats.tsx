@@ -1,18 +1,33 @@
 "use client";
 
 import { Locale } from "@/lib/uiTexts";
-import { vocabularyList } from "@/data/vocabulary";
+import { vocabularyList, VocabularyItem } from "@/data/vocabulary";
 
 interface FlashcardStatsProps {
   locale: Locale;
-  knownCount: number;
-  unknownCount: number;
+  knownWords: VocabularyItem[];
+  unknownWords: VocabularyItem[];
+  level: "A2" | "B1" | "Mix";
   isCompact?: boolean;
 }
 
-export function FlashcardStats({ locale, knownCount, unknownCount, isCompact = false }: FlashcardStatsProps) {
+export function FlashcardStats({ locale, knownWords, unknownWords, level, isCompact = false }: FlashcardStatsProps) {
   const isZh = locale === "zh";
-  const totalVocabulary = vocabularyList.length;
+
+  // Filter by level
+  const levelVocabulary = level === "Mix"
+    ? vocabularyList
+    : vocabularyList.filter(item => item.level === level);
+
+  const totalVocabulary = levelVocabulary.length;
+
+  // Get the dutch words for filtering
+  const knownDutchWords = new Set(knownWords.map(w => w.dutch));
+  const unknownDutchWords = new Set(unknownWords.map(w => w.dutch));
+
+  // Count known/unknown words for this level
+  const knownCount = levelVocabulary.filter(item => knownDutchWords.has(item.dutch)).length;
+  const unknownCount = levelVocabulary.filter(item => unknownDutchWords.has(item.dutch)).length;
   const reviewedCount = knownCount + unknownCount;
   const masteryPercent = totalVocabulary > 0 ? Math.round((knownCount / totalVocabulary) * 100) : 0;
 
@@ -71,7 +86,10 @@ export function FlashcardStats({ locale, knownCount, unknownCount, isCompact = f
           />
         </div>
         <p className="text-[10px] text-slate-400 mt-2 text-center">
-          {isZh ? `全库共 ${totalVocabulary} 个 A2 高频词汇` : `${totalVocabulary} total A2 essential words`}
+          {isZh
+            ? `${level === "Mix" ? "全库" : level} 共 ${totalVocabulary} 个单词`
+            : `${totalVocabulary} total ${level === "Mix" ? "" : level + " "}words`
+          }
         </p>
       </div>
     </div>
