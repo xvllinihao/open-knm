@@ -1,21 +1,19 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 import { usePathname } from "next/navigation";
 import { Locale, locales } from "@/lib/uiTexts";
 
+// Check if we're on the client side
+const isClient = typeof window !== 'undefined';
+
 export default function FAQPage() {
   const pathname = usePathname();
-  const [locale, setLocale] = useState<Locale>('zh');
-  const [isClient, setIsClient] = useState(false);
 
-  useEffect(() => {
-    setIsClient(true);
-    // Extract locale from pathname
+  // Extract locale from pathname using useMemo
+  const locale: Locale = useMemo(() => {
     const pathLocale = pathname.split('/')[1] as Locale;
-    if (locales.includes(pathLocale)) {
-      setLocale(pathLocale);
-    }
+    return locales.includes(pathLocale) ? pathLocale : 'zh';
   }, [pathname]);
 
   if (!isClient) {
