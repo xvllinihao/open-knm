@@ -380,6 +380,7 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
           <button
             onClick={() => {
               setActiveLevel("B1");
+              setActiveCategory("all"); // B1 words have no categories
               setCurrentPage(1);
             }}
             className={`px-6 py-2 rounded-lg text-sm font-bold transition-all ${
@@ -392,22 +393,24 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
           </button>
         </div>
 
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
-          {categories.map((cat) => (
-            <button
-              key={cat.id}
-              onClick={() => handleCategoryChange(cat.id)}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
-                activeCategory === cat.id
-                  ? "bg-[var(--primary)] text-white shadow-md shadow-orange-200 transform scale-105"
-                  : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 hover:border-slate-300"
-              }`}
-            >
-              {cat.label}
-            </button>
-          ))}
-        </div>
+        {/* Category Filter - Only show for A2 level */}
+        {activeLevel === "A2" && (
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => handleCategoryChange(cat.id)}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                  activeCategory === cat.id
+                    ? "bg-[var(--primary)] text-white shadow-md shadow-orange-200 transform scale-105"
+                    : "bg-white text-slate-600 border border-slate-200 hover:bg-slate-50 hover:border-slate-300"
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+        )}
 
         {/* View Options Bar */}
         <div className="flex items-center gap-4">

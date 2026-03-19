@@ -7,6 +7,30 @@ export type ChangelogItem = {
 
 export const changelogData: ChangelogItem[] = [
   {
+    version: "2.1.1",
+    date: "2026-03-19",
+    title: {
+      zh: "词汇表优化：B1 词汇界面简化",
+      en: "Vocabulary List Update: Simplified B1 Interface",
+    },
+    description: {
+      zh: "🎨 界面优化：B1 词汇表不再显示种类筛选器，因为 B1 词汇暂无分类，提供更简洁的浏览体验。",
+      en: "🎨 UI Improvement: B1 vocabulary no longer shows category filter since B1 words don't have categories yet, providing a cleaner browsing experience.",
+    },
+  },
+  {
+    version: "2.1.0",
+    date: "2026-03-18",
+    title: {
+      zh: "新增 B1 词汇表：免费开放 870+ 个进阶词汇",
+      en: "Added B1 Vocabulary: 870+ Advanced Words Now Free",
+    },
+    description: {
+      zh: "📚 B1 词汇免费开放：新增 870+ 个 B1 级别词汇，涵盖工作、住房、健康、行政等主题，完全免费向所有用户开放。\n🎯 完整覆盖：从 A2 基础到 B1 进阶，总计 1300+ 个核心词汇，助力荷兰语能力全面提升。\n📖 来源权威：词汇来源于官方 B1 教材 Contact nieuw 3，确保内容准确可靠。\n⚠️ 注意：B1 词汇暂无分类标签，种类筛选器仅对 A2 词汇有效。",
+      en: "📚 B1 Vocabulary Now Free: Added 870+ B1-level words covering work, housing, health, admin topics, all completely free for all users.\n🎯 Complete Coverage: From A2 foundation to B1 advanced, 1300+ core vocabulary words for comprehensive Dutch language improvement.\n📖 Authoritative Source: Vocabulary from official B1 textbook Contact nieuw 3, ensuring accurate and reliable content.\n⚠️ Note: B1 words don't have category labels yet. Category filter only applies to A2 vocabulary.",
+    },
+  },
+  {
     version: "2.0.0",
     date: "2026-02-07",
     title: {
