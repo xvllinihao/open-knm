@@ -141,6 +141,7 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
   const texts = uiTexts[locale].vocabulary;
   
   const [activeCategory, setActiveCategory] = useState<string>("all");
+  const [activeLevel, setActiveLevel] = useState<"A2" | "B1">("A2");
   const [currentPage, setCurrentPage] = useState(1);
   const [viewMode, setViewMode] = useState<ViewMode>('card');
   const [hideTranslations, setHideTranslations] = useState(false);
@@ -164,10 +165,18 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
   ];
 
   const filteredItems = useMemo(() => {
-    return activeCategory === "all"
-      ? vocabularyList
-      : vocabularyList.filter((item) => item.category === activeCategory);
-  }, [activeCategory]);
+    let items = vocabularyList;
+    
+    // Filter by level
+    items = items.filter(item => item.level === activeLevel);
+    
+    // Filter by category
+    if (activeCategory !== "all") {
+      items = items.filter((item) => item.category === activeCategory);
+    }
+    
+    return items;
+  }, [activeCategory, activeLevel]);
 
   // Load bookmark from localStorage and Sync with Server
   useEffect(() => {
@@ -353,6 +362,36 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
 
       {/* Controls Section */}
       <div className="flex flex-col items-center gap-6">
+        {/* Level Selector */}
+        <div className="flex items-center bg-slate-100 p-1 rounded-xl shadow-inner">
+          <button
+            onClick={() => {
+              setActiveLevel("A2");
+              setCurrentPage(1);
+            }}
+            className={`px-6 py-2 rounded-lg text-sm font-bold transition-all ${
+              activeLevel === "A2"
+                ? "bg-white text-[var(--primary)] shadow-sm"
+                : "text-slate-500 hover:text-slate-700"
+            }`}
+          >
+            A2
+          </button>
+          <button
+            onClick={() => {
+              setActiveLevel("B1");
+              setCurrentPage(1);
+            }}
+            className={`px-6 py-2 rounded-lg text-sm font-bold transition-all ${
+              activeLevel === "B1"
+                ? "bg-white text-[var(--primary)] shadow-sm"
+                : "text-slate-500 hover:text-slate-700"
+            }`}
+          >
+            B1
+          </button>
+        </div>
+
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
           {categories.map((cat) => (
@@ -577,12 +616,14 @@ function VocabularyCard({ item, locale }: { item: VocabularyItem; locale: Locale
       </div>
 
       <div className="space-y-3">
-        <div className="bg-slate-50 rounded-xl p-3 text-sm leading-relaxed text-slate-600">
-          <span className="block font-semibold text-slate-400 text-xs uppercase mb-1 tracking-wider">
-            {isZh ? '笔记' : 'Note'}
-          </span>
-          {item.notes[locale] || (isZh ? "暂无笔记" : "No notes")}
-        </div>
+        {item.notes[locale] && (
+          <div className="bg-slate-50 rounded-xl p-3 text-sm leading-relaxed text-slate-600">
+            <span className="block font-semibold text-slate-400 text-xs uppercase mb-1 tracking-wider">
+              {isZh ? '笔记' : 'Note'}
+            </span>
+            {item.notes[locale]}
+          </div>
+        )}
 
         {item.example && (
           <div className="bg-orange-50/50 rounded-xl p-3 text-sm leading-relaxed text-slate-600 border border-orange-100/50">
@@ -700,14 +741,19 @@ function VocabularyListItem({
       {/* Expanded Details */}
       <div className={`overflow-hidden transition-all duration-200 ease-in-out ${isExpanded ? 'max-h-64 opacity-100 border-t border-slate-100' : 'max-h-0 opacity-0'}`}>
         <div className="p-3 sm:p-4 bg-slate-50/50 text-sm text-slate-600 space-y-3">
-          <div>
-            <div className="mb-1 flex items-center gap-2">
-               <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{isZh ? '笔记' : 'Note'}</span>
-               <span className="text-xs text-slate-400 px-1.5 py-0.5 bg-white rounded border border-slate-200">{item.category}</span>
-               <span className="text-xs text-slate-400 px-1.5 py-0.5 bg-blue-50 rounded border border-blue-100">{texts.partOfSpeech[item.partOfSpeech]}</span>
-            </div>
-            {item.notes[locale] || (isZh ? "暂无笔记" : "No notes")}
+          <div className="mb-1 flex items-center gap-2">
+             <span className="text-xs text-slate-400 px-1.5 py-0.5 bg-white rounded border border-slate-200">{item.category}</span>
+             <span className="text-xs text-slate-400 px-1.5 py-0.5 bg-blue-50 rounded border border-blue-100">{texts.partOfSpeech[item.partOfSpeech]}</span>
           </div>
+
+          {item.notes[locale] && (
+            <div>
+              <div className="mb-1 flex items-center gap-2">
+                 <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">{isZh ? '笔记' : 'Note'}</span>
+              </div>
+              {item.notes[locale]}
+            </div>
+          )}
 
           {item.example && (
             <div className="bg-orange-50/50 rounded-lg p-2.5 border border-orange-100/50">

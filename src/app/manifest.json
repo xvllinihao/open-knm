@@ -1,0 +1,112 @@
+{
+  "name": "Open KNM - Dutch Integration Exam Guide",
+  "short_name": "Open KNM",
+  "description": "Free open-source guide for Dutch civic integration exam (KNM/Inburgering) preparation. Includes vocabulary, study materials, and practice tests.",
+  "categories": ["education", "reference", "productivity"],
+  "lang": "en",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#f97316",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "src": "/logo-open-knm.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/screenshot-desktop.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/screenshot-mobile.png",
+      "sizes": "750x1334",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Vocabulary",
+      "short_name": "Vocab",
+      "description": "Study A2+B1 vocabulary",
+      "url": "/vocabulary",
+      "icons": [
+        {
+          "src": "/logo-open-knm.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "KNM Knowledge",
+      "short_name": "KNM",
+      "description": "Dutch society knowledge",
+      "url": "/knm",
+      "icons": [
+        {
+          "src": "/logo-open-knm.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Speaking Practice",
+      "short_name": "Speaking",
+      "description": "Practice Dutch speaking",
+      "url": "/speaking",
+      "icons": [
+        {
+          "src": "/logo-open-knm.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Writing Practice",
+      "short_name": "Writing",
+      "description": "Practice Dutch writing",
+      "url": "/writing",
+      "icons": [
+        {
+          "src": "/logo-open-knm.svg",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "FAQ",
+      "short_name": "Help",
+      "description": "Frequently asked questions",
+      "url": "/faq",
+      "icons": [
+        {
+          "src": "/logo-open-knm.svg",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}

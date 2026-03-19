@@ -197,6 +197,12 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
           </div>
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-6">
             <Link
+              href={getLocalizedPath(locale, "/faq")}
+              className="text-slate-500 hover:text-[var(--primary)] transition-colors"
+            >
+              {locale === "zh" ? "常见问题" : "FAQ"}
+            </Link>
+            <Link
               href={getLocalizedPath(locale, "/privacy")}
               className="text-slate-500 hover:text-[var(--primary)] transition-colors"
             >
