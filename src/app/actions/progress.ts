@@ -192,6 +192,7 @@ export async function syncFlashcardWords(unknownWords: string[], knownWords: str
 }
 
 export async function syncFlashcardProgress(localData: {
+  level: "A2" | "B1" | "Mix";
   current_index: number;
   deck_ids: string[];
   is_reverse: boolean;
@@ -208,11 +209,13 @@ export async function syncFlashcardProgress(localData: {
     .from("flashcard_progress")
     .select("*")
     .eq("user_id", user.id)
+    .eq("level", localData.level)
     .single();
 
   if (!remoteData || localData.updated_at > new Date(remoteData.updated_at).getTime()) {
     await supabase.from("flashcard_progress").upsert({
       user_id: user.id,
+      level: localData.level,
       current_index: localData.current_index,
       deck_ids: localData.deck_ids,
       is_reverse: localData.is_reverse,
@@ -226,6 +229,7 @@ export async function syncFlashcardProgress(localData: {
   return {
     success: true,
     data: {
+      level: remoteData.level as "A2" | "B1" | "Mix",
       current_index: remoteData.current_index,
       deck_ids: remoteData.deck_ids,
       is_reverse: remoteData.is_reverse,

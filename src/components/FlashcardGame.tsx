@@ -74,7 +74,10 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
   const [isReverse, setIsReverse] = useState(false);
   const [isReviewMode, setIsReviewMode] = useState(false);
   const [isReviewKnownMode, setIsReviewKnownMode] = useState(false);
+  const [activeLevel, setActiveLevel] = useState<"A2" | "B1" | "Mix">("A2");
+  const [showPaywallModal, setShowPaywallModal] = useState(false);
   const [pendingProgress, setPendingProgress] = useState<{
+    level: "A2" | "B1" | "Mix";
     current_index: number;
     deck_ids: string[];
     is_reverse: boolean;
@@ -94,15 +97,16 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
   // Initialize deck and progress
   useEffect(() => {
     const init = async () => {
-      // 1. Load Local Progress
-      const raw = localStorage.getItem("flashcard-progress");
+      // 1. Load Local Progress (per level)
+      const raw = localStorage.getItem(`flashcard-progress-${activeLevel}`);
       const localData = raw ? JSON.parse(raw) : null;
 
-      // 2. Sync with Server (PRO only)
+      // 2. Sync with Server (PRO only) - per level
       let serverData = null;
       if (isPro) {
         try {
           const result = await syncFlashcardProgress({
+            level: activeLevel,
             current_index: localData?.current_index || 0,
             deck_ids: localData?.deck_ids || [],
             is_reverse: localData?.is_reverse || false,
@@ -133,7 +137,9 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
 
       const finalData = (serverData?.updated_at || 0) > (localData?.updated_at || 0) ? serverData : localData;
 
-      if (user && finalData && finalData.current_index > 0) {
+      // Check if this progress belongs to current level (for backward compatibility with old data without level field)
+      const progressLevel = finalData?.level || (activeLevel === "A2" ? "A2" : null);
+      if (user && finalData && finalData.current_index > 0 && progressLevel === activeLevel) {
         setPendingProgress(finalData);
       }
 
@@ -141,6 +147,12 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
       if (!isInitialized) {
         // 默认开启乱序刷词 (Random Mode)
         let items = [...vocabularyList];
+        
+        // Filter by level
+        if (activeLevel !== "Mix") {
+          items = items.filter(item => item.level === activeLevel);
+        }
+
         if (!isReverse && !isReviewMode && !isReviewKnownMode) {
           items = items.sort(() => Math.random() - 0.5);
         }
@@ -151,10 +163,10 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     };
 
     init();
-  }, [isPro, effectiveLimit, profile, isInitialized, isReverse, user, isReviewMode, isReviewKnownMode]);
+  }, [isPro, effectiveLimit, profile, isInitialized, isReverse, user, isReviewMode, isReviewKnownMode, activeLevel]);
 
   // Handle deck updates (mode changes)
-  const updateDeck = useCallback((review: boolean, reverse: boolean, reviewKnown: boolean = false) => {
+  const updateDeck = useCallback((review: boolean, reverse: boolean, reviewKnown: boolean = false, level: "A2" | "B1" | "Mix" = activeLevel) => {
     let baseItems: VocabularyItem[] = [];
     
     if (review) {
@@ -164,6 +176,11 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
       baseItems = [...knownItems].sort(() => Math.random() - 0.5).slice(0, 10);
     } else {
       baseItems = [...vocabularyList];
+    }
+
+    // Filter by level
+    if (level !== "Mix") {
+      baseItems = baseItems.filter(item => item.level === level);
     }
     
     if (baseItems.length === 0 && (review || reviewKnown)) {
@@ -179,7 +196,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     setIsFlipped(false);
     setSessionStats({ correct: 0, incorrect: 0 });
     setIsSessionComplete(false);
-  }, [effectiveLimit]);
+  }, [effectiveLimit, activeLevel]);
 
   const handleResume = () => {
     if (!pendingProgress) return;
@@ -212,12 +229,13 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     setPendingProgress(null);
   };
 
-  // Sync Progress
+  // Sync Progress (per level)
   useEffect(() => {
     if (!isInitialized) return;
-    
+
     const now = Date.now();
     const payload = {
+      level: activeLevel,
       current_index: currentIndex,
       deck_ids: deck.map(i => i.id),
       is_reverse: isReverse,
@@ -225,13 +243,13 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
       is_review_known_mode: isReviewKnownMode,
       updated_at: now
     };
-    
-    localStorage.setItem("flashcard-progress", JSON.stringify(payload));
-    
+
+    localStorage.setItem(`flashcard-progress-${activeLevel}`, JSON.stringify(payload));
+
     if (isPro) {
       syncFlashcardProgress(payload).catch(console.error);
     }
-  }, [currentIndex, deck, isReverse, isReviewMode, isReviewKnownMode, isPro, isInitialized]);
+  }, [currentIndex, deck, isReverse, isReviewMode, isReviewKnownMode, isPro, isInitialized, activeLevel]);
 
   // Handle swipe/answer
   const handleAnswer = useCallback((correct: boolean) => {
@@ -415,15 +433,15 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
 
   const setMode = (mode: 'sequential' | 'random' | 'unknown' | 'review') => {
     if (!isPro) return;
-    
+
     let newReview = false;
     let newReverse = false;
     let newReviewKnown = false;
 
     if (mode === 'sequential') {
       newReverse = true;
-      // 只有进入顺序背词模式时，如果存在之前的顺序进度，则自动恢复，不提示
-      if (pendingProgress && pendingProgress.is_reverse && !pendingProgress.is_review_mode && !pendingProgress.is_review_known_mode) {
+      // 只有进入顺序背词模式时，如果存在之前同级别的顺序进度，则自动恢复，不提示
+      if (pendingProgress && pendingProgress.level === activeLevel && pendingProgress.is_reverse && !pendingProgress.is_review_mode && !pendingProgress.is_review_known_mode) {
         handleResume();
         return;
       }
@@ -452,11 +470,17 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     updateDeck(isReviewMode, isReverse, isReviewKnownMode);
   };
 
-  // Get current mastery counts
+  // Get current mastery data (with word objects for level-based filtering)
+  const getLevelWords = (dutchWords: string[] | undefined) => {
+    if (!dutchWords) return [];
+    const idMap = new Map(vocabularyList.map(i => [i.dutch, i]));
+    return dutchWords.map(d => idMap.get(d)).filter(Boolean) as VocabularyItem[];
+  };
+
   const savedKnown = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('vocabulary-known') || '[]') : [];
   const savedUnknown = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('vocabulary-unknown') || '[]') : [];
-  const knownCount = isPro ? (profile?.known_words?.length || savedKnown.length) : savedKnown.length;
-  const unknownCount = isPro ? (profile?.unknown_words?.length || savedUnknown.length) : savedUnknown.length;
+  const knownWords = isPro ? getLevelWords(profile?.known_words) : savedKnown;
+  const unknownWords = isPro ? getLevelWords(profile?.unknown_words) : savedUnknown;
 
   const texts = {
     zh: {
@@ -521,6 +545,53 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
 
   return (
     <div className="w-full max-w-md mx-auto">
+      {/* Level Selector */}
+      {!isSessionComplete && (
+        <div className="flex justify-center mb-4">
+          <div className="flex items-center bg-slate-100 p-1 rounded-xl shadow-inner">
+            <button
+              onClick={() => {
+                setActiveLevel("A2");
+                updateDeck(isReviewMode, isReverse, isReviewKnownMode, "A2");
+              }}
+              className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                activeLevel === "A2"
+                  ? "bg-white text-[var(--primary)] shadow-sm"
+                  : "text-slate-500 hover:text-slate-700"
+              }`}
+            >
+              A2
+            </button>
+            <button
+              onClick={() => {
+                setActiveLevel("B1");
+                updateDeck(isReviewMode, isReverse, isReviewKnownMode, "B1");
+              }}
+              className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                activeLevel === "B1"
+                  ? "bg-white text-[var(--primary)] shadow-sm"
+                  : "text-slate-500 hover:text-slate-700"
+              }`}
+            >
+              B1
+            </button>
+            <button
+              onClick={() => {
+                setActiveLevel("Mix");
+                updateDeck(isReviewMode, isReverse, isReviewKnownMode, "Mix");
+              }}
+              className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                activeLevel === "Mix"
+                  ? "bg-white text-[var(--primary)] shadow-sm"
+                  : "text-slate-500 hover:text-slate-700"
+              }`}
+            >
+              Mix
+            </button>
+          </div>
+        </div>
+      )}
+
       {/* Study Pack Controls */}
       {isPro && !isSessionComplete && (
         <div className="flex flex-col gap-3 mb-4 px-1">
@@ -771,7 +842,44 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
       {/* Mastery Stats at Bottom */}
       {isPro && !isSessionComplete && (
         <div className="mt-12 pt-8 border-t border-slate-100">
-          <FlashcardStats locale={locale} knownCount={knownCount} unknownCount={unknownCount} />
+          <FlashcardStats locale={locale} knownWords={knownWords} unknownWords={unknownWords} level={activeLevel} />
+        </div>
+      )}
+      {/* Paywall Modal */}
+      {showPaywallModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/50 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden animate-in zoom-in-95 duration-200">
+            <div className="p-8 text-center">
+              <div className="w-16 h-16 bg-orange-50 rounded-2xl flex items-center justify-center mx-auto mb-6">
+                <svg className="w-8 h-8 text-[var(--primary)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+              </div>
+              <h3 className="text-2xl font-black text-slate-900 mb-3">
+                {locale === 'zh' ? '解锁高级词汇' : 'Unlock Premium Vocabulary'}
+              </h3>
+              <p className="text-slate-500 mb-8">
+                {locale === 'zh' 
+                  ? '升级以解锁 B1 级别词汇库、无限闪卡刷词，以及更多高级功能。' 
+                  : 'Upgrade to unlock the B1 vocabulary list, unlimited flashcards, and more premium features.'}
+              </p>
+              <div className="flex flex-col gap-3">
+                <Link
+                  href={`/${locale}/resources`}
+                  className="w-full py-3.5 bg-[var(--primary)] text-white font-bold rounded-full hover:bg-orange-600 transition-all shadow-lg shadow-orange-200"
+                >
+                  {locale === 'zh' ? '查看升级方案' : 'View Premium Plans'}
+                </Link>
+                <button
+                  onClick={() => setShowPaywallModal(false)}
+                  className="w-full py-3.5 bg-slate-100 text-slate-600 font-bold rounded-full hover:bg-slate-200 transition-all"
+                >
+                  {locale === 'zh' ? '暂不升级' : 'Not Now'}
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>

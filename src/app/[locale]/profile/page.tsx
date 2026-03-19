@@ -35,8 +35,8 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: Loca
     vocabularyIsLearningMode: false,
     todayFlashcards: 0,
     flashcardMastery: 0, // Pro only: 0-100
-    knownCount: 0,
-    unknownCount: 0,
+    knownWords: [] as typeof vocabularyList,
+    unknownWords: [] as typeof vocabularyList,
   });
 
   const isZh = locale === "zh";
@@ -139,11 +139,18 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: Loca
       // 闪卡统计数据
       const savedKnown = JSON.parse(localStorage.getItem('vocabulary-known') || '[]');
       const savedUnknown = JSON.parse(localStorage.getItem('vocabulary-unknown') || '[]');
-      
-      const knownCount = isPro ? (profile?.known_words?.length || savedKnown.length) : savedKnown.length;
-      const unknownCount = isPro ? (profile?.unknown_words?.length || savedUnknown.length) : savedUnknown.length;
+
+      // Helper to convert dutch word list to VocabularyItem list
+      const getWordObjects = (dutchWords: string[] | undefined) => {
+        if (!dutchWords) return [];
+        const idMap = new Map(vocabularyList.map(i => [i.dutch, i]));
+        return dutchWords.map(d => idMap.get(d)).filter(Boolean);
+      };
+
+      const knownWords = isPro ? getWordObjects(profile?.known_words) : savedKnown;
+      const unknownWords = isPro ? getWordObjects(profile?.unknown_words) : savedUnknown;
       const totalWords = vocabularyList.length;
-      const masteryValue = totalWords > 0 ? Math.max(0, Math.round((knownCount / totalWords) * 100)) : 0;
+      const masteryValue = totalWords > 0 ? Math.max(0, Math.round((knownWords.length / totalWords) * 100)) : 0;
 
       setProgress({
         knmArticlesRead,
@@ -153,8 +160,8 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: Loca
         vocabularyIsLearningMode,
         todayFlashcards,
         flashcardMastery: masteryValue,
-        knownCount,
-        unknownCount,
+        knownWords,
+        unknownWords,
       });
     }
   }, [isPro, profile?.known_words, profile?.unknown_words]);
@@ -381,10 +388,11 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: Loca
 
           {/* Flashcard Mastery */}
           {isPro ? (
-            <FlashcardStats 
-              locale={locale} 
-              knownCount={progress.knownCount} 
-              unknownCount={progress.unknownCount} 
+            <FlashcardStats
+              locale={locale}
+              knownWords={progress.knownWords}
+              unknownWords={progress.unknownWords}
+              level="Mix"
             />
           ) : (
             <Link 

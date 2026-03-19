@@ -30,7 +30,10 @@
     "baseline-browser-mapping": "^2.8.32",
     "eslint": "^9",
     "eslint-config-next": "^16.0.7",
+    "openai": "^6.32.0",
+    "pdf-parse": "^2.4.5",
     "tailwindcss": "^4",
+    "ts-node": "^10.9.2",
     "typescript": "^5"
   }
 }
