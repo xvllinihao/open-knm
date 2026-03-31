@@ -81,7 +81,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                  href={`/${locale}/vocabulary`}
                  className="h-12 px-8 rounded-full bg-white text-slate-700 font-bold text-base border border-slate-200 flex items-center hover:bg-slate-50 transition-all"
                >
-                 {isZh ? 'A2+B1 词汇' : 'A2+B1 Vocabulary'}
+                 {isZh ? '高频词汇' : 'Vocabulary'}
                </Link>
             </div>
 
