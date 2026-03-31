@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { changelogData } from "@/data/changelog";
 import { JsonLd } from "@/components/StructuredData";
 import { courseSchema, breadcrumbSchema, howToSchema } from "@/lib/structured-data";
+import { CollapsibleLearningPath } from "@/components/CollapsibleLearningPath";
 
 export default async function HomePage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -74,13 +75,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                  href={`/${locale}/knm`}
                  className="h-12 px-8 rounded-full bg-[var(--primary)] text-white font-bold text-base flex items-center hover:bg-orange-600 transition-all hover:scale-105 shadow-md shadow-orange-200"
                >
-                 {isZh ? '开始学习' : 'Start Learning'}
+                 {isZh ? 'KNM 知识考点' : 'KNM Topics'}
                </Link>
                <Link
                  href={`/${locale}/vocabulary`}
                  className="h-12 px-8 rounded-full bg-white text-slate-700 font-bold text-base border border-slate-200 flex items-center hover:bg-slate-50 transition-all"
                >
-                 {isZh ? '高频词汇' : 'Vocabulary'}
+                 {isZh ? 'A2+B1 词汇' : 'A2+B1 Vocabulary'}
                </Link>
             </div>
 
@@ -106,27 +107,48 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
           <section className="w-full lg:flex-1 max-w-md lg:max-w-lg mx-auto">
             <div className="grid gap-4">
 
-               {/* Resources / Support Promo Card */}
+               {/* Vocabulary Promo Card */}
                <Link
-                 href={`/${locale}/resources`}
+                 href={`/${locale}/vocabulary`}
                  className="group flex items-center p-4 sm:p-5 bg-orange-50 rounded-2xl border border-orange-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
                >
                   <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform border border-orange-100 shadow-sm shrink-0">
-                    🧋
+                    📚
                   </div>
                   <div className="flex-1 min-w-0 relative z-10">
                     <div className="flex items-center gap-2 mb-0.5">
                       <h3 className="text-base sm:text-lg font-bold text-slate-900 truncate min-w-0">
-                        {isZh ? '闪卡刷词 & 支持' : 'Flashcards & Support'}
+                        {isZh ? 'A2+B1 词汇表' : 'A2+B1 Vocabulary'}
                       </h3>
-                      <span className="inline-flex px-2 py-0.5 rounded-full bg-orange-100 text-orange-700 text-[10px] font-bold uppercase tracking-wide shrink-0">€5</span>
+                      <span className="inline-flex px-2 py-0.5 rounded-full bg-green-100 text-green-700 text-[10px] font-bold uppercase tracking-wide shrink-0">Free</span>
                     </div>
                     <p className="text-slate-600 text-sm truncate">
-                      {isZh ? '请喝一杯奶茶，解锁无限刷词功能。' : 'Buy me a tea to unlock unlimited flashcards.'}
+                      {isZh ? '1300+ 词，完全免费，含 B1 进阶词汇。' : '1300+ words, completely free including B1 vocabulary.'}
                     </p>
                   </div>
                   <div className="ml-2 sm:ml-3 relative z-10">
                     <span className="text-orange-600 group-hover:text-orange-700 transition-colors text-lg">→</span>
+                  </div>
+               </Link>
+
+               {/* Unified KNM Card */}
+               <Link
+                 href={`/${locale}/knm`}
+                 className="group flex items-center p-4 sm:p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
+               >
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-50 rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform shrink-0">
+                    🇳🇱
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="text-base sm:text-lg font-bold text-slate-900 truncate min-w-0">
+                      {isZh ? 'KNM 知识考点' : 'Knowledge of Dutch Society'}
+                    </h3>
+                    <p className="text-slate-500 text-sm truncate">
+                      {isZh ? '历史、法律、医疗、工作全覆盖。' : 'History, Law, Health, Work & Regulations.'}
+                    </p>
+                  </div>
+                  <div className="ml-2 sm:ml-3">
+                    <span className="text-slate-300 group-hover:text-[var(--primary)] transition-colors text-lg">→</span>
                   </div>
                </Link>
 
@@ -154,30 +176,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                   </div>
                </Link>
 
-               {/* Vocabulary Promo Card */}
-               <Link
-                 href={`/${locale}/vocabulary`}
-                 className="group flex items-center p-4 sm:p-5 bg-orange-50 rounded-2xl border border-orange-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
-               >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform border border-orange-100 shadow-sm shrink-0">
-                    📚
-                  </div>
-                  <div className="flex-1 min-w-0 relative z-10">
-                    <div className="flex items-center gap-2 mb-0.5">
-                      <h3 className="text-base sm:text-lg font-bold text-slate-900 truncate min-w-0">
-                        {isZh ? 'A2+B1 词汇表' : 'A2+B1 Vocabulary'}
-                      </h3>
-                      <span className="inline-flex px-2 py-0.5 rounded-full bg-green-100 text-green-700 text-[10px] font-bold uppercase tracking-wide shrink-0">Free</span>
-                    </div>
-                    <p className="text-slate-600 text-sm truncate">
-                      {isZh ? '1300+ 词，完全免费，含 B1 进阶词汇。' : '1300+ words, completely free including B1 vocabulary.'}
-                    </p>
-                  </div>
-                  <div className="ml-2 sm:ml-3 relative z-10">
-                    <span className="text-orange-600 group-hover:text-orange-700 transition-colors text-lg">→</span>
-                  </div>
-               </Link>
-
                {/* Speaking Promo Card */}
                <Link
                  href={`/${locale}/speaking`}
@@ -202,29 +200,35 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                   </div>
                </Link>
 
-               {/* Unified KNM Card */}
+               {/* Resources / Support Promo Card */}
                <Link
-                 href={`/${locale}/knm`}
-                 className="group flex items-center p-4 sm:p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
+                 href={`/${locale}/resources`}
+                 className="group flex items-center p-4 sm:p-5 bg-orange-50 rounded-2xl border border-orange-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
                >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-50 rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform shrink-0">
-                    🇳🇱
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform border border-orange-100 shadow-sm shrink-0">
+                    🧋
                   </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="text-base sm:text-lg font-bold text-slate-900 truncate min-w-0">
-                      {isZh ? 'KNM 知识考点' : 'Knowledge of Dutch Society'}
-                    </h3>
-                    <p className="text-slate-500 text-sm truncate">
-                      {isZh ? '历史、法律、医疗、工作全覆盖。' : 'History, Law, Health, Work & Regulations.'}
+                  <div className="flex-1 min-w-0 relative z-10">
+                    <div className="flex items-center gap-2 mb-0.5">
+                      <h3 className="text-base sm:text-lg font-bold text-slate-900 truncate min-w-0">
+                        {isZh ? '闪卡刷词 & 支持' : 'Flashcards & Support'}
+                      </h3>
+                      <span className="inline-flex px-2 py-0.5 rounded-full bg-orange-100 text-orange-700 text-[10px] font-bold uppercase tracking-wide shrink-0">€5</span>
+                    </div>
+                    <p className="text-slate-600 text-sm truncate">
+                      {isZh ? '请喝一杯奶茶，解锁无限刷词功能。' : 'Buy me a tea to unlock unlimited flashcards.'}
                     </p>
                   </div>
-                  <div className="ml-2 sm:ml-3">
-                    <span className="text-slate-300 group-hover:text-[var(--primary)] transition-colors text-lg">→</span>
+                  <div className="ml-2 sm:ml-3 relative z-10">
+                    <span className="text-orange-600 group-hover:text-orange-700 transition-colors text-lg">→</span>
                   </div>
                </Link>
             </div>
           </section>
         </div>
+
+        {/* Collapsible Learning Path */}
+        <CollapsibleLearningPath isZh={isZh} />
       </main>
     </>
   );
