@@ -1,10 +1,10 @@
-# Open KNM Archive
+# Open KNM
 
 > Dutch vocabulary learning platform for anyone preparing for the KNM exam and civic integration (Inburgering) in the Netherlands
 
 ## About
 
-Open KNM Archive is a comprehensive Dutch vocabulary learning platform designed for people preparing for the KNM (Kennis van de Nederlandse Maatschappij) exam and civic integration (Inburgering) in the Netherlands. The platform provides multilingual support with both English and Chinese translations, making it accessible to a diverse range of learners. The platform provides structured vocabulary lists, flashcard practice, speaking exercises, and writing practice tools to help learners master essential Dutch words and phrases.
+Open KNM is a comprehensive Dutch learning platform designed for people preparing for the civic integration (Inburgering) in the Netherlands. The platform provides multilingual support with both English and Chinese translations, making it accessible to a diverse range of learners. The platform provides structured vocabulary lists, flashcard practice, speaking exercises, and writing practice tools to help learners master essential Dutch words and phrases.
 
 ## Features
 
