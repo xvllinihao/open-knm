@@ -7,6 +7,18 @@ export type ChangelogItem = {
 
 export const changelogData: ChangelogItem[] = [
   {
+    version: "2.2.0",
+    date: "2026-04-02",
+    title: {
+      zh: "新增 A2 阅读与听力模拟，导航栏全面升级",
+      en: "Added A2 Reading & Listening Practice, Navigation Upgrade",
+    },
+    description: {
+      zh: "📖 阅读与听力模块：全新上线 A2 阅读和听力指南，包含考试技巧科普与各题型模拟练习。\n🎧 TTS 语音支持：听力练习现已支持浏览器原生 Text-to-Speech (TTS) 朗读功能。\n🎨 导航栏焕新：为所有导航项添加了精致的图标，并引入了“A2 备考”下拉菜单，将听、说、读、写四大模块整合，界面更清爽。\n✨ 首页 UI 优化：整合了考试技能卡片，优化了各功能入口的色彩搭配，并全局集成了官方模拟题入口。",
+      en: "📖 Reading & Listening: Launched new A2 Reading and Listening guides, featuring exam strategies and practice exercises for all question types.\n🎧 TTS Audio Support: Listening exercises now support native browser Text-to-Speech (TTS) playback.\n🎨 Navigation Upgrade: Added elegant icons to all navigation items and introduced an 'A2 Exams' dropdown menu, unifying the four skill modules for a cleaner look.\n✨ Homepage UI: Consolidated exam skill cards, optimized feature card colors, and integrated the official practice exam banner site-wide.",
+    },
+  },
+  {
     version: "2.1.1",
     date: "2026-03-19",
     title: {

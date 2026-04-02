@@ -37,7 +37,7 @@ function SectionHeader({ title, description, icon, locale }: { title: TriText, d
             {description && (
                 <p className="text-slate-700 ml-1">{getTriText(description, locale)}</p>
             )}
-            <p className="text-sm text-slate-400 font-medium ml-1 mt-1">{title.nl}</p>
+            {title.nl && <p className="text-sm text-slate-400 font-medium ml-1 mt-1">{title.nl}</p>}
         </div>
     );
 }
@@ -48,12 +48,12 @@ function RuleCard({ item, locale }: { item: WritingRule, locale: Locale }) {
             <div className="flex items-start gap-3">
                 <div className="mt-1 flex-shrink-0"><CheckIcon /></div>
                 <div>
-                    <p className="font-bold text-slate-800 text-lg mb-1">{item.content.nl}</p>
-                    <p className="text-slate-700">{getTriText(item.content, locale)}</p>
+                    {item.content.nl && <p className="font-bold text-slate-800 text-lg mb-1">{item.content.nl}</p>}
+                    <p className={`text-slate-700 ${!item.content.nl ? 'font-medium' : ''}`}>{getTriText(item.content, locale)}</p>
                     {item.example && (
                         <div className="mt-3 bg-slate-50 p-3 rounded-lg text-sm border-l-4 border-[var(--primary)]/30">
-                            <p className="font-medium text-slate-700">{item.example.nl}</p>
-                            <p className="text-slate-600 mt-1">{getTriText(item.example, locale)}</p>
+                            {item.example.nl && <p className="font-medium text-slate-700">{item.example.nl}</p>}
+                            <p className={`text-slate-600 ${item.example.nl ? 'mt-1' : ''}`}>{getTriText(item.example, locale)}</p>
                         </div>
                     )}
                 </div>
@@ -67,16 +67,18 @@ function GrammarCard({ item, locale }: { item: GrammarRule, locale: Locale }) {
         <div className="bg-white p-6 rounded-xl border border-slate-100 shadow-sm">
             <h3 className="font-bold text-lg text-[var(--primary)] mb-2">{item.topic}</h3>
             <div className="mb-4">
-                <p className="font-mono bg-slate-50 p-2 rounded text-slate-700 font-medium text-center border border-slate-100">
-                    {item.explanation.nl}
-                </p>
-                <p className="text-center text-xs text-slate-400 mt-1">{getTriText(item.explanation, locale)}</p>
+                {item.explanation.nl && (
+                    <p className="font-mono bg-slate-50 p-2 rounded text-slate-700 font-medium text-center border border-slate-100">
+                        {item.explanation.nl}
+                    </p>
+                )}
+                <p className={`text-center text-xs text-slate-400 ${item.explanation.nl ? 'mt-1' : ''}`}>{getTriText(item.explanation, locale)}</p>
             </div>
             <div className="space-y-2">
                 {item.examples.map((ex, idx) => (
                     <div key={idx} className="flex flex-col text-sm">
-                        <span className="font-medium text-slate-800">{ex.nl}</span>
-                        <span className="text-slate-600 text-xs">{getTriText(ex, locale)}</span>
+                        {ex.nl && <span className="font-medium text-slate-800">{ex.nl}</span>}
+                        <span className={`text-slate-600 text-xs ${!ex.nl ? 'font-medium' : ''}`}>{getTriText(ex, locale)}</span>
                     </div>
                 ))}
             </div>

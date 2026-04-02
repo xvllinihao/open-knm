@@ -1,0 +1,274 @@
+{
+  "meta": {
+    "title": {
+      "nl": "A2 Lezen",
+      "en": "A2 Reading Guide",
+      "zh": "A2 阅读指南"
+    },
+    "description": {
+      "nl": "Tips, strategieën en oefeningen voor het A2 leesexamen.",
+      "en": "Tips, strategies, and exercises for the A2 reading exam.",
+      "zh": "A2 阅读考试题型科普、阅读技巧与模拟练习题。"
+    },
+    "version": "1.0.0"
+  },
+  "sections": [
+    {
+      "id": "exam_info",
+      "title": {
+        "en": "About the Exam",
+        "zh": "考试科普"
+      },
+      "description": {
+        "en": "What to expect from the A2 reading exam?",
+        "zh": "A2 阅读考试考什么？"
+      },
+      "items": [
+        {
+          "type": "info",
+          "content": {
+            "en": "The exam lasts 65 minutes.",
+            "zh": "考试时长为 65 分钟。"
+          }
+        },
+        {
+          "type": "info",
+          "content": {
+            "en": "You will get about 25 questions.",
+            "zh": "总共有大约 25 道题。"
+          }
+        },
+        {
+          "type": "info",
+          "content": {
+            "en": "Types of texts: emails, advertisements, short articles, signs, and schedules.",
+            "zh": "文章类型：电子邮件、广告、短文、标志和时间表。"
+          }
+        },
+        {
+          "type": "info",
+          "content": {
+            "en": "All questions are multiple-choice (A, B, C, or D).",
+            "zh": "所有问题都是选择题（A, B, C 或 D）。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "reading_strategies",
+      "title": {
+        "en": "Reading Strategies",
+        "zh": "阅读技巧"
+      },
+      "description": {
+        "en": "How to best read the texts?",
+        "zh": "如何高效阅读文章并找到答案？"
+      },
+      "items": [
+        {
+          "type": "strategy",
+          "title": {
+            "en": "Read the question first",
+            "zh": "先读问题"
+          },
+          "content": {
+            "en": "Always read the question and answers first before reading the text. This way you know exactly what to look for.",
+            "zh": "在读文章之前，一定要先读问题和选项。这样你就知道要找什么信息。"
+          }
+        },
+        {
+          "type": "strategy",
+          "title": {
+            "en": "Scanning",
+            "zh": "寻读（找关键信息）"
+          },
+          "content": {
+            "en": "Look for specific information like names, times, dates, or prices without reading the whole text.",
+            "zh": "寻找特定的信息，如名字、时间、日期或价格，而不需要阅读全文。"
+          }
+        },
+        {
+          "type": "strategy",
+          "title": {
+            "en": "Signal words",
+            "zh": "信号词"
+          },
+          "content": {
+            "en": "Pay attention to words like 'maar' (but), 'want' (because), 'daarom' (therefore). They indicate the relationship between sentences.",
+            "zh": "注意像 'maar'（但是）、'want'（因为）、'daarom'（所以）这样的词。它们表明了句子之间的关系。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "practice_exercises",
+      "title": {
+        "nl": "Oefeningen",
+        "en": "Practice Exercises",
+        "zh": "模拟练习"
+      },
+      "categories": [
+        {
+          "id": "emails",
+          "title": {
+            "nl": "E-mails",
+            "en": "Emails",
+            "zh": "电子邮件"
+          },
+          "exercises": [
+            {
+              "id": "email_1",
+              "text": {
+                "nl": "Hoi Lisa,\n\nGa je morgen mee naar de bioscoop? De film begint om 20:00 uur. We kunnen daarvoor samen eten bij het Italiaanse restaurant. Zullen we om 18:30 uur afspreken bij het station?\n\nGroetjes, Mark"
+              },
+              "question": {
+                "nl": "Hoe laat spreken Lisa en Mark af?",
+                "en": "What time are Lisa and Mark meeting?",
+                "zh": "Lisa 和 Mark 几点见面？"
+              },
+              "options": [
+                { "id": "A", "text": "18:30 uur" },
+                { "id": "B", "text": "20:00 uur" },
+                { "id": "C", "text": "Morgenochtend" }
+              ],
+              "correctAnswer": "A",
+              "explanation": {
+                "nl": "In de tekst staat: 'Zullen we om 18:30 uur afspreken bij het station?'. 20:00 uur is de tijd dat de film begint.",
+                "en": "The text says: 'Shall we meet at 18:30 at the station?'. 20:00 is the time the movie starts.",
+                "zh": "文章中说：'Zullen we om 18:30 uur afspreken bij het station?'（我们 18:30 在火车站见面好吗？）。20:00 是电影开始的时间。"
+              }
+            }
+          ]
+        },
+        {
+          "id": "ads",
+          "title": {
+            "nl": "Advertenties",
+            "en": "Advertisements",
+            "zh": "广告"
+          },
+          "exercises": [
+            {
+              "id": "ad_1",
+              "text": {
+                "nl": "Te koop: Mooie rode fiets. De fiets is 2 jaar oud, maar ziet er nog nieuw uit. Hij heeft 3 versnellingen en goede lampen. Prijs: €150. Bel voor meer informatie: 06-12345678."
+              },
+              "question": {
+                "nl": "Wat is niet waar over de fiets?",
+                "en": "What is not true about the bike?",
+                "zh": "关于这辆自行车，哪一项是不真实的？"
+              },
+              "options": [
+                { "id": "A", "text": "De fiets is rood." },
+                { "id": "B", "text": "De fiets is nieuw." },
+                { "id": "C", "text": "De fiets kost 150 euro." }
+              ],
+              "correctAnswer": "B",
+              "explanation": {
+                "nl": "In de tekst staat: 'De fiets is 2 jaar oud, maar ziet er nog nieuw uit.' De fiets is dus niet nieuw, maar ziet er alleen nieuw uit.",
+                "en": "The text says: 'The bike is 2 years old, but still looks new.' So the bike is not new, it just looks new.",
+                "zh": "文章中说：'De fiets is 2 jaar oud, maar ziet er nog nieuw uit.'（这辆自行车已经 2 年了，但看起来还像新的一样）。所以这辆自行车不是新的，只是看起来新。"
+              }
+            }
+          ]
+        },
+        {
+          "id": "articles",
+          "title": {
+            "nl": "Korte artikelen",
+            "en": "Short Articles",
+            "zh": "短文"
+          },
+          "exercises": [
+            {
+              "id": "article_1",
+              "text": {
+                "nl": "Bibliotheek Centrum is gesloten van 15 juli tot en met 30 juli. We gaan verbouwen. U kunt uw boeken inleveren bij Bibliotheek Zuid. Vanaf 1 augustus zijn we weer open."
+              },
+              "question": {
+                "nl": "Wanneer gaat Bibliotheek Centrum weer open?",
+                "en": "When will Bibliotheek Centrum open again?",
+                "zh": "市中心图书馆什么时候重新开放？"
+              },
+              "options": [
+                { "id": "A", "text": "15 juli" },
+                { "id": "B", "text": "30 juli" },
+                { "id": "C", "text": "1 augustus" }
+              ],
+              "correctAnswer": "C",
+              "explanation": {
+                "nl": "In de tekst staat: 'Vanaf 1 augustus zijn we weer open.'",
+                "en": "The text says: 'From August 1st we are open again.'",
+                "zh": "文章中说：'Vanaf 1 augustus zijn we weer open.'（从 8 月 1 日起我们重新开放）。"
+              }
+            }
+          ]
+        },
+        {
+          "id": "signs",
+          "title": {
+            "nl": "Borden",
+            "en": "Signs",
+            "zh": "标志"
+          },
+          "exercises": [
+            {
+              "id": "sign_1",
+              "text": {
+                "nl": "[BORD]\n\nVerboden te parkeren voor de uitrit.\nAuto's worden weggesleept."
+              },
+              "question": {
+                "nl": "Wat mag je hier niet doen?",
+                "en": "What are you not allowed to do here?",
+                "zh": "你不能在这里做什么？"
+              },
+              "options": [
+                { "id": "A", "text": "Fietsen" },
+                { "id": "B", "text": "Je auto neerzetten" },
+                { "id": "C", "text": "Lopen" }
+              ],
+              "correctAnswer": "B",
+              "explanation": {
+                "nl": "Op het bord staat 'Verboden te parkeren'. Dit betekent dat je je auto hier niet mag neerzetten.",
+                "en": "The sign says 'Verboden te parkeren' (No parking). This means you cannot leave your car here.",
+                "zh": "标志上写着 'Verboden te parkeren'（禁止停车）。这意味着你不能把车停在这里。"
+              }
+            }
+          ]
+        },
+        {
+          "id": "schedules",
+          "title": {
+            "nl": "Schema's",
+            "en": "Schedules",
+            "zh": "时间表"
+          },
+          "exercises": [
+            {
+              "id": "schedule_1",
+              "text": {
+                "nl": "Trein naar Utrecht Centraal.\nSpoor 4.\nVertrek: 10:15, 10:45, 11:15, 11:45."
+              },
+              "question": {
+                "nl": "Hoe vaak gaat de trein naar Utrecht Centraal?",
+                "en": "How often does the train to Utrecht Centraal go?",
+                "zh": "去乌得勒支中央火车站的火车多久一班？"
+              },
+              "options": [
+                { "id": "A", "text": "Eén keer per uur" },
+                { "id": "B", "text": "Twee keer per uur" },
+                { "id": "C", "text": "Drie keer per uur" }
+              ],
+              "correctAnswer": "B",
+              "explanation": {
+                "nl": "De trein vertrekt om 10:15 en 10:45. Dat is twee keer in één uur (elke 30 minuten).",
+                "en": "The train departs at 10:15 and 10:45. That is twice in one hour (every 30 minutes).",
+                "zh": "火车在 10:15 和 10:45 出发。这是一小时两次（每 30 分钟一班）。"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

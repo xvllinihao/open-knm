@@ -26,6 +26,16 @@ Open KNM is a comprehensive Dutch learning platform designed for people preparin
 - Speaking prompts and scenarios
 - Real-world conversation practice
 
+### Reading Practice
+- Reading comprehension strategies
+- Practice with short articles, signs, and schedules
+- Exam-focused reading exercises
+
+### Listening Practice
+- Listening comprehension strategies
+- Audio exercises with Text-to-Speech (TTS)
+- Practice with announcements, conversations, and messages
+
 ### Writing Practice
 - Writing exercises and prompts
 - Sentence construction practice
