@@ -66,7 +66,7 @@ function TriLangDisplay({
       </p>
       {/* Dutch */}
       <div className="flex flex-col gap-0.5 border-l-2 border-slate-100 pl-3 mt-2">
-           <p className="text-sm text-slate-600 font-medium">{text.nl}</p>
+           <p className="text-sm text-slate-700 font-medium">{text.nl}</p>
       </div>
     </div>
   );
@@ -129,7 +129,7 @@ export function SpeakingPracticeCard({ question, locale }: Props) {
 
       {/* Header */}
       <div className="mb-6 flex items-start justify-between">
-        <div className="inline-flex items-center rounded-full bg-slate-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-500 ring-1 ring-slate-100">
+        <div className="inline-flex items-center rounded-full bg-slate-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-slate-600 ring-1 ring-slate-100">
           {question.topic}
         </div>
       </div>
@@ -144,7 +144,7 @@ export function SpeakingPracticeCard({ question, locale }: Props) {
               onChange={(e) => setHideQuestionText(e.target.checked)}
               className="w-4 h-4 rounded border-slate-300 text-[var(--primary)] focus:ring-[var(--primary)]"
             />
-            <span className="text-sm text-slate-600">
+            <span className="text-sm text-slate-700">
               {locale === "zh" 
                 ? "隐藏题目文本（模拟真实考试）" 
                 : "Hide question text (simulate real exam)"}
@@ -217,7 +217,7 @@ export function SpeakingPracticeCard({ question, locale }: Props) {
             ) : (
               <div className="flex-1 flex items-center justify-center min-h-[100px]">
                 <div className="text-center">
-                  <p className="text-sm text-slate-500 mb-2">
+                  <p className="text-sm text-slate-600 mb-2">
                     {locale === "zh" 
                       ? "题目文本已隐藏，请点击播放按钮听题" 
                       : "Question text is hidden. Click play to listen"}
@@ -265,7 +265,7 @@ export function SpeakingPracticeCard({ question, locale }: Props) {
                         }}
                         className={`
                           px-3 py-2 text-xs font-medium text-left transition-colors hover:bg-slate-50
-                          ${questionPlaybackSpeed === speed ? "text-[var(--primary)] bg-orange-50/50" : "text-slate-600"}
+                          ${questionPlaybackSpeed === speed ? "text-[var(--primary)] bg-orange-50/50" : "text-slate-700"}
                         `}
                       >
                         {speed}x
@@ -299,9 +299,9 @@ export function SpeakingPracticeCard({ question, locale }: Props) {
               <div className="space-y-2 flex-1">
                   <p className="text-base font-bold text-slate-800">{question.answer.nl}</p>
                   {locale === 'zh' ? (
-                      <p className="text-sm text-slate-500">{question.answer.zh}</p>
+                      <p className="text-sm text-slate-600">{question.answer.zh}</p>
                   ) : (
-                      <p className="text-sm text-slate-500">{question.answer.en}</p>
+                      <p className="text-sm text-slate-600">{question.answer.en}</p>
                   )}
               </div>
               
@@ -335,7 +335,7 @@ export function SpeakingPracticeCard({ question, locale }: Props) {
                                       }}
                                       className={`
                                           px-3 py-2 text-xs font-medium text-left transition-colors hover:bg-slate-50
-                                          ${playbackSpeed === speed ? "text-[var(--primary)] bg-orange-50/50" : "text-slate-600"}
+                                          ${playbackSpeed === speed ? "text-[var(--primary)] bg-orange-50/50" : "text-slate-700"}
                                       `}
                                   >
                                       {speed}x
@@ -348,7 +348,7 @@ export function SpeakingPracticeCard({ question, locale }: Props) {
           </div>
           
           {/* Tips */}
-          <div className="mt-4 pt-4 border-t border-slate-200/60 flex gap-3 text-xs text-slate-500">
+          <div className="mt-4 pt-4 border-t border-slate-200/60 flex gap-3 text-xs text-slate-600">
               <div className="mt-0.5 text-amber-400 shrink-0">
                   <LightbulbIcon />
               </div>
@@ -394,7 +394,7 @@ export function SpeakingPracticeCard({ question, locale }: Props) {
 
                 {/* Mobile: Show Message */}
                 <div className="md:hidden w-full p-3 rounded-xl bg-slate-50 border border-slate-100 text-center">
-                    <p className="text-xs text-slate-500 font-medium flex items-center justify-center gap-2">
+                    <p className="text-xs text-slate-600 font-medium flex items-center justify-center gap-2">
                         <DesktopIcon />
                         {locale === "zh" 
                             ? "由于浏览器限制，录音功能请在桌面端体验" 
@@ -440,7 +440,7 @@ export function SpeakingPracticeCard({ question, locale }: Props) {
                 ? "bg-green-50 text-green-700 border-green-200" 
                 : isMatchMedium 
                     ? "bg-amber-50 text-amber-700 border-amber-200"
-                    : "bg-slate-50 text-slate-600 border-slate-200"
+                    : "bg-slate-50 text-slate-700 border-slate-200"
             }
           `}>
              {Math.round(score * 100)}% Match

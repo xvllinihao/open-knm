@@ -61,7 +61,7 @@ function TriLangStack({
         {locale === 'zh' ? text.zh : text.en}
       </p>
       <div className="flex flex-wrap gap-x-2 gap-y-0 mt-0.5">
-         <span className="text-xs text-slate-500 font-medium">{text.nl}</span>
+         <span className="text-xs text-slate-600 font-medium">{text.nl}</span>
       </div>
     </div>
   );
@@ -120,7 +120,7 @@ function UniversalPhraseCard({
                             }}
                             className={`
                                 px-3 py-2 text-xs font-medium text-left transition-colors hover:bg-slate-50
-                                ${playbackSpeed === speed ? "text-[var(--primary)] bg-orange-50/50" : "text-slate-600"}
+                                ${playbackSpeed === speed ? "text-[var(--primary)] bg-orange-50/50" : "text-slate-700"}
                             `}
                         >
                             {speed}x
@@ -138,7 +138,7 @@ function UniversalPhraseCard({
               <p className="font-semibold text-slate-800 text-sm group-hover/item:text-[var(--primary)] transition-colors">
                 {phrase.dutch}
               </p>
-              <p className="text-xs text-slate-500 mt-0.5">
+              <p className="text-xs text-slate-600 mt-0.5">
                 {locale === 'zh' ? phrase.translation.zh : phrase.translation.en}
               </p>
             </div>
@@ -296,7 +296,7 @@ export function SpeakingContent({ locale }: Props) {
             {examOverviewCards.map((card) => (
                 <div key={card.id} className="group p-6 rounded-2xl border border-slate-100 bg-white shadow-sm hover:shadow-md transition-shadow">
                     <TriLangStack text={card.title} mainSize="text-xl" locale={locale} />
-                    <div className="mt-4 text-sm text-slate-600 leading-relaxed">
+                    <div className="mt-4 text-sm text-slate-700 leading-relaxed">
                         {locale === 'zh' ? card.detail.zh : card.detail.en}
                     </div>
                     {card.note && (
@@ -321,7 +321,7 @@ export function SpeakingContent({ locale }: Props) {
                 ? "荷兰语 A2 口试万能句式"
                 : "Dutch A2 Speaking: Go-to Phrases"}
             </h2>
-            <p className="text-sm text-slate-600 mt-1 max-w-2xl">
+            <p className="text-sm text-slate-700 mt-1 max-w-2xl">
               {locale === "zh"
                 ? "熟记这些句式，在考试中灵活替换关键词，助你流利应答。"
                 : "Memorise these patterns and swap words to build fluent answers."}
@@ -354,7 +354,7 @@ export function SpeakingContent({ locale }: Props) {
                   ? "推荐学习视频" 
                   : "Recommended Learning Videos"}
               </h3>
-              <p className="text-sm text-slate-600 mb-4 leading-relaxed">
+              <p className="text-sm text-slate-700 mb-4 leading-relaxed">
                 {locale === "zh"
                   ? "这个 YouTube 系列视频提供了实用的口语考试技巧和示例，建议在开始练习前观看。"
                   : "This YouTube playlist offers practical speaking exam tips and examples. We recommend watching before starting practice."}
@@ -387,7 +387,7 @@ export function SpeakingContent({ locale }: Props) {
             <h2 className="text-3xl font-black text-slate-900 mb-4">
                 {locale === 'zh' ? speakingCopy.practiceArenaTitle.zh : speakingCopy.practiceArenaTitle.en}
             </h2>
-            <p className="text-slate-500">
+            <p className="text-slate-600">
                 {locale === 'zh' ? speakingCopy.practiceArenaSubtitle.zh : speakingCopy.practiceArenaSubtitle.en}
             </p>
         </div>
@@ -403,7 +403,7 @@ export function SpeakingContent({ locale }: Props) {
                             onClick={() => handleTopicChange(theme.id)}
                             className={`
                                 relative px-4 py-2 rounded-full text-sm font-bold transition-all whitespace-nowrap
-                                ${isActive ? "text-white" : "text-slate-500 hover:text-slate-800"}
+                                ${isActive ? "text-white" : "text-slate-600 hover:text-slate-800"}
                             `}
                         >
                             {isActive && (

@@ -35,7 +35,7 @@ export default function FAQPage() {
         <h1 className="text-4xl font-bold text-slate-900 mb-4">
           {isZh ? '常见问题' : 'Frequently Asked Questions'}
         </h1>
-        <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+        <p className="text-lg text-slate-700 max-w-2xl mx-auto">
           {isZh
             ? '关于荷兰融入考试（KNM/Inburgering）的常见问题解答'
             : 'Everything you need to know about the Dutch Civic Integration Exam'}
@@ -52,7 +52,7 @@ export default function FAQPage() {
         <h2 className="text-2xl font-semibold text-slate-700 mb-2">
           {isZh ? '内容准备中' : 'Coming Soon'}
         </h2>
-        <p className="text-slate-500 mb-6">
+        <p className="text-slate-600 mb-6">
           {isZh ? '我们正在整理常见问题，敬请期待。' : 'We are compiling frequently asked questions. Stay tuned!'}
         </p>
         <p className="text-sm text-slate-400">

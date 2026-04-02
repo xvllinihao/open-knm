@@ -268,14 +268,14 @@ export default async function ArticlePage({ params }: Props) {
           {article.titles[locale]}
         </h1>
         
-        <div className="flex items-center gap-2 text-sm text-slate-500 font-medium">
+        <div className="flex items-center gap-2 text-sm text-slate-600 font-medium">
           <span>📅</span>
           <time dateTime={updatedAt}>
             {isZh ? '最后更新于' : 'Last updated:'} {new Date(updatedAt).toLocaleDateString(isZh ? 'zh-CN' : 'en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
           </time>
         </div>
 
-        <p className="text-xl text-slate-600 leading-relaxed font-light">
+        <p className="text-xl text-slate-700 leading-relaxed">
           {article.descriptions[locale]}
         </p>
       </div>
@@ -294,7 +294,7 @@ export default async function ArticlePage({ params }: Props) {
             <h3 className="text-lg font-bold text-slate-900">
               {isZh ? "内容正在撰写中" : "Content Writing in Progress"}
             </h3>
-            <p className="text-slate-500 max-w-md mx-auto">
+            <p className="text-slate-600 max-w-md mx-auto">
               {isZh
                 ? "本文的大纲已确认，正文内容正在编写和校对中。我们很快就会上线详细的 KNM 考点解析。"
                 : "The outline is confirmed, and the full content is being written and proofread. Detailed KNM explanations will be online soon."}

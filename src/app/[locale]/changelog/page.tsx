@@ -36,7 +36,7 @@ export default async function ChangelogPage({
         <h1 className="text-4xl font-black text-slate-900 tracking-tight">
           {isZh ? "更新日志" : "Changelog"}
         </h1>
-        <p className="text-lg text-slate-600">
+        <p className="text-lg text-slate-700">
           {isZh
             ? "我们会持续优化内容与体验，这里记录了每一次重要的更新。"
             : "We continuously improve content and experience. Here are the major updates."}
@@ -50,7 +50,7 @@ export default async function ChangelogPage({
             className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active"
           >
             {/* Icon */}
-            <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-100 group-hover:bg-[var(--primary)] group-hover:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 text-slate-500 transition-colors">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-slate-100 group-hover:bg-[var(--primary)] group-hover:text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 text-slate-600 transition-colors">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="w-5 h-5"
@@ -89,7 +89,7 @@ export default async function ChangelogPage({
               <h3 className="text-lg font-bold text-slate-900 mb-2">
                 {item.title[isZh ? "zh" : "en"] || item.title["zh"]}
               </h3>
-              <p className="text-slate-600 text-sm leading-relaxed">
+              <p className="text-slate-700 text-sm leading-relaxed">
                 {item.description[isZh ? "zh" : "en"] ||
                   item.description["zh"]}
               </p>

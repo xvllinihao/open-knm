@@ -35,7 +35,7 @@ function SectionHeader({ title, description, icon, locale }: { title: TriText, d
                 <h2 className="text-2xl font-bold text-slate-900">{getTriText(title, locale)}</h2>
             </div>
             {description && (
-                <p className="text-slate-600 ml-1">{getTriText(description, locale)}</p>
+                <p className="text-slate-700 ml-1">{getTriText(description, locale)}</p>
             )}
             <p className="text-sm text-slate-400 font-medium ml-1 mt-1">{title.nl}</p>
         </div>
@@ -49,11 +49,11 @@ function RuleCard({ item, locale }: { item: WritingRule, locale: Locale }) {
                 <div className="mt-1 flex-shrink-0"><CheckIcon /></div>
                 <div>
                     <p className="font-bold text-slate-800 text-lg mb-1">{item.content.nl}</p>
-                    <p className="text-slate-600">{getTriText(item.content, locale)}</p>
+                    <p className="text-slate-700">{getTriText(item.content, locale)}</p>
                     {item.example && (
                         <div className="mt-3 bg-slate-50 p-3 rounded-lg text-sm border-l-4 border-[var(--primary)]/30">
                             <p className="font-medium text-slate-700">{item.example.nl}</p>
-                            <p className="text-slate-500 mt-1">{getTriText(item.example, locale)}</p>
+                            <p className="text-slate-600 mt-1">{getTriText(item.example, locale)}</p>
                         </div>
                     )}
                 </div>
@@ -76,7 +76,7 @@ function GrammarCard({ item, locale }: { item: GrammarRule, locale: Locale }) {
                 {item.examples.map((ex, idx) => (
                     <div key={idx} className="flex flex-col text-sm">
                         <span className="font-medium text-slate-800">{ex.nl}</span>
-                        <span className="text-slate-500 text-xs">{getTriText(ex, locale)}</span>
+                        <span className="text-slate-600 text-xs">{getTriText(ex, locale)}</span>
                     </div>
                 ))}
             </div>
@@ -101,7 +101,7 @@ function ConnectorCard({ item, locale }: { item: Connector, locale: Locale }) {
             {item.example && (
                 <div className="text-sm">
                     <p className="text-slate-800 font-medium">{item.example.nl}</p>
-                    <p className="text-slate-500 text-xs mt-0.5">{getTriText(item.example, locale)}</p>
+                    <p className="text-slate-600 text-xs mt-0.5">{getTriText(item.example, locale)}</p>
                 </div>
             )}
         </div>
@@ -123,7 +123,7 @@ function EmailTemplateSection({ items, locale }: { items: EmailTemplatePart[], l
                                 {part.part}
                              </span>
                              <p className="font-medium text-slate-800 text-lg">{part.formal.nl}</p>
-                             <p className="text-sm text-slate-500">{getTriText(part.formal, locale)}</p>
+                             <p className="text-sm text-slate-600">{getTriText(part.formal, locale)}</p>
                         </div>
                     ))}
                 </div>
@@ -141,7 +141,7 @@ function EmailTemplateSection({ items, locale }: { items: EmailTemplatePart[], l
                                 {part.part}
                              </span>
                              <p className="font-medium text-slate-800 text-lg">{part.informal.nl}</p>
-                             <p className="text-sm text-slate-500">{getTriText(part.informal, locale)}</p>
+                             <p className="text-sm text-slate-600">{getTriText(part.informal, locale)}</p>
                         </div>
                     ))}
                 </div>
@@ -155,7 +155,7 @@ function ScenarioCard({ item, locale }: { item: Scenario, locale: Locale }) {
         <div className="bg-white rounded-xl border border-slate-100 shadow-sm overflow-hidden hover:border-[var(--primary)]/20 transition-all">
             <div className="bg-slate-50 px-5 py-3 border-b border-slate-100 flex justify-between items-center">
                 <h3 className="font-bold text-slate-800">{getTriText(item.title, locale)}</h3>
-                <span className="text-xs font-medium text-slate-500">{item.title.nl}</span>
+                <span className="text-xs font-medium text-slate-600">{item.title.nl}</span>
             </div>
             <div className="p-5 space-y-4">
                 {item.phrases.map((phrase, idx) => (
@@ -163,7 +163,7 @@ function ScenarioCard({ item, locale }: { item: Scenario, locale: Locale }) {
                         <p className="font-medium text-slate-800 group-hover:text-[var(--primary)] transition-colors">
                             {phrase.nl}
                         </p>
-                        <p className="text-xs text-slate-500 mt-0.5">
+                        <p className="text-xs text-slate-600 mt-0.5">
                             {getTriText(phrase, locale)}
                         </p>
                     </div>
@@ -184,14 +184,14 @@ function PracticeExerciseCard({ exercise, locale }: { exercise: PracticeExercise
                  </h4>
                  <div className="bg-slate-50 p-4 rounded-xl text-slate-700 whitespace-pre-line leading-relaxed border border-slate-100">
                     <p className="font-medium text-indigo-900 mb-2">{exercise.task.nl}</p>
-                    <p className="text-sm text-slate-500">{getTriText(exercise.task, locale)}</p>
+                    <p className="text-sm text-slate-600">{getTriText(exercise.task, locale)}</p>
                  </div>
             </div>
 
             <div className="flex justify-center mb-6">
                 <button 
                     onClick={() => setShowAnswer(!showAnswer)}
-                    className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-slate-200 text-slate-600 font-bold hover:border-[var(--primary)]/30 hover:text-[var(--primary)] hover:bg-[var(--primary)]/5 transition-all shadow-sm"
+                    className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-slate-200 text-slate-700 font-bold hover:border-[var(--primary)]/30 hover:text-[var(--primary)] hover:bg-[var(--primary)]/5 transition-all shadow-sm"
                 >
                     {showAnswer ? (
                         <>
@@ -221,7 +221,7 @@ function PracticeExerciseCard({ exercise, locale }: { exercise: PracticeExercise
                          <h4 className="text-xs font-bold text-blue-700 uppercase tracking-wider mb-1">
                             {locale === 'zh' ? "解析" : "Explanation"}
                         </h4>
-                        <p className="text-sm text-slate-600">
+                        <p className="text-sm text-slate-700">
                             {getTriText(exercise.answer.explanation, locale)}
                         </p>
                     </div>
@@ -246,7 +246,7 @@ function PracticeSection({ categories, locale }: { categories: PracticeCategory[
                         className={`px-4 py-2 rounded-full text-sm font-bold transition-all border ${
                             activeTab === cat.id
                                 ? "bg-[var(--primary)] text-white border-[var(--primary)] shadow-md transform scale-105"
-                                : "bg-white text-slate-600 border-slate-200 hover:border-[var(--primary)]/30 hover:text-[var(--primary)]"
+                                : "bg-white text-slate-700 border-slate-200 hover:border-[var(--primary)]/30 hover:text-[var(--primary)]"
                         }`}
                     >
                         {getTriText(cat.title, locale)}
@@ -364,7 +364,7 @@ export function WritingContent({ locale }: { locale: Locale }) {
                                     <h2 className="text-3xl font-black text-slate-900 mb-2">
                                         {getTriText(section.title, locale)}
                                     </h2>
-                                    <p className="text-slate-500">{section.title.nl}</p>
+                                    <p className="text-slate-600">{section.title.nl}</p>
                                 </div>
                                 <PracticeSection categories={section.categories || []} locale={locale} />
                              </section>

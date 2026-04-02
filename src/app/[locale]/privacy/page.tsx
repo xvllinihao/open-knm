@@ -29,7 +29,7 @@ export default async function PrivacyPage({
         <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mb-4">
           {isZh ? "隐私政策" : "Privacy Policy"}
         </h1>
-        <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-slate-500 text-sm">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4 text-slate-600 text-sm">
           <span>
             {isZh ? "最后更新：2025年12月14日" : "Last Updated: December 14, 2025"}
           </span>
@@ -38,7 +38,7 @@ export default async function PrivacyPage({
 
       <div className="space-y-10 text-slate-700 leading-relaxed">
         <div>
-          <p className="text-lg text-slate-600 mb-8">
+          <p className="text-lg text-slate-700 mb-8">
             {isZh
               ? "Open KNM 是一个开源项目。我们尊重您的隐私，并承诺保护您的个人数据。以下是我们如何收集、使用和保护您的信息的说明。"
               : "Open KNM is an open-source project. We respect your privacy and are committed to protecting your personal data. Here is how we collect, use, and safeguard your information."}
@@ -133,7 +133,7 @@ function PolicySection({ title, content }: { title: string; content: React.React
   return (
     <section>
       <h2 className="text-xl font-bold text-slate-900 mb-3">{title}</h2>
-      <div className="text-slate-600 leading-relaxed">
+      <div className="text-slate-700 leading-relaxed">
         {content}
       </div>
     </section>

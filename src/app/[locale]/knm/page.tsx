@@ -156,7 +156,7 @@ export default async function KnmPage({
         <h1 className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
           {isZh ? "KNM 考试专区" : "KNM Exam Zone"}
         </h1>
-        <p className="text-lg text-slate-600 leading-relaxed">
+        <p className="text-lg text-slate-700 leading-relaxed">
           {isZh
             ? "这里汇集了 Kennis van de Nederlandse Maatschappij (KNM) 考试的核心考点。从历史、地理到法律与医疗，我们用双语为你拆解每一个必考话题。"
             : "The core topics for the Kennis van de Nederlandse Maatschappij (KNM) exam. From history and geography to law and healthcare, we explain every essential topic bilingually. "}
@@ -165,7 +165,7 @@ export default async function KnmPage({
 
       <div className="flex flex-col gap-3">
         <div className="inline-flex flex-wrap items-center gap-2 rounded-full bg-slate-50 px-3 py-2 border border-slate-100">
-          <span className="text-xs font-semibold text-slate-500 uppercase tracking-widest">
+          <span className="text-xs font-semibold text-slate-600 uppercase tracking-widest">
             {isZh ? "按主题筛选" : "Filter by topic"}
           </span>
           <div className="flex flex-wrap gap-2">
@@ -183,7 +183,7 @@ export default async function KnmPage({
                   className={`px-3 py-1.5 rounded-full text-xs font-semibold border transition-colors ${
                     isActive
                       ? "bg-[var(--primary)] text-white border-[var(--primary)] shadow-sm"
-                      : "bg-white text-slate-600 border-slate-200 hover:border-[var(--primary)] hover:text-[var(--primary)]"
+                      : "bg-white text-slate-700 border-slate-200 hover:border-[var(--primary)] hover:text-[var(--primary)]"
                   }`}
                 >
                   {isZh ? filter.zh : filter.en}
@@ -192,7 +192,7 @@ export default async function KnmPage({
             })}
           </div>
         </div>
-        <p className="text-xs text-slate-500">
+        <p className="text-xs text-slate-600">
           {isZh
             ? `当前共 ${filteredArticles.length} 篇文章。`
             : `Currently showing ${filteredArticles.length} article(s).`}
@@ -218,7 +218,7 @@ export default async function KnmPage({
             ? "常见主题包括：历史与地理 (geschiedenis en geografie)、住房 (wonen)、政治与法治 (staatsinrichting en rechtsstaat)、工作与收入 (werk en inkomen)、公共机构 (instanties)、教育与抚育 (onderwijs en opvoeding)、价值观与礼仪 (omgangsvormen, waarden en normen) 以及医疗与健康 (gezondheid en gezondheidszorg)。"
             : "Topics include: History & Geography (geschiedenis en geografie), Housing (wonen), Politics & Law (staatsinrichting en rechtsstaat), Work & Income (werk en inkomen), Institutions (instanties), Education (onderwijs en opvoeding), Values & Norms (omgangsvormen, waarden en normen), and Healthcare (gezondheid en gezondheidszorg)."}
         </p>
-        <p className="text-xs text-slate-600">
+        <p className="text-xs text-slate-700">
           {isZh
             ? "了解官方大纲可以帮助你更有针对性地准备 KNM 考试。"
             : "Reviewing the official syllabus helps focus your KNM preparation."}

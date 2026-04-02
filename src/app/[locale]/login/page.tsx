@@ -222,7 +222,7 @@ function LoginPageContent({ params }: { params: Promise<{ locale: Locale }> }) {
           <h2 className="text-2xl font-bold tracking-tight text-slate-900">
             {mode === "login" ? texts.title : mode === "register" ? texts.registerTitle : texts.forgotTitle}
           </h2>
-          <p className="mt-2 text-sm text-slate-600">
+          <p className="mt-2 text-sm text-slate-700">
             {mode === "forgot" ? texts.forgotSubtitle : texts.subtitle}
           </p>
         </div>
@@ -280,7 +280,7 @@ function LoginPageContent({ params }: { params: Promise<{ locale: Locale }> }) {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600 transition-colors rounded"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-700 transition-colors rounded"
                     aria-label={showPassword ? texts.hidePassword : texts.showPassword}
                   >
                     <EyeIcon open={showPassword} />
@@ -298,7 +298,7 @@ function LoginPageContent({ params }: { params: Promise<{ locale: Locale }> }) {
                         setTurnstileToken(""); // Reset token when switching modes
                         turnstileRef.current?.reset(); // Reset Turnstile widget
                       }}
-                      className="text-xs text-slate-500 hover:text-[var(--primary)] transition-colors"
+                      className="text-xs text-slate-600 hover:text-[var(--primary)] transition-colors"
                     >
                       {texts.forgotPassword}
                     </button>
@@ -326,7 +326,7 @@ function LoginPageContent({ params }: { params: Promise<{ locale: Locale }> }) {
                     <button
                       type="button"
                       onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                      className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600 transition-colors rounded"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-700 transition-colors rounded"
                       aria-label={showConfirmPassword ? texts.hidePassword : texts.showPassword}
                     >
                       <EyeIcon open={showConfirmPassword} />
@@ -372,7 +372,7 @@ function LoginPageContent({ params }: { params: Promise<{ locale: Locale }> }) {
         </form>
 
         {/* Switch Mode */}
-        <p className="text-center text-sm text-slate-600">
+        <p className="text-center text-sm text-slate-700">
           {mode === "forgot" ? (
             <button
               type="button"

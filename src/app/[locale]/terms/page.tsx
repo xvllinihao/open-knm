@@ -12,7 +12,7 @@ export default function TermsPage({ params }: { params: Promise<{ locale: Locale
         <h1 className="text-3xl font-bold text-slate-900">
           {isZh ? "服务条款" : "Terms of Service"}
         </h1>
-        <p className="text-slate-500">
+        <p className="text-slate-600">
           {isZh ? "最后更新：2024年12月" : "Last updated: December 2024"}
         </p>
       </div>

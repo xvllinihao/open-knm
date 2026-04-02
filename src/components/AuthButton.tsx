@@ -44,7 +44,7 @@ export function AuthButton({ locale, mobile, onClose }: AuthButtonProps) {
     return (
       <Link
         href={getLocalizedPath(locale, "/profile")}
-        className="flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-[var(--primary)] transition-colors"
+        className="flex items-center gap-2 text-sm font-medium text-slate-700 hover:text-[var(--primary)] transition-colors"
       >
         <span className="w-7 h-7 rounded-full bg-[var(--primary)] flex items-center justify-center text-white text-xs font-bold shadow-sm">
           {user.email?.charAt(0).toUpperCase() || "U"}
