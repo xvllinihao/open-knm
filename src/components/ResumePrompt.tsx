@@ -36,7 +36,7 @@ export function ResumePrompt({
         <div className="flex gap-2 sm:shrink-0">
           <button
             onClick={onDismiss}
-            className="rounded-lg px-3 py-1.5 text-xs font-semibold text-slate-500 hover:bg-slate-50 hover:text-slate-700 transition-colors"
+            className="rounded-lg px-3 py-1.5 text-xs font-semibold text-slate-600 hover:bg-slate-50 hover:text-slate-700 transition-colors"
           >
             {dismissText}
           </button>

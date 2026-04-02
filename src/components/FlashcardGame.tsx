@@ -27,7 +27,7 @@ function SpeakButton({ text, speak }: { text: string; speak: (text: string) => v
       className={`p-2 rounded-full transition-all ${
         isPlaying 
           ? 'bg-[var(--primary)] text-white scale-110' 
-          : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:scale-105'
+          : 'bg-slate-100 text-slate-700 hover:bg-slate-200 hover:scale-105'
       }`}
       aria-label="Play pronunciation"
     >
@@ -557,7 +557,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
               className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
                 activeLevel === "A2"
                   ? "bg-white text-[var(--primary)] shadow-sm"
-                  : "text-slate-500 hover:text-slate-700"
+                  : "text-slate-600 hover:text-slate-700"
               }`}
             >
               A2
@@ -570,7 +570,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
               className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
                 activeLevel === "B1"
                   ? "bg-white text-[var(--primary)] shadow-sm"
-                  : "text-slate-500 hover:text-slate-700"
+                  : "text-slate-600 hover:text-slate-700"
               }`}
             >
               B1
@@ -583,7 +583,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
               className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
                 activeLevel === "Mix"
                   ? "bg-white text-[var(--primary)] shadow-sm"
-                  : "text-slate-500 hover:text-slate-700"
+                  : "text-slate-600 hover:text-slate-700"
               }`}
             >
               Mix
@@ -601,7 +601,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
               className={`py-2 px-1 rounded-xl text-[10px] sm:text-xs font-bold transition-all border ${
                 !isReviewMode && !isReviewKnownMode && isReverse 
                   ? "bg-[var(--primary)] text-white border-[var(--primary)] shadow-md" 
-                  : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
+                  : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
               }`}
             >
               {texts.modeSequential}
@@ -611,7 +611,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
               className={`py-2 px-1 rounded-xl text-[10px] sm:text-xs font-bold transition-all border ${
                 !isReviewMode && !isReviewKnownMode && !isReverse 
                   ? "bg-[var(--primary)] text-white border-[var(--primary)] shadow-md" 
-                  : "bg-white text-slate-600 border-slate-200 hover:bg-slate-50"
+                  : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
               }`}
             >
               {texts.modeRandom}
@@ -647,7 +647,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
              <span className="text-sm font-bold text-slate-700">
                {isReviewMode ? texts.descUnknown : isReviewKnownMode ? texts.descReview : isReverse ? texts.descSequential : texts.descRandom}
              </span>
-             <span className="text-xs text-slate-500">{texts.progress}: {displayProgressCount} / {displayTotalCount}</span>
+             <span className="text-xs text-slate-600">{texts.progress}: {displayProgressCount} / {displayTotalCount}</span>
            </div>
            <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
              <div 
@@ -674,15 +674,15 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
             <div className="flex gap-8 mb-6 mt-4">
               <div className="text-center">
                 <div className="text-3xl font-black text-green-500">{sessionStats.correct}</div>
-                <div className="text-xs text-slate-500">{texts.correct}</div>
+                <div className="text-xs text-slate-600">{texts.correct}</div>
               </div>
               <div className="text-center">
                 <div className="text-3xl font-black text-red-400">{sessionStats.incorrect}</div>
-                <div className="text-xs text-slate-500">{texts.incorrect}</div>
+                <div className="text-xs text-slate-600">{texts.incorrect}</div>
               </div>
             </div>
 
-            <p className="text-slate-500 mb-6 text-sm">
+            <p className="text-slate-600 mb-6 text-sm">
               {texts.loginToUnlock}
             </p>
             
@@ -719,13 +719,13 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
             <h3 className="text-lg font-bold text-slate-800 mb-2">
               {isReviewMode ? texts.modeUnknown : texts.modeReview}
             </h3>
-            <p className="text-slate-500 text-sm leading-relaxed">
+            <p className="text-slate-600 text-sm leading-relaxed">
               {isReviewMode ? texts.modeUnknownEmpty : texts.modeReviewEmpty}
             </p>
             
             <button
               onClick={() => setMode(isReviewMode ? 'review' : 'random')}
-              className="mt-8 px-6 py-2 bg-slate-100 text-slate-600 font-bold rounded-full hover:bg-slate-200 transition-all"
+              className="mt-8 px-6 py-2 bg-slate-100 text-slate-700 font-bold rounded-full hover:bg-slate-200 transition-all"
             >
               {isReviewMode ? texts.modeReview : texts.modeRandom}
             </button>
@@ -859,7 +859,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
               <h3 className="text-2xl font-black text-slate-900 mb-3">
                 {locale === 'zh' ? '解锁高级词汇' : 'Unlock Premium Vocabulary'}
               </h3>
-              <p className="text-slate-500 mb-8">
+              <p className="text-slate-600 mb-8">
                 {locale === 'zh' 
                   ? '升级以解锁 B1 级别词汇库、无限闪卡刷词，以及更多高级功能。' 
                   : 'Upgrade to unlock the B1 vocabulary list, unlimited flashcards, and more premium features.'}
@@ -873,7 +873,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
                 </Link>
                 <button
                   onClick={() => setShowPaywallModal(false)}
-                  className="w-full py-3.5 bg-slate-100 text-slate-600 font-bold rounded-full hover:bg-slate-200 transition-all"
+                  className="w-full py-3.5 bg-slate-100 text-slate-700 font-bold rounded-full hover:bg-slate-200 transition-all"
                 >
                   {locale === 'zh' ? '暂不升级' : 'Not Now'}
                 </button>

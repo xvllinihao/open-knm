@@ -24,7 +24,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tighter">
           {isZh ? '关于 Open KNM' : 'About Open KNM'}
         </h1>
-        <p className="text-xl text-slate-600 leading-relaxed font-light max-w-2xl mx-auto">
+        <p className="text-xl text-slate-700 leading-relaxed max-w-2xl mx-auto">
           {isZh 
             ? '让每一位在荷兰生活的人都能轻松获取融入所需的知识。'
             : 'Making integration knowledge accessible to everyone living in the Netherlands.'}
@@ -77,7 +77,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
              </div>
           </div>
           
-          <div className="space-y-4 text-lg leading-relaxed text-slate-300 font-light">
+          <div className="space-y-4 text-lg leading-relaxed text-slate-300">
              <p>
                {isZh 
                  ? "你好！我是一名在荷兰生活和工作了 5 年的工程师，目前在 Booking.com 工作。和你一样，我也正在为荷兰语融入考试（Inburgering）做准备。"
@@ -160,7 +160,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
             <h2 className="text-3xl font-bold text-slate-900">
             {isZh ? '如何参与贡献' : 'How to Contribute'}
             </h2>
-            <p className="text-slate-500 mt-2">
+            <p className="text-slate-600 mt-2">
             {isZh ? '这个项目属于每一个人。我们需要你的帮助！' : 'This project belongs to everyone. We need your help!'}
             </p>
         </div>
@@ -174,7 +174,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                 <h3 className="text-xl font-bold text-slate-900">
                     {isZh ? '发现错误 / 提出建议' : 'Report Issues / Suggestions'}
                 </h3>
-                <p className="text-slate-600 text-sm leading-relaxed h-20">
+                <p className="text-slate-700 text-sm leading-relaxed h-20">
                     {isZh 
                     ? '如果你发现文章中有错别字、信息过时，或者有想看但没找到的内容，请直接在 GitHub 上提交 Issue。'
                     : 'Found a typo? Outdated info? Or missing content you want to see? Please open an Issue on GitHub.'}
@@ -197,7 +197,7 @@ export default async function AboutPage({ params }: { params: Promise<{ locale: 
                 <h3 className="text-xl font-bold text-slate-900">
                     {isZh ? '贡献代码 / 内容' : 'Contribute Code / Content'}
                 </h3>
-                <p className="text-slate-600 text-sm leading-relaxed h-20">
+                <p className="text-slate-700 text-sm leading-relaxed h-20">
                     {isZh 
                     ? '你可以直接 Fork 仓库，修改或添加 MDX 文档，然后提交 Pull Request。我们会尽快审核合并！'
                     : 'Fork the repo, edit or add MDX files, and submit a Pull Request. We will review and merge it ASAP!'}

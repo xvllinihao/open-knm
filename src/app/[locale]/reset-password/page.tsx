@@ -145,7 +145,7 @@ export default function ResetPasswordPage({ params }: { params: Promise<{ locale
           <h2 className="text-2xl font-bold tracking-tight text-slate-900">
             {texts.invalidLink}
           </h2>
-          <p className="text-sm text-slate-600">{texts.invalidLinkMessage}</p>
+          <p className="text-sm text-slate-700">{texts.invalidLinkMessage}</p>
           <Link
             href={`/${locale}/login`}
             className="inline-block rounded-lg bg-[var(--primary)] px-6 py-2.5 font-semibold text-white shadow-sm transition-all hover:bg-orange-600"
@@ -170,7 +170,7 @@ export default function ResetPasswordPage({ params }: { params: Promise<{ locale
           <h2 className="text-2xl font-bold tracking-tight text-slate-900">
             {texts.successTitle}
           </h2>
-          <p className="text-sm text-slate-600">{texts.successMessage}</p>
+          <p className="text-sm text-slate-700">{texts.successMessage}</p>
           <Link
             href={`/${locale}`}
             className="inline-block rounded-lg bg-[var(--primary)] px-6 py-2.5 font-semibold text-white shadow-sm transition-all hover:bg-orange-600"
@@ -190,7 +190,7 @@ export default function ResetPasswordPage({ params }: { params: Promise<{ locale
           <h2 className="text-2xl font-bold tracking-tight text-slate-900">
             {texts.title}
           </h2>
-          <p className="mt-2 text-sm text-slate-600">{texts.subtitle}</p>
+          <p className="mt-2 text-sm text-slate-700">{texts.subtitle}</p>
         </div>
 
         {/* Error Message */}
@@ -221,7 +221,7 @@ export default function ResetPasswordPage({ params }: { params: Promise<{ locale
               <button
                 type="button"
                 onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600 transition-colors rounded"
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-700 transition-colors rounded"
                 aria-label={showPassword ? texts.hidePassword : texts.showPassword}
               >
                 <EyeIcon open={showPassword} />
@@ -248,7 +248,7 @@ export default function ResetPasswordPage({ params }: { params: Promise<{ locale
               <button
                 type="button"
                 onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-600 transition-colors rounded"
+                className="absolute right-3 top-1/2 -translate-y-1/2 p-1 text-slate-400 hover:text-slate-700 transition-colors rounded"
                 aria-label={showConfirmPassword ? texts.hidePassword : texts.showPassword}
               >
                 <EyeIcon open={showConfirmPassword} />

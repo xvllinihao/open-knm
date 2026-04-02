@@ -58,13 +58,13 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
               Open <span className="text-[var(--primary)]">KNM</span>
             </h1>
 
-            <p className="text-xl sm:text-2xl text-slate-600 leading-relaxed font-light">
+            <p className="text-xl sm:text-2xl text-slate-700 leading-relaxed">
               {isZh
                 ? '轻松备考，从容生活。你的荷兰融入考试开源指南。'
                 : 'Pass the exam. Settle in. Your open-source guide to Dutch civic integration.'}
             </p>
 
-            <p className="text-base sm:text-lg text-slate-500 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-700 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
               {isZh
                 ? '汇集了社区贡献的核心考点、高频词汇和实用练习，这里有一份更轻量的备考方案，帮你用最轻松的方式通过 Inburgering 考试，更快适应荷兰生活。'
                 : 'Curated by the community, our essential topics, vocabulary, and practice questions offer a lighter way to prepare. A simpler path to passing the Inburgering exam and feeling at home in the Netherlands.'}
@@ -89,7 +89,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
             <div className="pt-8 border-t border-slate-100 mt-8">
               <Link href={`/${locale}/changelog`} className="group block">
                 <div className="flex items-center gap-2 mb-2 justify-center lg:justify-start">
-                  <span className="inline-flex items-center justify-center px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-600 uppercase tracking-wide">
+                  <span className="inline-flex items-center justify-center px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-slate-700 uppercase tracking-wide">
                     {isZh ? "最新更新" : "Latest Update"}
                   </span>
                   <span className="text-xs font-medium text-slate-400">
@@ -122,7 +122,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                       </h3>
                       <span className="inline-flex px-2 py-0.5 rounded-full bg-green-100 text-green-700 text-[10px] font-bold uppercase tracking-wide shrink-0">Free</span>
                     </div>
-                    <p className="text-slate-600 text-sm truncate">
+                    <p className="text-slate-700 text-sm truncate">
                       {isZh ? '1300+ 词，完全免费，含 B1 进阶词汇。' : '1300+ words, completely free including B1 vocabulary.'}
                     </p>
                   </div>
@@ -143,7 +143,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                     <h3 className="text-base sm:text-lg font-bold text-slate-900 truncate min-w-0">
                       {isZh ? 'KNM 知识考点' : 'Knowledge of Dutch Society'}
                     </h3>
-                    <p className="text-slate-500 text-sm truncate">
+                    <p className="text-slate-700 text-sm truncate">
                       {isZh ? '历史、法律、医疗、工作全覆盖。' : 'History, Law, Health, Work & Regulations.'}
                     </p>
                   </div>
@@ -167,7 +167,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                       </h3>
                       <span className="inline-flex px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-bold uppercase tracking-wide shrink-0">New</span>
                     </div>
-                    <p className="text-slate-600 text-sm truncate">
+                    <p className="text-slate-700 text-sm truncate">
                       {isZh ? '万能模板 + 全真模拟题库。' : 'Templates, rules & mock exams.'}
                     </p>
                   </div>
@@ -191,7 +191,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                       </h3>
                       <span className="inline-flex px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 text-[10px] font-bold uppercase tracking-wide shrink-0">Beta</span>
                     </div>
-                    <p className="text-slate-600 text-sm truncate">
+                    <p className="text-slate-700 text-sm truncate">
                       {isZh ? '实时语音反馈，模拟真实考试场景。' : 'Interactive practice with real-time feedback.'}
                     </p>
                   </div>
@@ -215,7 +215,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                       </h3>
                       <span className="inline-flex px-2 py-0.5 rounded-full bg-orange-100 text-orange-700 text-[10px] font-bold uppercase tracking-wide shrink-0">€5</span>
                     </div>
-                    <p className="text-slate-600 text-sm truncate">
+                    <p className="text-slate-700 text-sm truncate">
                       {isZh ? '请喝一杯奶茶，解锁无限刷词功能。' : 'Buy me a tea to unlock unlimited flashcards.'}
                     </p>
                   </div>

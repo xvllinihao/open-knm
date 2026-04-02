@@ -258,23 +258,23 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: Loca
       <div className="bg-white rounded-2xl border border-slate-100 shadow-sm p-6 mb-6">
         <div className="space-y-4">
           <div className="flex justify-between items-center pb-4 border-b border-slate-100">
-            <span className="text-slate-500">{texts.email}</span>
+            <span className="text-slate-600">{texts.email}</span>
             <span className="font-medium text-slate-900">{user.email}</span>
           </div>
           
           <div className="flex justify-between items-center pb-4 border-b border-slate-100">
-            <span className="text-slate-500">{texts.tier}</span>
+            <span className="text-slate-600">{texts.tier}</span>
             <span className={`font-bold px-3 py-1 rounded-full text-sm ${
               isPro 
                 ? "bg-purple-100 text-purple-700" 
-                : "bg-slate-100 text-slate-600"
+                : "bg-slate-100 text-slate-700"
             }`}>
               {isPro ? texts.pro : texts.free}
             </span>
           </div>
 
           <div className="flex justify-between items-center">
-            <span className="text-slate-500">{texts.memberSince}</span>
+            <span className="text-slate-600">{texts.memberSince}</span>
             <span className="font-medium text-slate-900">
               {user.created_at 
                 ? new Date(user.created_at).toLocaleDateString(isZh ? "zh-CN" : "en-US", {
@@ -319,7 +319,7 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: Loca
               />
             </div>
             {progress.knmArticlesRead > 0 && (
-              <p className="text-xs text-slate-500 mt-1 text-right">
+              <p className="text-xs text-slate-600 mt-1 text-right">
                 {Math.round((progress.knmArticlesRead / progress.knmTotalArticles) * 100)}% {texts.complete}
               </p>
             )}
@@ -353,7 +353,7 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: Loca
               />
             </div>
             {progress.vocabularyIsLearningMode && progress.vocabularyPage > 0 ? (
-              <p className="text-xs text-slate-500 mt-1 text-right">
+              <p className="text-xs text-slate-600 mt-1 text-right">
                 {Math.round((progress.vocabularyPage / progress.vocabularyTotalPages) * 100)}% {texts.complete}
               </p>
             ) : (
@@ -374,7 +374,7 @@ export default function ProfilePage({ params }: { params: Promise<{ locale: Loca
                 {progress.todayFlashcards} / {isPro ? "∞" : FREE_DAILY_FLASHCARD_LIMIT}
               </span>
               {!isPro && (
-                <span className="text-xs text-slate-500 block">
+                <span className="text-xs text-slate-600 block">
                   {texts.remaining}: {flashcardRemaining}
                 </span>
               )}

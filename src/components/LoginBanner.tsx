@@ -23,7 +23,7 @@ export function LoginBanner({ locale, onDismiss }: LoginBannerProps) {
         
         <button
           onClick={onDismiss}
-          className="p-1.5 rounded-full text-slate-400 hover:text-slate-600 hover:bg-orange-100 transition-colors flex-shrink-0"
+          className="p-1.5 rounded-full text-slate-400 hover:text-slate-700 hover:bg-orange-100 transition-colors flex-shrink-0"
           aria-label={isZh ? "关闭" : "Dismiss"}
         >
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-4 h-4">

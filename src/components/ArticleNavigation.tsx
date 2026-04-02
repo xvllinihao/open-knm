@@ -64,7 +64,7 @@ export function ArticleNavigation({ prev, next, locale }: ArticleNavigationProps
             href={`/${locale}/articles/${prev.slug}`}
             className="group flex flex-col p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-white hover:border-slate-300 hover:shadow-md transition-all text-left h-full"
           >
-            <div className="flex items-center gap-2 text-sm font-semibold text-slate-500 mb-2 group-hover:text-[var(--primary)] transition-colors">
+            <div className="flex items-center gap-2 text-sm font-semibold text-slate-600 mb-2 group-hover:text-[var(--primary)] transition-colors">
               <ArrowLeftIcon className="w-4 h-4" />
               {t.prev}
             </div>
@@ -81,7 +81,7 @@ export function ArticleNavigation({ prev, next, locale }: ArticleNavigationProps
             href={`/${locale}/articles/${next.slug}`}
             className="group flex flex-col p-4 rounded-xl border border-slate-200 bg-slate-50 hover:bg-white hover:border-slate-300 hover:shadow-md transition-all text-right h-full items-end"
           >
-            <div className="flex items-center gap-2 text-sm font-semibold text-slate-500 mb-2 group-hover:text-[var(--primary)] transition-colors">
+            <div className="flex items-center gap-2 text-sm font-semibold text-slate-600 mb-2 group-hover:text-[var(--primary)] transition-colors">
               {t.next}
               <ArrowRightIcon className="w-4 h-4" />
             </div>

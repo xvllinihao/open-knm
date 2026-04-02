@@ -8,7 +8,7 @@ export const ArticleSummary = ({ children, title = "本文摘要", icon = "📝"
       </div>
       <div className="space-y-2">
         <h4 className="font-bold text-slate-900">{title}</h4>
-        <div className="text-slate-600 leading-relaxed text-sm">{children}</div>
+        <div className="text-slate-700 leading-relaxed text-sm">{children}</div>
       </div>
     </div>
   </div>
@@ -46,7 +46,7 @@ export const ChineseColumn = ({ title, children }: { title?: string, children: R
         </h3>
       </div>
     )}
-    <div className="prose prose-slate text-slate-600 leading-relaxed prose-p:my-4 prose-headings:text-slate-800 prose-headings:font-semibold prose-strong:text-slate-800 prose-strong:font-bold prose-ul:list-disc prose-ul:pl-4">
+    <div className="prose prose-slate text-slate-700 leading-relaxed prose-p:my-4 prose-headings:text-slate-800 prose-headings:font-semibold prose-strong:text-slate-800 prose-strong:font-bold prose-ul:list-disc prose-ul:pl-4">
       {children}
     </div>
   </div>
@@ -61,7 +61,7 @@ export const EnglishColumn = ({ title, children }: { title?: string, children: R
         </h3>
       </div>
     )}
-    <div className="prose prose-slate text-slate-600 leading-relaxed prose-p:my-4 prose-headings:text-slate-800 prose-headings:font-semibold prose-strong:text-slate-800 prose-strong:font-bold prose-ul:list-disc prose-ul:pl-4">
+    <div className="prose prose-slate text-slate-700 leading-relaxed prose-p:my-4 prose-headings:text-slate-800 prose-headings:font-semibold prose-strong:text-slate-800 prose-strong:font-bold prose-ul:list-disc prose-ul:pl-4">
       {children}
     </div>
   </div>

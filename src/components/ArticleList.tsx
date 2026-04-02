@@ -23,7 +23,7 @@ export function ArticleList({ articles, locale }: { articles: Article[]; locale:
 
   if (articles.length === 0) {
     return (
-      <div className="text-center py-10 text-slate-500">
+      <div className="text-center py-10 text-slate-600">
         {isZh ? "暂无内容" : "No content available yet"}
       </div>
     );
@@ -53,7 +53,7 @@ export function ArticleList({ articles, locale }: { articles: Article[]; locale:
                   {article.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2 py-0.5 rounded-md bg-slate-50 text-slate-500 text-[10px] font-bold uppercase tracking-wider group-hover:bg-orange-50 group-hover:text-orange-600 transition-colors"
+                      className="px-2 py-0.5 rounded-md bg-slate-50 text-slate-600 text-[10px] font-bold uppercase tracking-wider group-hover:bg-orange-50 group-hover:text-orange-600 transition-colors"
                     >
                       {tag}
                     </span>
@@ -63,13 +63,13 @@ export function ArticleList({ articles, locale }: { articles: Article[]; locale:
 
               <h3
                 className={`text-lg font-bold mb-2 group-hover:text-[var(--primary)] transition-colors line-clamp-2 ${
-                  isRead ? "text-slate-600 font-medium" : "text-slate-900"
+                  isRead ? "text-slate-700 font-medium" : "text-slate-900"
                 }`}
               >
                 {article.titles[locale]}
               </h3>
 
-              <p className="text-sm text-slate-500 leading-relaxed line-clamp-3 mb-4 flex-1">
+              <p className="text-sm text-slate-600 leading-relaxed line-clamp-3 mb-4 flex-1">
                 {article.descriptions[locale]}
               </p>
 

@@ -14,7 +14,7 @@ export function CollapsibleLearningPath({ isZh }: Props) {
       {/* Trigger Button */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full flex items-center justify-center gap-2 py-3 px-4 text-slate-500 hover:text-slate-700 transition-colors group"
+        className="w-full flex items-center justify-center gap-2 py-3 px-4 text-slate-600 hover:text-slate-700 transition-colors group"
       >
         <span className="text-2xl">🤔</span>
         <span className="text-base sm:text-lg font-medium text-slate-700 group-hover:text-slate-900 transition-colors">
@@ -41,7 +41,7 @@ export function CollapsibleLearningPath({ isZh }: Props) {
           <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">
             {isZh ? "📚 新手学习路线" : "📚 Learning Path for Beginners"}
           </h2>
-          <p className="text-slate-500">
+          <p className="text-slate-600">
             {isZh
               ? "按照这个顺序准备，事半功倍。"
               : "Follow this path for efficient exam preparation."}
@@ -56,7 +56,7 @@ export function CollapsibleLearningPath({ isZh }: Props) {
               <h3 className="text-lg font-bold text-slate-900 mb-2">
                 {isZh ? "什么是融入考试？" : "What is the Inburgering Exam?"}
               </h3>
-              <p className="text-sm text-slate-600 leading-relaxed mb-3">
+              <p className="text-sm text-slate-700 leading-relaxed mb-3">
                 {isZh
                   ? "融入考试（Inburgeringsexamen）是荷兰政府要求的新移民融入考试。通过考试是获得永久居留或入籍的必要条件。考试包括听力、阅读、写作、口语和 KNM（荷兰社会知识）五个部分。"
                   : "The Inburgeringsexamen is a civic integration exam required by the Dutch government for new immigrants. Passing it is mandatory for permanent residency or naturalization. The exam consists of five parts: Listening, Reading, Writing, Speaking, and KNM (Knowledge of Dutch Society)."}
@@ -84,7 +84,7 @@ export function CollapsibleLearningPath({ isZh }: Props) {
                 {isZh ? "A2 词汇" : "A2 Vocabulary"}
               </span>
             </div>
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <p className="text-sm text-slate-700 leading-relaxed">
               {isZh
                 ? "先掌握基础词汇，阅读和听力考试就能轻松应对。"
                 : "Master the basics first, then reading and listening become much easier."}
@@ -101,7 +101,7 @@ export function CollapsibleLearningPath({ isZh }: Props) {
                 {isZh ? "KNM 知识" : "KNM Knowledge"}
               </span>
             </div>
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <p className="text-sm text-slate-700 leading-relaxed">
               {isZh
                 ? "有了词汇基础，KNM 的历史、法律、文化内容就能看懂了。"
                 : "With vocabulary foundation, history, law, and culture content becomes accessible."}
@@ -118,7 +118,7 @@ export function CollapsibleLearningPath({ isZh }: Props) {
                 {isZh ? "写作 & 口语" : "Writing & Speaking"}
               </span>
             </div>
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <p className="text-sm text-slate-700 leading-relaxed">
               {isZh
                 ? "最后冲刺写作和口语考试，使用模板和模拟练习。"
                 : "Final push for writing and speaking exams with templates and practice."}
@@ -133,7 +133,7 @@ export function CollapsibleLearningPath({ isZh }: Props) {
                 {isZh ? "更多资源" : "More Resources"}
               </span>
             </div>
-            <p className="text-sm text-slate-600 leading-relaxed">
+            <p className="text-sm text-slate-700 leading-relaxed">
               {isZh
                 ? "AI 助手里有更多免费资料，支持 NotebookLM 交互学习。"
                 : "Free materials in our AI assistant with NotebookLM interactive learning."}

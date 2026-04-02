@@ -61,7 +61,7 @@ export function FlashcardStats({ locale, knownWords, unknownWords, level, isComp
     <div className="space-y-4">
       <div className="grid grid-cols-3 gap-3">
         <div className="bg-slate-50 rounded-2xl p-4 text-center border border-slate-100 shadow-sm">
-          <div className="text-xs text-slate-500 mb-1 font-medium">{texts.reviewed}</div>
+          <div className="text-xs text-slate-600 mb-1 font-medium">{texts.reviewed}</div>
           <div className="text-xl font-black text-slate-800">{reviewedCount}</div>
         </div>
         <div className="bg-green-50 rounded-2xl p-4 text-center border border-green-100 shadow-sm">

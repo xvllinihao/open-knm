@@ -152,7 +152,7 @@ function ResourcesContent({ locale }: { locale: Locale }) {
         <h1 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight leading-tight">
           {texts.title}
         </h1>
-        <p className="text-lg text-slate-500 font-light max-w-2xl mx-auto leading-relaxed">
+        <p className="text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed">
           {isPro ? texts.proDescription : texts.description}
         </p>
       </div>
@@ -178,7 +178,7 @@ function ResourcesContent({ locale }: { locale: Locale }) {
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-8">
                 <div>
                   <h3 className="text-2xl font-black text-slate-900">{texts.cta.title}</h3>
-                  <p className="text-slate-500 text-sm mt-1">{texts.cta.footer}</p>
+                  <p className="text-slate-600 text-sm mt-1">{texts.cta.footer}</p>
                 </div>
                 <div className="text-left sm:text-right">
                   <span className="block text-4xl font-black text-[var(--primary)]">{texts.cta.price}</span>
@@ -268,7 +268,7 @@ function ResourcesContent({ locale }: { locale: Locale }) {
           
           {/* Support Section */}
           <div className="text-center pt-8 border-t border-slate-100">
-            <p className="text-slate-500 mb-4 text-sm">{texts.support.description}</p>
+            <p className="text-slate-600 mb-4 text-sm">{texts.support.description}</p>
             <button
               onClick={() => setIsSupportOpen(!isSupportOpen)}
               className="text-purple-700 font-medium hover:underline text-sm"
@@ -276,7 +276,7 @@ function ResourcesContent({ locale }: { locale: Locale }) {
               {texts.support.contactBtn}
             </button>
             <span className="mx-2 text-slate-300">|</span>
-            <Link href={getLocalizedPath(locale, "/terms")} className="text-slate-500 hover:text-slate-700 text-sm hover:underline">
+            <Link href={getLocalizedPath(locale, "/terms")} className="text-slate-600 hover:text-slate-700 text-sm hover:underline">
               {texts.support.terms}
             </Link>
 

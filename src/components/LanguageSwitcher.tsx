@@ -30,7 +30,7 @@ export function LanguageSwitcher({ currentLocale, compact }: { currentLocale: Lo
     return (
       <Link
         href={getLocalePath(targetLocale)}
-        className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2.5 py-1.5 text-xs font-bold text-slate-600 ring-1 ring-slate-200/50 hover:bg-slate-200 transition-colors"
+        className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-2.5 py-1.5 text-xs font-bold text-slate-700 ring-1 ring-slate-200/50 hover:bg-slate-200 transition-colors"
         title={isZh ? "Switch to English" : "切换到中文"}
       >
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-3.5 h-3.5">
@@ -52,7 +52,7 @@ export function LanguageSwitcher({ currentLocale, compact }: { currentLocale: Lo
           relative flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold transition-all duration-200
           ${isZh 
             ? "bg-white text-slate-900 shadow-sm ring-1 ring-slate-200" 
-            : "text-slate-500 hover:text-slate-900 hover:bg-slate-200/50"}
+            : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/50"}
         `}
         aria-current={isZh ? "page" : undefined}
       >
@@ -73,7 +73,7 @@ export function LanguageSwitcher({ currentLocale, compact }: { currentLocale: Lo
           relative flex items-center gap-2 rounded-full px-4 py-2 text-sm font-bold transition-all duration-200
           ${!isZh 
             ? "bg-white text-slate-900 shadow-sm ring-1 ring-slate-200" 
-            : "text-slate-500 hover:text-slate-900 hover:bg-slate-200/50"}
+            : "text-slate-600 hover:text-slate-900 hover:bg-slate-200/50"}
         `}
         aria-current={!isZh ? "page" : undefined}
       >

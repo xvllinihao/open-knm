@@ -85,7 +85,7 @@ export default async function AIAssistantPage({
                       </div>
                       <span className="font-bold text-sm">AI Power</span>
                    </div>
-                   <p className="text-xs text-slate-600 leading-relaxed">
+                   <p className="text-xs text-slate-700 leading-relaxed">
                      &ldquo;Explain the difference between Eerste Kamer and Tweede Kamer.&rdquo;
                    </p>
                 </div>
@@ -101,7 +101,7 @@ export default async function AIAssistantPage({
             📚
           </div>
           <h3 className="text-lg font-bold text-slate-900 mb-2">Read & Understand</h3>
-          <p className="text-slate-600 text-sm leading-relaxed">
+          <p className="text-slate-700 text-sm leading-relaxed">
             {assistant.detailLine1}
           </p>
         </div>
@@ -110,7 +110,7 @@ export default async function AIAssistantPage({
             💬
           </div>
           <h3 className="text-lg font-bold text-slate-900 mb-2">Ask & Chat</h3>
-          <p className="text-slate-600 text-sm leading-relaxed">
+          <p className="text-slate-700 text-sm leading-relaxed">
             {assistant.detailLine2}
           </p>
         </div>
@@ -119,7 +119,7 @@ export default async function AIAssistantPage({
             🔒
           </div>
           <h3 className="text-lg font-bold text-slate-900 mb-2">Safe & Secure</h3>
-          <p className="text-slate-600 text-sm leading-relaxed">
+          <p className="text-slate-700 text-sm leading-relaxed">
             {assistant.detailLine3}
           </p>
         </div>
@@ -136,7 +136,7 @@ export default async function AIAssistantPage({
          <Link
             href={NOTEBOOKLM_LINK}
             target="_blank"
-            className="text-sm font-semibold text-slate-500 hover:text-[var(--primary)] transition-colors flex items-center justify-center gap-1"
+            className="text-sm font-semibold text-slate-600 hover:text-[var(--primary)] transition-colors flex items-center justify-center gap-1"
          >
            {assistant.openNotebook} <span aria-hidden="true">&rarr;</span>
          </Link>
