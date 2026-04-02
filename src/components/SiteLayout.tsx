@@ -10,6 +10,7 @@ import { AuthButton } from "./AuthButton";
 import { LoginBanner } from "./LoginBanner";
 import { Locale, getLocalizedPath, uiTexts } from "../lib/uiTexts";
 import { useAuth } from "@/contexts/AuthContext";
+import { OfficialPracticeBanner } from "./OfficialPracticeBanner";
 
 type SiteLayoutProps = {
   children: React.ReactNode;
@@ -36,18 +37,43 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
   const showLoginBanner = bannerReady && !authLoading && !user && !bannerDismissed;
 
   const navLinks = [
-    { href: getLocalizedPath(locale, "/knm"), label: texts.nav.knm },
-    { href: getLocalizedPath(locale, "/vocabulary"), label: texts.nav.vocabulary },
-    { href: getLocalizedPath(locale, "/speaking"), label: texts.nav.speaking },
-    { href: getLocalizedPath(locale, "/writing"), label: texts.nav.writing },
-    { href: getLocalizedPath(locale, "/resources"), label: texts.nav.resources },
-    { href: getLocalizedPath(locale, "/about"), label: texts.nav.about },
+    { 
+      href: getLocalizedPath(locale, "/knm"), 
+      label: texts.nav.knm,
+      icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 22h18M6 18v-7M10 18v-7M14 18v-7M18 18v-7M12 2l8 5H4z"/></svg>
+    },
+    { 
+      href: getLocalizedPath(locale, "/vocabulary"), 
+      label: texts.nav.vocabulary,
+      icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+    },
+    { 
+      label: locale === 'zh' ? 'A2 备考' : 'A2 Exams',
+      highlight: true,
+      icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>,
+      children: [
+        { href: getLocalizedPath(locale, "/listening"), label: texts.nav.listening },
+        { href: getLocalizedPath(locale, "/reading"), label: texts.nav.reading },
+        { href: getLocalizedPath(locale, "/writing"), label: texts.nav.writing },
+        { href: getLocalizedPath(locale, "/speaking"), label: texts.nav.speaking },
+      ]
+    },
+    { 
+      href: getLocalizedPath(locale, "/ai-assistant"), 
+      label: texts.nav.assistant,
+      icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4M3 5h4"/></svg>
+    },
+    { 
+      href: getLocalizedPath(locale, "/resources"), 
+      label: texts.nav.resources,
+      icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
+    },
+    { 
+      href: getLocalizedPath(locale, "/about"), 
+      label: texts.nav.about,
+      icon: <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+    },
   ];
-
-  const aiAssistantLink = {
-    href: getLocalizedPath(locale, "/ai-assistant"),
-    label: texts.nav.assistant,
-  };
 
   return (
     <div
@@ -62,23 +88,63 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
           >
             <Logo locale={locale} />
           </Link>
-          <div className="flex items-center gap-3 md:gap-6">
+          <div className="flex items-center gap-3 md:gap-4 lg:gap-6">
             {/* Desktop nav */}
-            <nav className="hidden items-center gap-6 text-sm font-medium text-slate-700 md:flex md:text-base">
-              {navLinks.map((item) => {
-                const isActive = pathname?.startsWith(item.href);
+            <nav className="hidden items-center gap-4 lg:gap-6 text-sm font-medium text-slate-700 md:flex">
+              {navLinks.map((item, idx) => {
+                if (item.children) {
+                  const isActive = item.children.some(child => pathname?.startsWith(child.href));
+                  return (
+                    <div key={idx} className="relative group">
+                      <button className={[
+                        "flex items-center gap-1.5 transition-colors border-b-2 border-transparent pb-1 hover:text-[var(--primary)]",
+                        isActive
+                          ? "text-[var(--primary)] border-[var(--primary)] font-semibold"
+                          : item.highlight ? "text-orange-600 font-medium" : "text-slate-700",
+                      ].join(" ")}>
+                        {item.icon && (
+                          <span className={isActive ? "text-[var(--primary)]" : item.highlight ? "text-orange-500" : "text-slate-400"}>
+                            {item.icon}
+                          </span>
+                        )}
+                        {item.label}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={item.highlight && !isActive ? "text-orange-400" : ""}><path d="m6 9 6 6 6-6"/></svg>
+                      </button>
+                      <div className="absolute left-0 top-full mt-2 w-40 rounded-xl bg-white shadow-lg border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all translate-y-2 group-hover:translate-y-0 z-50">
+                        <div className="py-2">
+                          {item.children.map(child => (
+                            <Link
+                              key={child.href}
+                              href={child.href}
+                              className="block px-4 py-2 text-sm text-slate-700 hover:bg-slate-50 hover:text-[var(--primary)]"
+                            >
+                              {child.label}
+                            </Link>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
+
+                const isActive = pathname?.startsWith(item.href!);
                 return (
                   <Link
                     key={item.href}
-                    href={item.href}
+                    href={item.href!}
                     aria-current={isActive ? "page" : undefined}
                     className={[
-                      "transition-colors border-b-2 border-transparent pb-1 hover:text-[var(--primary)]",
+                      "group flex items-center gap-1.5 transition-colors border-b-2 border-transparent pb-1 hover:text-[var(--primary)]",
                       isActive
                         ? "text-[var(--primary)] border-[var(--primary)] font-semibold"
                         : "text-slate-700",
                     ].join(" ")}
                   >
+                    {item.icon && (
+                      <span className={isActive ? "text-[var(--primary)]" : "text-slate-400 group-hover:text-[var(--primary)]"}>
+                        {item.icon}
+                      </span>
+                    )}
                     {item.label}
                   </Link>
                 );
@@ -86,17 +152,6 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
             </nav>
 
             <div className="hidden md:block h-6 w-[1px] bg-slate-200"></div>
-
-            <Link
-              href={aiAssistantLink.href}
-              className="hidden md:inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-1.5 text-sm font-bold text-white shadow-md shadow-slate-900/20 transition-all hover:scale-105 hover:shadow-lg hover:bg-black"
-            >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--primary)] opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--primary)]"></span>
-              </span>
-              {aiAssistantLink.label}
-            </Link>
 
             <AuthButton locale={locale} />
 
@@ -139,27 +194,46 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
         {isMobileMenuOpen && (
           <div className="border-t border-slate-200 bg-white md:hidden">
             <nav className="mx-auto flex max-w-7xl flex-col gap-1 px-6 py-3 text-sm font-medium text-slate-700">
-              <Link
-                 href={aiAssistantLink.href}
-                 className="flex items-center justify-between rounded-lg px-2 py-2 bg-slate-900 text-white mb-2 shadow-md"
-                 onClick={() => setIsMobileMenuOpen(false)}
-              >
-                 <span className="flex items-center gap-2 font-bold">
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--primary)] opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--primary)]"></span>
-                    </span>
-                    {aiAssistantLink.label}
-                 </span>
-                 <span>→</span>
-              </Link>
-              
-              {navLinks.map((item) => {
-                const isActive = pathname?.startsWith(item.href);
+              {navLinks.map((item, idx) => {
+                if (item.children) {
+                  return (
+                    <div key={idx} className="flex flex-col gap-1 py-1">
+                      <div className="px-2 py-1.5 text-sm font-bold text-slate-400 uppercase tracking-wider flex items-center gap-1.5">
+                        {item.icon && (
+                          <span className={item.highlight ? "text-orange-500" : "text-slate-400"}>
+                            {item.icon}
+                          </span>
+                        )}
+                        <span className={item.highlight ? "text-orange-600" : ""}>{item.label}</span>
+                      </div>
+                      {item.children.map(child => {
+                        const isActive = pathname?.startsWith(child.href);
+                        return (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            className={[
+                              "flex items-center justify-between rounded-lg px-2 py-1.5 pl-4",
+                              isActive
+                                ? "bg-slate-100 text-slate-900 font-semibold"
+                                : "hover:bg-slate-50 text-slate-700",
+                            ].join(" ")}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                          >
+                            <span>{child.label}</span>
+                            <span className="text-slate-300">→</span>
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  );
+                }
+
+                const isActive = pathname?.startsWith(item.href!);
                 return (
                   <Link
                     key={item.href}
-                    href={item.href}
+                    href={item.href!}
                     className={[
                       "flex items-center justify-between rounded-lg px-2 py-1.5",
                       isActive
@@ -168,7 +242,10 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
                     ].join(" ")}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
-                    <span>{item.label}</span>
+                    <div className="flex items-center gap-2">
+                      {item.icon && <span className="text-slate-400">{item.icon}</span>}
+                      <span>{item.label}</span>
+                    </div>
                     <span className="text-slate-300">→</span>
                   </Link>
                 );
@@ -187,6 +264,8 @@ export function SiteLayout({ children, locale }: SiteLayoutProps) {
       <main className="flex-1 flex flex-col justify-center">
         <div className="mx-auto w-full max-w-7xl px-6 py-8 sm:py-10">{children}</div>
       </main>
+
+      <OfficialPracticeBanner locale={locale} />
 
       <footer className="border-t border-[var(--border-subtle)] bg-white text-sm text-slate-600">
         <div className="mx-auto flex max-w-7xl flex-col gap-3 px-6 py-6 sm:flex-row sm:items-center sm:justify-between">

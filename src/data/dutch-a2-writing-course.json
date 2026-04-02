@@ -16,7 +16,6 @@
     {
       "id": "golden_rules",
       "title": {
-        "nl": "De 3 Gouden Regels",
         "en": "The 3 Golden Rules",
         "zh": "写作三大黄金法则"
       },
@@ -24,7 +23,6 @@
         {
           "type": "rule",
           "content": {
-            "nl": "Houd het kort. Korte zinnen = minder fouten.",
             "en": "Keep it short. Short sentences = fewer mistakes.",
             "zh": "保持简短。句子越短 = 错误越少。"
           }
@@ -32,7 +30,6 @@
         {
           "type": "rule",
           "content": {
-            "nl": "Gebruik de standaard volgorde: Wie + Doet + Wat + Wanneer.",
             "en": "Use the standard order: Who + Does + What + When.",
             "zh": "使用标准语序：主语 + 谓语 + 宾语 + 时间 (或者 时间放在最前)。"
           },
@@ -45,7 +42,6 @@
         {
           "type": "rule",
           "content": {
-            "nl": "Schrijf wat ze vragen. Niet meer, niet minder.",
             "en": "Write what they ask. No more, no less.",
             "zh": "问什么答什么。不要多写，也不要少写。"
           }

@@ -13,6 +13,8 @@ export type NavTexts = {
   vocabulary: string;
   speaking: string;
   writing: string;
+  reading: string;
+  listening: string;
   about: string;
   faq: string;
 };
@@ -173,6 +175,8 @@ export const uiTexts: Record<Locale, UiTexts> = {
       vocabulary: "高频词汇",
       speaking: "口语练习",
       writing: "写作速成",
+      reading: "阅读技巧",
+      listening: "听力模拟",
       about: "关于与贡献",
       faq: "常见问题",
     },
@@ -329,11 +333,13 @@ export const uiTexts: Record<Locale, UiTexts> = {
   en: {
     nav: {
       resources: "Resources",
-      knm: "KNM Zone",
+      knm: "KNM",
       assistant: "AI Assistant",
       vocabulary: "Vocabulary",
       speaking: "Speaking",
       writing: "Writing",
+      reading: "Reading",
+      listening: "Listening",
       about: "About",
       faq: "FAQ",
     },

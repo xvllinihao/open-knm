@@ -1,0 +1,210 @@
+{
+  "meta": {
+    "title": {
+      "nl": "A2 Luisteren",
+      "en": "A2 Listening Guide",
+      "zh": "A2 听力指南"
+    },
+    "description": {
+      "nl": "Tips, strategieën en oefeningen voor het A2 luisterexamen.",
+      "en": "Tips, strategies, and exercises for the A2 listening exam.",
+      "zh": "A2 听力考试题型科普、听力技巧与模拟练习题。"
+    },
+    "version": "1.0.0"
+  },
+  "sections": [
+    {
+      "id": "exam_info",
+      "title": {
+        "en": "About the Exam",
+        "zh": "考试科普"
+      },
+      "description": {
+        "en": "What to expect from the A2 listening exam?",
+        "zh": "A2 听力考试考什么？"
+      },
+      "items": [
+        {
+          "type": "info",
+          "content": {
+            "en": "The exam lasts 45 minutes.",
+            "zh": "考试时长为 45 分钟。"
+          }
+        },
+        {
+          "type": "info",
+          "content": {
+            "en": "You will get about 25 questions.",
+            "zh": "总共有大约 25 道题。"
+          }
+        },
+        {
+          "type": "info",
+          "content": {
+            "en": "You will listen to short conversations, announcements, and messages.",
+            "zh": "你将听到简短的对话、公告和留言。"
+          }
+        },
+        {
+          "type": "info",
+          "content": {
+            "en": "All questions are multiple-choice (A, B, C, or D).",
+            "zh": "所有问题都是选择题（A, B, C 或 D）。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "listening_strategies",
+      "title": {
+        "en": "Listening Strategies",
+        "zh": "听力技巧"
+      },
+      "description": {
+        "en": "How to best listen to the audio?",
+        "zh": "如何高效听取信息并找到答案？"
+      },
+      "items": [
+        {
+          "type": "strategy",
+          "title": {
+            "en": "Read the question and answers first",
+            "zh": "先读问题和选项"
+          },
+          "content": {
+            "en": "Before starting the audio, read the question and the options. This way you know what to pay attention to.",
+            "zh": "在播放音频之前，一定要先读问题和选项。这样你就知道要特别注意听什么信息。"
+          }
+        },
+        {
+          "type": "strategy",
+          "title": {
+            "en": "Pay attention to keywords",
+            "zh": "注意关键词"
+          },
+          "content": {
+            "en": "Listen closely to words like times, days, places, prices, or names.",
+            "zh": "仔细听时间、日期、地点、价格或名字等关键词。"
+          }
+        },
+        {
+          "type": "strategy",
+          "title": {
+            "en": "Don't panic",
+            "zh": "不要慌张"
+          },
+          "content": {
+            "en": "If you don't understand a word, keep listening to the rest of the sentence. You can often understand the meaning from the context.",
+            "zh": "如果你没听懂某个词，不要停下来，继续听句子的其余部分。通常你可以从上下文中猜出意思。"
+          }
+        }
+      ]
+    },
+    {
+      "id": "practice_exercises",
+      "title": {
+        "nl": "Oefeningen",
+        "en": "Practice Exercises",
+        "zh": "模拟练习"
+      },
+      "categories": [
+        {
+          "id": "announcements",
+          "title": {
+            "nl": "Mededelingen",
+            "en": "Announcements",
+            "zh": "公告"
+          },
+          "exercises": [
+            {
+              "id": "announcement_1",
+              "text": {
+                "nl": "Dames en heren, de trein naar Amsterdam Centraal van 14:30 uur vertrekt vandaag vanaf spoor 5, en niet vanaf spoor 2. De trein heeft een vertraging van 10 minuten."
+              },
+              "question": {
+                "nl": "Vanaf welk spoor vertrekt de trein naar Amsterdam?",
+                "en": "From which platform does the train to Amsterdam depart?",
+                "zh": "去阿姆斯特丹的火车从哪个站台出发？"
+              },
+              "options": [
+                { "id": "A", "text": "Spoor 2" },
+                { "id": "B", "text": "Spoor 5" },
+                { "id": "C", "text": "Spoor 10" }
+              ],
+              "correctAnswer": "B",
+              "explanation": {
+                "nl": "In de audio hoor je: 'vertrekt vandaag vanaf spoor 5'.",
+                "en": "In the audio you hear: 'departs today from platform 5'.",
+                "zh": "在音频中你听到：'vertrekt vandaag vanaf spoor 5'（今天从 5 号站台出发）。"
+              }
+            }
+          ]
+        },
+        {
+          "id": "conversations",
+          "title": {
+            "nl": "Gesprekken",
+            "en": "Conversations",
+            "zh": "对话"
+          },
+          "exercises": [
+            {
+              "id": "conversation_1",
+              "text": {
+                "nl": "Man: Goedemorgen, ik wil graag een afspraak maken met de dokter.\nVrouw: Dat kan. Heeft u morgenochtend tijd? Om 10 uur?\nMan: Nee, morgen werk ik. Kan het donderdagmiddag?\nVrouw: Ja, donderdag om 14:00 uur is er nog plaats."
+              },
+              "question": {
+                "nl": "Wanneer gaat de man naar de dokter?",
+                "en": "When is the man going to the doctor?",
+                "zh": "男人什么时候去看医生？"
+              },
+              "options": [
+                { "id": "A", "text": "Morgenochtend om 10:00 uur" },
+                { "id": "B", "text": "Donderdagmiddag om 14:00 uur" },
+                { "id": "C", "text": "Vandaag" }
+              ],
+              "correctAnswer": "B",
+              "explanation": {
+                "nl": "De man zegt dat hij morgen werkt. Ze spreken af voor donderdag om 14:00 uur.",
+                "en": "The man says he works tomorrow. They agree on Thursday at 14:00.",
+                "zh": "男人说明天要工作。他们最后约在星期四下午 14:00。"
+              }
+            }
+          ]
+        },
+        {
+          "id": "messages",
+          "title": {
+            "nl": "Berichten",
+            "en": "Messages",
+            "zh": "留言"
+          },
+          "exercises": [
+            {
+              "id": "message_1",
+              "text": {
+                "nl": "Hoi met Anna. Ik ben een beetje ziek, dus ik kom vanavond niet naar het feestje. Veel plezier en we zien elkaar volgende week!"
+              },
+              "question": {
+                "nl": "Waarom komt Anna niet naar het feestje?",
+                "en": "Why is Anna not coming to the party?",
+                "zh": "Anna 为什么不来参加聚会？"
+              },
+              "options": [
+                { "id": "A", "text": "Ze moet werken" },
+                { "id": "B", "text": "Ze is ziek" },
+                { "id": "C", "text": "Ze heeft geen tijd" }
+              ],
+              "correctAnswer": "B",
+              "explanation": {
+                "nl": "Anna zegt in het bericht: 'Ik ben een beetje ziek'.",
+                "en": "Anna says in the message: 'I am a little sick'.",
+                "zh": "Anna 在留言中说：'Ik ben een beetje ziek'（我有点生病）。"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 import writingData from './dutch-a2-writing-course.json';
 
 export type TriText = {
-  nl: string;
+  nl?: string;
   en: string;
   zh: string;
 };

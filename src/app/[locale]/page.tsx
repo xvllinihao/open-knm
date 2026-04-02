@@ -134,9 +134,9 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                {/* Unified KNM Card */}
                <Link
                  href={`/${locale}/knm`}
-                 className="group flex items-center p-4 sm:p-5 bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
+                 className="group flex items-center p-4 sm:p-5 bg-sky-50 rounded-2xl border border-sky-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5"
                >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-slate-50 rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform shrink-0">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform shrink-0 border border-sky-100 shadow-sm">
                     🇳🇱
                   </div>
                   <div className="flex-1 min-w-0">
@@ -148,64 +148,79 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                     </p>
                   </div>
                   <div className="ml-2 sm:ml-3">
-                    <span className="text-slate-300 group-hover:text-[var(--primary)] transition-colors text-lg">→</span>
+                    <span className="text-sky-600 group-hover:text-sky-700 transition-colors text-lg">→</span>
                   </div>
                </Link>
 
-               {/* Writing Promo Card */}
+               {/* A2 Exam Skills Card */}
+               <div className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-5 shadow-sm relative overflow-hidden">
+                 <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-bl-full -mr-8 -mt-8 z-0"></div>
+                 
+                 <div className="relative z-10">
+                   <div className="flex items-center justify-between mb-1">
+                     <div className="flex items-center gap-2">
+                       <h3 className="text-base sm:text-lg font-bold text-slate-900">
+                         {isZh ? 'A2 考试单项突破' : 'A2 Exam Skills'}
+                       </h3>
+                       <span className="inline-flex px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[10px] font-bold uppercase tracking-wide shrink-0">Practice</span>
+                     </div>
+                   </div>
+                   <p className="text-slate-500 text-xs sm:text-sm mb-4">
+                     {isZh ? '分模块刷题，快速掌握考试技巧' : 'Targeted practice for each exam section'}
+                   </p>
+
+                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
+                     <Link href={`/${locale}/listening`} className="flex flex-col items-center justify-center p-3 sm:p-4 bg-amber-50 rounded-xl border border-amber-100 hover:border-amber-300 hover:bg-amber-100/50 hover:shadow-md transition-all group">
+                       <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-xl mb-2 shadow-sm group-hover:scale-110 transition-transform">🎧</div>
+                       <span className="text-xs sm:text-sm font-bold text-amber-900">{isZh ? '听力' : 'Listening'}</span>
+                     </Link>
+                     <Link href={`/${locale}/reading`} className="flex flex-col items-center justify-center p-3 sm:p-4 bg-purple-50 rounded-xl border border-purple-100 hover:border-purple-300 hover:bg-purple-100/50 hover:shadow-md transition-all group">
+                       <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-xl mb-2 shadow-sm group-hover:scale-110 transition-transform">📖</div>
+                       <span className="text-xs sm:text-sm font-bold text-purple-900">{isZh ? '阅读' : 'Reading'}</span>
+                     </Link>
+                     <Link href={`/${locale}/writing`} className="flex flex-col items-center justify-center p-3 sm:p-4 bg-emerald-50 rounded-xl border border-emerald-100 hover:border-emerald-300 hover:bg-emerald-100/50 hover:shadow-md transition-all group">
+                       <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-xl mb-2 shadow-sm group-hover:scale-110 transition-transform">✍️</div>
+                       <span className="text-xs sm:text-sm font-bold text-emerald-900">{isZh ? '写作' : 'Writing'}</span>
+                     </Link>
+                     <Link href={`/${locale}/speaking`} className="flex flex-col items-center justify-center p-3 sm:p-4 bg-blue-50 rounded-xl border border-blue-100 hover:border-blue-300 hover:bg-blue-100/50 hover:shadow-md transition-all group relative overflow-hidden">
+                       <span className="absolute top-0 right-0 bg-blue-200 text-blue-800 text-[8px] font-bold px-1.5 py-0.5 rounded-bl-lg">Beta</span>
+                       <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-xl mb-2 shadow-sm group-hover:scale-110 transition-transform">🗣️</div>
+                       <span className="text-xs sm:text-sm font-bold text-blue-900">{isZh ? '口语' : 'Speaking'}</span>
+                     </Link>
+                   </div>
+                 </div>
+               </div>
+
+               {/* AI Assistant Promo Card */}
                <Link
-                 href={`/${locale}/writing`}
-                 className="group flex items-center p-4 sm:p-5 bg-emerald-50 rounded-2xl border border-emerald-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
+                 href={`/${locale}/ai-assistant`}
+                 className="group flex items-center p-4 sm:p-5 bg-indigo-50 rounded-2xl border border-indigo-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
                >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform border border-emerald-100 shadow-sm shrink-0">
-                    ✍️
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform border border-indigo-100 shadow-sm shrink-0">
+                    🤖
                   </div>
                   <div className="flex-1 min-w-0 relative z-10">
                     <div className="flex items-center gap-2 mb-0.5">
                       <h3 className="text-base sm:text-lg font-bold text-slate-900 truncate min-w-0">
-                        {isZh ? 'A2 写作速成' : 'Writing Crash Course'}
+                        {isZh ? 'AI 助教' : 'AI Assistant'}
                       </h3>
-                      <span className="inline-flex px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700 text-[10px] font-bold uppercase tracking-wide shrink-0">New</span>
+                      <span className="inline-flex px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-bold uppercase tracking-wide shrink-0">New</span>
                     </div>
                     <p className="text-slate-700 text-sm truncate">
-                      {isZh ? '万能模板 + 全真模拟题库。' : 'Templates, rules & mock exams.'}
+                      {isZh ? '基于 NotebookLM，让 AI 帮你划重点、出模拟题。' : 'Powered by NotebookLM. Get summaries and mock questions instantly.'}
                     </p>
                   </div>
                   <div className="ml-2 sm:ml-3 relative z-10">
-                    <span className="text-emerald-600 group-hover:text-emerald-700 transition-colors text-lg">→</span>
-                  </div>
-               </Link>
-
-               {/* Speaking Promo Card */}
-               <Link
-                 href={`/${locale}/speaking`}
-                 className="group flex items-center p-4 sm:p-5 bg-blue-50 rounded-2xl border border-blue-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
-               >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform border border-blue-100 shadow-sm shrink-0">
-                    🗣️
-                  </div>
-                  <div className="flex-1 min-w-0 relative z-10">
-                    <div className="flex items-center gap-2 mb-0.5">
-                      <h3 className="text-base sm:text-lg font-bold text-slate-900 truncate min-w-0">
-                        {isZh ? 'A2 口语模拟' : 'Speaking Practice'}
-                      </h3>
-                      <span className="inline-flex px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 text-[10px] font-bold uppercase tracking-wide shrink-0">Beta</span>
-                    </div>
-                    <p className="text-slate-700 text-sm truncate">
-                      {isZh ? '实时语音反馈，模拟真实考试场景。' : 'Interactive practice with real-time feedback.'}
-                    </p>
-                  </div>
-                  <div className="ml-2 sm:ml-3 relative z-10">
-                    <span className="text-blue-600 group-hover:text-blue-700 transition-colors text-lg">→</span>
+                    <span className="text-indigo-600 group-hover:text-indigo-700 transition-colors text-lg">→</span>
                   </div>
                </Link>
 
                {/* Resources / Support Promo Card */}
                <Link
                  href={`/${locale}/resources`}
-                 className="group flex items-center p-4 sm:p-5 bg-orange-50 rounded-2xl border border-orange-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
+                 className="group flex items-center p-4 sm:p-5 bg-rose-50 rounded-2xl border border-rose-100 shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5 overflow-hidden relative"
                >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform border border-orange-100 shadow-sm shrink-0">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-white rounded-xl flex items-center justify-center text-xl sm:text-2xl mr-4 sm:mr-5 group-hover:scale-110 transition-transform border border-rose-100 shadow-sm shrink-0">
                     🧋
                   </div>
                   <div className="flex-1 min-w-0 relative z-10">
@@ -213,14 +228,14 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                       <h3 className="text-base sm:text-lg font-bold text-slate-900 truncate min-w-0">
                         {isZh ? '闪卡刷词 & 支持' : 'Flashcards & Support'}
                       </h3>
-                      <span className="inline-flex px-2 py-0.5 rounded-full bg-orange-100 text-orange-700 text-[10px] font-bold uppercase tracking-wide shrink-0">€5</span>
+                      <span className="inline-flex px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 text-[10px] font-bold uppercase tracking-wide shrink-0">€5</span>
                     </div>
                     <p className="text-slate-700 text-sm truncate">
                       {isZh ? '请喝一杯奶茶，解锁无限刷词功能。' : 'Buy me a tea to unlock unlimited flashcards.'}
                     </p>
                   </div>
                   <div className="ml-2 sm:ml-3 relative z-10">
-                    <span className="text-orange-600 group-hover:text-orange-700 transition-colors text-lg">→</span>
+                    <span className="text-rose-600 group-hover:text-rose-700 transition-colors text-lg">→</span>
                   </div>
                </Link>
             </div>
