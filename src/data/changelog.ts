@@ -7,6 +7,18 @@ export type ChangelogItem = {
 
 export const changelogData: ChangelogItem[] = [
   {
+    version: "2.3.0",
+    date: "2026-04-07",
+    title: {
+      zh: "听力练习升级：男女声区分、句间停顿与更多练习题",
+      en: "Listening Practice Upgrade: Gendered Voices, Sentence Pauses & More Exercises",
+    },
+    description: {
+      zh: "🎧 男女声区分：公告题使用男声（Xander），留言题使用女声（Ellen），对话题自动按说话人切换声音与音调，听感更接近真实考试。\n⏸️ 自然停顿：每句话结束后自动停顿约 0.5 秒，跟读和理解更轻松；口语练习的题目朗读也同步优化。\n📋 显示原文：听力题新增「显示原文」切换按钮，随时可查看听力文本，对话题原文按说话人分色显示。\n📝 新增练习题：公告和对话各新增一道练习题（超市公告、问路对话），练习题总数从 3 道增加到 5 道。",
+      en: "🎧 Gendered Voices: Announcements use male voice (Xander), messages use female voice (Ellen), and conversations automatically switch voice and pitch per speaker for a more realistic exam feel.\n⏸️ Natural Pauses: A ~0.5s pause is added between sentences for easier shadowing and comprehension; speaking practice playback is also improved.\n📋 Show Transcript: New toggle button to reveal the listening transcript at any time; dialogue transcripts are color-coded by speaker.\n📝 More Exercises: One new announcement (supermarket PA) and one new conversation (asking for directions) added — total exercises increased from 3 to 5.",
+    },
+  },
+  {
     version: "2.2.0",
     date: "2026-04-02",
     title: {
