@@ -335,8 +335,24 @@ export default function VocabularyList({ locale }: { locale: Locale }) {
           {texts.description}
         </p>
         
+        {/* CTA row: practice shortcuts */}
+        <div className="pt-4 flex flex-wrap items-center justify-center gap-3">
+          <Link
+            href={`/${locale}/reading`}
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-slate-700 font-semibold rounded-full border border-slate-200 hover:border-purple-300 hover:text-purple-700 transition-all text-sm shadow-sm"
+          >
+            📖 {locale === 'zh' ? '做阅读练习' : 'Reading Practice'}
+          </Link>
+          <Link
+            href={`/${locale}/listening`}
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white text-slate-700 font-semibold rounded-full border border-slate-200 hover:border-amber-300 hover:text-amber-700 transition-all text-sm shadow-sm"
+          >
+            🎧 {locale === 'zh' ? '做听力练习' : 'Listening Practice'}
+          </Link>
+        </div>
+
         {/* CTA to Flashcard Practice */}
-        <div className="pt-4">
+        <div className="pt-2">
           <Link
             href={`/${locale}/resources`}
             className="inline-flex items-center gap-2 px-6 py-3 bg-[var(--primary)] text-white font-bold rounded-full hover:brightness-110 transition-all shadow-lg shadow-orange-200 hover:scale-105"

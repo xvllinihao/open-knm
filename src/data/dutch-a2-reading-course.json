@@ -10,7 +10,7 @@
       "en": "Tips, strategies, and exercises for the A2 reading exam.",
       "zh": "A2 阅读考试题型科普、阅读技巧与模拟练习题。"
     },
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "sections": [
     {
@@ -128,14 +128,38 @@
               },
               "options": [
                 { "id": "A", "text": "18:30 uur" },
-                { "id": "B", "text": "20:00 uur" },
-                { "id": "C", "text": "Morgenochtend" }
+                { "id": "B", "text": "19:00 uur" },
+                { "id": "C", "text": "20:00 uur" },
+                { "id": "D", "text": "Morgenochtend" }
               ],
               "correctAnswer": "A",
               "explanation": {
-                "nl": "In de tekst staat: 'Zullen we om 18:30 uur afspreken bij het station?'. 20:00 uur is de tijd dat de film begint.",
-                "en": "The text says: 'Shall we meet at 18:30 at the station?'. 20:00 is the time the movie starts.",
-                "zh": "文章中说：'Zullen we om 18:30 uur afspreken bij het station?'（我们 18:30 在火车站见面好吗？）。20:00 是电影开始的时间。"
+                "nl": "In de tekst staat: 'Zullen we om 18:30 uur afspreken bij het station?'. 20:00 uur is de tijd dat de film begint, niet de afspraaktijd.",
+                "en": "The text says: 'Shall we meet at 18:30 at the station?'. 20:00 is when the movie starts, not the meeting time.",
+                "zh": "文章中说：'Zullen we om 18:30 uur afspreken bij het station?'（我们 18:30 在火车站见面好吗？）。20:00 是电影开始的时间，不是见面时间。"
+              }
+            },
+            {
+              "id": "email_2",
+              "text": {
+                "nl": "Beste mevrouw De Vries,\n\nIk ben ziek en kan morgen niet werken. Ik ga vanmorgen naar de dokter om 10:00 uur. Ik stuur u morgenavond een bericht als ik weet wanneer ik weer kan komen.\n\nMet vriendelijke groet,\nThomas"
+              },
+              "question": {
+                "nl": "Waarom schrijft Thomas deze e-mail?",
+                "en": "Why is Thomas writing this email?",
+                "zh": "Thomas 为什么写这封邮件？"
+              },
+              "options": [
+                { "id": "A", "text": "Om een afspraak te maken met de dokter." },
+                { "id": "B", "text": "Om te zeggen dat hij morgen niet werkt." },
+                { "id": "C", "text": "Om te vragen of hij vrij kan nemen." },
+                { "id": "D", "text": "Om zijn rooster op te sturen." }
+              ],
+              "correctAnswer": "B",
+              "explanation": {
+                "nl": "Thomas schrijft dat hij ziek is en morgen niet kan werken. Het doel van de e-mail is zijn werkgever hierover te informeren.",
+                "en": "Thomas writes that he is sick and cannot work tomorrow. The purpose of the email is to inform his employer about this.",
+                "zh": "Thomas 写道他生病了，明天不能上班。这封邮件的目的是通知他的雇主。注意：他去看医生是今天早上，不是明天。"
               }
             }
           ]
@@ -156,18 +180,42 @@
               "question": {
                 "nl": "Wat is niet waar over de fiets?",
                 "en": "What is not true about the bike?",
-                "zh": "关于这辆自行车，哪一项是不真实的？"
+                "zh": "关于这辆自行车，哪一项是不正确的？"
               },
               "options": [
                 { "id": "A", "text": "De fiets is rood." },
                 { "id": "B", "text": "De fiets is nieuw." },
-                { "id": "C", "text": "De fiets kost 150 euro." }
+                { "id": "C", "text": "De fiets heeft lampen." },
+                { "id": "D", "text": "De fiets kost 150 euro." }
               ],
               "correctAnswer": "B",
               "explanation": {
                 "nl": "In de tekst staat: 'De fiets is 2 jaar oud, maar ziet er nog nieuw uit.' De fiets is dus niet nieuw, maar ziet er alleen nieuw uit.",
                 "en": "The text says: 'The bike is 2 years old, but still looks new.' So the bike is not new, it just looks new.",
-                "zh": "文章中说：'De fiets is 2 jaar oud, maar ziet er nog nieuw uit.'（这辆自行车已经 2 年了，但看起来还像新的一样）。所以这辆自行车不是新的，只是看起来新。"
+                "zh": "文章中说：'De fiets is 2 jaar oud, maar ziet er nog nieuw uit.'（这辆自行车已经 2 年了，但看起来还像新的一样）。注意 'maar'（但是）这个关键信号词：车不是新的，只是看起来新。"
+              }
+            },
+            {
+              "id": "ad_2",
+              "text": {
+                "nl": "Kamer te huur:\nMooie kamer in studentenhuis. 12 m², gemeubileerd, eigen wastafel. Gedeelde keuken en badkamer. €420 per maand inclusief gas, water en licht. Beschikbaar vanaf 1 september. Reageer snel!"
+              },
+              "question": {
+                "nl": "Wat is inbegrepen bij de huurprijs?",
+                "en": "What is included in the rent?",
+                "zh": "房租包含什么？"
+              },
+              "options": [
+                { "id": "A", "text": "Alleen gas" },
+                { "id": "B", "text": "Gas en water" },
+                { "id": "C", "text": "Gas, water en licht" },
+                { "id": "D", "text": "Gas, water, licht en internet" }
+              ],
+              "correctAnswer": "C",
+              "explanation": {
+                "nl": "In de tekst staat: '€420 per maand inclusief gas, water en licht.' Internet wordt niet genoemd.",
+                "en": "The text says: '€420 per month including gas, water and electricity.' Internet is not mentioned.",
+                "zh": "文章中说：'€420 per maand inclusief gas, water en licht.'（每月 420 欧元，含水、电、气）。关键词是 'inclusief'（包含）。网络（internet）没有被提及，所以 D 不对。"
               }
             }
           ]
@@ -193,13 +241,37 @@
               "options": [
                 { "id": "A", "text": "15 juli" },
                 { "id": "B", "text": "30 juli" },
-                { "id": "C", "text": "1 augustus" }
+                { "id": "C", "text": "31 juli" },
+                { "id": "D", "text": "1 augustus" }
               ],
-              "correctAnswer": "C",
+              "correctAnswer": "D",
               "explanation": {
-                "nl": "In de tekst staat: 'Vanaf 1 augustus zijn we weer open.'",
-                "en": "The text says: 'From August 1st we are open again.'",
-                "zh": "文章中说：'Vanaf 1 augustus zijn we weer open.'（从 8 月 1 日起我们重新开放）。"
+                "nl": "In de tekst staat: 'Vanaf 1 augustus zijn we weer open.' Let op: 'tot en met 30 juli' betekent dat 30 juli de laatste gesloten dag is.",
+                "en": "The text says: 'From August 1st we are open again.' Note: 'tot en met 30 juli' means July 30th is the last closed day.",
+                "zh": "文章中说：'Vanaf 1 augustus zijn we weer open.'（从 8 月 1 日起重新开放）。注意：'tot en met 30 juli' 意思是【到 7 月 30 日（含）】，所以 8 月 1 日才是重新开放的日期。"
+              }
+            },
+            {
+              "id": "article_2",
+              "text": {
+                "nl": "De gemeente Leiden organiseert elke zaterdag gratis taallessen voor nieuwe inwoners. De lessen zijn van 09:00 tot 11:00 uur in het Stadhuis, Breestraat 40. U heeft een inschrijvingsformulier nodig. Dit kunt u ophalen op het gemeentehuis of downloaden op www.leiden.nl."
+              },
+              "question": {
+                "nl": "Wat moet u doen om mee te doen aan de taallessen?",
+                "en": "What do you need to do to join the language lessons?",
+                "zh": "要参加语言课，你需要做什么？"
+              },
+              "options": [
+                { "id": "A", "text": "Bellen naar het gemeentehuis." },
+                { "id": "B", "text": "Een formulier invullen." },
+                { "id": "C", "text": "Betalen aan de deur." },
+                { "id": "D", "text": "Een e-mail sturen naar de gemeente." }
+              ],
+              "correctAnswer": "B",
+              "explanation": {
+                "nl": "In de tekst staat dat u een inschrijvingsformulier nodig heeft. De lessen zijn gratis, dus betalen is niet nodig. Bellen of e-mailen wordt niet vermeld.",
+                "en": "The text says you need a registration form. The lessons are free so no payment is needed. Calling or emailing is not mentioned.",
+                "zh": "文章中说你需要一份报名表（inschrijvingsformulier）。课程是免费的（gratis），所以不需要付钱。可以去市政厅领取或者在网上下载这个表格。"
               }
             }
           ]
@@ -225,13 +297,37 @@
               "options": [
                 { "id": "A", "text": "Fietsen" },
                 { "id": "B", "text": "Je auto neerzetten" },
-                { "id": "C", "text": "Lopen" }
+                { "id": "C", "text": "Lopen" },
+                { "id": "D", "text": "Boodschappen doen" }
               ],
               "correctAnswer": "B",
               "explanation": {
-                "nl": "Op het bord staat 'Verboden te parkeren'. Dit betekent dat je je auto hier niet mag neerzetten.",
-                "en": "The sign says 'Verboden te parkeren' (No parking). This means you cannot leave your car here.",
-                "zh": "标志上写着 'Verboden te parkeren'（禁止停车）。这意味着你不能把车停在这里。"
+                "nl": "Op het bord staat 'Verboden te parkeren'. Dit betekent dat je je auto hier niet mag neerzetten. Als je dat toch doet, wordt je auto weggesleept.",
+                "en": "The sign says 'No parking'. This means you cannot leave your car here. If you do, your car will be towed away.",
+                "zh": "标志上写着 'Verboden te parkeren'（禁止停车）。'uitrit' 是车辆出入口，'weggesleept' 表示会被拖走。这是一个警告性标志。"
+              }
+            },
+            {
+              "id": "sign_2",
+              "text": {
+                "nl": "[BORD]\n\nLET OP!\nDit zwembad is alleen toegankelijk\nvoor leden met een geldig abonnement.\nDagkaarten zijn niet beschikbaar."
+              },
+              "question": {
+                "nl": "Wie mag dit zwembad gebruiken?",
+                "en": "Who is allowed to use this swimming pool?",
+                "zh": "谁可以使用这个游泳池？"
+              },
+              "options": [
+                { "id": "A", "text": "Iedereen die een kaartje koopt." },
+                { "id": "B", "text": "Alleen kinderen." },
+                { "id": "C", "text": "Alleen mensen met een abonnement." },
+                { "id": "D", "text": "Toeristen met een dagkaart." }
+              ],
+              "correctAnswer": "C",
+              "explanation": {
+                "nl": "Op het bord staat: 'alleen toegankelijk voor leden met een geldig abonnement'. Dagkaarten zijn niet beschikbaar, dus je kunt niet zomaar een kaartje kopen.",
+                "en": "The sign says: 'only accessible for members with a valid subscription'. Day tickets are not available, so you cannot just buy a ticket.",
+                "zh": "标志上写着 'alleen toegankelijk voor leden met een geldig abonnement'（只对持有效订阅的会员开放）。关键词：'alleen'（只有）、'leden'（会员）、'abonnement'（订阅/会员卡）。'Dagkaarten zijn niet beschikbaar' 说明不卖日票。"
               }
             }
           ]
@@ -247,23 +343,47 @@
             {
               "id": "schedule_1",
               "text": {
-                "nl": "Trein naar Utrecht Centraal.\nSpoor 4.\nVertrek: 10:15, 10:45, 11:15, 11:45."
+                "nl": "Trein naar Utrecht Centraal – Spoor 4\n\nVertrek:  10:15 | 10:45 | 11:15 | 11:45\n\nLet op: Op zondag rijdt de trein niet."
               },
               "question": {
-                "nl": "Hoe vaak gaat de trein naar Utrecht Centraal?",
-                "en": "How often does the train to Utrecht Centraal go?",
-                "zh": "去乌得勒支中央火车站的火车多久一班？"
+                "nl": "Hoe vaak gaat de trein naar Utrecht Centraal per uur?",
+                "en": "How many times per hour does the train to Utrecht Centraal go?",
+                "zh": "去乌得勒支中央火车站的火车每小时几班？"
               },
               "options": [
                 { "id": "A", "text": "Eén keer per uur" },
                 { "id": "B", "text": "Twee keer per uur" },
-                { "id": "C", "text": "Drie keer per uur" }
+                { "id": "C", "text": "Drie keer per uur" },
+                { "id": "D", "text": "Vier keer per uur" }
               ],
               "correctAnswer": "B",
               "explanation": {
-                "nl": "De trein vertrekt om 10:15 en 10:45. Dat is twee keer in één uur (elke 30 minuten).",
-                "en": "The train departs at 10:15 and 10:45. That is twice in one hour (every 30 minutes).",
-                "zh": "火车在 10:15 和 10:45 出发。这是一小时两次（每 30 分钟一班）。"
+                "nl": "De trein vertrekt om 10:15 en 10:45. Dat zijn twee vertrekken per uur (elke 30 minuten). Op zondag rijdt de trein niet.",
+                "en": "The train departs at 10:15 and 10:45. That is two departures per hour (every 30 minutes). On Sunday the train does not run.",
+                "zh": "火车在 10:15 和 10:45 出发，每小时两班（每 30 分钟一班）。注意底部的提示：周日停运。这类【注意事项】在考试中经常是考点。"
+              }
+            },
+            {
+              "id": "schedule_2",
+              "text": {
+                "nl": "Zwembad De Waterman – Openingstijden\n\nMaandag t/m vrijdag:  07:00 – 22:00\nZaterdag:              08:00 – 20:00\nZondag:                10:00 – 18:00\n\nLet op: Op dinsdag is het zwembad gesloten van 12:00 tot 14:00 uur voor schoolzwemmen."
+              },
+              "question": {
+                "nl": "Je wil op dinsdag om 13:00 uur zwemmen. Kan dat?",
+                "en": "You want to swim on Tuesday at 13:00. Is that possible?",
+                "zh": "你想在周二 13:00 去游泳，可以吗？"
+              },
+              "options": [
+                { "id": "A", "text": "Ja, het zwembad is open van 07:00 tot 22:00." },
+                { "id": "B", "text": "Ja, maar alleen voor kinderen." },
+                { "id": "C", "text": "Nee, het zwembad is dan gesloten voor schoolzwemmen." },
+                { "id": "D", "text": "Nee, op dinsdag is het zwembad de hele dag gesloten." }
+              ],
+              "correctAnswer": "C",
+              "explanation": {
+                "nl": "Dinsdag is normaal open van 07:00 tot 22:00, maar het schema geeft een uitzondering: van 12:00 tot 14:00 is het gesloten voor schoolzwemmen. 13:00 valt binnen die tijden.",
+                "en": "Tuesday is normally open from 07:00 to 22:00, but the schedule gives an exception: it is closed from 12:00 to 14:00 for school swimming. 13:00 falls within those times.",
+                "zh": "周二一般开放（07:00–22:00），但时间表底部有一个 'Let op'（注意）提示：12:00–14:00 因学校游泳课关闭。13:00 正好在这段时间内，所以不能去。考试常考这类【例外情况】，要仔细读注意事项。"
               }
             }
           ]

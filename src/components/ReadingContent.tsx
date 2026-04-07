@@ -1,8 +1,11 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
+import Link from "next/link";
 import { courseData, TriText, ReadingInfo, ReadingStrategy, ReadingCategory, ReadingExercise } from "@/data/reading";
 import { Locale } from "@/lib/uiTexts";
+import { findVocabInText } from "@/lib/vocabUtils";
+import { VocabMiniCard } from "@/components/VocabMiniCard";
 
 // --- Icons ---
 const InfoIcon = () => (
@@ -66,8 +69,22 @@ function PracticeExerciseCard({ exercise, locale }: { exercise: ReadingExercise,
 
     const isCorrect = selectedOption === exercise.correctAnswer;
 
+    const vocabWords = useMemo(() => findVocabInText(exercise.text.nl), [exercise.text.nl]);
+
     return (
         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
+            {vocabWords.length > 0 && (
+                <div className="mb-4 bg-purple-50 border border-purple-100 rounded-xl p-4">
+                    <p className="text-xs font-bold text-purple-700 uppercase tracking-wider mb-3">
+                        📖 {locale === 'zh' ? "本题关键词" : "Key vocabulary"}
+                    </p>
+                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                        {vocabWords.map(item => (
+                            <VocabMiniCard key={item.id} item={item} locale={locale} />
+                        ))}
+                    </div>
+                </div>
+            )}
             <div className="mb-6">
                  <h4 className="text-sm font-bold text-slate-400 uppercase tracking-wider mb-2">
                     {locale === 'zh' ? "阅读文本" : "Text"}
@@ -156,7 +173,7 @@ function PracticeExerciseCard({ exercise, locale }: { exercise: ReadingExercise,
                                 {getTriText(exercise.explanation, locale)}
                             </p>
                         </div>
-                        <button 
+                        <button
                             onClick={() => {
                                 setSelectedOption(null);
                                 setShowExplanation(false);
@@ -174,12 +191,23 @@ function PracticeExerciseCard({ exercise, locale }: { exercise: ReadingExercise,
 
 function PracticeSection({ categories, locale }: { categories: ReadingCategory[], locale: Locale }) {
     const [activeTab, setActiveTab] = useState(categories[0].id);
+
     const activeCategory = categories.find(c => c.id === activeTab) || categories[0];
 
     return (
         <div>
+            {/* Vocab nav link — prominent */}
+            <div className="flex justify-end mb-4">
+                <Link
+                    href={`/${locale}/vocabulary`}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 border border-orange-200 text-orange-700 text-sm font-semibold hover:bg-orange-100 transition-colors shadow-sm"
+                >
+                    📚 {locale === 'zh' ? "学习相关词汇" : "Study vocabulary"}
+                </Link>
+            </div>
+
             {/* Tabs */}
-            <div className="flex flex-wrap gap-2 mb-8 justify-center">
+            <div className="flex flex-wrap gap-2 mb-6 justify-center">
                 {categories.map((cat) => (
                     <button
                         key={cat.id}
@@ -195,8 +223,7 @@ function PracticeSection({ categories, locale }: { categories: ReadingCategory[]
                 ))}
             </div>
 
-            {/* Content */}
-            <div className="space-y-8 max-w-3xl mx-auto">
+            <div className="max-w-3xl mx-auto space-y-6">
                 {activeCategory.exercises.map((ex) => (
                     <PracticeExerciseCard key={ex.id} exercise={ex} locale={locale} />
                 ))}

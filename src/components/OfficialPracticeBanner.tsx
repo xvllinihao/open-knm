@@ -10,14 +10,9 @@ const ExternalLinkIcon = () => (
 export function OfficialPracticeBanner({ locale }: { locale: Locale }) {
   const pathname = usePathname();
   
-  // Hide on home page, resources, and vocabulary pages
-  if (
-    pathname === '/' || 
-    pathname === '/zh' || 
-    pathname === '/en' || 
-    pathname?.includes('/resources') || 
-    pathname?.includes('/vocabulary')
-  ) {
+  // Show only on skill and KNM pages
+  const allowedPaths = ['/listening', '/reading', '/writing', '/speaking', '/knm'];
+  if (!allowedPaths.some(p => pathname?.includes(p))) {
     return null;
   }
 
