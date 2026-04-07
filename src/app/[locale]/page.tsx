@@ -4,7 +4,7 @@ import { notFound } from "next/navigation";
 import { changelogData } from "@/data/changelog";
 import { JsonLd } from "@/components/StructuredData";
 import { courseSchema, breadcrumbSchema, howToSchema } from "@/lib/structured-data";
-import { CollapsibleLearningPath } from "@/components/CollapsibleLearningPath";
+import { A2SkillsCard } from "@/components/A2SkillsCard";
 
 export default async function HomePage({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -153,43 +153,7 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
                </Link>
 
                {/* A2 Exam Skills Card */}
-               <div className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-5 shadow-sm relative overflow-hidden">
-                 <div className="absolute top-0 right-0 w-32 h-32 bg-slate-50 rounded-bl-full -mr-8 -mt-8 z-0"></div>
-                 
-                 <div className="relative z-10">
-                   <div className="flex items-center justify-between mb-1">
-                     <div className="flex items-center gap-2">
-                       <h3 className="text-base sm:text-lg font-bold text-slate-900">
-                         {isZh ? 'A2 考试单项突破' : 'A2 Exam Skills'}
-                       </h3>
-                       <span className="inline-flex px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 text-[10px] font-bold uppercase tracking-wide shrink-0">Practice</span>
-                     </div>
-                   </div>
-                   <p className="text-slate-500 text-xs sm:text-sm mb-4">
-                     {isZh ? '分模块刷题，快速掌握考试技巧' : 'Targeted practice for each exam section'}
-                   </p>
-
-                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
-                     <Link href={`/${locale}/listening`} className="flex flex-col items-center justify-center p-3 sm:p-4 bg-amber-50 rounded-xl border border-amber-100 hover:border-amber-300 hover:bg-amber-100/50 hover:shadow-md transition-all group">
-                       <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-xl mb-2 shadow-sm group-hover:scale-110 transition-transform">🎧</div>
-                       <span className="text-xs sm:text-sm font-bold text-amber-900">{isZh ? '听力' : 'Listening'}</span>
-                     </Link>
-                     <Link href={`/${locale}/reading`} className="flex flex-col items-center justify-center p-3 sm:p-4 bg-purple-50 rounded-xl border border-purple-100 hover:border-purple-300 hover:bg-purple-100/50 hover:shadow-md transition-all group">
-                       <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-xl mb-2 shadow-sm group-hover:scale-110 transition-transform">📖</div>
-                       <span className="text-xs sm:text-sm font-bold text-purple-900">{isZh ? '阅读' : 'Reading'}</span>
-                     </Link>
-                     <Link href={`/${locale}/writing`} className="flex flex-col items-center justify-center p-3 sm:p-4 bg-emerald-50 rounded-xl border border-emerald-100 hover:border-emerald-300 hover:bg-emerald-100/50 hover:shadow-md transition-all group">
-                       <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-xl mb-2 shadow-sm group-hover:scale-110 transition-transform">✍️</div>
-                       <span className="text-xs sm:text-sm font-bold text-emerald-900">{isZh ? '写作' : 'Writing'}</span>
-                     </Link>
-                     <Link href={`/${locale}/speaking`} className="flex flex-col items-center justify-center p-3 sm:p-4 bg-blue-50 rounded-xl border border-blue-100 hover:border-blue-300 hover:bg-blue-100/50 hover:shadow-md transition-all group relative overflow-hidden">
-                       <span className="absolute top-0 right-0 bg-blue-200 text-blue-800 text-[8px] font-bold px-1.5 py-0.5 rounded-bl-lg">Beta</span>
-                       <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-xl mb-2 shadow-sm group-hover:scale-110 transition-transform">🗣️</div>
-                       <span className="text-xs sm:text-sm font-bold text-blue-900">{isZh ? '口语' : 'Speaking'}</span>
-                     </Link>
-                   </div>
-                 </div>
-               </div>
+               <A2SkillsCard locale={locale} isZh={isZh} />
 
                {/* AI Assistant Promo Card */}
                <Link
@@ -242,8 +206,6 @@ export default async function HomePage({ params }: { params: Promise<{ locale: L
           </section>
         </div>
 
-        {/* Collapsible Learning Path */}
-        <CollapsibleLearningPath isZh={isZh} />
       </main>
     </>
   );
