@@ -1,8 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
+import Link from "next/link";
 import { courseData, TriText, ListeningInfo, ListeningStrategy, ListeningCategory, ListeningExercise } from "@/data/listening";
 import { Locale } from "@/lib/uiTexts";
+import { findVocabInText } from "@/lib/vocabUtils";
+import { VocabMiniCard } from "@/components/VocabMiniCard";
 
 // --- Icons ---
 const InfoIcon = () => (
@@ -66,52 +69,218 @@ function StrategyCard({ item, locale }: { item: ListeningStrategy, locale: Local
     );
 }
 
-function PracticeExerciseCard({ exercise, locale }: { exercise: ListeningExercise, locale: Locale }) {
+const SPEED_OPTIONS = [
+    { label: "0.5×", value: 0.5 },
+    { label: "0.75×", value: 0.75 },
+    { label: "1×", value: 1.0 },
+];
+
+type DialogueLine = { speaker: string; line: string };
+
+function parseDialogue(text: string): DialogueLine[] | null {
+    const lines = text.split("\n").filter(l => l.trim());
+    const pattern = /^(\S+):\s(.+)$/;
+    const parsed = lines.map(l => {
+        const m = l.match(pattern);
+        return m ? { speaker: m[1], line: m[2] } : null;
+    });
+    return parsed.every(Boolean) && parsed.length > 1
+        ? (parsed as DialogueLine[])
+        : null;
+}
+
+/** Split text into sentences on . ! ? boundaries */
+function splitSentences(text: string): string[] {
+    const parts = text.match(/[^.!?]+[.!?]*/g);
+    return parts?.map(s => s.trim()).filter(Boolean) ?? [text];
+}
+
+/** Find Dutch male/female voices by common name patterns (Xander = male, Ellen = female on macOS) */
+function findGenderedVoices(voices: SpeechSynthesisVoice[]) {
+    const dutch = voices.filter(v => v.lang.startsWith("nl"));
+    const maleVoice = dutch.find(v => /xander|male/i.test(v.name)) ?? null;
+    const femaleVoice = dutch.find(v => /ellen|female|vrouw/i.test(v.name)) ?? null;
+    return { maleVoice, femaleVoice, dutch };
+}
+
+type SpeakItem = {
+    text: string;
+    voice: SpeechSynthesisVoice | null;
+    pitch: number;
+    speaker: string | null;
+};
+
+function PracticeExerciseCard({ exercise, locale, categoryId }: { exercise: ListeningExercise, locale: Locale, categoryId: string }) {
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
     const [showExplanation, setShowExplanation] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [speechRate, setSpeechRate] = useState(0.75);
+    const [showTranscript, setShowTranscript] = useState(false);
+    const [currentSpeaker, setCurrentSpeaker] = useState<string | null>(null);
+    const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+    const playingRef = useRef(false);
+    const pauseTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
     const isCorrect = selectedOption === exercise.correctAnswer;
+    const vocabWords = useMemo(() => findVocabInText(exercise.text.nl), [exercise.text.nl]);
+    const dialogueLines = useMemo(() => parseDialogue(exercise.text.nl), [exercise.text.nl]);
 
     useEffect(() => {
-        return () => {
-            if (isPlaying) {
-                window.speechSynthesis.cancel();
-            }
+        const load = () => {
+            const v = window.speechSynthesis.getVoices();
+            if (v.length > 0) setVoices(v);
         };
-    }, [isPlaying]);
+        load();
+        window.speechSynthesis.addEventListener("voiceschanged", load);
+        return () => {
+            window.speechSynthesis.removeEventListener("voiceschanged", load);
+            window.speechSynthesis.cancel();
+        };
+    }, []);
 
     const handlePlayAudio = () => {
         if (isPlaying) {
+            playingRef.current = false;
+            if (pauseTimerRef.current) clearTimeout(pauseTimerRef.current);
             window.speechSynthesis.cancel();
             setIsPlaying(false);
+            setCurrentSpeaker(null);
             return;
         }
 
-        const utterance = new SpeechSynthesisUtterance(exercise.text.nl);
-        utterance.lang = "nl-NL";
-        utterance.rate = 0.85; // Slightly slower for A2 level
+        const { maleVoice, femaleVoice, dutch } = findGenderedVoices(voices);
+        const defaultVoice = dutch[0] ?? null;
 
-        utterance.onend = () => setIsPlaying(false);
-        utterance.onerror = () => setIsPlaying(false);
+        let sequence: SpeakItem[];
 
+        if (dialogueLines) {
+            sequence = dialogueLines.map(({ speaker, line }) => {
+                const isMan = /man/i.test(speaker);
+                const isVrouw = /vrouw/i.test(speaker);
+                // Prefer named gendered voices; pitch as backup
+                const voice = isMan
+                    ? (maleVoice ?? defaultVoice)
+                    : isVrouw
+                    ? (femaleVoice ?? defaultVoice)
+                    : defaultVoice;
+                return {
+                    text: line,
+                    voice,
+                    pitch: isMan ? 0.6 : isVrouw ? 1.4 : 1.0,
+                    speaker,
+                };
+            });
+        } else {
+            // announcements → male (Xander, pitch 0.6), messages → female (Ellen, pitch 1.4)
+            const isMessage = categoryId === "messages";
+            sequence = splitSentences(exercise.text.nl).map(sentence => ({
+                text: sentence,
+                voice: isMessage ? (femaleVoice ?? defaultVoice) : (maleVoice ?? defaultVoice),
+                pitch: isMessage ? 1.4 : 0.6,
+                speaker: null,
+            }));
+        }
+
+        playingRef.current = true;
         setIsPlaying(true);
-        window.speechSynthesis.speak(utterance);
+        let idx = 0;
+
+        const next = () => {
+            if (!playingRef.current || idx >= sequence.length) {
+                if (playingRef.current) {
+                    playingRef.current = false;
+                    setIsPlaying(false);
+                    setCurrentSpeaker(null);
+                }
+                return;
+            }
+            const item = sequence[idx];
+            if (item.speaker) setCurrentSpeaker(item.speaker);
+            const utt = new SpeechSynthesisUtterance(item.text);
+            utt.lang = "nl-NL";
+            utt.rate = speechRate;
+            utt.pitch = item.pitch;
+            if (item.voice) utt.voice = item.voice;
+            utt.onend = () => { idx++; pauseTimerRef.current = setTimeout(next, 550); };
+            utt.onerror = () => { playingRef.current = false; setIsPlaying(false); setCurrentSpeaker(null); };
+            window.speechSynthesis.speak(utt);
+        };
+
+        next();
     };
 
     return (
         <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6">
-            <div className="mb-6 flex flex-col items-center justify-center bg-slate-50 p-8 rounded-xl border border-slate-100">
-                 <button 
+            <div className="mb-6 flex flex-col items-center justify-center bg-slate-50 p-8 rounded-xl border border-slate-100 gap-4">
+                 <button
                     onClick={handlePlayAudio}
                     className={`flex items-center justify-center w-16 h-16 rounded-full shadow-lg transition-all hover:scale-105 ${isPlaying ? 'bg-red-500 text-white hover:bg-red-600 animate-pulse' : 'bg-[var(--primary)] text-white hover:bg-orange-600'}`}
                     aria-label={isPlaying ? "Stop audio" : "Play audio"}
                  >
                     {isPlaying ? <StopIcon /> : <PlayIcon />}
                  </button>
-                 <p className="mt-4 text-sm font-bold text-slate-500 uppercase tracking-wider">
-                    {isPlaying ? (locale === 'zh' ? "播放中..." : "Playing...") : (locale === 'zh' ? "点击播放音频" : "Click to play audio")}
+                 <p className="text-sm font-bold text-slate-500 uppercase tracking-wider">
+                    {isPlaying
+                        ? (currentSpeaker
+                            ? (locale === 'zh' ? `${currentSpeaker} 说话中...` : `${currentSpeaker} speaking...`)
+                            : (locale === 'zh' ? "播放中..." : "Playing..."))
+                        : (locale === 'zh' ? "点击播放音频" : "Click to play audio")}
                  </p>
+
+                 {/* Speed controls */}
+                 <div className="flex items-center gap-2">
+                    <span className="text-xs text-slate-400 font-medium">{locale === 'zh' ? "速度" : "Speed"}:</span>
+                    {SPEED_OPTIONS.map(opt => (
+                        <button
+                            key={opt.value}
+                            onClick={() => setSpeechRate(opt.value)}
+                            className={`px-3 py-1 rounded-full text-xs font-bold transition-all border ${
+                                speechRate === opt.value
+                                    ? "bg-[var(--primary)] text-white border-[var(--primary)]"
+                                    : "bg-white text-slate-600 border-slate-200 hover:border-[var(--primary)]/40"
+                            }`}
+                        >
+                            {opt.label}
+                        </button>
+                    ))}
+                 </div>
+
+                 {/* Transcript toggle */}
+                 <button
+                    onClick={() => setShowTranscript(v => !v)}
+                    className="text-xs text-slate-500 underline underline-offset-2 hover:text-[var(--primary)] transition-colors"
+                 >
+                    {showTranscript
+                        ? (locale === 'zh' ? "隐藏原文" : "Hide transcript")
+                        : (locale === 'zh' ? "显示原文" : "Show transcript")}
+                 </button>
+
+                 {showTranscript && (
+                    <div className="w-full rounded-xl border border-slate-200 bg-white p-4 text-sm text-left">
+                        <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-2">
+                            {locale === 'zh' ? "听力原文" : "Transcript"}
+                        </p>
+                        {dialogueLines ? (
+                            <div className="space-y-2">
+                                {dialogueLines.map((dl, i) => {
+                                    const isMan = /man/i.test(dl.speaker);
+                                    const isVrouw = /vrouw/i.test(dl.speaker);
+                                    const isActive = currentSpeaker === dl.speaker;
+                                    return (
+                                        <div key={i} className={`flex gap-2 rounded-lg px-2 py-1 transition-colors ${isActive ? 'bg-orange-50' : ''}`}>
+                                            <span className={`font-bold shrink-0 ${isMan ? 'text-blue-600' : isVrouw ? 'text-pink-600' : 'text-slate-600'}`}>
+                                                {dl.speaker}:
+                                            </span>
+                                            <span className="text-slate-700">{dl.line}</span>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        ) : (
+                            <p className="text-slate-700 whitespace-pre-line">{exercise.text.nl}</p>
+                        )}
+                    </div>
+                 )}
             </div>
 
             <div className="mb-6">
@@ -189,14 +358,49 @@ function PracticeExerciseCard({ exercise, locale }: { exercise: ListeningExercis
                                 {locale === 'zh' ? "听力原文与解析" : "Transcript & Explanation"}
                             </h4>
                             <div className="mb-4 p-3 bg-white rounded-lg border border-blue-100">
-                                <p className="font-medium text-slate-800 whitespace-pre-line">{exercise.text.nl}</p>
+                                {dialogueLines ? (
+                                    <div className="space-y-1">
+                                        {dialogueLines.map((dl, i) => {
+                                            const isMan = /man/i.test(dl.speaker);
+                                            const isVrouw = /vrouw/i.test(dl.speaker);
+                                            return (
+                                                <div key={i} className="flex gap-2">
+                                                    <span className={`font-bold shrink-0 ${isMan ? 'text-blue-600' : isVrouw ? 'text-pink-600' : 'text-slate-600'}`}>
+                                                        {dl.speaker}:
+                                                    </span>
+                                                    <span className="text-slate-800">{dl.line}</span>
+                                                </div>
+                                            );
+                                        })}
+                                    </div>
+                                ) : (
+                                    <p className="font-medium text-slate-800 whitespace-pre-line">{exercise.text.nl}</p>
+                                )}
                             </div>
                             <p className="font-medium text-slate-800 mb-1">{exercise.explanation.nl}</p>
                             <p className="text-sm text-slate-700">
                                 {getTriText(exercise.explanation, locale)}
                             </p>
                         </div>
-                        <button 
+                        {vocabWords.length > 0 && (
+                            <div className="mt-4 pt-4 border-t border-slate-100">
+                                <p className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">
+                                    {locale === 'zh' ? "📚 本题关键词" : "📚 Key Vocabulary"}
+                                </p>
+                                <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                                    {vocabWords.map(item => (
+                                        <VocabMiniCard key={item.id} item={item} locale={locale} />
+                                    ))}
+                                </div>
+                                <Link
+                                    href={`/${locale}/vocabulary`}
+                                    className="mt-3 inline-flex items-center gap-1 text-xs text-orange-600 font-semibold hover:underline"
+                                >
+                                    {locale === 'zh' ? "查看完整词汇表 →" : "See full vocabulary list →"}
+                                </Link>
+                            </div>
+                        )}
+                        <button
                             onClick={() => {
                                 setSelectedOption(null);
                                 setShowExplanation(false);
@@ -214,12 +418,28 @@ function PracticeExerciseCard({ exercise, locale }: { exercise: ListeningExercis
 
 function PracticeSection({ categories, locale }: { categories: ListeningCategory[], locale: Locale }) {
     const [activeTab, setActiveTab] = useState(categories[0].id);
+
     const activeCategory = categories.find(c => c.id === activeTab) || categories[0];
+
+    const warmupVocab = useMemo(() => {
+        const allText = activeCategory.exercises.map(e => e.text.nl).join(" ");
+        return findVocabInText(allText, 5);
+    }, [activeCategory]);
 
     return (
         <div>
+            {/* Vocab nav link — prominent */}
+            <div className="flex justify-end mb-4">
+                <Link
+                    href={`/${locale}/vocabulary`}
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-orange-50 border border-orange-200 text-orange-700 text-sm font-semibold hover:bg-orange-100 transition-colors shadow-sm"
+                >
+                    📚 {locale === 'zh' ? "学习相关词汇" : "Study vocabulary"}
+                </Link>
+            </div>
+
             {/* Tabs */}
-            <div className="flex flex-wrap gap-2 mb-8 justify-center">
+            <div className="flex flex-wrap gap-2 mb-6 justify-center">
                 {categories.map((cat) => (
                     <button
                         key={cat.id}
@@ -235,10 +455,27 @@ function PracticeSection({ categories, locale }: { categories: ListeningCategory
                 ))}
             </div>
 
-            {/* Content */}
-            <div className="space-y-8 max-w-3xl mx-auto">
+            <div className="max-w-3xl mx-auto space-y-6">
+                {/* Warmup panel — always visible, with TTS for listening */}
+                {warmupVocab.length > 0 && (
+                    <div className="bg-amber-50 border border-amber-100 rounded-2xl p-5">
+                        <p className="text-xs font-bold text-amber-700 uppercase tracking-wider mb-1">
+                            🎧 {locale === 'zh' ? "本组关键词" : "Key vocabulary for this set"}
+                        </p>
+                        <p className="text-xs text-amber-600 mb-3">
+                            {locale === 'zh' ? "点击 ▶ 收听发音" : "Click ▶ to hear pronunciation"}
+                        </p>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                            {warmupVocab.map(item => (
+                                <VocabMiniCard key={item.id} item={item} locale={locale} showTTS />
+                            ))}
+                        </div>
+                    </div>
+                )}
+
+                {/* Exercises */}
                 {activeCategory.exercises.map((ex) => (
-                    <PracticeExerciseCard key={ex.id} exercise={ex} locale={locale} />
+                    <PracticeExerciseCard key={ex.id} exercise={ex} locale={locale} categoryId={activeCategory.id} />
                 ))}
             </div>
         </div>

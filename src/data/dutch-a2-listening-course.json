@@ -137,6 +137,28 @@
                 "en": "In the audio you hear: 'departs today from platform 5'.",
                 "zh": "在音频中你听到：'vertrekt vandaag vanaf spoor 5'（今天从 5 号站台出发）。"
               }
+            },
+            {
+              "id": "announcement_2",
+              "text": {
+                "nl": "Geachte klanten, onze supermarkt sluit vanavond om 21:00 uur. Wij verzoeken u vriendelijk uw aankopen af te ronden en naar de kassa te gaan. Morgen zijn wij geopend van 8:00 tot 20:00 uur. Bedankt voor uw bezoek."
+              },
+              "question": {
+                "nl": "Hoe laat sluit de supermarkt vanavond?",
+                "en": "What time does the supermarket close tonight?",
+                "zh": "超市今晚几点关门？"
+              },
+              "options": [
+                { "id": "A", "text": "20:00 uur" },
+                { "id": "B", "text": "21:00 uur" },
+                { "id": "C", "text": "22:00 uur" }
+              ],
+              "correctAnswer": "B",
+              "explanation": {
+                "nl": "In de audio hoor je: 'onze supermarkt sluit vanavond om 21:00 uur'.",
+                "en": "In the audio you hear: 'our supermarket closes tonight at 21:00'.",
+                "zh": "在音频中你听到：'onze supermarkt sluit vanavond om 21:00 uur'（超市今晚 21:00 关门）。"
+              }
             }
           ]
         },
@@ -168,6 +190,28 @@
                 "nl": "De man zegt dat hij morgen werkt. Ze spreken af voor donderdag om 14:00 uur.",
                 "en": "The man says he works tomorrow. They agree on Thursday at 14:00.",
                 "zh": "男人说明天要工作。他们最后约在星期四下午 14:00。"
+              }
+            },
+            {
+              "id": "conversation_2",
+              "text": {
+                "nl": "Man: Goedemiddag. Ik zoek de bibliotheek. Weet u waar die is?\nVrouw: Ja, die is op de Hoofdstraat. Ga rechtdoor, dan linksaf bij de rotonde.\nMan: Is het ver lopen?\nVrouw: Nee, ongeveer vijf minuten."
+              },
+              "question": {
+                "nl": "Hoe lang moet de man lopen naar de bibliotheek?",
+                "en": "How long does the man need to walk to the library?",
+                "zh": "男人步行去图书馆需要多长时间？"
+              },
+              "options": [
+                { "id": "A", "text": "Twee minuten" },
+                { "id": "B", "text": "Vijf minuten" },
+                { "id": "C", "text": "Tien minuten" }
+              ],
+              "correctAnswer": "B",
+              "explanation": {
+                "nl": "De vrouw zegt: 'Nee, ongeveer vijf minuten.'",
+                "en": "The woman says: 'No, about five minutes.'",
+                "zh": "女人说：'Nee, ongeveer vijf minuten.'（不远，大约五分钟。）"
               }
             }
           ]

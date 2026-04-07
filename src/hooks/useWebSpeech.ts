@@ -61,6 +61,7 @@ export function useWebSpeech() {
   const synthesisRef = useRef<SpeechSynthesis | null>(null);
   const voicesHandlerRef = useRef<(() => void) | null>(null);
   const voiceTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const sentencePauseRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -94,6 +95,7 @@ export function useWebSpeech() {
         }
         window.speechSynthesis.cancel();
       }
+      if (sentencePauseRef.current) clearTimeout(sentencePauseRef.current);
       if (recognitionRef.current) {
         recognitionRef.current.stop();
       }
@@ -101,66 +103,59 @@ export function useWebSpeech() {
   }, []);
 
   const speak = useCallback((text: string, rate: number = 0.85, lang: string = 'nl-NL') => {
-    if (synthesisRef.current) {
-      // Cancel any ongoing speech
-      synthesisRef.current.cancel();
+    if (!synthesisRef.current) return;
 
-      // Clear any pending voice loading listeners from previous calls
-      if (voicesHandlerRef.current) {
-        synthesisRef.current.removeEventListener('voiceschanged', voicesHandlerRef.current);
-        voicesHandlerRef.current = null;
-      }
-      if (voiceTimeoutRef.current) {
-        clearTimeout(voiceTimeoutRef.current);
-        voiceTimeoutRef.current = null;
-      }
+    synthesisRef.current.cancel();
+    if (sentencePauseRef.current) { clearTimeout(sentencePauseRef.current); sentencePauseRef.current = null; }
+    if (voicesHandlerRef.current) {
+      synthesisRef.current.removeEventListener('voiceschanged', voicesHandlerRef.current);
+      voicesHandlerRef.current = null;
+    }
+    if (voiceTimeoutRef.current) { clearTimeout(voiceTimeoutRef.current); voiceTimeoutRef.current = null; }
 
-      const speakWithVoices = (voices: SpeechSynthesisVoice[]) => {
-        const utterance = new SpeechSynthesisUtterance(text);
-        
-        // Explicitly try to find a voice for the requested language
-        // This ensures we get a Dutch voice instead of the system default (which might be English)
-        const targetVoice = 
-          voices.find(v => v.lang === lang) || 
-          voices.find(v => v.lang.startsWith(lang.split('-')[0]));
-        
-        if (targetVoice) {
-          utterance.voice = targetVoice;
-        }
+    // Split into sentences so we can add natural pauses between them
+    const sentences = text.match(/[^.!?]+[.!?]*/g)?.map(s => s.trim()).filter(Boolean) ?? [text];
 
-        utterance.lang = lang;
-        utterance.rate = rate; // Use the provided rate
-        synthesisRef.current?.speak(utterance);
+    const speakWithVoices = (voices: SpeechSynthesisVoice[]) => {
+      const targetVoice =
+        voices.find(v => v.lang === lang) ||
+        voices.find(v => v.lang.startsWith(lang.split('-')[0]));
+
+      let idx = 0;
+      const next = () => {
+        if (idx >= sentences.length) return;
+        const utt = new SpeechSynthesisUtterance(sentences[idx]);
+        utt.lang = lang;
+        utt.rate = rate;
+        if (targetVoice) utt.voice = targetVoice;
+        utt.onend = () => { idx++; sentencePauseRef.current = setTimeout(next, 550); };
+        synthesisRef.current?.speak(utt);
       };
+      next();
+    };
 
-      const voices = synthesisRef.current.getVoices();
-      if (voices.length > 0) {
-        speakWithVoices(voices);
-      } else {
-        const handleVoicesChanged = () => {
-          const updatedVoices = synthesisRef.current?.getVoices() || [];
-          if (updatedVoices.length > 0) {
-            if (voiceTimeoutRef.current) {
-              clearTimeout(voiceTimeoutRef.current);
-              voiceTimeoutRef.current = null;
-            }
-            synthesisRef.current?.removeEventListener('voiceschanged', handleVoicesChanged);
-            voicesHandlerRef.current = null;
-            speakWithVoices(updatedVoices);
-          }
-        };
-        
-        voicesHandlerRef.current = handleVoicesChanged;
-        synthesisRef.current.addEventListener('voiceschanged', handleVoicesChanged);
-
-        voiceTimeoutRef.current = setTimeout(() => {
-            if (voicesHandlerRef.current) {
-              synthesisRef.current?.removeEventListener('voiceschanged', voicesHandlerRef.current);
-              voicesHandlerRef.current = null;
-              speakWithVoices([]);
-            }
-        }, 3000);
-      }
+    const voices = synthesisRef.current.getVoices();
+    if (voices.length > 0) {
+      speakWithVoices(voices);
+    } else {
+      const handleVoicesChanged = () => {
+        const updatedVoices = synthesisRef.current?.getVoices() || [];
+        if (updatedVoices.length > 0) {
+          if (voiceTimeoutRef.current) { clearTimeout(voiceTimeoutRef.current); voiceTimeoutRef.current = null; }
+          synthesisRef.current?.removeEventListener('voiceschanged', handleVoicesChanged);
+          voicesHandlerRef.current = null;
+          speakWithVoices(updatedVoices);
+        }
+      };
+      voicesHandlerRef.current = handleVoicesChanged;
+      synthesisRef.current.addEventListener('voiceschanged', handleVoicesChanged);
+      voiceTimeoutRef.current = setTimeout(() => {
+        if (voicesHandlerRef.current) {
+          synthesisRef.current?.removeEventListener('voiceschanged', voicesHandlerRef.current);
+          voicesHandlerRef.current = null;
+          speakWithVoices([]);
+        }
+      }, 3000);
     }
   }, []);
 
