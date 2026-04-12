@@ -50,7 +50,7 @@ function ResourcesContent({ locale }: { locale: Locale }) {
       return;
     }
 
-    const checkoutUrl = "https://open-knm.lemonsqueezy.com/checkout/buy/64c4ef33-597f-4571-8b3f-e58091a817fb";
+    const checkoutUrl = "https://open-knm.lemonsqueezy.com/checkout/buy/1c627be6-1544-4852-9b02-21ce7f28342b";
     const params = new URLSearchParams();
     params.set("checkout[email]", user.email || "");
     params.set("checkout[custom][user_id]", user.id);
@@ -220,6 +220,14 @@ function ResourcesContent({ locale }: { locale: Locale }) {
             {isZh && (
               <div className="mb-6 p-3 bg-white/50 border border-purple-200 rounded-xl text-xs text-purple-700 leading-relaxed">
                 {texts.activation.xhsNotice}
+                <a
+                  href="https://xhslink.com/m/8J6IpXc7bHx"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 flex items-center gap-1.5 font-bold text-[#ff2442] hover:underline"
+                >
+                  小红书主页 →
+                </a>
               </div>
             )}
 
