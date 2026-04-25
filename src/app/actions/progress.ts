@@ -181,14 +181,19 @@ export async function syncFlashcardWords(unknownWords: string[], knownWords: str
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
 
-  if (!user) return { success: false, unknown: unknownWords, known: knownWords };
+  if (!user) return { success: false, error: "Not authenticated" };
 
-  await supabase.from("profiles").update({
+  const { error } = await supabase.from("profiles").update({
     unknown_words: unknownWords,
     known_words: knownWords,
   }).eq("id", user.id);
 
-  return { success: true, unknown: unknownWords, known: knownWords };
+  if (error) {
+    console.error("syncFlashcardWords failed:", error);
+    return { success: false, error: error.message };
+  }
+
+  return { success: true };
 }
 
 export async function syncFlashcardProgress(localData: {
@@ -196,8 +201,8 @@ export async function syncFlashcardProgress(localData: {
   current_index: number;
   deck_ids: string[];
   is_reverse: boolean;
-  is_review_mode: boolean;
-  is_review_known_mode: boolean;
+  is_review_mode?: boolean;
+  is_review_known_mode?: boolean;
   updated_at: number;
 }) {
   const supabase = await createClient();
@@ -212,15 +217,15 @@ export async function syncFlashcardProgress(localData: {
     .eq("level", localData.level)
     .single();
 
-  if (!remoteData || localData.updated_at > new Date(remoteData.updated_at).getTime()) {
+if (!remoteData || localData.updated_at > new Date(remoteData.updated_at).getTime()) {
     await supabase.from("flashcard_progress").upsert({
       user_id: user.id,
       level: localData.level,
       current_index: localData.current_index,
       deck_ids: localData.deck_ids,
       is_reverse: localData.is_reverse,
-      is_review_mode: localData.is_review_mode,
-      is_review_known_mode: localData.is_review_known_mode,
+      is_review_mode: localData.is_review_mode ?? false,
+      is_review_known_mode: localData.is_review_known_mode ?? false,
       updated_at: new Date(localData.updated_at).toISOString(),
     });
     return { success: true, data: localData };
@@ -231,10 +236,10 @@ export async function syncFlashcardProgress(localData: {
     data: {
       level: remoteData.level as "A2" | "B1" | "Mix",
       current_index: remoteData.current_index,
-      deck_ids: remoteData.deck_ids,
-      is_reverse: remoteData.is_reverse,
-      is_review_mode: remoteData.is_review_mode,
-      is_review_known_mode: remoteData.is_review_known_mode,
+      deck_ids: remoteData.deck_ids as string[],
+      is_reverse: remoteData.is_reverse as boolean,
+      is_review_mode: remoteData.is_review_mode as boolean,
+      is_review_known_mode: remoteData.is_review_known_mode as boolean,
       updated_at: new Date(remoteData.updated_at).getTime(),
     },
   };
