@@ -61,10 +61,10 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
   const { speak } = useWebSpeech();
   const { profile, refreshProfile, user } = useAuth();
   const isPro = profile?.tier === "pro";
-  
+
   // PRO 特权：无限刷词
   const effectiveLimit = isPro ? 9999 : limit;
-  
+
   const [deck, setDeck] = useState<VocabularyItem[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
@@ -85,6 +85,8 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     is_review_known_mode?: boolean;
   } | null>(null);
   const [isInitialized, setIsInitialized] = useState(false);
+  const [knownWords, setKnownWords] = useState<VocabularyItem[]>([]);
+  const [unknownWords, setUnknownWords] = useState<VocabularyItem[]>([]);
   
   // Touch handling state
   const cardRef = useRef<HTMLDivElement>(null);
@@ -93,6 +95,40 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
   const isDragging = useRef(false);
 
   const currentCard = deck[currentIndex];
+
+  // Load and sync known/unknown words from storage
+  useEffect(() => {
+    const loadWords = () => {
+      const idMap = new Map(vocabularyList.map(i => [i.dutch, i]));
+
+      // For Pro users, sync profile data to localStorage, then load both
+      if (isPro && profile) {
+        if (profile.unknown_words && profile.unknown_words.length > 0) {
+          const serverItems = profile.unknown_words.map(d => idMap.get(d)).filter(Boolean) as VocabularyItem[];
+          localStorage.setItem('vocabulary-unknown', JSON.stringify(serverItems));
+          setUnknownWords(serverItems);
+        } else {
+          setUnknownWords([]);
+        }
+
+        if (profile.known_words && profile.known_words.length > 0) {
+          const serverItems = profile.known_words.map(d => idMap.get(d)).filter(Boolean) as VocabularyItem[];
+          localStorage.setItem('vocabulary-known', JSON.stringify(serverItems));
+          setKnownWords(serverItems);
+        } else {
+          setKnownWords([]);
+        }
+      } else {
+        // For non-Pro users, just load from localStorage
+        const savedKnown: VocabularyItem[] = JSON.parse(localStorage.getItem('vocabulary-known') || '[]');
+        const savedUnknown: VocabularyItem[] = JSON.parse(localStorage.getItem('vocabulary-unknown') || '[]');
+        setKnownWords(savedKnown);
+        setUnknownWords(savedUnknown);
+      }
+    };
+
+    loadWords();
+  }, [isPro, profile]);
 
   // Initialize deck and progress
   useEffect(() => {
@@ -115,21 +151,6 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
             updated_at: localData?.updated_at || 0
           });
           if (result.success) serverData = result.data;
-
-          // Sync known/unknown words from profile to local storage
-          if (profile) {
-            const idMap = new Map(vocabularyList.map(i => [i.dutch, i]));
-            
-            if (profile.unknown_words && profile.unknown_words.length > 0) {
-              const serverItems = profile.unknown_words.map(d => idMap.get(d)).filter(Boolean);
-              localStorage.setItem('vocabulary-unknown', JSON.stringify(serverItems));
-            }
-            
-            if (profile.known_words && profile.known_words.length > 0) {
-              const serverItems = profile.known_words.map(d => idMap.get(d)).filter(Boolean);
-              localStorage.setItem('vocabulary-known', JSON.stringify(serverItems));
-            }
-          }
         } catch (e) {
           console.error("Sync failed", e);
         }
@@ -147,7 +168,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
       if (!isInitialized) {
         // 默认开启乱序刷词 (Random Mode)
         let items = [...vocabularyList];
-        
+
         // Filter by level
         if (activeLevel !== "Mix") {
           items = items.filter(item => item.level === activeLevel);
@@ -156,7 +177,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
         if (!isReverse && !isReviewMode && !isReviewKnownMode) {
           items = items.sort(() => Math.random() - 0.5);
         }
-        
+
         setDeck(items.slice(0, effectiveLimit));
         setIsInitialized(true);
       }
@@ -256,19 +277,16 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     if (isSessionComplete) return;
 
     setSwipeDirection(correct ? 'right' : 'left');
-    
+
     // 记录不认识/认识的单词进度 (Pro 同步到服务器，非 Pro 仅保存在本地)
     if (currentCard) {
-      const savedUnknown: VocabularyItem[] = JSON.parse(localStorage.getItem('vocabulary-unknown') || '[]');
-      const savedKnown: VocabularyItem[] = JSON.parse(localStorage.getItem('vocabulary-known') || '[]');
-      
-      let newUnknown = [...savedUnknown];
-      let newKnown = [...savedKnown];
+      let newUnknown = [...unknownWords];
+      let newKnown = [...knownWords];
       let changed = false;
-      
+
       if (!correct) {
-        // 标记为“不认识”：加入不认识列表，从认识列表移除
-        if (!savedUnknown.find((item: VocabularyItem) => item.dutch === currentCard.dutch)) {
+        // 标记为”不认识”：加入不认识列表，从认识列表移除
+        if (!newUnknown.find((item: VocabularyItem) => item.dutch === currentCard.dutch)) {
           newUnknown.push(currentCard);
           changed = true;
         }
@@ -276,8 +294,8 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
         newKnown = newKnown.filter((item: VocabularyItem) => item.dutch !== currentCard.dutch);
         if (newKnown.length < initialKnownCount) changed = true;
       } else {
-        // 标记为“认识”：加入认识列表，从不认识列表移除
-        if (!savedKnown.find((item: VocabularyItem) => item.dutch === currentCard.dutch)) {
+        // 标记为”认识”：加入认识列表，从不认识列表移除
+        if (!newKnown.find((item: VocabularyItem) => item.dutch === currentCard.dutch)) {
           newKnown.push(currentCard);
           changed = true;
         }
@@ -287,15 +305,20 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
       }
 
       if (changed) {
+        // Update state immediately for UI
+        setUnknownWords(newUnknown);
+        setKnownWords(newKnown);
+
+        // Update localStorage
         localStorage.setItem('vocabulary-unknown', JSON.stringify(newUnknown));
         localStorage.setItem('vocabulary-known', JSON.stringify(newKnown));
+
+        // Sync to server if Pro
         if (isPro) {
-          // Sync to Supabase if Pro
           syncFlashcardWords(
             newUnknown.map((i: VocabularyItem) => i.dutch),
             newKnown.map((i: VocabularyItem) => i.dutch)
           ).then(() => {
-            // Refresh profile to keep AuthContext in sync
             refreshProfile();
           }).catch(console.error);
         }
@@ -338,14 +361,14 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     setTimeout(() => {
       setSwipeDirection(null);
       setIsFlipped(false);
-      
+
       if (currentIndex + 1 >= deck.length) {
         setIsSessionComplete(true);
       } else {
         setCurrentIndex(prev => prev + 1);
       }
     }, 300);
-  }, [isSessionComplete, currentIndex, deck.length, isFlipped, isPro, currentCard, refreshProfile]);
+  }, [isSessionComplete, currentIndex, deck.length, isFlipped, isPro, currentCard, refreshProfile, knownWords, unknownWords]);
 
   // Touch handlers
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -469,18 +492,6 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
   const resetSession = () => {
     updateDeck(isReviewMode, isReverse, isReviewKnownMode);
   };
-
-  // Get current mastery data (with word objects for level-based filtering)
-  const getLevelWords = (dutchWords: string[] | undefined) => {
-    if (!dutchWords) return [];
-    const idMap = new Map(vocabularyList.map(i => [i.dutch, i]));
-    return dutchWords.map(d => idMap.get(d)).filter(Boolean) as VocabularyItem[];
-  };
-
-  const savedKnown = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('vocabulary-known') || '[]') : [];
-  const savedUnknown = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('vocabulary-unknown') || '[]') : [];
-  const knownWords = isPro ? getLevelWords(profile?.known_words) : savedKnown;
-  const unknownWords = isPro ? getLevelWords(profile?.unknown_words) : savedUnknown;
 
   const texts = {
     zh: {
