@@ -681,6 +681,21 @@ if (currentCard) {
       {/* Study Pack Controls */}
       {isPro && !isSessionComplete && (
         <div className="flex flex-col gap-3 mb-4 px-1">
+          {/* Mode Description Banner */}
+          <div className="bg-gradient-to-r from-slate-50 to-slate-100 rounded-xl px-4 py-3 border border-slate-200">
+            <div className="flex items-center gap-2">
+              <div className={`w-2 h-2 rounded-full ${
+                currentMode === 'sequential' ? 'bg-orange-500' : 
+                currentMode === 'unknown' ? 'bg-purple-500' : 'bg-green-500'
+              }`} />
+              <span className="text-sm font-medium text-slate-700">
+                {currentMode === 'sequential' ? texts.modeSequentialDesc :
+                 currentMode === 'unknown' ? texts.modeUnknownDesc : texts.modeReviewDesc}
+              </span>
+            </div>
+          </div>
+          
+          {/* Mode Buttons */}
           <div className="grid grid-cols-3 gap-2">
             <button
               onClick={() => setMode('sequential')}
@@ -691,7 +706,6 @@ if (currentCard) {
               }`}
             >
               <div className="text-[10px] sm:text-xs font-bold">{texts.modeSequential}</div>
-              <div className="text-[8px] sm:text-[10px] opacity-80 mt-0.5 leading-tight px-0.5">{texts.modeSequentialDesc}</div>
             </button>
             <button
               onClick={() => setMode('unknown')}
@@ -702,7 +716,6 @@ if (currentCard) {
               }`}
             >
               <div className="text-[10px] sm:text-xs font-bold">{texts.modeUnknown}</div>
-              <div className="text-[8px] sm:text-[10px] opacity-80 mt-0.5 leading-tight px-0.5">{texts.modeUnknownDesc}</div>
             </button>
             <button
               onClick={() => setMode('review')}
@@ -713,7 +726,6 @@ if (currentCard) {
               }`}
             >
               <div className="text-[10px] sm:text-xs font-bold">{texts.modeReview}</div>
-              <div className="text-[8px] sm:text-[10px] opacity-80 mt-0.5 leading-tight px-0.5">{texts.modeReviewDesc}</div>
             </button>
           </div>
         </div>
