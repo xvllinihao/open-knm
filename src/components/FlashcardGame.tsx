@@ -299,10 +299,6 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
   const handleResume = () => {
     if (!pendingProgress) return;
     
-    const levelFiltered = pendingProgress.level === "Mix" 
-      ? vocabularyList 
-      : vocabularyList.filter(i => i.level === pendingProgress.level);
-    
     let baseItems: VocabularyItem[] = [];
     
     if (pendingProgress.is_review_mode) {
