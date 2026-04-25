@@ -461,8 +461,8 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
   const reviewedCount = sessionStats.correct + sessionStats.incorrect;
 
   // 进度条显示逻辑：顺序模式显示整体进度，其他模式显示本次 session 进度
-  const displayProgressCount = (isReverse && !isReviewMode && !isReviewKnownMode) 
-    ? currentIndex 
+  const displayProgressCount = (isReverse && !isReviewMode && !isReviewKnownMode)
+    ? currentIndex + 1
     : reviewedCount;
   const displayTotalCount = (effectiveLimit === 9999 ? deck.length : effectiveLimit);
 
