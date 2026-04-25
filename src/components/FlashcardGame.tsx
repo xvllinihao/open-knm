@@ -99,8 +99,12 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
   useEffect(() => { isProRef.current = isPro; }, [isPro]);
 
   const flushWordsSync = useCallback(async () => {
-    if (!isProRef.current || !pendingWordsRef.current) return;
+    if (!isProRef.current || !pendingWordsRef.current) {
+      console.log('[FlashcardGame] flushWordsSync skipped:', !isProRef.current ? 'not pro' : 'no pending data');
+      return;
+    }
     const { unknown, known } = pendingWordsRef.current;
+    console.log('[FlashcardGame] Syncing to Supabase:', { unknown: unknown.length, known: known.length });
     pendingWordsRef.current = null;
     try {
       const result = await syncFlashcardWords(
@@ -109,6 +113,8 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
       );
       if (!result.success) {
         console.error("syncFlashcardWords error:", result.error);
+      } else {
+        console.log('[FlashcardGame] Sync to Supabase succeeded');
       }
     } catch (e) {
       console.error("syncFlashcardWords threw:", e);
@@ -116,7 +122,11 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
   }, []);
 
   const queueWordsSync = useCallback((unknown: VocabularyItem[], known: VocabularyItem[]) => {
-    if (!isProRef.current) return;
+    if (!isProRef.current) {
+      console.log('[FlashcardGame] queueWordsSync skipped: not pro');
+      return;
+    }
+    console.log('[FlashcardGame] Queueing words sync:', { unknown: unknown.length, known: known.length });
     pendingWordsRef.current = { unknown, known };
     if (wordsSyncTimerRef.current) clearTimeout(wordsSyncTimerRef.current);
     wordsSyncTimerRef.current = setTimeout(() => {
@@ -350,6 +360,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     localStorage.setItem(`flashcard-progress-${activeLevel}`, JSON.stringify(payload));
 
     if (isPro) {
+      console.log('[FlashcardGame] Syncing flashcard progress for Pro user');
       syncFlashcardProgress(payload).catch(console.error);
     }
   }, [currentIndex, deck, currentMode, isPro, isInitialized, activeLevel]);
