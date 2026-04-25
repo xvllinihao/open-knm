@@ -59,21 +59,22 @@ interface FlashcardGameProps {
 
 export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
   const { speak } = useWebSpeech();
-  const { profile, refreshProfile, user } = useAuth();
+  const { profile, user } = useAuth();
   const isPro = profile?.tier === "pro";
-  
+
   // PRO 特权：无限刷词
   const effectiveLimit = isPro ? 9999 : limit;
-  
+
   const [deck, setDeck] = useState<VocabularyItem[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [swipeDirection, setSwipeDirection] = useState<SwipeDirection>(null);
   const [sessionStats, setSessionStats] = useState({ correct: 0, incorrect: 0 });
   const [isSessionComplete, setIsSessionComplete] = useState(false);
-  const [isReverse, setIsReverse] = useState(false);
-  const [isReviewMode, setIsReviewMode] = useState(false);
-  const [isReviewKnownMode, setIsReviewKnownMode] = useState(false);
+  
+  // 3 modes: sequential (顺序背词), unknown (只背生词), review (复习模式)
+  // Only sequential mode preserves progress
+  const [currentMode, setCurrentMode] = useState<'sequential' | 'unknown' | 'review'>('sequential');
   const [activeLevel, setActiveLevel] = useState<"A2" | "B1" | "Mix">("A2");
   const [showPaywallModal, setShowPaywallModal] = useState(false);
   const [pendingProgress, setPendingProgress] = useState<{
@@ -85,7 +86,63 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     is_review_known_mode?: boolean;
   } | null>(null);
   const [isInitialized, setIsInitialized] = useState(false);
-  
+  const [knownWords, setKnownWords] = useState<VocabularyItem[]>([]);
+  const [unknownWords, setUnknownWords] = useState<VocabularyItem[]>([]);
+  const [wordsLoaded, setWordsLoaded] = useState(false);
+
+  // Debounced server sync for known/unknown words (Pro only).
+  // Per-swipe writes were causing one full UPDATE round-trip per card and triggered
+  // refreshProfile cascades that re-rendered the whole tree. Batch instead.
+  const pendingWordsRef = useRef<{ unknown: VocabularyItem[]; known: VocabularyItem[] } | null>(null);
+  const wordsSyncTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isProRef = useRef(isPro);
+  useEffect(() => { isProRef.current = isPro; }, [isPro]);
+
+  const flushWordsSync = useCallback(async () => {
+    if (!isProRef.current || !pendingWordsRef.current) return;
+    const { unknown, known } = pendingWordsRef.current;
+    pendingWordsRef.current = null;
+    try {
+      const result = await syncFlashcardWords(
+        unknown.map(i => i.dutch),
+        known.map(i => i.dutch),
+      );
+      if (!result.success) {
+        console.error("syncFlashcardWords error:", result.error);
+      }
+    } catch (e) {
+      console.error("syncFlashcardWords threw:", e);
+    }
+  }, []);
+
+  const queueWordsSync = useCallback((unknown: VocabularyItem[], known: VocabularyItem[]) => {
+    if (!isProRef.current) return;
+    pendingWordsRef.current = { unknown, known };
+    if (wordsSyncTimerRef.current) clearTimeout(wordsSyncTimerRef.current);
+    wordsSyncTimerRef.current = setTimeout(() => {
+      wordsSyncTimerRef.current = null;
+      flushWordsSync();
+    }, 800);
+  }, [flushWordsSync]);
+
+  // Flush any pending sync on unmount or tab hide
+  useEffect(() => {
+    const handleVisibility = () => {
+      if (document.visibilityState === "hidden" && pendingWordsRef.current) {
+        flushWordsSync();
+      }
+    };
+    document.addEventListener("visibilitychange", handleVisibility);
+    return () => {
+      document.removeEventListener("visibilitychange", handleVisibility);
+      if (wordsSyncTimerRef.current) {
+        clearTimeout(wordsSyncTimerRef.current);
+        wordsSyncTimerRef.current = null;
+      }
+      flushWordsSync();
+    };
+  }, [flushWordsSync]);
+
   // Touch handling state
   const cardRef = useRef<HTMLDivElement>(null);
   const startX = useRef(0);
@@ -94,14 +151,65 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
 
   const currentCard = deck[currentIndex];
 
-  // Initialize deck and progress
+  // Hydrate known/unknown words once per user identity. We deliberately do NOT
+  // re-run on every `profile` reference change — otherwise unrelated profile
+  // updates (or our own optimistic syncs) would clobber fresh in-session state.
+  const lastLoadedUserIdRef = useRef<string | null | undefined>(undefined);
   useEffect(() => {
-    const init = async () => {
-      // 1. Load Local Progress (per level)
+    const currentUserId = user?.id ?? null;
+    // For Pro hydration we need the profile to be loaded; if it isn't yet,
+    // wait for the next profile change before claiming "loaded for this user".
+    if (currentUserId && isPro && !profile) return;
+    if (lastLoadedUserIdRef.current === currentUserId && wordsLoaded) return;
+
+    const hydrate = async () => {
+      const idMap = new Map(vocabularyList.map(i => [i.id, i]));
+
+      if (currentUserId && isPro && profile) {
+        const findId = (dutch: string) => vocabularyList.find(i => i.dutch === dutch)?.id;
+        
+        const unknownIds = (profile.unknown_words ?? [])
+          .map(d => findId(d))
+          .filter((id): id is string => !!id);
+        const serverUnknown = unknownIds
+          .map(id => idMap.get(id))
+          .filter((item): item is VocabularyItem => !!item);
+          
+        const knownIds = (profile.known_words ?? [])
+          .map(d => findId(d))
+          .filter((id): id is string => !!id);
+        const serverKnown = knownIds
+          .map(id => idMap.get(id))
+          .filter((item): item is VocabularyItem => !!item);
+          
+        localStorage.setItem('vocabulary-unknown', JSON.stringify(serverUnknown));
+        localStorage.setItem('vocabulary-known', JSON.stringify(serverKnown));
+        setUnknownWords(serverUnknown);
+        setKnownWords(serverKnown);
+      } else {
+        const savedKnown: VocabularyItem[] = JSON.parse(localStorage.getItem('vocabulary-known') || '[]');
+        const savedUnknown: VocabularyItem[] = JSON.parse(localStorage.getItem('vocabulary-unknown') || '[]');
+        const knownFilter = savedKnown.filter(item => idMap.has(item.id));
+        const unknownFilter = savedUnknown.filter(item => idMap.has(item.id));
+        localStorage.setItem('vocabulary-known', JSON.stringify(knownFilter));
+        localStorage.setItem('vocabulary-unknown', JSON.stringify(unknownFilter));
+        setKnownWords(knownFilter);
+        setUnknownWords(unknownFilter);
+      }
+
+      lastLoadedUserIdRef.current = currentUserId;
+      setWordsLoaded(true);
+    };
+
+    hydrate();
+  }, [isPro, profile, user, wordsLoaded]);
+
+  // Sync flashcard progress with server (Pro) and detect resumable state
+  useEffect(() => {
+    const sync = async () => {
       const raw = localStorage.getItem(`flashcard-progress-${activeLevel}`);
       const localData = raw ? JSON.parse(raw) : null;
 
-      // 2. Sync with Server (PRO only) - per level
       let serverData = null;
       if (isPro) {
         try {
@@ -115,21 +223,6 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
             updated_at: localData?.updated_at || 0
           });
           if (result.success) serverData = result.data;
-
-          // Sync known/unknown words from profile to local storage
-          if (profile) {
-            const idMap = new Map(vocabularyList.map(i => [i.dutch, i]));
-            
-            if (profile.unknown_words && profile.unknown_words.length > 0) {
-              const serverItems = profile.unknown_words.map(d => idMap.get(d)).filter(Boolean);
-              localStorage.setItem('vocabulary-unknown', JSON.stringify(serverItems));
-            }
-            
-            if (profile.known_words && profile.known_words.length > 0) {
-              const serverItems = profile.known_words.map(d => idMap.get(d)).filter(Boolean);
-              localStorage.setItem('vocabulary-known', JSON.stringify(serverItems));
-            }
-          }
         } catch (e) {
           console.error("Sync failed", e);
         }
@@ -142,90 +235,100 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
       if (user && finalData && finalData.current_index > 0 && progressLevel === activeLevel) {
         setPendingProgress(finalData);
       }
-
-      // Initial Deck Load
-      if (!isInitialized) {
-        // 默认开启乱序刷词 (Random Mode)
-        let items = [...vocabularyList];
-        
-        // Filter by level
-        if (activeLevel !== "Mix") {
-          items = items.filter(item => item.level === activeLevel);
-        }
-
-        if (!isReverse && !isReviewMode && !isReviewKnownMode) {
-          items = items.sort(() => Math.random() - 0.5);
-        }
-        
-        setDeck(items.slice(0, effectiveLimit));
-        setIsInitialized(true);
-      }
     };
 
-    init();
-  }, [isPro, effectiveLimit, profile, isInitialized, isReverse, user, isReviewMode, isReviewKnownMode, activeLevel]);
+    sync();
+  }, [isPro, user, activeLevel]);
 
-  // Handle deck updates (mode changes)
-  const updateDeck = useCallback((review: boolean, reverse: boolean, reviewKnown: boolean = false, level: "A2" | "B1" | "Mix" = activeLevel) => {
-    let baseItems: VocabularyItem[] = [];
-    
-    if (review) {
-      baseItems = JSON.parse(localStorage.getItem('vocabulary-unknown') || '[]');
-    } else if (reviewKnown) {
-      const knownItems = JSON.parse(localStorage.getItem('vocabulary-known') || '[]');
-      baseItems = [...knownItems].sort(() => Math.random() - 0.5).slice(0, 10);
-    } else {
-      baseItems = [...vocabularyList];
-    }
+  // Build the initial deck once known/unknown words are loaded
+  useEffect(() => {
+    if (isInitialized || !wordsLoaded) return;
 
-    // Filter by level
+    const build = async () => {
+      let items = [...vocabularyList];
+      if (activeLevel !== "Mix") {
+        items = items.filter(item => item.level === activeLevel);
+      }
+
+      if (currentMode === 'sequential') {
+        const knownSet = new Set(knownWords.map(w => w.id));
+        const unknownSet = new Set(unknownWords.map(w => w.id));
+        items = items.filter(i => !knownSet.has(i.id) && !unknownSet.has(i.id));
+      } else if (currentMode === 'unknown') {
+        const unknownSet = new Set(unknownWords.map(w => w.id));
+        items = items.filter(i => unknownSet.has(i.id)).sort(() => Math.random() - 0.5);
+      } else if (currentMode === 'review') {
+        const knownSet = new Set(knownWords.map(w => w.id));
+        const unknownSet = new Set(unknownWords.map(w => w.id));
+        items = items.filter(i => knownSet.has(i.id) || unknownSet.has(i.id)).sort(() => Math.random() - 0.5);
+      }
+
+      setDeck(items.slice(0, effectiveLimit));
+      setIsInitialized(true);
+    };
+
+    build();
+  }, [wordsLoaded, isInitialized, activeLevel, currentMode, effectiveLimit, knownWords, unknownWords]);
+
+  const updateDeck = useCallback((mode: 'sequential' | 'unknown' | 'review', level: "A2" | "B1" | "Mix" = activeLevel) => {
+    let baseItems = [...vocabularyList];
     if (level !== "Mix") {
       baseItems = baseItems.filter(item => item.level === level);
     }
-    
-    if (baseItems.length === 0 && (review || reviewKnown)) {
-      setDeck([]);
-    } else {
-      if (!reverse && !review && !reviewKnown) {
-        baseItems = baseItems.sort(() => Math.random() - 0.5);
-      }
-      setDeck(baseItems.slice(0, effectiveLimit));
+
+    if (mode === 'sequential') {
+      const knownSet = new Set(knownWords.map(w => w.id));
+      const unknownSet = new Set(unknownWords.map(w => w.id));
+      baseItems = baseItems.filter(i => !knownSet.has(i.id) && !unknownSet.has(i.id));
+    } else if (mode === 'unknown') {
+      const unknownSet = new Set(unknownWords.map(w => w.id));
+      baseItems = baseItems.filter(i => unknownSet.has(i.id)).sort(() => Math.random() - 0.5);
+    } else if (mode === 'review') {
+      const knownSet = new Set(knownWords.map(w => w.id));
+      const unknownSet = new Set(unknownWords.map(w => w.id));
+      baseItems = baseItems.filter(i => knownSet.has(i.id) || unknownSet.has(i.id)).sort(() => Math.random() - 0.5);
     }
 
+    setDeck(baseItems.slice(0, effectiveLimit));
     setCurrentIndex(0);
     setIsFlipped(false);
     setSessionStats({ correct: 0, incorrect: 0 });
     setIsSessionComplete(false);
-  }, [effectiveLimit, activeLevel]);
+  }, [effectiveLimit, activeLevel, knownWords, unknownWords]);
 
   const handleResume = () => {
     if (!pendingProgress) return;
     
-    // Restore deck state
     let baseItems: VocabularyItem[] = [];
     
     if (pendingProgress.is_review_mode) {
-      baseItems = JSON.parse(localStorage.getItem('vocabulary-unknown') || '[]');
+      const savedUnknown = JSON.parse(localStorage.getItem('vocabulary-unknown') || '[]');
+      baseItems = savedUnknown.filter((item: VocabularyItem) => 
+        pendingProgress.level === "Mix" || item.level === pendingProgress.level
+      );
     } else if (pendingProgress.is_review_known_mode) {
-      baseItems = JSON.parse(localStorage.getItem('vocabulary-known') || '[]');
+      const savedKnown = JSON.parse(localStorage.getItem('vocabulary-known') || '[]');
+      baseItems = savedKnown.filter((item: VocabularyItem) => 
+        pendingProgress.level === "Mix" || item.level === pendingProgress.level
+      );
     } else {
-      baseItems = [...vocabularyList];
-    }
-    
-    // If we're resuming a specific random deck, we should ideally have the IDs
-    if (pendingProgress.deck_ids.length > 0) {
       const idMap = new Map(vocabularyList.map(i => [i.id, i]));
-      baseItems = pendingProgress.deck_ids.map(id => idMap.get(id)).filter(Boolean) as VocabularyItem[];
-    } else if (!pendingProgress.is_review_mode && !pendingProgress.is_review_known_mode && !pendingProgress.is_reverse) {
-      // was random but no ids? shuffle again (fallback)
-      baseItems = baseItems.sort(() => Math.random() - 0.5);
+      baseItems = pendingProgress.deck_ids
+        .map(id => idMap.get(id))
+        .filter((item): item is VocabularyItem => 
+          !!item && (pendingProgress.level === "Mix" || item.level === pendingProgress.level)
+        );
     }
 
     setDeck(baseItems);
     setCurrentIndex(pendingProgress.current_index);
-    setIsReverse(pendingProgress.is_reverse);
-    setIsReviewMode(pendingProgress.is_review_mode);
-    setIsReviewKnownMode(pendingProgress.is_review_known_mode || false);
+    if (pendingProgress.is_review_mode) {
+      setCurrentMode('review');
+    } else if (pendingProgress.is_review_known_mode) {
+      setCurrentMode('unknown');
+    } else {
+      setCurrentMode('sequential');
+    }
     setPendingProgress(null);
   };
 
@@ -238,9 +341,9 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
       level: activeLevel,
       current_index: currentIndex,
       deck_ids: deck.map(i => i.id),
-      is_reverse: isReverse,
-      is_review_mode: isReviewMode,
-      is_review_known_mode: isReviewKnownMode,
+      is_reverse: currentMode === 'sequential',
+      is_review_mode: currentMode === 'review',
+      is_review_known_mode: currentMode === 'unknown',
       updated_at: now
     };
 
@@ -249,56 +352,57 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     if (isPro) {
       syncFlashcardProgress(payload).catch(console.error);
     }
-  }, [currentIndex, deck, isReverse, isReviewMode, isReviewKnownMode, isPro, isInitialized, activeLevel]);
+  }, [currentIndex, deck, currentMode, isPro, isInitialized, activeLevel]);
 
   // Handle swipe/answer
   const handleAnswer = useCallback((correct: boolean) => {
     if (isSessionComplete) return;
 
     setSwipeDirection(correct ? 'right' : 'left');
-    
+
     // 记录不认识/认识的单词进度 (Pro 同步到服务器，非 Pro 仅保存在本地)
-    if (currentCard) {
-      const savedUnknown: VocabularyItem[] = JSON.parse(localStorage.getItem('vocabulary-unknown') || '[]');
-      const savedKnown: VocabularyItem[] = JSON.parse(localStorage.getItem('vocabulary-known') || '[]');
-      
-      let newUnknown = [...savedUnknown];
-      let newKnown = [...savedKnown];
+if (currentCard) {
+      const currentId = currentCard.id;
+      let newUnknown = [...unknownWords];
+      let newKnown = [...knownWords];
       let changed = false;
-      
+
       if (!correct) {
-        // 标记为“不认识”：加入不认识列表，从认识列表移除
-        if (!savedUnknown.find((item: VocabularyItem) => item.dutch === currentCard.dutch)) {
+        const hasInUnknown = newUnknown.some(item => item.id === currentId);
+        const hasInKnown = newKnown.some(item => item.id === currentId);
+        if (!hasInUnknown) {
           newUnknown.push(currentCard);
           changed = true;
         }
-        const initialKnownCount = newKnown.length;
-        newKnown = newKnown.filter((item: VocabularyItem) => item.dutch !== currentCard.dutch);
-        if (newKnown.length < initialKnownCount) changed = true;
+        if (hasInKnown) {
+          newKnown = newKnown.filter(item => item.id !== currentId);
+          changed = true;
+        }
       } else {
-        // 标记为“认识”：加入认识列表，从不认识列表移除
-        if (!savedKnown.find((item: VocabularyItem) => item.dutch === currentCard.dutch)) {
+        const hasInKnown = newKnown.some(item => item.id === currentId);
+        const hasInUnknown = newUnknown.some(item => item.id === currentId);
+        if (!hasInKnown) {
           newKnown.push(currentCard);
           changed = true;
         }
-        const initialUnknownCount = newUnknown.length;
-        newUnknown = newUnknown.filter((item: VocabularyItem) => item.dutch !== currentCard.dutch);
-        if (newUnknown.length < initialUnknownCount) changed = true;
+        if (hasInUnknown) {
+          newUnknown = newUnknown.filter(item => item.id !== currentId);
+          changed = true;
+        }
       }
 
       if (changed) {
+        // Optimistic update: local state + localStorage drive the UI immediately.
+        setUnknownWords(newUnknown);
+        setKnownWords(newKnown);
+
         localStorage.setItem('vocabulary-unknown', JSON.stringify(newUnknown));
         localStorage.setItem('vocabulary-known', JSON.stringify(newKnown));
-        if (isPro) {
-          // Sync to Supabase if Pro
-          syncFlashcardWords(
-            newUnknown.map((i: VocabularyItem) => i.dutch),
-            newKnown.map((i: VocabularyItem) => i.dutch)
-          ).then(() => {
-            // Refresh profile to keep AuthContext in sync
-            refreshProfile();
-          }).catch(console.error);
-        }
+
+        // Pro: queue a debounced server write. We deliberately don't refreshProfile()
+        // here — local state is canonical for the rest of the session, and a refresh
+        // would cascade through AuthContext and re-run loadWords on every swipe.
+        queueWordsSync(newUnknown, newKnown);
       }
     }
 
@@ -338,14 +442,14 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     setTimeout(() => {
       setSwipeDirection(null);
       setIsFlipped(false);
-      
+
       if (currentIndex + 1 >= deck.length) {
         setIsSessionComplete(true);
       } else {
         setCurrentIndex(prev => prev + 1);
       }
     }, 300);
-  }, [isSessionComplete, currentIndex, deck.length, isFlipped, isPro, currentCard, refreshProfile]);
+  }, [isSessionComplete, currentIndex, deck.length, isFlipped, currentCard, knownWords, unknownWords, queueWordsSync]);
 
   // Touch handlers
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -431,56 +535,28 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
     }
   };
 
-  const setMode = (mode: 'sequential' | 'random' | 'unknown' | 'review') => {
+  const setMode = (mode: 'sequential' | 'unknown' | 'review') => {
     if (!isPro) return;
 
-    let newReview = false;
-    let newReverse = false;
-    let newReviewKnown = false;
-
-    if (mode === 'sequential') {
-      newReverse = true;
-      // 只有进入顺序背词模式时，如果存在之前同级别的顺序进度，则自动恢复，不提示
-      if (pendingProgress && pendingProgress.level === activeLevel && pendingProgress.is_reverse && !pendingProgress.is_review_mode && !pendingProgress.is_review_known_mode) {
-        handleResume();
-        return;
-      }
-    } else if (mode === 'unknown') {
-      newReview = true;
-    } else if (mode === 'review') {
-      newReviewKnown = true;
+    if (mode === 'sequential' && pendingProgress && pendingProgress.level === activeLevel && !pendingProgress.is_review_mode && !pendingProgress.is_review_known_mode) {
+      handleResume();
+      return;
     }
-    // random is false for all
 
-    setIsReviewMode(newReview);
-    setIsReverse(newReverse);
-    setIsReviewKnownMode(newReviewKnown);
-    updateDeck(newReview, newReverse, newReviewKnown);
+    setCurrentMode(mode);
+    updateDeck(mode);
   };
 
   const reviewedCount = sessionStats.correct + sessionStats.incorrect;
 
-  // 进度条显示逻辑：顺序模式显示整体进度，其他模式显示本次 session 进度
-  const displayProgressCount = (isReverse && !isReviewMode && !isReviewKnownMode) 
-    ? currentIndex 
+  const displayProgressCount = currentMode === 'sequential' 
+    ? currentIndex + 1 
     : reviewedCount;
-  const displayTotalCount = (effectiveLimit === 9999 ? deck.length : effectiveLimit);
+  const displayTotalCount = effectiveLimit === 9999 ? deck.length : effectiveLimit;
 
   const resetSession = () => {
-    updateDeck(isReviewMode, isReverse, isReviewKnownMode);
+    updateDeck(currentMode);
   };
-
-  // Get current mastery data (with word objects for level-based filtering)
-  const getLevelWords = (dutchWords: string[] | undefined) => {
-    if (!dutchWords) return [];
-    const idMap = new Map(vocabularyList.map(i => [i.dutch, i]));
-    return dutchWords.map(d => idMap.get(d)).filter(Boolean) as VocabularyItem[];
-  };
-
-  const savedKnown = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('vocabulary-known') || '[]') : [];
-  const savedUnknown = typeof window !== 'undefined' ? JSON.parse(localStorage.getItem('vocabulary-unknown') || '[]') : [];
-  const knownWords = isPro ? getLevelWords(profile?.known_words) : savedKnown;
-  const unknownWords = isPro ? getLevelWords(profile?.unknown_words) : savedUnknown;
 
   const texts = {
     zh: {
@@ -503,6 +579,9 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
       modeRandom: "乱序背词",
       modeUnknown: "只背生词",
       modeReview: "复习模式",
+      modeSequentialDesc: "按顺序学习新单词，自动保存进度",
+      modeUnknownDesc: "专注生词，随机抽取未掌握的单词",
+      modeReviewDesc: "混合复习已学单词，巩固记忆",
       modeUnknownEmpty: "没有生词了！快去复习模式巩固一下吧。",
       modeReviewEmpty: "你还没有掌握任何单词，先去背词吧！",
       descSequential: "顺序背词模式",
@@ -530,6 +609,9 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
       modeRandom: "Random",
       modeUnknown: "New Words Only",
       modeReview: "Review Mode",
+      modeSequentialDesc: "Learn new words in order, progress auto-saved",
+      modeUnknownDesc: "Focus on new words, randomly select unlearned",
+      modeReviewDesc: "Mixed review of learned words, strengthen memory",
       modeUnknownEmpty: "No new words! Time to review what you've learned.",
       modeReviewEmpty: "No mastered words yet. Start learning some first!",
       descSequential: "Sequential Mode",
@@ -552,7 +634,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
             <button
               onClick={() => {
                 setActiveLevel("A2");
-                updateDeck(isReviewMode, isReverse, isReviewKnownMode, "A2");
+                updateDeck(currentMode, "A2");
               }}
               className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
                 activeLevel === "A2"
@@ -565,7 +647,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
             <button
               onClick={() => {
                 setActiveLevel("B1");
-                updateDeck(isReviewMode, isReverse, isReviewKnownMode, "B1");
+                updateDeck(currentMode, "B1");
               }}
               className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
                 activeLevel === "B1"
@@ -578,7 +660,7 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
             <button
               onClick={() => {
                 setActiveLevel("Mix");
-                updateDeck(isReviewMode, isReverse, isReviewKnownMode, "Mix");
+                updateDeck(currentMode, "Mix");
               }}
               className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
                 activeLevel === "Mix"
@@ -595,46 +677,51 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
       {/* Study Pack Controls */}
       {isPro && !isSessionComplete && (
         <div className="flex flex-col gap-3 mb-4 px-1">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+          {/* Mode Description Banner */}
+          <div className="bg-gradient-to-r from-slate-50 to-slate-100 rounded-xl px-4 py-3 border border-slate-200">
+            <div className="flex items-center gap-2">
+              <div className={`w-2 h-2 rounded-full ${
+                currentMode === 'sequential' ? 'bg-orange-500' : 
+                currentMode === 'unknown' ? 'bg-purple-500' : 'bg-green-500'
+              }`} />
+              <span className="text-sm font-medium text-slate-700">
+                {currentMode === 'sequential' ? texts.modeSequentialDesc :
+                 currentMode === 'unknown' ? texts.modeUnknownDesc : texts.modeReviewDesc}
+              </span>
+            </div>
+          </div>
+          
+          {/* Mode Buttons */}
+          <div className="grid grid-cols-3 gap-2">
             <button
               onClick={() => setMode('sequential')}
-              className={`py-2 px-1 rounded-xl text-[10px] sm:text-xs font-bold transition-all border ${
-                !isReviewMode && !isReviewKnownMode && isReverse 
+              className={`py-2 px-1 rounded-xl text-center transition-all border ${
+                currentMode === 'sequential'
                   ? "bg-[var(--primary)] text-white border-[var(--primary)] shadow-md" 
                   : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
               }`}
             >
-              {texts.modeSequential}
-            </button>
-            <button
-              onClick={() => setMode('random')}
-              className={`py-2 px-1 rounded-xl text-[10px] sm:text-xs font-bold transition-all border ${
-                !isReviewMode && !isReviewKnownMode && !isReverse 
-                  ? "bg-[var(--primary)] text-white border-[var(--primary)] shadow-md" 
-                  : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50"
-              }`}
-            >
-              {texts.modeRandom}
+              <div className="text-[10px] sm:text-xs font-bold">{texts.modeSequential}</div>
             </button>
             <button
               onClick={() => setMode('unknown')}
-              className={`py-2 px-1 rounded-xl text-[10px] sm:text-xs font-bold transition-all border ${
-                isReviewMode 
+              className={`py-2 px-1 rounded-xl text-center transition-all border ${
+                currentMode === 'unknown'
                   ? "bg-purple-600 text-white border-purple-600 shadow-md" 
                   : "bg-white text-purple-600 border-purple-200 hover:bg-purple-50"
               }`}
             >
-              {texts.modeUnknown}
+              <div className="text-[10px] sm:text-xs font-bold">{texts.modeUnknown}</div>
             </button>
             <button
               onClick={() => setMode('review')}
-              className={`py-2 px-1 rounded-xl text-[10px] sm:text-xs font-bold transition-all border ${
-                isReviewKnownMode 
+              className={`py-2 px-1 rounded-xl text-center transition-all border ${
+                currentMode === 'review'
                   ? "bg-green-600 text-white border-green-600 shadow-md" 
                   : "bg-white text-green-600 border-green-200 hover:bg-green-50"
               }`}
             >
-              {texts.modeReview}
+              <div className="text-[10px] sm:text-xs font-bold">{texts.modeReview}</div>
             </button>
           </div>
         </div>
@@ -644,9 +731,9 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
       {!isSessionComplete && deck.length > 0 && (
         <div className="mb-6">
           <div className="flex justify-between items-center mb-2">
-             <span className="text-sm font-bold text-slate-700">
-               {isReviewMode ? texts.descUnknown : isReviewKnownMode ? texts.descReview : isReverse ? texts.descSequential : texts.descRandom}
-             </span>
+<span className="text-sm font-bold text-slate-700">
+                {currentMode === 'sequential' ? texts.descSequential : currentMode === 'unknown' ? texts.descUnknown : texts.descReview}
+              </span>
              <span className="text-xs text-slate-600">{texts.progress}: {displayProgressCount} / {displayTotalCount}</span>
            </div>
            <div className="h-2 bg-slate-100 rounded-full overflow-hidden">
@@ -717,17 +804,17 @@ export function FlashcardGame({ locale, limit = 5 }: FlashcardGameProps) {
               </svg>
             </div>
             <h3 className="text-lg font-bold text-slate-800 mb-2">
-              {isReviewMode ? texts.modeUnknown : texts.modeReview}
+              {texts.limitReached}
             </h3>
             <p className="text-slate-600 text-sm leading-relaxed">
-              {isReviewMode ? texts.modeUnknownEmpty : texts.modeReviewEmpty}
+              {currentMode === 'sequential' ? texts.descSequential : currentMode === 'unknown' ? texts.descUnknown : texts.descReview}
             </p>
             
             <button
-              onClick={() => setMode(isReviewMode ? 'review' : 'random')}
+              onClick={() => setCurrentMode(currentMode === 'sequential' ? 'unknown' : 'sequential')}
               className="mt-8 px-6 py-2 bg-slate-100 text-slate-700 font-bold rounded-full hover:bg-slate-200 transition-all"
             >
-              {isReviewMode ? texts.modeReview : texts.modeRandom}
+              {currentMode === 'sequential' ? texts.modeUnknown : texts.modeSequential}
             </button>
           </div>
         ) : currentCard ? (

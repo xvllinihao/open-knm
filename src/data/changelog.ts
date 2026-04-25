@@ -7,6 +7,18 @@ export type ChangelogItem = {
 
 export const changelogData: ChangelogItem[] = [
   {
+    version: "2.4.0",
+    date: "2026-04-25",
+    title: {
+      zh: "闪卡模式精简：移除乱序模式，新增专注生词与复习模式",
+      en: "Flashcard Modes Refined: Removed Random Mode, Added Focus & Review Modes",
+    },
+    description: {
+      zh: "🎯 模式简化：移除乱序模式，保留三种核心模式——顺序背词、只背生词、复习模式。\n📝 顺序背词：按顺序学习新单词，自动保存学习进度，下次打开继续。\n📝 只背生词：专注未掌握的单词，随机抽取生词进行强化练习。\n📝 复习模式：混合复习已学单词（未知+已掌握），巩固记忆。\n💡 进度追踪：顺序背词模式保存进度，其他模式不保存（每次重新开始）。\n✨ 按钮说明：每个模式按钮现在带有简短说明，方便用户理解。",
+      en: "🎯 Mode Refinement: Removed random mode, keeping three core modes—Sequential, New Words Only, and Review. \n📝 Sequential: Learn new words in order with auto-saved progress, resume where you left off.\n📝 New Words Only: Focus on unlearned words, randomly抽取未掌握的单词 for intensive practice.\n📝 Review Mode: Mixed review of learned words (unknown + known), strengthen memory retention.\n💡 Progress Tracking: Only Sequential mode preserves progress; other modes reset each session.\n✨ Mode Descriptions: Each mode button now includes a brief description for better user understanding.",
+    },
+  },
+  {
     version: "2.3.0",
     date: "2026-04-07",
     title: {
